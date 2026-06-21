@@ -1,0 +1,283 @@
+<!-- ============== BUNDLES ============== -->
+<section class="nx-pdp-bundles-section">
+    <div class="nx-pdp-bundle-container">
+        <div class="nx-pdp-section-heading">
+            <h2 class="nx-pdp-display nx-pdp-red">Bundle it. Save more.</h2>
+            <p class="nx-pdp-lede">If you're getting the 1776, these are the regional sauces our customers add to the
+                cart most often.</p>
+        </div>
+
+        {{!-- Slider shell: JS upgrades this on desktop when >3 cards --}}
+        <div class="nx-bundle-slider-shell" id="nx-bundle-slider-shell">
+            <div class="nx-pdp-bundle-grid" id="nx-bundle-grid">
+                {{#each related_products}}
+                <article class="nx-pdp-bundle-card">
+                    <div class="nx-pdp-bundle-image">
+                        {{#or price.non_sale_price_with_tax price.non_sale_price_without_tax price.rrp_with_tax
+                        price.rrp_without_tax}}
+                        <span class="nx-pdp-bundle-badge">
+                            SAVE {{#if price.non_sale_price_with_tax}}
+                                {{round (multiply (divide (subtract price.non_sale_price_with_tax.value price.with_tax.value) price.non_sale_price_with_tax.value) 100)}}
+                            {{else if price.non_sale_price_without_tax}}
+                                {{round (multiply (divide (subtract price.non_sale_price_without_tax.value price.without_tax.value) price.non_sale_price_without_tax.value) 100)}}
+                            {{else if price.rrp_with_tax}}
+                                {{round (multiply (divide (subtract price.rrp_with_tax.value price.with_tax.value) price.rrp_with_tax.value) 100)}}
+                            {{else if price.rrp_without_tax}}
+                                {{round (multiply (divide (subtract price.rrp_without_tax.value price.without_tax.value) price.rrp_without_tax.value) 100)}}
+                            {{/if}}%
+                        </span>
+                        {{/or}}
+                        <a href="{{url}}">
+                            {{#if image}}
+                            <img class="card-image"
+                                src="{{getImage image (cdn ../theme_settings.default_image_product)}}"
+                                alt="{{image.alt}}" title="{{image.alt}}">
+                            {{else}}
+                            <img class="card-image" src="{{cdn ../theme_settings.default_image_product}}"
+                                alt="{{name}}">
+                            {{/if}}
+                        </a>
+                    </div>
+                    <div class="nx-pdp-bundle-body">
+                        <div class="nx-pdp-bundle-info">
+                            <h3><a href="{{url}}">{{name}}</a></h3>
+                            {{#if summary}}
+                            <p>{{{summary}}}</p>
+                            {{/if}}
+                        </div>
+                        <div class="nx-pdp-bundle-foot">
+                            <div class="nx-pdp-price">
+                                <div class="nx-pdp-price-row">
+                                    <p class="amount">
+                                        {{#if price.with_tax}}
+                                        {{price.with_tax.formatted}}
+                                        {{else if price.without_tax}}
+                                        {{price.without_tax.formatted}}
+                                        {{/if}}
+                                    </p>
+                                    {{#if price.non_sale_price_with_tax}}
+                                    <p class="amount-rrp">{{price.non_sale_price_with_tax.formatted}}</p>
+                                    {{else if price.non_sale_price_without_tax}}
+                                    <p class="amount-rrp">{{price.non_sale_price_without_tax.formatted}}</p>
+                                    {{else if price.rrp_with_tax}}
+                                    <p class="amount-rrp">{{price.rrp_with_tax.formatted}}</p>
+                                    {{else if price.rrp_without_tax}}
+                                    <p class="amount-rrp">{{price.rrp_without_tax.formatted}}</p>
+                                    {{/if}}
+                                </div>
+                                <p class="tax">Tax Included</p>
+                            </div>
+                            {{#if has_options}}
+                            <a href="{{url}}" class="nx-pdp-btn-primary">Choose Options</a>
+                            {{else}}
+                            <a href="/cart.php?action=add&product_id={{id}}" class="nx-pdp-btn-primary">Add to Cart</a>
+                            {{/if}}
+                        </div>
+                    </div>
+                </article>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* ── Bundle Slider Shell ── */
+    .nx-bundle-slider-shell {
+        position: relative;
+        /* arrows anchor here */
+    }
+
+    /* Scrollable viewport — only clips the cards, NOT the arrows */
+    .nx-bundle-viewport {
+        overflow: hidden;
+        /* JS-driven scroll via scrollLeft */
+        padding-top: 20px;
+        padding-bottom: 30px;
+        margin-top: -20px;
+        margin-bottom: -30px;
+    }
+
+    /* Arrow buttons — now inside the nav container */
+    .nx-bundle-arrow {
+        display: flex;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 1.5px solid rgba(13, 13, 14, 0.18);
+        background: transparent;
+        color: #0D0D0E;
+        cursor: pointer;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        line-height: 1;
+        font-weight: 400;
+        transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease,
+            opacity 0.22s ease, transform 0.18s ease;
+        pointer-events: auto;
+        padding: 0;
+    }
+
+    .nx-bundle-slider-nav {
+        display: none;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        margin-top: 32px;
+    }
+
+    .nx-bundle-slider-shell.is-slider .nx-bundle-slider-nav {
+        display: flex;
+    }
+
+    .nx-bundle-arrow:hover:not(.nx-ba-hidden) {
+        background: #0D0D0E;
+        border-color: #0D0D0E;
+        color: #fff;
+        transform: scale(1.07);
+        box-shadow: 0 4px 14px rgba(13, 13, 14, 0.22);
+    }
+
+    /* Disabled state instead of invisible */
+    .nx-bundle-arrow.nx-ba-hidden {
+        opacity: 0.32;
+        cursor: not-allowed;
+    }
+
+    /* When slider is active: grid becomes a flex row */
+    .nx-bundle-slider-shell.is-slider .nx-pdp-bundle-grid {
+        display: flex;
+        flex-direction: row;
+        gap: 30px;
+    }
+
+    /* Each card = exactly 1/3 of the viewport width */
+    .nx-bundle-slider-shell.is-slider .nx-pdp-bundle-card {
+        flex: 0 0 calc((100% - 60px) / 3);
+        min-width: 0;
+    }
+</style>
+
+<script>
+    (function () {
+        var DESKTOP_BP = 769;  /* matches SCSS mobile breakpoint */
+        var CARDS_TO_SHOW = 3;
+        var SCROLL_DUR = 380;  /* ms */
+
+        var shell = document.getElementById('nx-bundle-slider-shell');
+        var grid = document.getElementById('nx-bundle-grid');
+        if (!shell || !grid) return;
+
+        var cards = Array.prototype.slice.call(grid.querySelectorAll('.nx-pdp-bundle-card'));
+        
+        /* ── Reverse the order of the bundles ── */
+        cards.reverse().forEach(function(card) {
+            grid.appendChild(card);
+        });
+
+        var totalCards = cards.length;
+
+        /* No slider needed for 3 or fewer cards */
+        if (totalCards <= CARDS_TO_SHOW) return;
+
+        /* ── Create arrow buttons (← → matching reviews pagination style) ── */
+        var prevBtn = document.createElement('button');
+        prevBtn.className = 'nx-bundle-arrow nx-ba-prev nx-ba-hidden';
+        prevBtn.setAttribute('aria-label', 'Previous bundles');
+        prevBtn.innerHTML = '&#8592;'; /* ← */
+
+        var nextBtn = document.createElement('button');
+        nextBtn.className = 'nx-bundle-arrow nx-ba-next';
+        nextBtn.setAttribute('aria-label', 'Next bundles');
+        nextBtn.innerHTML = '&#8594;'; /* → */
+
+        /* ── Wrap grid in a viewport div (for overflow:hidden on cards only) ── */
+        var viewport = document.createElement('div');
+        viewport.className = 'nx-bundle-viewport';
+        grid.parentNode.insertBefore(viewport, grid);
+        viewport.appendChild(grid);
+
+        /* ── Arrows go in a nav container below the viewport ── */
+        var navContainer = document.createElement('div');
+        navContainer.className = 'nx-bundle-slider-nav';
+        shell.appendChild(navContainer);
+        navContainer.appendChild(prevBtn);
+        navContainer.appendChild(nextBtn);
+
+        /* ── State ── */
+        var currentIndex = 0;
+        var isScrolling = false;
+
+        function maxIndex() { return totalCards - CARDS_TO_SHOW; }
+
+        /* ── Custom eased smooth scroll ── */
+        function ease(t) { return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
+
+        function smoothScrollTo(target) {
+            var start = viewport.scrollLeft;
+            var dist = target - start;
+            var t0 = null;
+            isScrolling = true;
+            function step(ts) {
+                if (!t0) t0 = ts;
+                var p = Math.min((ts - t0) / SCROLL_DUR, 1);
+                viewport.scrollLeft = start + dist * ease(p);
+                if (p < 1) {
+                    requestAnimationFrame(step);
+                } else {
+                    isScrolling = false;
+                }
+            }
+            requestAnimationFrame(step);
+        }
+
+        function goTo(idx) {
+            currentIndex = Math.max(0, Math.min(idx, maxIndex()));
+            var cardW = cards[0].offsetWidth + 30; /* card width + gap */
+            smoothScrollTo(currentIndex * cardW);
+            updateArrows(); /* update immediately — arrows are on shell, not clipped */
+        }
+
+        function updateArrows() {
+            prevBtn.classList.toggle('nx-ba-hidden', currentIndex <= 0);
+            nextBtn.classList.toggle('nx-ba-hidden', currentIndex >= maxIndex());
+        }
+
+        /* ── Events ── */
+        prevBtn.addEventListener('click', function () { goTo(currentIndex - 1); });
+        nextBtn.addEventListener('click', function () { goTo(currentIndex + 1); });
+
+        /* Sync index only during manual swipe, not during our animation */
+        viewport.addEventListener('scroll', function () {
+            if (isScrolling) return;
+            var cardW = cards[0].offsetWidth + 30;
+            currentIndex = Math.round(viewport.scrollLeft / cardW);
+            updateArrows();
+        }, { passive: true });
+
+        /* ── Activate / deactivate on resize ── */
+        function activate() {
+            shell.classList.add('is-slider');
+            goTo(currentIndex); /* keep current position, don't force reset to 0 */
+        }
+
+        function deactivate() {
+            shell.classList.remove('is-slider');
+            viewport.scrollLeft = 0;
+            currentIndex = 0;
+        }
+
+        function check() {
+            window.innerWidth >= DESKTOP_BP ? activate() : deactivate();
+        }
+
+        check();
+
+        var resizeTimer;
+        window.addEventListener('resize', function () {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(check, 120);
+        });
+    })();
+</script>

@@ -1,0 +1,55 @@
+---
+product:
+    videos:
+        limit: {{theme_settings.productpage_videos_count}}
+    reviews:
+        limit: {{theme_settings.productpage_reviews_count}}
+    related_products:
+        limit: {{theme_settings.productpage_related_products_count}}
+    similar_by_views:
+        limit: {{theme_settings.productpage_similar_by_views_count}}
+---
+
+{{#partial "page"}}
+        {{#each product.reviews.messages}}
+            {{#if error}}
+                {{> components/common/alert/alert-error error}}
+            {{/if}}
+            {{#if success}}
+                {{> components/common/alert/alert-success success}}
+            {{/if}}
+        {{/each}}
+        <div class="productView" itemscope itemtype="http://schema.org/Product">
+            {{> components/custom/nexyl/product/1776-product-hero product=product theme_settings=theme_settings}}
+            
+            {{#if product.related_products}}
+                {{> components/custom/nexyl/product/1776-bundles related_products=product.related_products}}
+            {{/if}}
+
+            {{> components/custom/nexyl/product/1776-story}}
+            
+            {{> components/custom/nexyl/product/1776-sundays}}
+
+            {{#if settings.show_product_reviews}}
+                {{> components/custom/nexyl/product/1776-reviews product=product}}
+            {{/if}}
+
+            <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const cartButtons = document.querySelectorAll('.nx-pdp-btn-primary, .nx-pdp-btn-ghost');
+                
+                cartButtons.forEach(button => {
+                    const btnText = button.textContent.trim();
+                    if (btnText === 'Add to Cart' || btnText === 'Pre-Order Now') {
+                        button.addEventListener('click', function(e) {
+                            this.innerText = 'Adding...';
+                            this.style.pointerEvents = 'none';
+                            this.style.opacity = '0.8';
+                        });
+                    }
+                });
+            });
+            </script>
+        </div>
+{{/partial}}
+{{> layout/1776-blend}}

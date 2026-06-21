@@ -1,0 +1,13 @@
+{
+  "customLayouts": {
+    "brand": {},
+    "category": {},
+    "page": {},
+    "product": {
+      "1776-blend.html": "/1776-blend/"
+    }
+  },
+  "normalStoreUrl": "https://shop.redstatebbq.com/",
+  "port": 3000,
+  "packageManager": "npm"
+}

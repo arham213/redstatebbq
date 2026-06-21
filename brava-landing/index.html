@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Brava — Red State BBQ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Figtree:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#fbf5e7;
+    --cream-soft:#f7ebcf;
+    --bg:#fdfff5;
+    --dark-red:#6a0111;
+    --red:#d70321;
+    --red-2:#e51d25;
+    --yellow:#ffa100;
+    --pink:#fc9eab;
+    --pink-2:#ebe3cf;
+    --text-muted:#666050;
+    --border-gray:#e5e5e5;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{background:var(--bg);font-family:'Figtree',sans-serif;color:var(--dark-red);}
+  body{display:flex;flex-direction:column;align-items:center;overflow-x:hidden;}
+  img{display:block;max-width:none;}
+  a{color:inherit;text-decoration:none;}
+  p{word-break:break-word;}
+  button{font-family:inherit;cursor:pointer;border:none;background:none;}
+
+  .display{
+    font-family:'Alfa Slab One', 'Bowlby One', serif;
+    text-transform:uppercase;
+    font-weight:400;
+    letter-spacing:.01em;
+  }
+
+  /* ============== NAV ============== */
+  .nav{
+    width:100%;
+    background:var(--cream);
+    border-bottom:2px solid var(--red-2);
+    backdrop-filter:blur(19px);
+    display:flex;align-items:center;justify-content:space-between;
+    padding:24px 80px;
+    position:relative;z-index:50;
+  }
+  .nav-left, .nav-right{display:flex;align-items:center;}
+  .nav-left{gap:40px;}
+  .nav-right{gap:28px;}
+  .nav a, .nav .link{
+    color:var(--dark-red);font-size:16px;line-height:1.4;
+  }
+  .nav-item{display:flex;align-items:center;gap:6px;}
+  .chev{width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;}
+  .chev img{width:10px;height:6px;display:block;}
+  .logo-center{
+    position:absolute;left:50%;top:calc(50% + 2px);
+    transform:translate(-50%,-50%);
+    width:160px;height:44px;
+  }
+  .logo-center img{width:100%;height:100%;object-fit:contain;}
+  .search{
+    width:152px;display:flex;align-items:center;gap:8px;
+    padding:10px 12px;
+    border-bottom:1px solid var(--dark-red);
+  }
+  .search img{width:16px;height:16px;}
+  .search input{
+    border:none;background:transparent;outline:none;
+    color:var(--dark-red);font-family:'Inter';font-size:14px;line-height:20px;
+    width:100%;
+  }
+  .search input::placeholder{color:var(--dark-red);opacity:1;}
+
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    height:40px;padding:8px 16px;border-radius:24px;
+    font-family:'Inter';font-weight:600;font-size:14px;line-height:20px;
+    box-shadow:0 1px 1px rgba(0,0,0,.05);
+    transition:transform .15s ease, opacity .15s ease;
+  }
+  .btn:hover{opacity:.92;}
+  .btn-primary{background:var(--red);color:var(--cream);}
+  .btn-primary-lg{padding:8px 32px;}
+  .btn-outline{background:transparent;border:2px solid var(--dark-red);color:var(--dark-red);padding:8px 32px;}
+  .cart-btn img{width:16px;height:16px;}
+
+  /* ============== ANNOUNCE ============== */
+  .announce{
+    width:100%;background:var(--dark-red);color:var(--cream);
+    padding:12px 16px;text-align:center;font-size:16px;font-weight:400;
+  }
+  .announce .star{color:var(--yellow);}
+
+  /* ============== HERO ============== */
+  .hero-wrap{
+    width:100%;
+    background:var(--cream-soft);
+    padding:48px;display:flex;justify-content:center;
+  }
+  .hero{
+    width:100%;max-width:1344px;
+    aspect-ratio: 1344 / 797;
+    border-radius:32px;overflow:hidden;position:relative;
+    background:#5a0a18 url('assets/hero-bg.png') center/cover no-repeat;
+  }
+  .hero-content{
+    position:absolute;left:81px;top:50%;transform:translateY(-50%);
+    width:561px;max-width:55%;
+    display:flex;flex-direction:column;gap:28px;align-items:flex-start;
+  }
+  .badge{
+    display:inline-flex;align-items:center;justify-content:center;gap:4px;
+    padding:6px 12px;border-radius:24px;border:2px solid var(--dark-red);
+    font-family:'Figtree';font-weight:500;font-size:14px;line-height:20px;
+    color:var(--dark-red);
+  }
+  .hero h1{
+    font-family:'Alfa Slab One', 'Bowlby One', serif;
+    color:var(--dark-red);
+    text-transform:uppercase;font-weight:400;
+    font-size:68px;line-height:.95;letter-spacing:.005em;
+  }
+  .hero h1 .line2{display:block;}
+  .hero .lede{
+    font-family:'Figtree';font-weight:500;
+    font-size:26px;line-height:1.2;color:var(--dark-red);
+    max-width:551px;
+  }
+
+  /* ============== FANS / TESTIMONIAL ============== */
+  .fans{
+    width:100%;background:var(--dark-red);
+    display:flex;flex-direction:column;align-items:center;gap:80px;
+    padding:60px 24px 60px;
+  }
+  .fans-title{
+    color:var(--cream);font-size:20px;font-weight:400;
+    font-family:'Alfa Slab One', 'Bowlby One', serif;
+    text-transform:uppercase;letter-spacing:.06em;
+    margin-bottom:-20px;
+  }
+  .quote-row{
+    display:flex;gap:36px;align-items:flex-start;justify-content:center;
+    max-width:900px;
+  }
+  .avatar-block{
+    display:flex;flex-direction:column;align-items:center;gap:20px;
+  }
+  .avatar{
+    width:96px;height:96px;border-radius:9999px;
+    background:var(--cream);flex-shrink:0;
+  }
+  .avatar-name{color:var(--cream);font-weight:600;font-size:16px;}
+  .quote{
+    color:var(--cream);font-family:'Figtree';font-weight:500;
+    font-size:26px;line-height:1.2;
+    max-width:551px;
+  }
+  .also-seen{
+    display:flex;flex-direction:column;align-items:center;gap:24px;margin-top:20px;
+  }
+  .logo-row{display:flex;align-items:center;gap:40px;flex-wrap:wrap;justify-content:center;}
+  .logo-row img{height:30px;width:auto;filter:brightness(0) invert(1);}
+  .logo-row img.h-44{height:44px;}
+  .logo-row img.h-41{height:41px;}
+  .also-seen-label{color:var(--pink);font-weight:500;font-size:18px;}
+
+  /* ============== REGIONAL SAUCES ============== */
+  .sauces{
+    width:100%;background:var(--cream);
+    display:flex;flex-direction:column;align-items:center;gap:60px;
+    padding:80px 80px;position:relative;overflow:hidden;
+  }
+  .splatter-1, .splatter-2{
+    position:absolute;pointer-events:none;mix-blend-mode:multiply;
+    opacity:1;
+  }
+  .splatter-1{
+    top:60px;right:6%;width:560px;height:auto;
+    transform:rotate(28deg);
+  }
+  .splatter-2{
+    top:60px;left:6%;width:560px;height:auto;
+    transform:rotate(-152deg);
+  }
+  .section-title{
+    font-family:'Alfa Slab One', 'Bowlby One', serif;
+    color:var(--dark-red);font-size:38px;line-height:1.15;
+    text-align:center;text-transform:uppercase;letter-spacing:.03em;
+    font-weight:400;max-width:886px;
+    position:relative;z-index:1;
+  }
+  .sauces-row{
+    display:flex;justify-content:space-between;align-items:flex-end;
+    width:100%;max-width:1171px;gap:40px;
+    position:relative;z-index:1;
+  }
+  .sauce{
+    flex:1;display:flex;flex-direction:column;align-items:center;gap:32px;
+  }
+  .sauce-img{
+    width:100%;max-width:200px;height:393px;
+    display:flex;align-items:flex-end;justify-content:center;
+  }
+  .sauce-img img{
+    max-width:100%;max-height:100%;width:auto;height:auto;
+    object-fit:contain;object-position:bottom center;
+  }
+  .sauce-info{
+    display:flex;flex-direction:column;align-items:center;gap:18px;
+  }
+  .sauce-region{color:var(--dark-red);font-size:16px;font-weight:600;line-height:1.2;}
+  .sauce-name{
+    color:var(--dark-red);font-size:30px;line-height:1;
+    font-family:'Alfa Slab One', 'Bowlby One', serif;
+    text-transform:uppercase;letter-spacing:.03em;font-weight:400;
+  }
+  .sauces-foot{
+    display:flex;flex-direction:column;align-items:center;gap:40px;
+    position:relative;z-index:1;
+  }
+  .sauces-foot p{
+    color:var(--dark-red);font-weight:500;font-size:20px;line-height:1.3;
+    letter-spacing:.4px;text-align:center;max-width:600px;
+  }
+
+  /* ============== STATE BBQ BANNER ============== */
+  .state-banner{
+    width:100%;height:454px;
+    background:url('assets/state-bbq-banner.png') center bottom/cover no-repeat;
+  }
+
+  /* ============== STORY (MOBILE KITCHEN) ============== */
+  .story-truck-bar{
+    width:100%;background:var(--dark-red);
+    display:flex;justify-content:center;align-items:center;padding:32px 0;
+  }
+  .story-truck-bar img{width:326px;height:244px;object-fit:contain;}
+
+  .story-body{
+    width:100%;background:var(--cream);
+    position:relative;padding:48px 80px;
+    display:flex;justify-content:center;align-items:center;
+    min-height:790px;
+  }
+  .story-card{
+    width:100%;max-width:697px;height:695px;
+    background:var(--cream-soft);
+    border-radius:22px;padding:32px;
+    display:flex;flex-direction:column;justify-content:space-between;
+    overflow:hidden;position:relative;z-index:2;
+  }
+  .story-card h2{
+    font-family:'Alfa Slab One', 'Bowlby One', serif;
+    color:var(--dark-red);font-size:64px;line-height:1.06;
+    text-transform:uppercase;font-weight:400;letter-spacing:.01em;
+  }
+  .story-card .desc{
+    margin-top:20px;
+    color:var(--dark-red);font-weight:500;font-size:26px;line-height:1.2;
+  }
+  .story-card .featured{
+    display:flex;flex-direction:column;align-items:center;gap:16px;width:100%;
+  }
+  .story-card .featured-label{color:var(--dark-red);font-weight:500;font-size:22px;text-align:center;}
+  .featured-logos{display:flex;align-items:center;gap:32px;flex-wrap:wrap;justify-content:center;}
+  .featured-logos img{height:34px;width:auto;}
+  .featured-logos img.h-45{height:45px;}
+
+  .story-photo-1, .story-photo-2{
+    position:absolute;
+    border-radius:16px;overflow:hidden;z-index:1;
+    box-shadow:0 4px 14px rgba(0,0,0,.08);
+  }
+  .story-photo-1{
+    top:53px;right:50px;
+    width:391px;height:253px;
+  }
+  .story-photo-1 img{
+    width:100%;height:100%;
+    object-fit:cover;object-position:center top;
+  }
+  .story-photo-2{
+    top:416px;left:63px;
+    width:406px;height:240px;
+  }
+  .story-photo-2 img{
+    width:100%;height:100%;
+    object-fit:cover;object-position:center center;
+  }
+
+  /* ============== WHY ============== */
+  .why{
+    width:100%;background:var(--cream);
+    display:flex;flex-direction:column;align-items:center;gap:60px;
+    padding:60px 80px 80px;
+  }
+  .why-title{
+    font-family:'Alfa Slab One', 'Bowlby One', serif;
+    color:var(--red);font-size:38px;line-height:1.2;
+    text-transform:uppercase;letter-spacing:.03em;font-weight:400;
+    text-align:center;max-width:900px;
+  }
+  @media (min-width: 901px){ .why-title{white-space:nowrap;} }
+  .why-grid{
+    display:flex;justify-content:center;align-items:flex-start;gap:40px;
+    width:100%;max-width:1280px;
+  }
+  .why-card{
+    flex:1;max-width:405px;
+    display:flex;flex-direction:column;align-items:center;gap:24px;
+  }
+  .why-icon{
+    width:194px;height:194px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  /* Figma applies rotate(180) + scaleX(-1) to these icons -> vertical flip */
+  .why-icon img{
+    max-width:80%;max-height:80%;
+    transform:scaleY(-1);
+  }
+  .why-card h3{
+    font-family:'Alfa Slab One', 'Bowlby One', serif;
+    color:var(--dark-red);font-size:26px;line-height:1.25;
+    letter-spacing:.04em;text-transform:uppercase;font-weight:400;text-align:center;
+  }
+  .why-card p{
+    color:var(--dark-red);font-weight:500;font-size:20px;line-height:1.4;
+    text-align:center;
+  }
+
+  /* ============== FAQ ============== */
+  .faq{
+    width:100%;background:var(--cream);
+    display:flex;flex-direction:column;align-items:center;
+    padding:64px 24px;
+  }
+  .faq-inner{
+    max-width:672px;width:100%;
+    display:flex;flex-direction:column;gap:48px;
+  }
+  .faq-title{
+    font-family:'Alfa Slab One', 'Bowlby One', serif;
+    color:var(--red);font-size:38px;line-height:1.2;
+    text-align:center;text-transform:uppercase;letter-spacing:.03em;font-weight:400;
+  }
+  .accordion{display:flex;flex-direction:column;width:100%;}
+  .acc-item{width:100%;border-bottom:1px solid var(--border-gray);}
+  .acc-trigger{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px 0;width:100%;text-align:left;
+  }
+  .acc-trigger p{
+    flex:1;color:var(--dark-red);font-family:'Inter';font-weight:500;
+    font-size:16px;line-height:24px;padding-right:12px;
+  }
+  .acc-chev{
+    width:16px;height:16px;display:inline-flex;align-items:center;justify-content:center;
+    transition:transform .2s ease;
+  }
+  .acc-chev img{width:10px;height:6px;display:block;}
+  .acc-item.open .acc-chev{transform:rotate(180deg);}
+  .acc-content{
+    display:none;padding:0 0 16px;
+    color:var(--text-muted);font-family:'Inter';font-size:14px;line-height:20px;
+  }
+  .acc-item.open .acc-content{display:block;}
+  .faq-cta{
+    background:var(--dark-red);border-radius:14px;padding:32px;
+    display:flex;flex-direction:column;align-items:center;gap:24px;width:100%;
+  }
+  .faq-cta h3{
+    color:var(--cream);font-family:'Inter';font-weight:700;font-size:24px;line-height:32px;
+    text-align:center;width:100%;
+  }
+  .faq-cta p{
+    color:var(--pink-2);font-family:'Inter';font-size:16px;line-height:24px;
+    text-align:center;width:100%;
+  }
+
+  /* ============== BOTTOM BANNER ============== */
+  .bottom-banner{
+    width:100%;height:417px;
+    background:url('assets/bottom-banner.png') center/cover no-repeat;
+  }
+
+  /* ============== GALLERY ============== */
+  .gallery{
+    width:100%;background:var(--cream);
+    padding:72px 24px;
+    display:flex;justify-content:center;
+  }
+  .gallery-row{
+    display:flex;gap:12px;align-items:flex-start;
+  }
+  .gallery-row .photo{
+    width:305px;
+    border:2px solid #000;border-radius:14px;overflow:hidden;
+  }
+  .gallery-row .h-tall{height:363px;}
+  .gallery-row .h-short{height:304px;margin-top:30px;}
+  .gallery-row .photo img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;}
+
+  /* ============== FOOTER ============== */
+  .footer{
+    width:100%;background:var(--dark-red);
+    padding:64px 80px;
+    display:flex;flex-direction:column;gap:24px;
+    position:relative;overflow:hidden;
+    min-height:321px;
+  }
+  .footer-bg{
+    position:absolute;left:30%;right:30%;bottom:8px;top:70.5%;
+    pointer-events:none;opacity:.5;
+  }
+  .footer-bg img{width:100%;height:100%;object-fit:contain;}
+  .footer-inner{
+    flex:1;max-width:1280px;width:100%;
+    margin:0 auto;padding:0 24px;
+    display:flex;flex-direction:column;justify-content:space-between;gap:24px;
+    position:relative;z-index:1;
+  }
+  .footer-nav{
+    display:flex;align-items:center;justify-content:space-between;width:100%;flex-wrap:wrap;gap:24px;
+  }
+  .footer-links{
+    display:flex;align-items:center;gap:32px;flex-wrap:wrap;
+  }
+  .footer-links a, .footer-links .item{
+    color:var(--cream);font-family:'Inter';font-size:16px;line-height:24px;
+  }
+  .footer-links .item{display:flex;align-items:center;gap:6px;}
+  .footer-socials{display:flex;align-items:center;gap:32px;}
+  .footer-socials a{
+    width:24px;height:24px;display:inline-flex;align-items:center;justify-content:center;
+  }
+  .footer-socials img{width:100%;height:100%;}
+  .footer-sep{height:1px;width:100%;background:rgba(251,245,231,.25);}
+  .footer-bot{
+    width:100%;display:flex;justify-content:space-between;align-items:center;
+    color:var(--cream);font-family:'Inter';font-size:16px;line-height:24px;
+    flex-wrap:wrap;gap:16px;
+  }
+  .footer-policies{display:flex;align-items:center;gap:28px;flex-wrap:wrap;}
+
+  /* ============== RESPONSIVE ============== */
+  /* TABLET: 901px - 1199px */
+  @media (max-width: 1199px) and (min-width: 901px){
+    .nav{padding:18px 32px;gap:16px;}
+    .nav-left{gap:24px;}
+    .nav-right{gap:20px;}
+    .hero-wrap{padding:24px;}
+    .hero-content{left:32px;width:55%;}
+    .hero h1{font-size:54px;}
+    .hero .lede{font-size:20px;}
+    .sauces{padding:60px 32px;gap:50px;}
+    .sauces-row{gap:24px;}
+    .why{padding:60px 32px;gap:50px;}
+    .why-grid{gap:24px;}
+    .story-body{padding:48px 32px;min-height:auto;}
+    .story-photo-1{right:24px;width:300px;}
+    .story-photo-2{left:24px;width:300px;top:auto;bottom:30px;}
+    .story-card{height:auto;min-height:560px;}
+    .story-card h2{font-size:54px;}
+    .footer{padding:48px 32px;}
+  }
+  /* MOBILE <= 900px */
+  @media (max-width: 900px){
+    .nav{
+      flex-direction:column;padding:16px;gap:12px;
+    }
+    .nav-left, .nav-right{gap:20px;flex-wrap:wrap;justify-content:center;}
+    .logo-center{position:static;transform:none;width:140px;height:38px;margin:0;order:-1;}
+    .search{width:180px;}
+    .announce{font-size:14px;padding:10px 12px;}
+    .hero-wrap{padding:12px;}
+    .hero{aspect-ratio:auto;min-height:560px;}
+    .hero-content{
+      position:static;transform:none;width:100%;max-width:none;
+      padding:32px 20px;background:rgba(247,235,207,.85);height:100%;
+      justify-content:center;
+    }
+    .hero h1{font-size:40px;}
+    .hero .lede{font-size:17px;}
+    .fans{gap:40px;padding:40px 16px;}
+    .quote-row{flex-direction:column;align-items:center;text-align:center;}
+    .quote{font-size:20px;text-align:center;}
+    .sauces{padding:48px 16px;gap:40px;}
+    .splatter-1, .splatter-2{display:none;}
+    .section-title, .why-title, .faq-title{font-size:28px;line-height:1.2;}
+    .sauces-row{flex-direction:column;align-items:center;}
+    .sauce{width:100%;max-width:280px;flex:0 0 auto;}
+    .state-banner{height:240px;background-position:center;}
+    .story-truck-bar img{width:240px;height:auto;}
+    .story-body{padding:32px 16px;}
+    .story-card{padding:24px;}
+    .story-card h2{font-size:34px;line-height:1.1;}
+    .story-card .desc{font-size:17px;}
+    .why{padding:48px 16px;gap:40px;}
+    .why-grid{flex-direction:column;align-items:center;}
+    .why-card{width:100%;max-width:340px;flex:0 0 auto;}
+    .why-card p{font-size:17px;}
+    .faq{padding:48px 16px;}
+    .faq-inner{gap:32px;}
+    .faq-cta{padding:24px;}
+    .bottom-banner{height:240px;}
+    .gallery{padding:32px 16px;}
+    .gallery-row{flex-direction:column;align-items:center;gap:16px;}
+    .gallery-row .photo{width:100%;max-width:320px;}
+    .gallery-row .h-tall, .gallery-row .h-short{margin-top:0;height:240px;}
+    .footer{padding:40px 16px;min-height:auto;}
+    .footer-bg{display:none;}
+    .footer-inner{padding:0;}
+    .footer-links{justify-content:center;width:100%;}
+    .footer-socials{width:100%;justify-content:center;}
+    .footer-bot{flex-direction:column;text-align:center;}
+  }
+</style>
+</head>
+<body>
+
+  <!-- ============== NAV ============== -->
+  <nav class="nav">
+    <div class="nav-left">
+      <a href="#" class="nav-item">All Items <span class="chev"><img src="assets/chev-down.svg" alt=""></span></a>
+      <a href="#">Recipes</a>
+      <a href="#">Restaurant</a>
+    </div>
+
+    <div class="logo-center">
+      <img src="assets/logo.png" alt="Brava">
+    </div>
+
+    <div class="nav-right">
+      <div class="search">
+        <img src="assets/search.svg" alt="">
+        <input type="text" placeholder="Search">
+      </div>
+      <a href="#">About Us</a>
+      <a href="#">Contact</a>
+      <button class="btn btn-primary cart-btn">
+        <span>$0.00</span>
+        <img src="assets/cart.svg" alt="">
+      </button>
+    </div>
+  </nav>
+
+  <!-- ============== ANNOUNCE ============== -->
+  <div class="announce">
+    <span class="star">★ NEW LIMITED DROP</span>
+    <span> · The 1776 Independence Blend only 1,776 bottles ever made</span>
+  </div>
+
+  <!-- ============== HERO ============== -->
+  <section class="hero-wrap">
+    <div class="hero">
+      <div class="hero-content">
+        <span class="badge">Lexington, Kentucky · Est. 2010</span>
+        <h1>
+          Eight Sauces.
+          <span class="line2">One Pitmaster.</span>
+        </h1>
+        <p class="lede">Every American BBQ tradition, slow smoked into a bottle. From the only multi-award-winning roadside BBQ joint in Lexington now shipping to your door.</p>
+        <button class="btn btn-primary btn-primary-lg">Buy 1776 Sauce</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== FANS ============== -->
+  <section class="fans">
+    <p class="fans-title">WHAT OUR FANS SAY</p>
+
+    <div class="quote-row">
+      <div class="avatar-block">
+        <div class="avatar"></div>
+        <p class="avatar-name">David Carroll</p>
+      </div>
+      <p class="quote">"We've had regional sauces on the tables at Red State for 13 years. For America's 250th birthday, I wanted to make one sauce that represented the whole country."</p>
+    </div>
+
+    <div class="also-seen">
+      <div class="logo-row">
+        <img class="h-44" src="assets/logo-foodcity.svg" alt="Food City">
+        <img class="h-41" src="assets/logo-brand.svg" alt="">
+        <img src="assets/logo-kfc.svg" alt="KFC">
+        <img src="assets/logo-bbqguys.svg" alt="BBQ Guys">
+      </div>
+      <p class="also-seen-label">Also Seen At</p>
+    </div>
+  </section>
+
+  <!-- ============== REGIONAL SAUCES ============== -->
+  <section class="sauces">
+    <img class="splatter-1" src="assets/splatter-1.svg" alt="">
+    <img class="splatter-2" src="assets/splatter-2.svg" alt="">
+
+    <h2 class="section-title">our regional sauces</h2>
+
+    <div class="sauces-row">
+      <div class="sauce">
+        <div class="sauce-img">
+          <img src="assets/sauce-mustard.png" alt="South Carolina Mustard">
+        </div>
+        <div class="sauce-info">
+          <p class="sauce-region">South Carolina</p>
+          <p class="sauce-name">Mustard</p>
+          <button class="btn btn-primary btn-primary-lg">Buy Now</button>
+        </div>
+      </div>
+
+      <div class="sauce">
+        <div class="sauce-img">
+          <img src="assets/sauce-texas.png" alt="Texas Spicy">
+        </div>
+        <div class="sauce-info">
+          <p class="sauce-region">Texas</p>
+          <p class="sauce-name">texas spicy</p>
+          <button class="btn btn-primary btn-primary-lg">Buy Now</button>
+        </div>
+      </div>
+
+      <div class="sauce">
+        <div class="sauce-img">
+          <img src="assets/sauce-alabama.png" alt="Alabama Show Horse">
+        </div>
+        <div class="sauce-info">
+          <p class="sauce-region">Alabama</p>
+          <p class="sauce-name">Show horse</p>
+          <button class="btn btn-primary btn-primary-lg">Buy Now</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="sauces-foot">
+      <p>Made by our sauce-master with the finest ingredients to give you a lasting taste from all regions</p>
+      <button class="btn btn-outline">EXPLORE ALL</button>
+    </div>
+  </section>
+
+  <!-- ============== STATE BBQ BANNER ============== -->
+  <div class="state-banner"></div>
+
+  <!-- ============== STORY ============== -->
+  <div class="story-truck-bar">
+    <img src="assets/food-truck.png" alt="Mobile Kitchen Truck">
+  </div>
+
+  <section class="story-body">
+    <div class="story-photo-1"><img src="assets/story-photo-1.png" alt=""></div>
+    <div class="story-photo-2"><img src="assets/story-photo-2.png" alt=""></div>
+
+    <div class="story-card">
+      <div>
+        <h2>Red State BBQ Mobile Kitchen</h2>
+        <p class="desc">The Red State BBQ also has a Mobile Kitchen that is our legendary roadside BBQ on wheels not a food truck, delivers bold flavor and authentic BBQ wherever we park.</p>
+      </div>
+      <div class="featured">
+        <p class="featured-label">Featured in Detroit News and Southern Living.</p>
+        <div class="featured-logos">
+          <img src="assets/press-detroit.svg" alt="Detroit News">
+          <img class="h-45" src="assets/press-southern.svg" alt="Southern Living">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== WHY ============== -->
+  <section class="why">
+    <h2 class="why-title">What makes our sauce better?</h2>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon"><img src="assets/icon-location.svg" alt=""></div>
+        <h3>One sauce per tradition</h3>
+        <p>Every bottle ties back to a real American BBQ region from Memphis sweet to Carolina vinegar not a generic "BBQ flavor."</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><img src="assets/icon-smoker.svg" alt=""></div>
+        <h3>sauce-master made flavor</h3>
+        <p>Same recipes that go on every table at our award winning Lexington BBQ joint. Not a marketing exercise, a kitchen one.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon"><img src="assets/icon-meat.svg" alt=""></div>
+        <h3>Real food, no nonsense</h3>
+        <p>Tomato, vinegar, brown sugar, molasses, spices. What you'd put on your own ribs if you had the time.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== FAQ ============== -->
+  <section class="faq">
+    <div class="faq-inner">
+      <h2 class="faq-title">Frequently asked questions</h2>
+
+      <div class="accordion">
+        <div class="acc-item open">
+          <button class="acc-trigger" type="button">
+            <p>Is Flowly free to use?</p>
+            <span class="acc-chev"><img src="assets/chev-faq.svg" alt=""></span>
+          </button>
+          <div class="acc-content">Yes! We offer a free plan with essential features to get you started.</div>
+        </div>
+        <div class="acc-item">
+          <button class="acc-trigger" type="button">
+            <p>Can I cancel anytime?</p>
+            <span class="acc-chev"><img src="assets/chev-faq.svg" alt=""></span>
+          </button>
+          <div class="acc-content">Absolutely. You can cancel or change your plan at any time, no questions asked.</div>
+        </div>
+        <div class="acc-item">
+          <button class="acc-trigger" type="button">
+            <p>Do you offer discounts for nonprofits or education?</p>
+            <span class="acc-chev"><img src="assets/chev-faq.svg" alt=""></span>
+          </button>
+          <div class="acc-content">Yes — please reach out to our team for nonprofit and education pricing.</div>
+        </div>
+        <div class="acc-item">
+          <button class="acc-trigger" type="button">
+            <p>What integrations does Flowly support?</p>
+            <span class="acc-chev"><img src="assets/chev-faq.svg" alt=""></span>
+          </button>
+          <div class="acc-content">We support a wide range of integrations including Slack, Zapier, and major CRMs.</div>
+        </div>
+      </div>
+
+      <div class="faq-cta">
+        <h3>Still have questions?</h3>
+        <p>Have any other questions? Our team is here to help!</p>
+        <button class="btn btn-primary btn-primary-lg">Contact Us</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== BOTTOM BANNER ============== -->
+  <div class="bottom-banner"></div>
+
+  <!-- ============== GALLERY ============== -->
+  <section class="gallery">
+    <div class="gallery-row">
+      <div class="photo h-tall"><img src="assets/gallery-1.png" alt=""></div>
+      <div class="photo h-short"><img src="assets/gallery-2.png" alt=""></div>
+      <div class="photo h-tall"><img src="assets/gallery-3.png" alt=""></div>
+      <div class="photo h-short"><img src="assets/gallery-4.png" alt=""></div>
+      <div class="photo h-tall"><img src="assets/gallery-5.png" alt=""></div>
+    </div>
+  </section>
+
+  <!-- ============== FOOTER ============== -->
+  <footer class="footer">
+    <div class="footer-bg"><img src="assets/footer-bg.svg" alt=""></div>
+    <div class="footer-inner">
+      <div class="footer-nav">
+        <div class="footer-links">
+          <a href="#">Home</a>
+          <a href="#">About Us</a>
+          <a href="#" class="item">Products <span class="chev"><img src="assets/chev-footer.svg" alt=""></span></a>
+          <a href="#">Contact Us</a>
+          <a href="#">FAQ</a>
+        </div>
+        <div class="footer-socials">
+          <a href="#" aria-label="Facebook"><img src="assets/social-fb.svg" alt=""></a>
+          <a href="#" aria-label="YouTube"><img src="assets/social-ig.svg" alt=""></a>
+          <a href="#" aria-label="X"><img src="assets/social-x.svg" alt=""></a>
+        </div>
+      </div>
+      <div class="footer-sep"></div>
+      <div class="footer-bot">
+        <p>Copyright 2048 © shadcndesign.com</p>
+        <div class="footer-policies">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+<script>
+  document.querySelectorAll('.acc-trigger').forEach(btn => {
+    btn.addEventListener('click', () => {
+      btn.closest('.acc-item').classList.toggle('open');
+    });
+  });
+</script>
+</body>
+</html>

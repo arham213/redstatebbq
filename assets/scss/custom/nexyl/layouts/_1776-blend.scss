@@ -1,0 +1,240 @@
+// =============================================================================
+// NEXYL / LAYOUT / 1776-BLEND
+// Scoped to .layout--1776-blend (body class) so these overrides only apply
+// to the 1776 landing page and never bleed into other pages.
+// =============================================================================
+
+$blend-bg:    #FBF5E7;
+$blend-black: #111111;
+$blend-red:   #d70321;
+
+.layout--1776-blend {
+
+    // -------------------------------------------------------------------------
+    // Layout Overrides (Container & Typography Reset)
+    // -------------------------------------------------------------------------
+    .body {
+        margin-bottom: 0 !important;
+    }
+    
+    // Remove default max-width and padding from the main container
+    .body .container,
+    .productView {
+        max-width: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        display: block !important;
+    }
+
+    // Reset default theme typography margins specifically within our custom sections
+    [class^="nx-pdp-"] {
+        h1, h2, h3, h4, h5, h6, p, ul, li {
+            margin-top: 0;
+            margin-bottom: 0;
+            padding: 0;
+            list-style: none;
+            line-height: normal;
+        }
+    }
+
+    // -------------------------------------------------------------------------
+    // Header — top bar (navUser) + mobile search bar
+    // -------------------------------------------------------------------------
+
+    .mobileShop-searchHeader,
+    .header {
+        background-color: $blend-bg;
+        border-color: darken($blend-bg, 8%);
+    }
+
+    // Top utility nav links (RESTAURANT, SIGN IN, CART, etc.)
+    .navUser-action,
+    .navUser-or,
+    .navUser-item--cart .navUser-action {
+        color: $blend-black;
+
+        &:hover,
+        &:focus {
+            color: $blend-red;
+        }
+    }
+
+    // Cart quantity pill
+    .countPill {
+        color: $blend-black;
+        background-color: transparent;
+    }
+
+    // Social icons in the header top bar
+    .navUser-item--social .icon,
+    .navUser-item--social svg {
+        fill: $blend-black;
+        color: $blend-black;
+    }
+
+    // Currency selector
+    .navUser .currency-selector,
+    .navUser .currencySelection {
+        color: $blend-black;
+        border-color: darken($blend-bg, 12%);
+        background-color: transparent;
+    }
+
+    // Store logo / brand bar
+    .header-logo a,
+    .header-logo-text {
+        color: $blend-black;
+    }
+
+    // Nav pages (main menu links)
+    .navPages-action,
+    .navPages-action-moreIcon {
+        color: $blend-black;
+
+        &:hover,
+        &.is-open {
+            color: $blend-red;
+        }
+    }
+
+    // Mobile Navigation Overrides
+    @media (max-width: $screen-medium) {
+        .navPages-container {
+            background-color: $blend-bg !important;
+            
+            &.is-open {
+                background-color: $blend-bg !important;
+            }
+        }
+
+        .navPages {
+            background-color: $blend-bg !important;
+            
+            .navPages-action {
+                color: $blend-black !important;
+            }
+
+            .navPages-item {
+                border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            }
+
+            .navUser-item {
+                .navUser-action {
+                    color: $blend-black !important;
+                }
+                .icon svg {
+                    fill: $blend-black !important;
+                }
+            }
+
+            .navPages-list-item > .navPages-action-moreIcon {
+                color: $blend-black !important;
+                svg { fill: $blend-black !important; }
+            }
+
+            .navPage-subMenu {
+                background-color: $blend-bg !important;
+                
+                .navPages-action {
+                    color: $blend-black !important;
+                }
+            }
+        }
+        
+        .mobileMenu-toggleIcon::before,
+        .mobileMenu-toggleIcon::after {
+            background-color: $blend-black !important;
+        }
+
+        .socialLinks {
+            .icon {
+                svg {
+                    fill: $blend-black !important;
+                }
+            }
+        }
+    }
+
+    // Mobile menu toggle icon
+    .mobileMenu-toggleIcon,
+    .mobileMenu-toggleIcon::before,
+    .mobileMenu-toggleIcon::after {
+        background-color: $blend-black;
+    }
+
+    // Mobile search bar input
+    .mobileShop-searchHeader input,
+    .mobileShop-searchInput {
+        background-color: #fff;
+        color: $blend-black;
+        border-color: darken($blend-bg, 12%);
+
+        &::placeholder {
+            color: #888;
+        }
+    }
+
+    // -------------------------------------------------------------------------
+    // Footer
+    // -------------------------------------------------------------------------
+
+    .footer {
+        background-color: $blend-bg;
+        border-top-color: darken($blend-bg, 10%);
+        color: $blend-black;
+    }
+
+    .footer-info-heading {
+        color: $blend-red;
+    }
+
+    // Footer list links — red, darken on hover
+    .footer-info-list a {
+        color: $blend-red;
+
+        &:hover {
+            color: darken($blend-red, 12%);
+        }
+    }
+
+    // Contact / address / phone text — red
+    .footer address,
+    .footer strong,
+    .footer p {
+        color: $blend-red;
+    }
+
+
+    // Copyright line
+    .powered-by,
+    .powered-by a,
+    .footer-copyright p {
+        color: $blend-black;
+
+        &:hover {
+            color: $blend-red;
+        }
+    }
+
+    // Social icons in the footer — solid black
+    .footer .socialLinks-item .icon svg,
+    .footer .socialLinks--alt .icon svg {
+        fill: $blend-black;
+    }
+
+    .footer .socialLinks-item .icon:hover svg {
+        fill: $blend-red;
+    }
+
+    // Newsletter / subscribe form
+    .footer .form-input {
+        background-color: #fff;
+        color: $blend-black;
+        border-color: darken($blend-bg, 12%);
+    }
+
+    // Footer divider line
+    .footer-copyright {
+        border-top-color: darken($blend-bg, 10%);
+    }
+}

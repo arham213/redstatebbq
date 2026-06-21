@@ -1,0 +1,28 @@
+{{#if reviews.total}}
+<div class="productReviews nx-pdp-review-list" id="productReviews-list" data-product-reviews>
+    {{#each reviews.list}}
+    <article class="nx-pdp-review" itemprop="review" itemscope itemtype="http://schema.org/Review">
+        <header class="nx-pdp-review-head">
+            <div class="nx-pdp-stars productReview-rating">
+                {{> components/custom/nexyl/product/1776-ratings rating=rating}}
+            </div>
+            <h4 itemprop="name" class="nx-pdp-review-title">{{ title }}</h4>
+        </header>
+        <p itemprop="reviewBody" class="nx-pdp-review-body">{{nl2br text}}</p>
+        <footer class="nx-pdp-review-foot">
+            <div class="nx-pdp-who">
+                {{#if name}}
+                    <meta itemprop="author" content="{{name}}">
+                    <span class="productReview-authorName">{{name}}</span>
+                {{else}}
+                    <span class="productReview-authorName">{{lang 'products.reviews.anonymous_poster'}}</span>
+                {{/if}}
+            </div>
+            <span class="nx-pdp-muted nx-pdp-review-date" data-review-date="{{date}}">{{date}}</span>
+        </footer>
+    </article>
+    {{/each}}
+    {{> components/common/paginator pagination.reviews}}
+</div>
+{{/if}}
+{{{snippet 'reviews'}}}

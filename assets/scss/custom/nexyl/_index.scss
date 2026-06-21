@@ -1,0 +1,18 @@
+// =============================================================================
+// NEXYL — Index
+// All nexyl custom partials are forwarded from here.
+// Add new imports in logical order: global → layouts → pages → components
+// =============================================================================
+
+// ---------- Global ----------
+@import "global";
+
+// ---------- Layouts ----------
+@import "layouts/1776-blend";
+
+// ---------- Homepage ----------
+@import "homepage/hero-section";
+
+// ---------- Product Pages ----------
+@import "product/1776-product";
+

@@ -1,0 +1,87 @@
+{{!--
+Homepage Hero Section Redesign
+Based on red-phoenix-landing design
+--}}
+
+<section class="nx-hero">
+    <div class="nx-hero__bg-wrap">
+        <picture>
+            <source media="(min-width: 1200px)"
+                srcset="https://cdn11.bigcommerce.com/s-a00ekum4a8/images/stencil/original/image-manager/1776-blend-hero-img-dekstop-v2.png?t=1778954353">
+            <img class="nx-hero__bg"
+                src="https://cdn11.bigcommerce.com/s-a00ekum4a8/images/stencil/original/image-manager/1776-blend-hero-mobile-img-v2.png?t=1778954571"
+                alt="Red State BBQ — 1776 Independence Blend" />
+        </picture>
+    </div>
+    <div class="nx-hero__fade"></div>
+
+    <div class="nx-hero__inner">
+        <div class="nx-hero__content">
+            <span class="nx-hero__badge">Lexington, Kentucky · Est. 2010</span>
+
+            <h2 class="nx-hero__title">
+                <span>Eight Sauces.</span>
+                <span>One Sauce-master</span>
+            </h2>
+
+            <p class="nx-hero__copy">Every American BBQ tradition, slow smoked into a bottle. From the only
+                multi-award-winning roadside BBQ joint in Lexington &mdash; now shipping to your door.</p>
+
+            <div class="nx-hero__timer" id="nx-hero-timer">
+                <div class="nx-timer-cell">
+                    <span class="nx-num" id="nx-d">--</span>
+                    <span class="nx-lbl">Day</span>
+                </div>
+                <div class="nx-timer-cell">
+                    <span class="nx-num" id="nx-h">--</span>
+                    <span class="nx-lbl">Hours</span>
+                </div>
+                <div class="nx-timer-cell">
+                    <span class="nx-num" id="nx-m">--</span>
+                    <span class="nx-lbl">Min</span>
+                </div>
+                <div class="nx-timer-cell">
+                    <span class="nx-num" id="nx-s">--</span>
+                    <span class="nx-lbl">Sec</span>
+                </div>
+            </div>
+
+            <a href="/1776-blend/" class="nx-hero__btn">Reserve Your 1776</a>
+        </div>
+    </div>
+</section>
+
+<script>
+    (function () {
+        // Countdown to July 4, 2026 midnight EDT (UTC-4) — last day of the 1776 Independence Blend
+        const target = new Date('2026-07-04T00:00:00-04:00').getTime();
+
+        const $d = document.getElementById('nx-d');
+        const $h = document.getElementById('nx-h');
+        const $m = document.getElementById('nx-m');
+        const $s = document.getElementById('nx-s');
+
+        function pad(n) { return String(n).padStart(2, '0'); }
+
+        function tick() {
+            let diff = target - Date.now();
+            if (diff <= 0) {
+                diff = 0;
+                clearInterval(intervalId);
+            }
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            const mins = Math.floor((diff / (1000 * 60)) % 60);
+            const secs = Math.floor((diff / 1000) % 60);
+
+            if ($d) $d.textContent = pad(days);
+            if ($h) $h.textContent = pad(hours);
+            if ($m) $m.textContent = pad(mins);
+            if ($s) $s.textContent = pad(secs);
+        }
+
+        tick();
+        const intervalId = setInterval(tick, 1000);
+    })();
+</script>
