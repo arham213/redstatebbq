@@ -1,0 +1,175 @@
+// =============================================================================
+// COMMON: FOOTER
+// =============================================================================
+
+.nx-footer {
+  width: 100%;
+  background: var(--nx-dark-red);
+  padding: 64px 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  position: relative;
+  overflow: hidden;
+  min-height: 321px;
+
+  @media (max-width: $screen-xlarge) and (min-width: 901px) {
+    padding: 48px 32px;
+  }
+
+  @media (max-width: $screen-medium) {
+    padding: 40px 16px;
+    min-height: auto;
+  }
+}
+
+.nx-footer-bg {
+  position: absolute;
+  left: 30%;
+  right: 30%;
+  bottom: 8px;
+  top: 70.5%;
+  pointer-events: none;
+  opacity: .5;
+
+  @media (max-width: $screen-medium) {
+    display: none;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+.nx-footer-inner {
+  flex: 1;
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+  position: relative;
+  z-index: 1;
+
+  @media (max-width: $screen-medium) {
+    padding: 0;
+  }
+}
+
+.nx-footer-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.nx-footer-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  flex-wrap: wrap;
+
+  @media (max-width: $screen-medium) {
+    justify-content: center;
+    width: 100%;
+  }
+
+  a,
+  .nx-item {
+    color: var(--nx-cream);
+    font-family: var(--nx-font-inter);
+    font-size: 16px;
+    line-height: 24px;
+    text-decoration: none;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  .nx-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+}
+
+.nx-footer-socials {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+
+  @media (max-width: $screen-medium) {
+    width: 100%;
+    justify-content: center;
+  }
+
+  a {
+    width: 24px;
+    height: 24px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.nx-footer-sep {
+  height: 1px;
+  width: 100%;
+  background: #E5E5E5;
+}
+
+.nx-footer-bot {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--nx-cream);
+  font-family: var(--nx-font-inter);
+  font-size: 16px;
+  line-height: 24px;
+  flex-wrap: wrap;
+  gap: 16px;
+
+  @media (max-width: $screen-medium) {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+.nx-footer-policies {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  flex-wrap: wrap;
+
+  a {
+    color: var(--nx-cream);
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

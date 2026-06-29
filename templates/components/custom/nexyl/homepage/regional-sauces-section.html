@@ -1,0 +1,18 @@
+<!-- ============== REGIONAL SAUCES ============== -->
+<section class="nx-sauces container">
+  <img class="nx-splatter-1" src="{{cdn 'assets/img/custom/nexyl/splatter-1.svg'}}" alt="">
+  <img class="nx-splatter-2" src="{{cdn 'assets/img/custom/nexyl/splatter-2.svg'}}" alt="">
+
+  <h2 class="nx-section-title">our regional sauces</h2>
+
+  <div class="nx-sauces-row">
+    {{#each products.featured}}
+    {{> components/custom/nexyl/homepage/regional-sauce-card theme_settings=../theme_settings}}
+    {{/each}}
+  </div>
+
+  <div class="nx-sauces-foot">
+    <p>Made by our sauce-master with the finest ingredients to give you a lasting taste from all regions</p>
+    <button class="nx-btn nx-btn-outline">EXPLORE ALL</button>
+  </div>
+</section>

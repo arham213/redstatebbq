@@ -1,0 +1,35 @@
+{{#each products.top_sellers}}
+  {{#unless out_of_stock_message}}
+  <div class="nx-cd-pcard">
+    <div class="nx-cd-pimg">
+      {{#if image}}
+      <img src="{{getImage image 'productgallery_size' (cdn theme_settings.default_image_product)}}" alt="{{image.alt}}"
+        title="{{image.alt}}">
+      {{else}}
+      <img src="{{cdn theme_settings.default_image_product}}" alt="{{name}}">
+      {{/if}}
+    </div>
+    <div class="nx-cd-pbody">
+      <div>
+        {{#each custom_fields}}
+        {{#if name '===' 'title_part_1'}}
+        <div class="nx-cd-pstate">{{value}}</div>
+        {{/if}}
+        {{#if name '===' 'title_part_2'}}
+        <div class="nx-cd-pname nx-cd-display">{{value}}</div>
+        {{/if}}
+        {{/each}}
+      </div>
+      <div class="nx-cd-pbuy">
+        {{#if has_options}}
+        <a href="{{url}}" class="nx-cd-addbtn">View</a>
+        {{else}}
+        <a href="{{add_to_cart_url}}" class="nx-cd-addbtn">Add</a>
+        {{/if}}
+        <span class="nx-cd-plus">+ {{#if price.with_tax}}{{price.with_tax.formatted}}{{else if
+          price.without_tax}}{{price.without_tax.formatted}}{{/if}}</span>
+      </div>
+    </div>
+  </div>
+  {{/unless}}
+{{/each}}

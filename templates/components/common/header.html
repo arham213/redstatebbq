@@ -2,7 +2,8 @@
 {{#if banners.top}}
 <div class="banners" data-banner-location="top">
     {{#each (limit banners.top_metadata 1)}}
-    <div class="banner" data-event-type="promotion" data-entity-id="{{this.id}}" data-name="{{this.banner-name}}" data-position="{{this.location}}" data-banner-id="{{this.banner-name}}">
+    <div class="banner" data-event-type="promotion" data-entity-id="{{this.id}}" data-name="{{this.banner-name}}"
+        data-position="{{this.location}}" data-banner-id="{{this.banner-name}}">
         <div data-event-type="promotion-click">
             {{{this.content}}}
         </div>
@@ -10,25 +11,111 @@
     {{/each}}
 </div>
 {{/if}}
-<header class="header" role="banner">
-    <a href="#" class="mobileMenu-toggle" data-mobile-menu-toggle="menu">
-        <span class="mobileMenu-toggleIcon">Toggle menu</span>
-    </a>
-    {{> components/common/navigation}}
 
-    {{#if page_type '===' 'default'}}
-        <h1 class="header-logo header-logo--{{theme_settings.logo-position}}">
-            {{> components/common/store-logo}}
-        </h1>
-    {{else}}
-        <div class="header-logo header-logo--{{theme_settings.logo-position}}">
-            {{> components/common/store-logo}}
+<header class="nx-header" role="banner">
+    <nav class="nx-nav container">
+        <!-- Mobile Toggle -->
+        <button class="nx-mobile-menu-toggle" aria-label="Toggle menu" id="nx-mobile-toggle">
+            <span class="nx-hamburger-line"></span>
+            <span class="nx-hamburger-line"></span>
+            <span class="nx-hamburger-line"></span>
+        </button>
+
+        <!-- Desktop Left Nav -->
+        <div class="nx-nav-left nx-desktop-nav">
+            <div class="nx-nav-item nx-has-dropdown">
+                <a href="#" class="nx-nav-item">All Items <span class="nx-chev"><svg xmlns="http://www.w3.org/2000/svg"
+                            width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.33" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg></span></a>
+                <ul class="nx-dropdown-menu">
+                    <li><a href="/1776-blend">1776 Blend</a></li>
+                    {{#each categories}}
+                    <li><a href="{{url}}">{{name}}</a></li>
+                    {{/each}}
+                </ul>
+            </div>
+            {{#each pages}}
+            {{#if name '===' 'Recipes'}} <a href="{{url}}" class="nx-link">{{name}}</a> {{/if}}
+            {{/each}}
+            <a href="https://www.redstatebbq.com/" target="_blank" class="nx-link">Restaurant</a>
         </div>
-    {{/if}}
-    <div class="navPages-container" id="menu" data-menu>
-        {{> components/common/navigation-menu}}
-    </div>
-    {{{region name="header_navigation_bottom--global"}}}
+
+        <!-- Logo -->
+        <div class="nx-logo-center">
+            {{#if page_type '===' 'default'}}
+            <h1 class="header-logo header-logo--{{theme_settings.logo-position}}">
+                {{> components/common/store-logo}}
+            </h1>
+            {{else}}
+            <div class="header-logo header-logo--{{theme_settings.logo-position}}">
+                {{> components/common/store-logo}}
+            </div>
+            {{/if}}
+        </div>
+
+        <!-- Desktop Right Nav -->
+        <div class="nx-nav-right nx-desktop-nav">
+            <form class="nx-search" action="{{urls.search}}">
+                <button type="submit" class="nx-search-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path
+                            d="M14.0001 14L11.1335 11.1333M12.6667 7.33333C12.6667 10.2789 10.2789 12.6667 7.33333 12.6667C4.38781 12.6667 2 10.2789 2 7.33333C2 4.38781 4.38781 2 7.33333 2C10.2789 2 12.6667 4.38781 12.6667 7.33333Z"
+                            stroke="#6A0111" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </button>
+                <input type="text" placeholder="Search" id="search_query" name="search_query">
+            </form>
+            {{#each pages}}
+            {{#if name '===' 'About Us'}} <a href="{{url}}" class="nx-link">{{name}}</a> {{/if}}
+            {{#if name '===' 'Contact'}} <a href="{{url}}" class="nx-link">{{name}}</a> {{/if}}
+            {{/each}}
+        </div>
+
+        <!-- Cart (Always visible) -->
+        <div class="nx-cart-container">
+            <a class="nx-btn nx-btn-primary nx-cart-btn" data-cart-preview data-dropdown="cart-preview-dropdown"
+                data-options="align:bottom" href="{{urls.cart}}" aria-label="{{lang 'cart.nav_aria_label'}}">
+                <span class="nx-cart-total">{{#if cart.items}}{{cart.formatted_grand_total}}{{else}}$0.00{{/if}}</span>
+                <span class="cart-quantity nx-cart-count">{{#if cart.quantity}}{{cart.quantity}}{{else}}0{{/if}}</span>
+                <img src="{{cdn 'assets/img/custom/nexyl/cart.svg'}}" alt="">
+            </a>
+            <div class="nx-cart-overlay" id="nx-cart-overlay"></div>
+            <div class="dropdown-menu" id="cart-preview-dropdown" data-dropdown-content aria-hidden="true"></div>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div class="nx-mobile-menu-overlay" id="nx-mobile-menu">
+            <form class="nx-search nx-mobile-search" action="{{urls.search}}">
+                <button type="submit" class="nx-search-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path
+                            d="M14.0001 14L11.1335 11.1333M12.6667 7.33333C12.6667 10.2789 10.2789 12.6667 7.33333 12.6667C4.38781 12.6667 2 10.2789 2 7.33333C2 4.38781 4.38781 2 7.33333 2C10.2789 2 12.6667 4.38781 12.6667 7.33333Z"
+                            stroke="#6A0111" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </button>
+                <input type="text" placeholder="Search" name="search_query">
+            </form>
+
+            <div class="nx-mobile-nav-links">
+                <a href="/categories" class="nx-link nx-mobile-nav-item is-bold">All Items</a>
+                <a href="/1776-blend" class="nx-link nx-mobile-nav-item is-indented">1776 Blend</a>
+                {{#each categories}}
+                <a href="{{url}}" class="nx-link nx-mobile-nav-item is-indented">{{name}}</a>
+                {{/each}}
+
+                {{#each pages}}
+                {{#if name '===' 'Recipes'}} <a href="{{url}}" class="nx-link nx-mobile-nav-item is-bold has-margin-top">{{name}}</a> {{/if}}
+                {{/each}}
+                <a href="https://www.redstatebbq.com/" target="_blank" class="nx-link nx-mobile-nav-item is-bold">Restaurant</a>
+                {{#each pages}}
+                {{#if name '===' 'About Us'}} <a href="{{url}}" class="nx-link nx-mobile-nav-item is-bold">{{name}}</a> {{/if}}
+                {{#if name '===' 'Contact'}} <a href="{{url}}" class="nx-link nx-mobile-nav-item is-bold">{{name}}</a> {{/if}}
+                {{/each}}
+            </div>
+        </div>
+    </nav>
 </header>
 {{{region name="header_bottom--global"}}}
 {{{region name="header_bottom"}}}

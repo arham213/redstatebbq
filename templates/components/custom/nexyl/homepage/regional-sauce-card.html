@@ -1,0 +1,38 @@
+<div class="nx-sauce">
+  <div class="nx-sauce-img">
+    <a href="{{url}}">
+      {{#if image}}
+      <img src="{{getImage image 'productgallery_size' (cdn theme_settings.default_image_product)}}" alt="{{image.alt}}"
+        title="{{image.alt}}">
+      {{else}}
+      <img src="{{cdn theme_settings.default_image_product}}" alt="{{name}}">
+      {{/if}}
+    </a>
+  </div>
+  <div class="nx-sauce-info">
+    {{#each custom_fields}}
+    {{#if name '===' 'title_part_1'}}
+    <p class="nx-sauce-region">{{value}}</p>
+    {{/if}}
+    {{#if name '===' 'title_part_2'}}
+    <p class="nx-sauce-name">{{value}}</p>
+    {{/if}}
+    {{/each}}
+
+    <p class="nx-sauce-price-weight">
+      {{#if price.with_tax}}
+      {{price.with_tax.formatted}}
+      {{else if price.without_tax}}
+      {{price.without_tax.formatted}}
+      {{/if}}
+      <span class="nx-sauce-sep">|</span>
+      <span class="nx-sauce-weight">{{#if weight.value}}{{round weight.value}}{{else}}{{weight}}{{/if}} oz bottle</span>
+    </p>
+
+    {{#if has_options}}
+    <a href="{{url}}" class="nx-btn nx-btn-primary nx-btn-primary-lg">Buy Now</a>
+    {{else}}
+    <a href="{{add_to_cart_url}}" class="nx-btn nx-btn-primary nx-btn-primary-lg">Buy Now</a>
+    {{/if}}
+  </div>
+</div>

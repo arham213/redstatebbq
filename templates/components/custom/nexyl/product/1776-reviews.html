@@ -10,7 +10,7 @@
                     {{!-- 5 Star Row --}}
                     <div class="nx-pdp-bd-row">
                         <span class="nx-pdp-bd-num">5</span>
-                        <img src="{{cdn 'assets/img/star.svg'}}" alt="" />
+                        <img src="{{cdn 'assets/img/custom/nexyl/star.svg'}}" alt="" />
                         <div class="nx-pdp-bd-bar">
                             {{#if product.reviews.total}}
                             <div class="nx-pdp-bd-fill"
@@ -33,7 +33,7 @@
                     {{!-- 4 Star Row --}}
                     <div class="nx-pdp-bd-row">
                         <span class="nx-pdp-bd-num">4</span>
-                        <img src="{{cdn 'assets/img/star.svg'}}" alt="" />
+                        <img src="{{cdn 'assets/img/custom/nexyl/star.svg'}}" alt="" />
                         <div class="nx-pdp-bd-bar">
                             {{#if product.reviews.total}}
                             <div class="nx-pdp-bd-fill"
@@ -54,7 +54,7 @@
                     {{!-- 3 Star Row --}}
                     <div class="nx-pdp-bd-row">
                         <span class="nx-pdp-bd-num">3</span>
-                        <img src="{{cdn 'assets/img/star.svg'}}" alt="" />
+                        <img src="{{cdn 'assets/img/custom/nexyl/star.svg'}}" alt="" />
                         <div class="nx-pdp-bd-bar">
                             <div class="nx-pdp-bd-fill" style="width:0%"></div>
                         </div>
@@ -63,7 +63,7 @@
                     {{!-- 2 Star Row --}}
                     <div class="nx-pdp-bd-row">
                         <span class="nx-pdp-bd-num">2</span>
-                        <img src="{{cdn 'assets/img/star.svg'}}" alt="" />
+                        <img src="{{cdn 'assets/img/custom/nexyl/star.svg'}}" alt="" />
                         <div class="nx-pdp-bd-bar">
                             <div class="nx-pdp-bd-fill" style="width:0%"></div>
                         </div>
@@ -72,7 +72,7 @@
                     {{!-- 1 Star Row --}}
                     <div class="nx-pdp-bd-row">
                         <span class="nx-pdp-bd-num">1</span>
-                        <img src="{{cdn 'assets/img/star.svg'}}" alt="" />
+                        <img src="{{cdn 'assets/img/custom/nexyl/star.svg'}}" alt="" />
                         <div class="nx-pdp-bd-bar">
                             <div class="nx-pdp-bd-fill" style="width:0%"></div>
                         </div>
@@ -584,32 +584,32 @@
         function initExactRating() {
             var numReviews = parseInt({{#if product.num_reviews}}{{product.num_reviews}}{{else}}0{{/if}}, 10);
             var productRating = parseFloat({{#if product.rating}}{{product.rating}}{{else}}5{{/if}});
-            
-            var staticReviews = 13;
-            var staticSum = 63;
-            
-            var totalReviews = numReviews + staticReviews;
-            var totalSum = (numReviews * productRating) + staticSum;
-            var exactRating = totalReviews > 0 ? (totalSum / totalReviews) : 4.8;
-            
-            var formattedRating = exactRating.toFixed(1);
-            var els = document.querySelectorAll('.js-exact-rating');
-            for (var i = 0; i < els.length; i++) {
-                els[i].innerText = formattedRating;
-            }
+
+    var staticReviews = 13;
+    var staticSum = 63;
+
+    var totalReviews = numReviews + staticReviews;
+    var totalSum = (numReviews * productRating) + staticSum;
+    var exactRating = totalReviews > 0 ? (totalSum / totalReviews) : 4.8;
+
+    var formattedRating = exactRating.toFixed(1);
+    var els = document.querySelectorAll('.js-exact-rating');
+    for (var i = 0; i < els.length; i++) {
+        els[i].innerText = formattedRating;
+    }
         }
 
-        /* Run after DOM is fully rendered */
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', function () {
-                initRelativeDates();
-                initReviewPagination();
-                initExactRating();
-            });
-        } else {
+    /* Run after DOM is fully rendered */
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function () {
             initRelativeDates();
             initReviewPagination();
             initExactRating();
-        }
-    })();
+        });
+    } else {
+        initRelativeDates();
+        initReviewPagination();
+        initExactRating();
+    }
+    }) ();
 </script>

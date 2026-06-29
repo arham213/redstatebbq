@@ -7,12 +7,28 @@
 // ---------- Global ----------
 @import "global";
 
+// ---------- Common ----------
+@import "common/drop-bar";
+@import "common/header";
+@import "common/footer";
+@import "common/global";
+
 // ---------- Layouts ----------
 @import "layouts/1776-blend";
 
 // ---------- Homepage ----------
 @import "homepage/hero-section";
+@import "homepage/fans-section";
+@import "homepage/regional-sauces-section";
+@import "homepage/state-banner-section";
+@import "homepage/story-section";
+@import "homepage/why-section";
+@import "homepage/faq-section";
+@import "homepage/bottom-banner-section";
+@import "homepage/gallery-section";
 
 // ---------- Product Pages ----------
 @import "product/1776-product";
 
+// ---------- Vendor ----------
+@import "vendor/swiper";

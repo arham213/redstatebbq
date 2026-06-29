@@ -2,6 +2,15 @@
 // NEXYL / HOMEPAGE / HERO SECTION
 // =============================================================================
 
+.nx-hero-wrapper {
+    background: #F7EBCF;
+    padding: 48px;
+
+    @media (max-width: 850px) {
+        padding: 0;
+    }
+}
+
 .nx-hero {
     position: relative;
     width: 100%;
@@ -10,6 +19,7 @@
     min-height: 825px;
     display: flex;
     align-items: center;
+    border-radius: 24px;
 
     &__bg-wrap {
         position: absolute;
@@ -23,17 +33,10 @@
         object-fit: contain;
         object-position: right center;
         display: block;
-    }
 
-    &__fade {
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        height: 160px;
-        background: linear-gradient(to top, var(--nx-cream) 8%, rgba(251, 246, 235, 0));
-        z-index: 1;
-        pointer-events: none;
+        @media (min-width: 1201px) {
+            object-fit: cover;
+        }
     }
 
     &__inner {
@@ -42,7 +45,12 @@
         width: 100%;
         max-width: 1280px;
         margin: 0 auto;
-        padding: 90px 24px 110px;
+        padding: 90px 32px 110px;
+
+        @media (min-width: 1441px) {
+            margin: 0;
+            padding: 90px 80px 110px;
+        }
     }
 
     &__content {
@@ -53,6 +61,7 @@
     }
 
     &__badge {
+        display: none;
         align-self: flex-start;
         border: 2px solid var(--nx-red);
         border-radius: 24px;
@@ -65,7 +74,7 @@
 
     &__title {
         font-family: var(--nx-font-display);
-        color: var(--nx-red);
+        color: var(--nx-dark-red);
         text-transform: uppercase;
         font-weight: 400;
         line-height: 0.95;
@@ -76,79 +85,38 @@
         span {
             display: block;
         }
+
+        @media (min-width: 1301px) and (max-width: 1350px) {
+            max-width: 580px;
+        }
     }
 
     &__copy {
-        font-size: clamp(16px, 1.6vw, 22px);
+        font-size: clamp(16px, 1.6vw, 26px);
         font-weight: 500;
-        color: #111;
+        color: var(--nx-dark-red);
         max-width: 560px;
         margin: 0;
         line-height: 1.5;
     }
 
-    &__timer {
-        display: flex;
-        gap: 12px;
-        flex-wrap: wrap;
 
-        .nx-timer-cell {
-            width: 62px;
-            height: 62px;
-            border: 1px solid #0d0d0e;
-            border-radius: 8px;
-            background: rgba(255, 255, 255, 0.55);
-            backdrop-filter: blur(2px);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            font-weight: 500;
-
-            .nx-num {
-                font-size: 22px;
-                line-height: 1;
-                font-variant-numeric: tabular-nums;
-                color: #000;
-            }
-
-            .nx-lbl {
-                font-size: 13px;
-                margin-top: 2px;
-                color: #000;
-            }
-        }
-    }
 
     &__btn {
         align-self: flex-start;
-        background: var(--nx-red);
-        color: #fff;
-        padding: 12px 32px;
-        border-radius: 24px;
-        font-size: 14px;
-        font-weight: 600;
-        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
-        transition: transform 0.15s, background 0.15s;
-        letter-spacing: 0.3px;
-        text-decoration: none;
-
-        &:hover {
-            background: var(--nx-red-dark);
-            color: #fff;
-            transform: translateY(-1px);
-        }
-
-        &:focus {
-            color: #fff;
-        }
     }
+
+
+}
+
+.nx-hero.container {
+    padding: 0;
 }
 
 @media (min-width: 2000px) {
     .nx-hero {
         max-height: 800px;
-        
+
         &__inner {
             max-width: 1600px; // Wider container to bridge the gap
         }
@@ -176,15 +144,11 @@
 @media (max-width: 980px) {
     .nx-hero {
         min-height: 620px;
-        
+
         &__inner {
-            padding: 60px 24px 90px;
+            padding: 60px 32px 90px;
         }
-        
-        // &__bg {
-        //     object-position: right center;
-        // }
-        
+
         &__content {
             background: none;
             padding: 0;
@@ -197,19 +161,19 @@
 
 @media (max-width: 720px) {
     .nx-hero {
-        
+
         &__inner {
             padding: 40px 24px 0px;
         }
-        
+
         &__title {
             font-size: clamp(40px, 12vw, 45px);
             line-height: 1;
-             max-width: 400px;
+            max-width: 400px;
         }
 
         &__copy {
-            max-width: 260px;   
+            max-width: 260px;
         }
 
         &__bg {
@@ -220,9 +184,14 @@
         .nx-timer-cell {
             width: 56px;
             height: 56px;
-            
-            .nx-num { font-size: 18px; }
-            .nx-lbl { font-size: 12px; }
+
+            .nx-num {
+                font-size: 18px;
+            }
+
+            .nx-lbl {
+                font-size: 12px;
+            }
         }
     }
 }
@@ -248,17 +217,21 @@
         &__inner {
             padding: 0px 20px 0px;
         }
+
         &__copy {
             font-size: 16px;
             line-height: 1.4;
         }
+
         &__badge {
             font-size: 12px;
             padding: 4px 12px;
         }
+
         &__timer {
             gap: 8px;
         }
+
         .nx-timer-cell {
             width: 46px;
             height: 46px;
@@ -266,10 +239,12 @@
             .nx-num {
                 font-size: 16px;
             }
+
             .nx-lbl {
                 font-size: 11px;
             }
         }
+
         &__btn {
             padding: 11px 24px;
             align-self: flex-start;
@@ -297,6 +272,7 @@
                 .nx-num {
                     font-size: 14px;
                 }
+
                 .nx-lbl {
                     font-size: 10px;
                 }
@@ -306,7 +282,7 @@
 
     @media (max-width: 380px) {
         .nx-hero {
-            
+
             %__btn {
                 padding: 9px 20px;
             }

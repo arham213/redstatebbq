@@ -1,0 +1,25 @@
+// =============================================================================
+// HOMEPAGE: STATE BBQ BANNER SECTION
+// =============================================================================
+
+.nx-state-banner {
+  width: 100%;
+  aspect-ratio: 1440 / 454;
+  height: auto;
+  background: url('https://cdn11.bigcommerce.com/s-a00ekum4a8/images/stencil/original/image-manager/state-bbq-banner.jpg?t=1782563505') center/cover no-repeat;
+
+  @media (max-width: $screen-large) {
+    aspect-ratio: auto;
+    height: 454px;
+    background: url('https://cdn11.bigcommerce.com/s-a00ekum4a8/images/stencil/original/image-manager/state-bbq-banner-mob.jpg?t=1782563573') center/cover no-repeat;
+  }
+
+  @media (max-width: $screen-medium) {
+    height: 350px;
+    background-position: center;
+  }
+
+  @media (max-width: 480px) {
+    height: 300px;
+  }
+}

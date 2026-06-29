@@ -7,3 +7,5 @@ parsed/
 /assets/dist/
 .claude/settings.local.json
 secrets.stencil.json
+PROJECT_RULES.md
+/sample-code

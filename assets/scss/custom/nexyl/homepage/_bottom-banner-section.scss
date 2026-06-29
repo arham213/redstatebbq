@@ -1,0 +1,21 @@
+// =============================================================================
+// HOMEPAGE: BOTTOM BANNER SECTION
+// =============================================================================
+
+.nx-bottom-banner {
+  width: 100%;
+  aspect-ratio: 1440 / 475;
+  height: auto;
+  background: url('https://cdn11.bigcommerce.com/s-a00ekum4a8/images/stencil/original/image-manager/bottom-banner.jpg?t=1782564833') center/cover no-repeat;
+
+  @media (max-width: 1150px) {
+    aspect-ratio: 1150 / 500;
+    height: auto;
+    background: url('https://cdn11.bigcommerce.com/s-a00ekum4a8/images/stencil/original/image-manager/bottom-banner-mob.jpg?t=1782564835') center/cover no-repeat;
+  }
+
+  @media (max-width: $screen-medium) {
+    aspect-ratio: auto;
+    height: 300px;
+  }
+}

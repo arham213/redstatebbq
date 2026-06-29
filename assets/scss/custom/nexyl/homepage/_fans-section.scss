@@ -1,0 +1,117 @@
+// =============================================================================
+// HOMEPAGE: FANS SECTION
+// =============================================================================
+
+.nx-fans {
+    width: 100%;
+    background: var(--nx-dark-red);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 80px;
+    padding: 60px 24px;
+
+    @media (max-width: $screen-medium) {
+        gap: 40px;
+        padding: 40px 16px;
+    }
+}
+
+.nx-fans-title {
+    color: var(--nx-cream);
+    font-size: 20px;
+    font-weight: 400;
+    font-family: var(--nx-font-display);
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    margin: 0 0 -20px 0;
+}
+
+.nx-quote-row {
+    display: flex;
+    gap: 36px;
+    align-items: flex-start;
+    justify-content: center;
+    max-width: 900px;
+    width: 100%;
+
+    @media (max-width: $screen-medium) {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+}
+
+.nx-avatar-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.nx-avatar {
+    width: 96px;
+    height: 96px;
+    border-radius: 9999px;
+    background: var(--nx-cream);
+    flex-shrink: 0;
+}
+
+.nx-avatar-name {
+    color: var(--nx-cream);
+    font-weight: 600;
+    font-size: 16px;
+    margin: 0;
+}
+
+.nx-quote {
+    color: var(--nx-cream);
+    font-family: var(--nx-font-body);
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 1.2;
+    max-width: 551px;
+    margin: 0;
+
+    @media (max-width: $screen-medium) {
+        font-size: 20px;
+        text-align: center;
+    }
+}
+
+.nx-also-seen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    margin-top: 20px;
+}
+
+.nx-logo-row {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    img {
+        height: 30px;
+        width: auto;
+        filter: brightness(0) invert(1);
+    }
+
+    img.nx-h-44 {
+        height: 44px;
+    }
+
+    img.nx-h-41 {
+        height: 41px;
+    }
+}
+
+.nx-also-seen-label {
+    color: var(--nx-pink);
+    font-weight: 500;
+    font-size: 18px;
+    margin: 0;
+}

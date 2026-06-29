@@ -1,0 +1,246 @@
+// =============================================================================
+// HOMEPAGE: STORY SECTION
+// =============================================================================
+
+.nx-story-truck-bar {
+  width: 100%;
+  background: var(--nx-dark-red);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 32px 0;
+
+  img {
+    width: 326px;
+    height: 244px;
+    object-fit: contain;
+
+    @media (max-width: $screen-medium) {
+      width: 240px;
+      height: auto;
+    }
+  }
+}
+
+.nx-story-body {
+  width: 100%;
+  background: var(--nx-cream);
+  position: relative;
+  padding: 48px 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 790px;
+
+  @media (max-width: 1024px) {
+    padding: 48px 32px;
+    flex-direction: column;
+    gap: 32px;
+    min-height: auto;
+  }
+
+  @media (max-width: $screen-medium) {
+    padding: 32px 16px;
+    gap: 24px;
+  }
+}
+
+.nx-story-card {
+  width: 100%;
+  max-width: 697px;
+  height: 695px;
+  background: var(--nx-cream-soft);
+  border-radius: 22px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  position: relative;
+  z-index: 2;
+
+  @media (max-width: 1350px) {
+    max-width: 600px;
+  }
+
+  @media (max-width: 1250px) {
+    max-width: 520px;
+    padding: 30px;
+  }
+
+  @media (max-width: $screen-large) {
+    height: auto;
+    min-height: auto;
+    order: 2;
+  }
+
+  @media (max-width: $screen-medium) {
+    padding: 24px;
+  }
+
+  h2 {
+    font-family: var(--nx-font-display);
+    color: var(--nx-dark-red);
+    font-size: 64px;
+    line-height: 1.06;
+    text-transform: uppercase;
+    font-weight: 400;
+    letter-spacing: .01em;
+    margin: 0;
+
+    @media (max-width: 1300px) {
+      font-size: 54px;
+    }
+
+    @media (max-width: $screen-medium) {
+      font-size: 34px;
+      line-height: 1.1;
+    }
+  }
+
+  .nx-desc {
+    margin-top: 20px;
+    color: var(--nx-dark-red);
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 1.2;
+
+    @media (max-width: 1300px) {
+      font-size: 22px;
+    }
+
+    @media (max-width: $screen-medium) {
+      font-size: 17px;
+    }
+  }
+
+  .nx-featured {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+  }
+
+  .nx-featured-label {
+    color: var(--nx-dark-red);
+    font-weight: 500;
+    font-size: 22px;
+    text-align: center;
+    margin: 0;
+  }
+}
+
+.nx-featured-logos {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  img {
+    height: 34px;
+    width: auto;
+  }
+
+  img.nx-h-45 {
+    height: 45px;
+  }
+}
+
+.nx-story-photo-1,
+.nx-story-photo-2 {
+  position: absolute;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, .08);
+}
+
+.nx-story-photo-1 {
+  top: 53px;
+  right: 50px;
+  width: 391px;
+  height: 253px;
+  z-index: 1;
+
+  @media (max-width: 1400px) {
+    right: 30px;
+    width: 340px;
+    height: 220px;
+  }
+
+  @media (max-width: 1150px) {
+    right: 16px;
+    width: 300px;
+    height: 194px;
+  }
+
+  @media (max-width: 1024px) {
+    position: relative;
+    top: auto;
+    right: auto;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 391 / 253;
+    order: 1;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+}
+
+.nx-story-photo-2 {
+  top: 416px;
+  left: 63px;
+  width: 406px;
+  height: 240px;
+  z-index: 3;
+
+  @media (max-width: 1400px) {
+    left: 40px;
+    width: 350px;
+    height: 207px;
+    top: 400px;
+  }
+
+  @media (max-width: 1250px) {
+    width: 325px;
+  }
+
+  @media (max-width: 1200px) {
+    width: 300px;
+  }
+
+  @media (max-width: 1150px) {
+    left: 16px;
+    width: 300px;
+    height: 177px;
+    top: 360px;
+  }
+
+  @media (max-width: 1100px) {
+    left: 16px;
+  }
+
+  @media (max-width: 1024px) {
+    position: relative;
+    top: auto;
+    left: auto;
+    bottom: auto;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 406 / 240;
+    order: 3;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+  }
+}

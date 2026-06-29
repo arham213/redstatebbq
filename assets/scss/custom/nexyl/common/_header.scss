@@ -1,0 +1,1166 @@
+// =============================================================================
+// HEADER & NAV
+// =============================================================================
+
+.skip-to-main-link {
+    position: fixed;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100000;
+    background: var(--nx-red);
+    color: var(--nx-cream) !important;
+    padding: 12px 24px;
+    border-radius: 24px;
+    font-family: var(--nx-font-inter);
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: top 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+    pointer-events: none;
+
+    &:focus {
+        top: 0px;
+        opacity: 1;
+        pointer-events: auto;
+    }
+}
+
+.nx-header {
+    width: 100%;
+    background: var(--nx-cream);
+    border-bottom: 2px solid var(--nx-red-2);
+    backdrop-filter: blur(19px);
+    position: relative;
+    z-index: 50;
+}
+
+.nx-nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    position: relative;
+    // max-width: 1280px;
+    margin: 0 auto;
+    width: 100%;
+
+    a,
+    .nx-link {
+        color: var(--nx-dark-red);
+        font-size: 16px;
+        line-height: 1.4;
+        text-decoration: none;
+    }
+
+    @include breakpoint("small") {
+        padding: 18px 32px;
+        gap: 16px;
+    }
+
+    @media (min-width: 1261px) {
+        padding: 24px 60px;
+    }
+
+    @media (min-width: 1441px) {
+        padding: 24px 40px;
+    }
+}
+
+.nx-desktop-nav {
+    display: none;
+    align-items: center;
+    gap: 20px;
+
+    &>a,
+    &>.nx-link,
+    .nx-nav-item>a.nx-link {
+        position: relative;
+        transition: color 0.2s ease;
+
+        &::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--nx-red);
+            transition: width 0.2s ease;
+        }
+
+        &:hover {
+            color: var(--nx-red);
+
+            &::after {
+                width: 100%;
+            }
+        }
+    }
+
+    @include breakpoint("large") {
+        display: flex;
+        flex: 1;
+    }
+
+    @media (min-width: 1024px) and (max-width: 1260px) {
+        gap: 12px;
+    }
+}
+
+.nx-nav-left {
+    @include breakpoint("small") {
+        gap: 24px;
+        justify-content: flex-start;
+    }
+
+    @include breakpoint("medium") {
+        gap: 40px;
+    }
+
+    @media (min-width: 1024px) and (max-width: 1260px) {
+        gap: 24px;
+    }
+}
+
+.nx-nav-right {
+    @include breakpoint("small") {
+        gap: 20px;
+        justify-content: flex-end;
+    }
+
+    @include breakpoint("medium") {
+        gap: 28px;
+    }
+
+    @media (min-width: 1024px) and (max-width: 1260px) {
+        gap: 16px;
+    }
+}
+
+.nx-nav-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    position: relative;
+    text-decoration: none;
+}
+
+.nx-has-dropdown {
+    &:hover .nx-dropdown-menu {
+        display: block;
+    }
+}
+
+.nx-dropdown-menu {
+    display: none;
+    position: absolute;
+    top: calc(100% + 12px);
+    left: 0;
+    background: var(--nx-cream);
+    border: 1px solid var(--nx-border-gray);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    min-width: 200px;
+    margin: 0;
+    list-style: none;
+    z-index: 100;
+    border-radius: 8px;
+
+    // Bridge the gap so hover doesn't break
+    &::before {
+        content: "";
+        position: absolute;
+        top: -12px;
+        left: 0;
+        right: 0;
+        height: 12px;
+        background: transparent;
+    }
+
+    li {
+        margin: 0;
+    }
+
+    a {
+        display: block;
+        padding: 8px 16px;
+        color: var(--nx-dark-red);
+        text-decoration: none;
+
+        &:hover {
+            background: rgba(0, 0, 0, 0.05);
+        }
+    }
+}
+
+.nx-chev {
+    width: 18px;
+    height: 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+        width: 10px;
+        height: 6px;
+        display: block;
+    }
+}
+
+.nx-logo-center {
+    width: 140px;
+    height: 38px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include breakpoint("small") {
+        width: 160px;
+        height: 44px;
+        flex: 0 0 auto;
+    }
+
+    @media (max-width: $screen-large),
+    (min-width: 1201px) {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .header-logo {
+        margin: 0;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .header-logo-image {
+        max-height: 100%;
+        object-fit: contain;
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+}
+
+.nx-search {
+    width: 180px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid var(--nx-dark-red);
+    margin: 0;
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+
+    &:focus-within {
+        width: 240px;
+        border-bottom-color: var(--nx-red);
+        box-shadow: 0 1px 0 0 var(--nx-red);
+    }
+
+    @include breakpoint("small") {
+        width: 152px;
+
+        &:focus-within {
+            width: 200px;
+        }
+    }
+
+    @media (min-width: 1024px) and (max-width: 1260px) {
+        width: 130px;
+        padding: 10px 4px;
+
+        &:focus-within {
+            width: 180px;
+        }
+    }
+
+    @media (min-width: 1261px) {
+        padding: 10px 8px;
+    }
+
+    img {
+        width: 16px;
+        height: 16px;
+    }
+
+    input {
+        border: none;
+        background: transparent;
+        outline: none;
+        color: var(--nx-dark-red);
+        font-family: var(--nx-font-inter);
+        font-size: 14px;
+        line-height: 20px;
+        width: 100%;
+
+        &::placeholder {
+            color: var(--nx-dark-red);
+            opacity: 1;
+            transition: opacity 0.2s ease;
+        }
+
+        &:focus::placeholder {
+            opacity: 0.5;
+        }
+    }
+}
+
+.nx-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: 40px;
+    padding: 8px 16px;
+    border-radius: 24px;
+    font-family: var(--nx-font-inter);
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+    transition: transform .15s ease, opacity .15s ease;
+    text-decoration: none;
+    cursor: pointer;
+
+    &:hover {
+        opacity: .92;
+    }
+}
+
+.nx-btn-primary {
+    background: var(--nx-red);
+    color: var(--nx-cream) !important;
+}
+
+.nx-btn-primary-lg {
+    padding: 8px 32px;
+}
+
+.nx-btn-outline {
+    background: transparent;
+    border: 2px solid var(--nx-dark-red);
+    color: var(--nx-dark-red) !important;
+    padding: 8px 32px;
+}
+
+.nx-cart-container {
+    display: flex;
+    align-items: center;
+
+    @include breakpoint("small") {
+        position: static;
+    }
+}
+
+.nx-cart-btn {
+    position: relative;
+
+    img {
+        width: 16px;
+        height: 16px;
+    }
+
+    .nx-cart-count {
+        display: none;
+        background: var(--nx-cream);
+        color: var(--nx-red);
+        font-size: 11px;
+        font-weight: 700;
+        border-radius: 50%;
+        width: 16px;
+        height: 16px;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: -4px;
+        right: 4px;
+    }
+
+    @media (max-width: $screen-small) {
+        padding: 8px 12px;
+
+        span.nx-cart-total {
+            display: none;
+        }
+
+        .nx-cart-count {
+            display: flex;
+        }
+    }
+}
+
+// -----------------------------------------------------------------------------
+// CART DRAWER STYLES
+// -----------------------------------------------------------------------------
+
+.nx-cart-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 9998;
+    backdrop-filter: blur(2px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s;
+
+    &.is-open {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+#cart-preview-dropdown {
+    position: fixed !important;
+    top: 0 !important;
+    right: 0 !important;
+    left: auto !important;
+    width: 100% !important;
+    max-width: 651px !important;
+    height: 100vh !important;
+    max-height: 100vh !important;
+    background: var(--nx-cream) !important;
+    box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15) !important;
+    z-index: 9999 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: flex !important;
+    flex-direction: column;
+
+    visibility: hidden !important;
+    transform: translateX(100%) !important;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), visibility 0.4s !important;
+
+    &.is-open {
+        visibility: visible !important;
+        transform: translateX(0) !important;
+    }
+}
+
+
+
+
+// Drawer Internal Styles (Redesigned)
+.nx-cart-drawer {
+    --cream-1: #f7ebcf;
+    --cream-2: #fbf5e7;
+    --maroon: #6a0111;
+    --red: #d70321;
+    --black: #2c2929;
+    --input-border: #e5e5e5;
+    --shadow-xs: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+
+    background: var(--cream-1);
+    font-family: 'Figtree', system-ui, sans-serif;
+    color: var(--black);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    // gap: 40px;
+    height: 100vh;
+    overflow: hidden;
+
+    .nx-cd-loading-wrap {
+        position: relative;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+    }
+
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    .nx-cd-display {
+        font-family: 'Moongazer', 'Rye', cursive;
+        color: var(--maroon);
+        text-transform: uppercase;
+        letter-spacing: .5px;
+    }
+
+    /* phone frame */
+    .cart {
+        width: 651px;
+        max-width: 100%;
+        background: var(--cream-1);
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        border-radius: 14px;
+        overflow: hidden;
+        box-shadow: 0 24px 60px rgba(0, 0, 0, .25);
+    }
+
+    .nx-cd-top {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        flex: 1;
+        overflow-y: auto;
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior: contain;
+    }
+
+    /* header */
+    .nx-cd-header {
+        background: var(--cream-2);
+        display: flex;
+        gap: 16px;
+        align-items: flex-end;
+        padding: 24px;
+    }
+
+    .nx-cd-header .icon {
+        width: 24px;
+        height: 24px;
+        cursor: pointer;
+        transition: opacity 0.2s;
+
+        &:hover {
+            opacity: 0.6;
+        }
+
+        svg {
+            fill: none;
+        }
+    }
+
+    .nx-cd-header h1 {
+        font-size: 24px;
+        line-height: 1;
+    }
+
+    /* cart body section */
+    .nx-cd-section {
+        background: var(--cream-2);
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+    }
+
+    /* reward banner */
+    .nx-cd-reward {
+        background: var(--cream-1);
+        border-radius: 8px;
+        padding: 8px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+
+    .nx-cd-reward .nx-cd-txt {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        font-size: 18px;
+        letter-spacing: 0.36px;
+        flex-wrap: wrap;
+    }
+
+    .nx-cd-reward .nx-cd-txt b {
+        font-weight: 700;
+    }
+
+    .nx-cd-reward .nx-cd-txt span {
+        font-weight: 400;
+    }
+
+    /* cart item */
+    .nx-cd-item {
+        display: flex;
+        gap: 16px;
+        align-items: stretch;
+    }
+
+    .nx-cd-item .nx-cd-thumb {
+        background: var(--cream-1);
+        border-radius: 12px;
+        width: 140px;
+        height: 121.33px;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+    }
+
+    .nx-cd-item .nx-cd-thumb img {
+        height: 96px;
+        width: auto;
+        object-fit: contain;
+    }
+
+    .nx-cd-item .nx-cd-details {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-width: 0;
+    }
+
+    .nx-cd-item .nx-cd-row-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .nx-cd-item .nx-cd-name {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .nx-cd-item .nx-cd-name h2 {
+        font-size: 20px;
+        line-height: 1;
+    }
+
+    .nx-cd-item .nx-cd-name p {
+        font-size: 16px;
+        font-weight: 500;
+    }
+
+    .nx-cd-item .nx-cd-trash {
+        width: 24px;
+        height: 24px;
+        cursor: pointer;
+        flex-shrink: 0;
+        transition: transform 0.2s, opacity 0.2s;
+
+        &:hover {
+            opacity: 0.7;
+            transform: scale(1.1);
+        }
+    }
+
+    .nx-cd-item .nx-cd-row-bot {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .nx-cd-qty {
+        background: var(--cream-2);
+        border: 1px solid var(--input-border);
+        border-radius: 8px;
+        height: 36px;
+        padding: 4px 12px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        box-shadow: var(--shadow-xs);
+    }
+
+    .nx-cd-qty .nx-cd-stepper {
+        width: 18px;
+        height: 18px;
+        cursor: pointer;
+        transition: transform 0.2s;
+
+        &:hover {
+            transform: scale(1.2);
+        }
+    }
+
+    .nx-cd-qty .nx-cd-count {
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 20px;
+    }
+
+    .nx-cd-price {
+        font-size: 18px;
+        font-weight: 800;
+    }
+
+    /* customers also bought */
+    .nx-cd-also {
+        background: var(--cream-1);
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .nx-cd-also>h3 {
+        font-size: 18px;
+        font-weight: 600;
+    }
+
+    .nx-cd-cards {
+        display: flex;
+        gap: 16px;
+    }
+
+    .nx-cd-arrows {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+        margin-top: 16px;
+    }
+
+    .nx-cd-arrows .nx-cd-arrow {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 1.5px solid var(--black);
+        background: transparent;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        color: var(--black);
+        padding: 0;
+        transition: background 0.2s;
+    }
+
+    .nx-cd-arrows .nx-cd-arrow:hover {
+        background: rgba(0, 0, 0, 0.05);
+    }
+
+    .nx-cd-arrows .nx-cd-arrow.slick-disabled {
+        opacity: 0.3;
+        cursor: not-allowed;
+    }
+
+    .nx-cd-cards.slick-slider {
+        display: block;
+    }
+
+    .nx-cd-cards.slick-slider .slick-track {
+        display: flex !important;
+    }
+
+    .nx-cd-cards.slick-slider .slick-list {
+        margin: 0 -8px;
+    }
+
+    .nx-cd-cards.slick-slider .slick-slide {
+        margin: 0 8px;
+        height: auto !important;
+        display: flex !important;
+        flex-direction: column;
+    }
+
+    .nx-cd-cards.slick-slider .slick-slide>div {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        width: 100%;
+    }
+
+    .nx-cd-pcard {
+        background: var(--cream-2);
+        border-radius: 12px;
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+        flex-grow: 1;
+
+        @media (min-width: $screen-small) {
+            flex-direction: row;
+            text-align: left;
+            align-items: stretch;
+            gap: 24px;
+        }
+    }
+
+    .nx-cd-pcard .nx-cd-pimg {
+        height: 100px;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        @media (min-width: $screen-small) {
+            align-items: flex-start;
+        }
+    }
+
+    .nx-cd-pcard .nx-cd-pimg img {
+        height: 100px;
+        width: auto;
+        object-fit: contain;
+    }
+
+    .nx-cd-pcard .nx-cd-pbody {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        width: 100%;
+        flex-grow: 1;
+        justify-content: space-between;
+
+        @media (min-width: $screen-small) {
+            align-items: flex-start;
+        }
+    }
+
+    .nx-cd-pcard .nx-cd-pstate {
+        font-size: 12px;
+        font-weight: 600;
+    }
+
+    .nx-cd-pcard .nx-cd-pname {
+        font-size: 18px;
+        line-height: 1.1;
+    }
+
+    .nx-cd-pcard .nx-cd-pbuy {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        align-items: center;
+        width: 100%;
+
+        @media (min-width: $screen-small) {
+            flex-direction: row;
+            gap: 18px;
+        }
+    }
+
+    .nx-cd-addbtn {
+        background: var(--nx-red);
+        color: var(--nx-cream);
+        border: none;
+        width: 66px;
+        height: 32px;
+        border-radius: 24px;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 16px;
+        cursor: pointer;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+        font-family: var(--nx-font-inter);
+        transition: transform 0.15s ease, opacity 0.15s ease;
+        text-align: center;
+        align-content: center;
+
+        &:hover {
+            opacity: 0.92;
+        }
+    }
+
+    .nx-cd-plus {
+        font-size: 16px;
+        font-weight: 700;
+        white-space: nowrap;
+    }
+
+    /* footer */
+    .nx-cd-footer {
+        background: var(--cream-2);
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+        flex-shrink: 0;
+    }
+
+    .nx-cd-total {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 20px;
+    }
+
+    .nx-cd-actions {
+        display: flex;
+        gap: 16px;
+
+        .nx-btn-primary {
+            flex: 1 1 50%;
+            padding: 12px 16px;
+            height: auto;
+        }
+    }
+
+    .nx-cd-btn {
+        flex: 1 1 50%;
+        width: 100%;
+        border-radius: 24px;
+        padding: 12px 16px;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 20px;
+        text-align: center;
+        cursor: pointer;
+        border: 2px solid transparent;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+        font-family: var(--nx-font-inter);
+        transition: transform 0.15s ease, opacity 0.15s ease, background 0.15s ease;
+
+        &:hover {
+            opacity: 0.92;
+        }
+    }
+
+    .nx-cd-btn.nx-cd-ghost {
+        background: transparent;
+        border-color: var(--nx-dark-red);
+        color: var(--nx-dark-red) !important;
+    }
+
+    .nx-cd-btn.nx-cd-primary {
+        background: var(--nx-red);
+        color: var(--nx-cream) !important;
+    }
+
+
+    // Inline style replacements
+    .nx-cd-header .icon svg {
+        width: 24px;
+        height: 24px;
+        display: block;
+    }
+
+    .star svg {
+        width: 18px;
+        height: 17.25px;
+        display: block;
+    }
+
+    .nx-cd-display a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .nx-cd-trash svg {
+        width: 24px;
+        height: 24px;
+        display: block;
+    }
+
+    .nx-cd-stepper {
+        border: none;
+        background: none;
+        padding: 0;
+    }
+
+    .nx-cd-stepper svg {
+        width: 18px;
+        height: 18px;
+        display: block;
+    }
+
+    .previewCart-emptyBody {
+        padding: 24px 0;
+        text-align: center;
+        font-size: 16px;
+    }
+
+    .nx-cd-btn {
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .loadingOverlay {
+        position: absolute !important;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(247, 235, 207, 0.7) !important;
+        z-index: 1000 !important;
+        padding: 0 !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &::before {
+            display: none !important;
+        }
+    }
+
+    @media (max-width:560px) {
+        .nx-cd-reward .nx-cd-txt {
+            font-size: 16px;
+        }
+
+        .nx-cd-cards {
+            flex-direction: column;
+        }
+
+        .nx-cd-item .nx-cd-thumb {
+            width: 110px;
+        }
+    }
+}
+
+// -----------------------------------------------------------------------------
+// MOBILE MENU STYLES
+// -----------------------------------------------------------------------------
+
+.nx-mobile-menu-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 30px;
+    height: 30px;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    z-index: 110;
+
+    @include breakpoint("large") {
+        display: none;
+    }
+
+    .nx-hamburger-line {
+        width: 24px;
+        height: 2px;
+        background: var(--nx-dark-red);
+        transition: 0.3s ease;
+        margin: 0 auto;
+    }
+
+    &.is-active {
+        .nx-hamburger-line:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+        .nx-hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nx-hamburger-line:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+    }
+}
+
+.nx-mobile-menu-overlay {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 100%); // Take up rest of viewport height
+    min-height: calc(100vh - 68px); // Fallback height
+    background: var(--nx-cream);
+    border-top: 1px solid var(--nx-border-gray);
+    padding: 24px 20px 40px 20px;
+    z-index: 100;
+    overflow-y: auto;
+
+    &.is-open {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        animation: nxMobileMenuFadeIn 0.3s ease;
+    }
+
+    @include breakpoint("large") {
+        display: none !important;
+    }
+}
+
+@keyframes nxMobileMenuFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.nx-mobile-search {
+    width: 100%;
+    position: relative;
+
+    input {
+        font-size: 16px;
+        padding-left: 48px;
+        width: 100%;
+        height: 48px;
+        border-radius: 8px;
+        border: 1px solid var(--input-border);
+    }
+
+    button.nx-search-btn {
+        position: absolute;
+        left: 16px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+    }
+}
+
+.nx-mobile-nav-links {
+    display: flex;
+    flex-direction: column;
+
+    .nx-link.nx-mobile-nav-item {
+        font-size: 18px;
+        font-weight: 500;
+        padding: 12px 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        color: var(--nx-dark-red);
+        display: block;
+        text-decoration: none;
+
+        &:last-child {
+            border-bottom: none;
+        }
+
+        &.is-bold {
+            font-weight: 700;
+        }
+
+        &.is-indented {
+            padding-left: 16px;
+        }
+
+        &.has-margin-top {
+            margin-top: 8px;
+        }
+    }
+}

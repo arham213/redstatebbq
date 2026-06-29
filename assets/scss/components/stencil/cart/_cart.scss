@@ -9,16 +9,16 @@
 // Cart variables
 // -----------------------------------------------------------------------------
 
-$cart-item-spacing:                     spacing("single");
-$cart-content-padding-right:            4px;
+$cart-item-spacing: spacing("single");
+$cart-content-padding-right: 4px;
 
-$cart-thumbnail-maxWidth:               remCalc(100px);
-$cart-thumbnail-height:                 remCalc(100px);
-$cart-thumbnail-maxHeight:              14rem;
-$cart-thumbnail-paddingVertical:        0.5rem;
+$cart-thumbnail-maxWidth: remCalc(100px);
+$cart-thumbnail-height: remCalc(100px);
+$cart-thumbnail-maxHeight: 14rem;
+$cart-thumbnail-paddingVertical: 0.5rem;
 
-$cart-item-label-offset:                $cart-thumbnail-maxWidth + $cart-item-spacing;
-$card-preview-zoom-bottom-offset:       6rem;
+$cart-item-label-offset: $cart-thumbnail-maxWidth + $cart-item-spacing;
+$card-preview-zoom-bottom-offset: 6rem;
 
 //
 // Shared styles for additional checkout buttons
@@ -186,7 +186,7 @@ $card-preview-zoom-bottom-offset:       6rem;
         overflow: hidden;
         width: grid-calc(4, $total-columns);
 
-        + .cart-item-info {
+        +.cart-item-info {
             margin-top: 0;
         }
     }
@@ -273,7 +273,7 @@ $card-preview-zoom-bottom-offset:       6rem;
         display: inline-block;
     }
 
-    + .definitionList {
+    +.definitionList {
         margin-top: spacing("quarter");
     }
 }
@@ -305,7 +305,7 @@ $card-preview-zoom-bottom-offset:       6rem;
         visibility: hidden;
     }
 
-    > svg {
+    >svg {
         fill: stencilColor("icon-color");
     }
 }
@@ -341,7 +341,7 @@ $card-preview-zoom-bottom-offset:       6rem;
     border-bottom: 0;
 
     @include breakpoint("medium") {
-        + .cart-total {
+        +.cart-total {
             border-top: container("border");
         }
     }
@@ -439,13 +439,14 @@ $card-preview-zoom-bottom-offset:       6rem;
         font-weight: fontWeight("semibold");
     }
 
-    .cart-total-label, .cart-total-value {
+    .cart-total-label,
+    .cart-total-value {
         padding: spacing("third") 0;
     }
 
     .cart-total-with-savings {
         border-top: container("border");
-        
+
         .cart-total-label {
             font-size: fontSize("larger");
         }
@@ -476,17 +477,19 @@ $card-preview-zoom-bottom-offset:       6rem;
         }
     }
 
-    .cart-total-gift-certificate, .cart-total-shipping-estimator {
+    .cart-total-gift-certificate,
+    .cart-total-shipping-estimator {
         .cart-total-label {
             display: flex;
             flex-wrap: wrap;
             gap: spacing("third");
 
-            a, button {
+            a,
+            button {
                 color: stencilColor("optimizedCheckout-link-color");
                 text-decoration: none;
                 font-weight: fontWeight("normal");
-                
+
                 &:hover {
                     text-decoration: underline;
                 }
@@ -500,7 +503,9 @@ $card-preview-zoom-bottom-offset:       6rem;
     }
 
     .cart-total-shipping-estimator {
-        .shipping-estimate-value, .shipping-estimate-show {
+
+        .shipping-estimate-value,
+        .shipping-estimate-show {
             text-decoration: none;
             font-style: normal;
         }
@@ -519,14 +524,15 @@ $card-preview-zoom-bottom-offset:       6rem;
             }
         }
 
-        
-        .gift-certificate-add, .gift-certificate-cancel {
+
+        .gift-certificate-add,
+        .gift-certificate-cancel {
             color: stencilColor("optimizedCheckout-link-color");
             text-decoration: none;
             display: inline-flex;
             align-items: center;
             font-weight: fontWeight("normal");
-            
+
             &:hover {
                 text-decoration: underline;
             }
@@ -551,7 +557,7 @@ $card-preview-zoom-bottom-offset:       6rem;
                 color: stencilColor("optimizedCheckout-link-color");
                 text-decoration: none;
                 font-weight: fontWeight("normal");
-                
+
                 &:hover {
                     text-decoration: underline;
                 }
@@ -564,10 +570,11 @@ $card-preview-zoom-bottom-offset:       6rem;
         }
     }
 
-    .shipping-estimate-value, .shipping-estimate-show {
+    .shipping-estimate-value,
+    .shipping-estimate-show {
         text-decoration: none;
     }
-    
+
     .cart-total-discounts {
         .cart-total-label {
             cursor: pointer;
@@ -575,7 +582,7 @@ $card-preview-zoom-bottom-offset:       6rem;
 
         .cart-discount-icon {
             transition: transform 0.3s ease;
-            
+
             &.is-open {
                 transform: rotate(180deg);
             }
@@ -628,7 +635,7 @@ $card-preview-zoom-bottom-offset:       6rem;
     width: 100%;
     padding-bottom: spacing("base");
     border-bottom: container("border");
-    
+
     @include breakpoint("small") {
         float: right;
         width: grid-calc(9, $total-columns);
@@ -659,7 +666,7 @@ $card-preview-zoom-bottom-offset:       6rem;
     display: inline-flex;
     align-items: center;
     font-weight: fontWeight("normal");
-    
+
     &:hover {
         color: stencilColor("optimizedCheckout-link-color");
         text-decoration: underline;
@@ -713,7 +720,8 @@ $card-preview-zoom-bottom-offset:       6rem;
     }
 }
 
-.cart-item-discount, .cart-item-value.price--discounted {
+.cart-item-discount,
+.cart-item-value.price--discounted {
     color: stencilColor("color-greyLight");
 }
 
@@ -844,7 +852,6 @@ $card-preview-zoom-bottom-offset:       6rem;
 // -----------------------------------------------------------------------------
 
 .previewCartWrapper {
-    max-height: calc(100vh - #{$card-preview-zoom-bottom-offset});
     overflow: auto;
 }
 
@@ -861,7 +868,7 @@ $card-preview-zoom-bottom-offset:       6rem;
     display: table-row;
     line-height: lineHeight("smaller");
 
-    + .previewCartItem {
+    +.previewCartItem {
         border-top: container("border");
     }
 }
@@ -905,7 +912,7 @@ $card-preview-zoom-bottom-offset:       6rem;
     margin: 0;
     text-transform: none;
 
-    > a {
+    >a {
         text-decoration: none;
     }
 }

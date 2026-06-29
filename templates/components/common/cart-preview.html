@@ -1,90 +1,127 @@
-<div class="previewCartWrapper">
-  <div class="previewCart">
-    {{#if cart.items.length}}
-        <ul class="previewCartList">
-            {{#each (limit cart.items 4)}}
-                <li class="previewCartItem">
-                    <div class="previewCartItem-image">
-                        {{#if type '==' 'GiftCertificate'}}
-                            <img
-                                alt="GiftCertificate"
-                                title="GiftCertificate"
-                                src="{{cdn ../theme_settings.default_image_gift_certificate}}"
-                            >
-                        {{else}}
-                            {{> components/common/responsive-img
-                                image=image
-                                fallback_size=../theme_settings.productthumb_size
-                                lazyload=../theme_settings.lazyload_mode
-                                default_image=../theme_settings.default_image_product
-                            }}
-                        {{/if}}
-                    </div>
-                        <div class="previewCartItem-content">
-                            <span class="previewCartItem-brand">
-                                {{brand.name}}
-                            </span>
+<div class="previewCartWrapper nx-cart-drawer">
+  <div class="nx-cd-top">
+    <!-- Header -->
+    <header class="nx-cd-header">
+      <span class="icon nx-cart-close" id="nx-cart-close-btn" aria-label="Close Cart">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path
+            d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+            stroke="#2C2929" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M13.2602 15.5302L9.74023 12.0002L13.2602 8.47021" stroke="#2C2929" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </span>
+      <h1 class="nx-cd-display">Your Cart</h1>
+    </header>
 
-                            <h6 class="previewCartItem-name">
-                                <a href="{{url}}" alt="{{name}}" title="{{name}}">{{name}}</a>
-                            </h6>
+    <!-- Cart -->
+    <section class="nx-cd-section">
+      <div class="nx-cd-reward">
+        <span class="star">
+          <svg viewBox="0 0 18 17.2467" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M7.83248 0.725764C8.31006 -0.241923 9.68995 -0.24192 10.1675 0.725766L11.94 4.31728C12.1297 4.70155 12.4963 4.9679 12.9204 5.02952L16.8838 5.60544C17.9517 5.76062 18.3781 7.07297 17.6054 7.82621L14.7374 10.6218C14.4305 10.9209 14.2905 11.3519 14.363 11.7742L15.04 15.7217C15.2224 16.7853 14.1061 17.5964 13.1509 17.0942L9.60586 15.2305C9.22657 15.0311 8.77344 15.0311 8.39414 15.2305L4.8491 17.0942C3.89393 17.5964 2.77758 16.7853 2.96 15.7217L3.63705 11.7742C3.70948 11.3519 3.56946 10.9209 3.2626 10.6218L0.394603 7.82621C-0.37814 7.07297 0.0482707 5.76062 1.11618 5.60544L5.07965 5.02952C5.50372 4.9679 5.87031 4.70155 6.05995 4.31728L7.83248 0.725764Z"
+              fill="#FEAE01" />
+          </svg>
+        </span>
+        <div class="nx-cd-txt"><b>Reward</b><span>Spend another $10 to get free shipping</span></div>
+      </div>
 
-                            <span class="previewCartItem-price">
-                                {{#if quantity '>' 1}}
-                                    {{quantity}} &times;
-                                {{/if}}
-                                {{#or ../customer (unless ../settings.hide_price_from_guests) (if type '==' 'GiftCertificate')}}
-                                    <span{{#if price_discounted}} class="price--discounted"{{/if}}>{{price.formatted}}</span>
-                                    {{#if price_discounted}}
-                                        {{price_discounted.formatted}}
-                                    {{/if}}
-                                {{else}}
-                                    {{> components/common/login-for-pricing}}
-                                {{/or}}
-                            </span>
-                        </div>
-                    </li>
-                {{/each}}
-            </ul>
-            {{{cart.preview_payment_widget}}}
-            <div class="previewCartAction">
-                {{#if cart.show_primary_checkout_button}}
-                    <div class="previewCartAction-checkout">
-                        <a
-                                href="{{urls.checkout.single_address}}"
-                                class="button button--small button--primary"
-                                data-primary-checkout-now-action
-                        >
-                            {{lang 'cart.preview.checkout_now'}}
-                        </a>
-                    </div>
-                {{/if}}
-
-                <div class="previewCartAction-viewCart{{#unless cart.show_primary_checkout_button}} previewCartAction-viewCart--sole{{/unless}}">
-                    <a href="{{urls.cart}}" class="button button--small button--action">
-                        {{lang 'cart.preview.view_cart'}}
-                    </a>
-                </div>
-
-                {{#if cart.show_multiple_address_shipping}}
-                    <div class="previewCartAction-checkoutMultiple">
-                        <a href="{{urls.checkout.multiple_address}}">
-                            {{lang 'cart.preview.checkout_multiple'}}
-                        </a>
-                    </div>
-                {{/if}}
+      {{#if cart.items.length}}
+      {{#each (limit cart.items 4)}}
+      <div class="nx-cd-item">
+        <div class="nx-cd-thumb">
+          {{#if type '==' 'GiftCertificate'}}
+          <img alt="GiftCertificate" title="GiftCertificate"
+            src="{{cdn ../theme_settings.default_image_gift_certificate}}">
+          {{else}}
+          {{> components/common/responsive-img
+          image=image
+          fallback_size=../theme_settings.productthumb_size
+          lazyload=../theme_settings.lazyload_mode
+          default_image=../theme_settings.default_image_product
+          }}
+          {{/if}}
+        </div>
+        <div class="nx-cd-details">
+          <div class="nx-cd-row-top">
+            <div class="nx-cd-name">
+              <h2 class="nx-cd-display"><a href="{{url}}">{{name}}</a></h2>
+              {{#if brand.name}}<p>{{brand.name}}</p>{{/if}}
             </div>
-            {{#if cart.additional_checkout_buttons}}
-                <div class="previewCart-additionalCheckoutButtons">
-                    {{#each cart.additional_checkout_buttons}}
-                        {{{this}}}
-                    {{/each}}
-                </div>
+            <a class="nx-cd-trash previewCartItem-remove" href="{{urls.cart}}?action=remove&item={{id}}"
+              data-cart-remove data-product-id="{{id}}" aria-label="{{lang 'cart.checkout.remove_item'}}">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M21 5.98c-3.33-.33-6.68-.5-10.02-.5-1.98 0-3.96.1-5.94.3L3 5.98M8.5 4.97l.22-1.31C8.88 2.71 9 2 10.69 2h2.62c1.69 0 1.82.75 1.97 1.67l.22 1.3M18.85 9.14l-.65 10.07C18.09 20.78 18 22 15.21 22H8.79C6 22 5.91 20.78 5.8 19.21L5.15 9.14M10.33 16.5h3.33M9.5 12.5h5"
+                  stroke="#2C2929" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+          </div>
+          <div class="nx-cd-row-bot">
+            <div class="nx-cd-qty">
+              <button class="nx-cd-stepper" data-cart-preview-update data-cart-itemid="{{id}}" data-action="dec">
+                <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4.5 9H13.5" stroke="#0D0D0E" stroke-width="1.5" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </button>
+              <span class="nx-cd-count">{{quantity}}</span>
+              <button class="nx-cd-stepper" data-cart-preview-update data-cart-itemid="{{id}}" data-action="inc">
+                <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4.5 9H13.5" stroke="#0D0D0E" stroke-width="1.5" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                  <path d="M9 13.5V4.5" stroke="#0D0D0E" stroke-width="1.5" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </button>
+            </div>
+            <span class="nx-cd-price">
+              {{#or ../customer (unless ../settings.hide_price_from_guests) (if type '==' 'GiftCertificate')}}
+              <span{{#if price_discounted}} class="price--discounted" {{/if}}>{{price.formatted}}
+            </span>
+            {{#if price_discounted}}
+            {{price_discounted.formatted}}
             {{/if}}
-        {{else}}
-            <div role="alert" aria-live="polite" aria-atomic="false" class="previewCart-emptyBody">
-                {{lang 'cart.checkout.empty_cart'}}
-            </div>
-        {{/if}}
+            {{else}}
+            {{> components/common/login-for-pricing}}
+            {{/or}}
+            </span>
+          </div>
+        </div>
+      </div>
+      {{/each}}
+      {{else}}
+      <div role="alert" aria-live="polite" aria-atomic="false" class="previewCart-emptyBody">
+        {{lang 'cart.checkout.empty_cart'}}
+      </div>
+      {{/if}}
+    </section>
+
+    <!-- Customers also bought -->
+    <section class="nx-cd-also">
+      <h3>{{#if cart.items.length}}Customers also bought{{else}}Frequently Bought{{/if}}</h3>
+      <div class="nx-cd-cards">
+        <div class="nx-skeleton-cards">
+            <div class="nx-skeleton-card"></div>
+            <div class="nx-skeleton-card"></div>
+        </div>
+      </div>
+      <div class="nx-cd-arrows"></div>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer class="nx-cd-footer">
+    <div class="nx-cd-total nx-cd-display">
+      <span>Order Total</span>
+      <span>{{#if cart.items.length}}{{cart.sub_total.formatted}}{{else}}$0.00{{/if}}</span>
     </div>
+    <div class="nx-cd-actions">
+      <a href="{{urls.cart}}" class="nx-cd-btn nx-cd-ghost" id="nx-cart-continue-btn">Continue Shopping</a>
+      {{#if cart.show_primary_checkout_button}}
+      <a href="{{urls.checkout.single_address}}" class="nx-btn nx-btn-primary">Checkout</a>
+      {{/if}}
+    </div>
+  </footer>
 </div>

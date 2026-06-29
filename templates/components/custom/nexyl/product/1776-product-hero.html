@@ -1,202 +1,215 @@
 <!-- ============== PRODUCT HERO ============== -->
 <section class="nx-pdp-hero-section">
     <div class="nx-pdp-hero-container">
-    <div class="nx-pdp-hero-image">
-        {{#if product.main_image}}
-            <img class="productView-image--default" src="{{getImage product.main_image 'product' (cdn theme_settings.default_image_product)}}" alt="{{product.main_image.alt}}" title="{{product.main_image.alt}}">
-        {{else}}
+        <div class="nx-pdp-hero-image">
+            {{#if product.main_image}}
+            <img class="productView-image--default"
+                src="{{getImage product.main_image 'product' (cdn theme_settings.default_image_product)}}"
+                alt="{{product.main_image.alt}}" title="{{product.main_image.alt}}">
+            {{else}}
             <img class="productView-image--default" src="{{cdn theme_settings.default_image_product}}" alt="1776 Blend">
-        {{/if}}
-        <!-- {{#if product.pre_order}}
+            {{/if}}
+            <!-- {{#if product.pre_order}}
             <span class="badge badge--pre-order">Pre-Order</span>
         {{else}}
             <span class="badge">Limited Stock</span>
         {{/if}} -->
-        <span class="badge">Limited Stock</span>
-    </div>
-    
-    <div class="nx-pdp-hero-details">
-        <div class="nx-pdp-hero-head">
-            <div class="nx-pdp-title-block">
-                <h2 class="nx-pdp-display" itemprop="name">{{product.title}}</h2>
-                
-                {{assignVar 'has_subtitle' 0}}
-                {{#each product.custom_fields}}
+            <span class="badge">Limited Stock</span>
+        </div>
+
+        <div class="nx-pdp-hero-details">
+            <div class="nx-pdp-hero-head">
+                <div class="nx-pdp-title-block">
+                    <h2 class="nx-pdp-display" itemprop="name">{{product.title}}</h2>
+
+                    {{assignVar 'has_subtitle' 0}}
+                    {{#each product.custom_fields}}
                     {{#if name '===' 'sub_title'}}
-                        <p class="nx-pdp-subtitle" style="color: #d70321;">{{value}}</p>
-                        {{assignVar 'has_subtitle' 1}}
+                    <p class="nx-pdp-subtitle" style="color: #d70321;">{{value}}</p>
+                    {{assignVar 'has_subtitle' 1}}
                     {{/if}}
-                {{/each}}
-                {{#if (getVar 'has_subtitle') '===' 0}}
+                    {{/each}}
+                    {{#if (getVar 'has_subtitle') '===' 0}}
                     <p class="nx-pdp-subtitle" style="color: #d70321;">Sweet Freedom &amp; Smoke</p>
-                {{/if}}
-            </div>
-            
-            <div class="nx-pdp-rating-block">
-                {{!-- Unified Rating Logic --}}
-                {{assignVar 'total_featured' 13}}
-                {{assignVar 'sum_featured' 63}} {{!-- Matches 4.8 average (63/13) --}}
-                
-                {{assignVar 'bc_count' product.reviews.total}}
-                {{assignVar 'bc_sum' (multiply product.rating product.reviews.total)}}
-                
-                {{assignVar 'unified_count' (add (getVar 'total_featured') (getVar 'bc_count'))}}
-                {{assignVar 'unified_sum' (add (getVar 'sum_featured') (getVar 'bc_sum'))}}
-                {{assignVar 'unified_avg' (divide (getVar 'unified_sum') (getVar 'unified_count'))}}
-
-                <div class="nx-pdp-stars">
-                    {{> components/custom/nexyl/product/1776-ratings rating=4.8}}
-                </div>
-                <p class="nx-pdp-rating-meta" style="color: #000;">
-                    <span class="js-exact-rating">
-                        {{#if product.num_reviews}}
-                            {{#if (add product.num_reviews 13) '>' 0}}
-                                {{round (divide (add (multiply product.num_reviews product.rating) 63) (add product.num_reviews 13)) 1}}
-                            {{else}}
-                                4.8
-                            {{/if}}
-                        {{else}}
-                            4.8
-                        {{/if}}
-                    </span>
-                    <span>
-                        ({{#if product.num_reviews}}
-                            {{add product.num_reviews 13}}
-                        {{else}}
-                            13
-                        {{/if}})
-                    </span>
-                </p>
-            </div>
-        </div>
-        
-        <div class="nx-pdp-description" itemprop="description">
-            {{{product.description}}}
-        </div>
-        
-        <div class="nx-pdp-purchase-card">
-            <div class="nx-pdp-purchase-top">
-                <div class="nx-pdp-price">
-                    <div class="nx-pdp-price-row">
-                        <p class="amount" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-                            {{#if product.price.with_tax}}
-                                {{product.price.with_tax.formatted}}
-                            {{else if product.price.without_tax}}
-                                {{product.price.without_tax.formatted}}
-                            {{/if}}
-                            <meta itemprop="priceCurrency" content="{{currency_selector.active_currency_code}}">
-                            <meta itemprop="price" content="{{product.price.without_tax.value}}">
-                        </p>
-                        {{#if product.price.non_sale_price_with_tax}}
-                            <p class="amount-rrp">{{product.price.non_sale_price_with_tax.formatted}}</p>
-                        {{else if product.price.non_sale_price_without_tax}}
-                            <p class="amount-rrp">{{product.price.non_sale_price_without_tax.formatted}}</p>
-                        {{else if product.price.rrp_with_tax}}
-                            <p class="amount-rrp">{{product.price.rrp_with_tax.formatted}}</p>
-                        {{else if product.price.rrp_without_tax}}
-                            <p class="amount-rrp">{{product.price.rrp_without_tax.formatted}}</p>
-                        {{/if}}
-                    </div>
-                    <p class="tax">Tax Included</p>
-                </div>
-                <p class="nx-pdp-size">
-                    {{#if product.weight}}
-                        {{product.weight}} · Single bottle
                     {{/if}}
-                </p>
-            </div>
-            
-            <div class="nx-pdp-purchase-row">
-                <form class="form" method="post" action="{{product.cart_url}}" enctype="multipart/form-data" data-cart-item-add>
-                    <input type="hidden" name="action" value="add">
-                    <input type="hidden" name="product_id" value="{{product.id}}">
-                    
-                    <div class="nx-pdp-qty" data-quantity-change>
-                        <button type="button" aria-label="decrement" data-action="dec">
-                            <img src="{{cdn 'assets/img/minus.svg'}}" alt="" />
-                        </button>
-                        <input class="nx-pdp-qty-input"
-                            id="qty[]"
-                            name="qty[]"
-                            type="number"
-                            value="{{#if product.min_purchase_quantity}}{{product.min_purchase_quantity}}{{else}}1{{/if}}"
-                            data-quantity-min="{{product.min_purchase_quantity}}"
-                            data-quantity-max="{{product.max_purchase_quantity}}"
-                            min="1"
-                            pattern="[0-9]*"
-                            aria-live="polite">
-                        <button type="button" aria-label="increment" data-action="inc">
-                            <img src="{{cdn 'assets/img/add.svg'}}" alt="" />
-                        </button>
-                    </div>
-                    <button class="nx-pdp-btn-primary" type="submit" id="form-action-addToCart">
-                        {{#if product.pre_order}}Pre-Order Now{{else}}Add to Cart{{/if}}
-                    </button>
-                </form>
-            </div>
-            
-            <div class="nx-pdp-loader-card">
-                <div class="nx-pdp-loader-meta">
-                    <span>Bottles Remaining</span>
-                    <p>
-                        {{!-- Dynamic Stock Logic --}}
-                        {{assignVar 'stock_total' 1776}}
-                        {{#each product.custom_fields}}
-                            {{#if name '===' 'stock_total'}}
-                                {{assignVar 'stock_total' value}}
-                            {{/if}}
-                        {{/each}}
-                        
-                        {{#if product.stock_level}}
-                            {{assignVar 'current_stock' product.stock_level}}
-                        {{else if product.stock_level '===' 0}}
-                            {{assignVar 'current_stock' 0}}
-                        {{else}}
-                            {{assignVar 'current_stock' 1776}} {{!-- Fallback --}}
-                        {{/if}}
+                </div>
 
-                        <strong class="nx-pdp-red">{{getVar 'current_stock'}}/</strong>
-                        <strong>{{getVar 'stock_total'}}</strong>
+                <div class="nx-pdp-rating-block">
+                    {{!-- Unified Rating Logic --}}
+                    {{assignVar 'total_featured' 13}}
+                    {{assignVar 'sum_featured' 63}} {{!-- Matches 4.8 average (63/13) --}}
+
+                    {{assignVar 'bc_count' product.reviews.total}}
+                    {{assignVar 'bc_sum' (multiply product.rating product.reviews.total)}}
+
+                    {{assignVar 'unified_count' (add (getVar 'total_featured') (getVar 'bc_count'))}}
+                    {{assignVar 'unified_sum' (add (getVar 'sum_featured') (getVar 'bc_sum'))}}
+                    {{assignVar 'unified_avg' (divide (getVar 'unified_sum') (getVar 'unified_count'))}}
+
+                    <div class="nx-pdp-stars">
+                        {{> components/custom/nexyl/product/1776-ratings rating=4.8}}
+                    </div>
+                    <p class="nx-pdp-rating-meta" style="color: #000;">
+                        <span class="js-exact-rating">
+                            {{#if product.num_reviews}}
+                            {{#if (add product.num_reviews 13) '>' 0}}
+                            {{round (divide (add (multiply product.num_reviews product.rating) 63) (add
+                            product.num_reviews 13)) 1}}
+                            {{else}}
+                            4.8
+                            {{/if}}
+                            {{else}}
+                            4.8
+                            {{/if}}
+                        </span>
+                        <span>
+                            ({{#if product.num_reviews}}
+                            {{add product.num_reviews 13}}
+                            {{else}}
+                            13
+                            {{/if}})
+                        </span>
                     </p>
                 </div>
-                <div class="nx-pdp-loader-bar">
-                    <div class="nx-pdp-loader-fill" style="width:{{multiply (divide (getVar 'current_stock') (getVar 'stock_total')) 100}}%"></div>
-                </div>
             </div>
-            
-            <p class="nx-pdp-ship-note">
-                {{#if product.pre_order}}
+
+            <div class="nx-pdp-description" itemprop="description">
+                {{{product.description}}}
+            </div>
+
+            <div class="nx-pdp-purchase-card">
+                <div class="nx-pdp-purchase-top">
+                    <div class="nx-pdp-price">
+                        <div class="nx-pdp-price-row">
+                            <p class="amount" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                                {{#if product.price.with_tax}}
+                                {{product.price.with_tax.formatted}}
+                                {{else if product.price.without_tax}}
+                                {{product.price.without_tax.formatted}}
+                                {{/if}}
+                                <meta itemprop="priceCurrency" content="{{currency_selector.active_currency_code}}">
+                                <meta itemprop="price" content="{{product.price.without_tax.value}}">
+                            </p>
+                            {{#if product.price.non_sale_price_with_tax}}
+                            <p class="amount-rrp">{{product.price.non_sale_price_with_tax.formatted}}</p>
+                            {{else if product.price.non_sale_price_without_tax}}
+                            <p class="amount-rrp">{{product.price.non_sale_price_without_tax.formatted}}</p>
+                            {{else if product.price.rrp_with_tax}}
+                            <p class="amount-rrp">{{product.price.rrp_with_tax.formatted}}</p>
+                            {{else if product.price.rrp_without_tax}}
+                            <p class="amount-rrp">{{product.price.rrp_without_tax.formatted}}</p>
+                            {{/if}}
+                        </div>
+                        <p class="tax">Tax Included</p>
+                    </div>
+                    <p class="nx-pdp-size">
+                        {{#if product.weight}}
+                        {{product.weight}} · Single bottle
+                        {{/if}}
+                    </p>
+                </div>
+
+                <div class="nx-pdp-purchase-row">
+                    <form class="form" method="post" action="{{product.cart_url}}" enctype="multipart/form-data"
+                        data-cart-item-add>
+                        <input type="hidden" name="action" value="add">
+                        <input type="hidden" name="product_id" value="{{product.id}}">
+
+                        <div class="nx-pdp-qty" data-quantity-change>
+                            <button type="button" aria-label="decrement" data-action="dec">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"
+                                    fill="none">
+                                    <path d="M4.5 9H13.5" stroke="#0D0D0E" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </button>
+                            <input class="nx-pdp-qty-input" id="qty[]" name="qty[]" type="number"
+                                value="{{#if product.min_purchase_quantity}}{{product.min_purchase_quantity}}{{else}}1{{/if}}"
+                                data-quantity-min="{{product.min_purchase_quantity}}"
+                                data-quantity-max="{{product.max_purchase_quantity}}" min="1" pattern="[0-9]*"
+                                aria-live="polite">
+                            <button type="button" aria-label="increment" data-action="inc">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"
+                                    fill="none">
+                                    <path d="M4.5 9H13.5" stroke="#0D0D0E" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M9 13.5V4.5" stroke="#0D0D0E" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </button>
+                        </div>
+                        <button class="nx-pdp-btn-primary" type="submit" id="form-action-addToCart">
+                            {{#if product.pre_order}}Pre-Order Now{{else}}Add to Cart{{/if}}
+                        </button>
+                    </form>
+                </div>
+
+                <div class="nx-pdp-loader-card">
+                    <div class="nx-pdp-loader-meta">
+                        <span>Bottles Remaining</span>
+                        <p>
+                            {{!-- Dynamic Stock Logic --}}
+                            {{assignVar 'stock_total' 1776}}
+                            {{#each product.custom_fields}}
+                            {{#if name '===' 'stock_total'}}
+                            {{assignVar 'stock_total' value}}
+                            {{/if}}
+                            {{/each}}
+
+                            {{#if product.stock_level}}
+                            {{assignVar 'current_stock' product.stock_level}}
+                            {{else if product.stock_level '===' 0}}
+                            {{assignVar 'current_stock' 0}}
+                            {{else}}
+                            {{assignVar 'current_stock' 1776}} {{!-- Fallback --}}
+                            {{/if}}
+
+                            <strong class="nx-pdp-red">{{getVar 'current_stock'}}/</strong>
+                            <strong>{{getVar 'stock_total'}}</strong>
+                        </p>
+                    </div>
+                    <div class="nx-pdp-loader-bar">
+                        <div class="nx-pdp-loader-fill"
+                            style="width:{{multiply (divide (getVar 'current_stock') (getVar 'stock_total')) 100}}%">
+                        </div>
+                    </div>
+                </div>
+
+                <p class="nx-pdp-ship-note">
+                    {{#if product.pre_order}}
                     {{#if product.pre_order_message}}
-                        {{product.pre_order_message}}
+                    {{product.pre_order_message}}
                     {{else}}
-                        Expected to ship soon · 30-day money-back guarantee
+                    Expected to ship soon · 30-day money-back guarantee
                     {{/if}}
-                {{else}}
+                    {{else}}
                     {{assignVar 'shipping_note' 'Ships in 1–2 business days · 30-day money-back guarantee'}}
                     {{#each product.custom_fields}}
-                        {{#if name '===' 'shipping_note'}}
-                            {{assignVar 'shipping_note' value}}
-                        {{/if}}
+                    {{#if name '===' 'shipping_note'}}
+                    {{assignVar 'shipping_note' value}}
+                    {{/if}}
                     {{/each}}
                     {{getVar 'shipping_note'}}
-                {{/if}}
-            </p>
-        </div>
+                    {{/if}}
+                </p>
+            </div>
 
-        <div class="nx-pdp-ingredients-section">
-            <h3 class="nx-pdp-ing-title">Ingredients</h3>
-            <p class="nx-pdp-ing-text">
-                Sweet from the South (molasses, honey, and brown sugar) Tangy from the Carolinas and Virginia (apple cider vinegar and mustard) Smoky from the Midwest and Texas (hickory and paprika) Fruity & rich from the coasts (blackberry, cherry, and citrus) Bold from the frontier (bourbon, coffee, and pepper)
-            </p>
-            
-            <h3 class="nx-pdp-best-title">Best For</h3>
-            <div class="nx-pdp-tags">
-                <span>Steak</span>
-                <span>Burgers</span>
-                <span>Ribs</span>
-                <span>Brisket</span>
+            <div class="nx-pdp-ingredients-section">
+                <h3 class="nx-pdp-ing-title">Ingredients</h3>
+                <p class="nx-pdp-ing-text">
+                    Sweet from the South (molasses, honey, and brown sugar) Tangy from the Carolinas and Virginia (apple
+                    cider vinegar and mustard) Smoky from the Midwest and Texas (hickory and paprika) Fruity & rich from
+                    the coasts (blackberry, cherry, and citrus) Bold from the frontier (bourbon, coffee, and pepper)
+                </p>
+
+                <h3 class="nx-pdp-best-title">Best For</h3>
+                <div class="nx-pdp-tags">
+                    <span>Steak</span>
+                    <span>Burgers</span>
+                    <span>Ribs</span>
+                    <span>Brisket</span>
+                </div>
             </div>
         </div>
-    </div>
     </div>
 </section>
