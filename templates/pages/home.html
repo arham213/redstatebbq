@@ -13,8 +13,7 @@ blog:
 ---
 {{#partial "hero"}}
     {{> components/custom/nexyl/homepage/hero-section}}
-    {{{region name="home_below_menu"}}}
-    {{{region name="home_below_carousel"}}}
+    {{{region name="home_below_hero"}}}
 {{/partial}}
 
 {{#partial "page"}}
@@ -27,15 +26,15 @@ blog:
     {{> components/custom/nexyl/homepage/fans-section}}
     {{> components/custom/nexyl/homepage/regional-sauces-section}}
     {{> components/custom/nexyl/homepage/state-banner-section}}
+    
+    {{{region name="home_middle_banner"}}}
+    
     {{> components/custom/nexyl/homepage/story-section}}
     {{> components/custom/nexyl/homepage/why-section}}
     {{> components/custom/nexyl/homepage/faq-section}}
     {{> components/custom/nexyl/homepage/bottom-banner-section}}
-    {{> components/custom/nexyl/homepage/gallery-section}}
     
-    {{{region name="home_below_featured_products"}}}
-    {{{region name="home_below_top_products"}}}
-    {{{region name="home_below_new_products"}}}
+    {{{region name="home_above_footer"}}}
 </div>
 {{/partial}}
 {{> layout/base}}

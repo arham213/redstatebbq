@@ -1,0 +1,119 @@
+.nx-pdp-alabama-local {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    background: var(--nx-cream2, #f7ebcf);
+    height: 718px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 80px;
+    overflow: hidden;
+    position: relative;
+
+    @media (max-width: 1024px) {
+        padding: 40px;
+        height: auto;
+        min-height: 500px;
+    }
+    @media (max-width: 768px) {
+        padding: 24px;
+        min-height: 400px;
+    }
+
+    .nx-pdp-local-inner {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 28px;
+        align-items: center;
+        text-align: center;
+        color: var(--nx-dark-red, #6a0111);
+        position: relative;
+        z-index: 2;
+
+        .nx-pdp-local-title {
+            font-family: var(--nx-font-display, "Rye", serif);
+            text-transform: uppercase;
+            font-size: 68px;
+            line-height: 1;
+            margin: 0;
+
+            @media (max-width: 768px) { font-size: 48px; }
+            @media (max-width: 570px) { font-size: 36px; }
+        }
+
+        .nx-pdp-local-sub {
+            font-weight: 500;
+            font-size: 26px;
+            margin: 0;
+
+            @media (max-width: 768px) { font-size: 20px; }
+            @media (max-width: 570px) { font-size: 18px; }
+        }
+    }
+
+    .nx-pdp-deco {
+        position: absolute;
+        pointer-events: none;
+        mix-blend-mode: multiply;
+
+        &.nx-pdp-deco5 {
+            right: -22px;
+            bottom: -90px;
+            width: 430px;
+            @media (max-width: 768px) { width: 200px; }
+        }
+        &.nx-pdp-deco6 {
+            left: 0;
+            top: -120px;
+            width: 430px;
+            transform: rotate(180deg);
+            @media (max-width: 768px) { width: 200px; }
+        }
+    }
+
+    .nx-pdp-sauce-use {
+        position: absolute;
+        width: 149px;
+        height: 185.6px;
+        border-radius: 6.5px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+
+        @media (max-width: 1024px) {
+            display: none; // Hide floating images on smaller screens to keep it clean
+        }
+
+        img {
+            width: 157.5px;
+            height: 196.9px;
+            object-fit: cover;
+        }
+
+        &.nx-pdp-su1 { left: 740px; top: 351px; }
+        &.nx-pdp-su2 { left: 515px; top: 377px; }
+        &.nx-pdp-su3 { left: 772px; top: 563px; }
+        &.nx-pdp-su4 { left: 499px; top: 593px; }
+    }
+
+    .nx-pdp-bigbottle {
+        position: absolute;
+        left: 50%;
+        top: calc(50% + 218px);
+        transform: translate(-50%, -50%);
+        height: 530px;
+        width: auto;
+        z-index: 1;
+
+        @media (max-width: 1024px) {
+            position: relative;
+            left: auto;
+            top: auto;
+            transform: none;
+            height: 300px;
+            margin-top: 40px;
+        }
+    }
+}

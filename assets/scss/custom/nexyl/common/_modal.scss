@@ -1,0 +1,192 @@
+// =============================================================================
+// NEXYL — Global Modal Redesign
+// =============================================================================
+
+// Background Overlay
+.reveal-modal-bg {
+    background: rgba(#0D0D0E, 0.85) !important;
+}
+
+// Modal Container
+.modal {
+    background-color: var(--nx-cream);
+    border-radius: 16px;
+    border: none;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+
+    // Header
+    .modal-header {
+        border-bottom: 1px solid rgba(13, 13, 14, 0.08);
+        padding: 24px;
+        background: #fff;
+    }
+
+    .modal-header-title {
+        font-family: var(--nx-font-display);
+        color: var(--nx-dark-red);
+        font-size: 20px;
+        margin: 0;
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+
+        @media (min-width: 481px) {
+            font-size: 28px;
+        }
+    }
+
+    // Close Button
+    .modal-close {
+        color: rgba(13, 13, 14, 0.4);
+        border-radius: 50%;
+        background: rgba(13, 13, 14, 0.05);
+        transition: all 0.2s ease;
+        top: 20px;
+        right: 20px;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+
+        &:hover,
+        &:focus {
+            color: #0D0D0E;
+            background: rgba(13, 13, 14, 0.1);
+            outline: none;
+        }
+
+        // Remove cornerstone defaults if any
+        padding: 0;
+        line-height: 1;
+
+        @media (min-width: 481px) {
+            width: 44px;
+            height: 44px;
+        }
+    }
+
+    // Body
+    .modal-body {
+        padding: 40px;
+        background: var(--nx-cream);
+
+        @media (max-width: 800px) {
+            padding: 24px;
+        }
+    }
+}
+
+// Specific Write Review Modal Enhancements
+.writeReview-productDetails {
+    background: #fff;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+
+    .product-brand {
+        font-family: var(--nx-font-display);
+        font-size: 14px;
+        color: rgba(13, 13, 14, 0.5);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 8px;
+    }
+
+    .product-title {
+        font-family: var(--nx-font-display);
+        font-size: 18px;
+        color: var(--nx-dark-red);
+        margin: 0;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+
+        @media (min-width: 481px) {
+            font-size: 24px;
+        }
+    }
+}
+
+// Forms in Modal
+.modal-body {
+    .form-field {
+        margin-bottom: 24px;
+    }
+
+    .form-label {
+        font-family: var(--nx-font-body);
+        font-weight: 600;
+        color: #0D0D0E;
+        font-size: 14px;
+        margin-bottom: 8px;
+
+        small {
+            font-weight: 400;
+            color: rgba(13, 13, 14, 0.5);
+            margin-left: 6px;
+        }
+    }
+
+    .form-input,
+    .form-select,
+    .form-textarea {
+        background: #fff;
+        border: 1px solid rgba(13, 13, 14, 0.1);
+        border-radius: 8px;
+        padding: 12px 16px;
+        font-family: var(--nx-font-body);
+        color: #0D0D0E;
+        transition: all 0.2s ease;
+        width: 100%;
+
+        &:focus {
+            border-color: var(--nx-red);
+            box-shadow: 0 0 0 3px rgba(215, 3, 33, 0.1);
+            outline: none;
+        }
+    }
+
+    .form-field--success {
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            border-color: #28a745 !important;
+
+            &:focus {
+                border-color: #28a745 !important;
+                box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.1) !important;
+            }
+        }
+    }
+
+    .form-field--error {
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            border-color: var(--nx-red) !important;
+
+            &:focus {
+                border-color: var(--nx-red) !important;
+                box-shadow: 0 0 0 3px rgba(215, 3, 33, 0.1) !important;
+            }
+        }
+    }
+
+    .form-select {
+        appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%230D0D0E' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 16px center;
+        background-size: 16px;
+    }
+
+    .form-textarea {
+        min-height: 120px;
+        resize: vertical;
+    }
+}

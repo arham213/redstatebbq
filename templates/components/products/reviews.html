@@ -1,45 +1,131 @@
-{{#if reviews.total}}
-<section class="toggle productReviews" id="product-reviews" data-product-reviews>
-    <h4 class="toggle-title">
-        {{lang 'products.reviews.header' total=reviews.total}}
-        {{#if theme_settings.show_product_reviews}}
-            <a class="toggleLink is-open" data-collapsible href="#productReviews-content">
-                <span class="toggleLink-text toggleLink-text--on">
-                    {{lang 'products.reviews.hide'}}
-                </span>
-                <span class="toggleLink-text toggleLink-text--off">
-                    {{lang 'products.reviews.show'}}
-                </span>
-            </a>
-        {{/if}}
-    </h4>
-    <div class="toggle-content is-open" id="productReviews-content" aria-hidden="false">
-        <ul class="productReviews-list" id="productReviews-list">
-            {{#each reviews.list}}
-            <li class="productReview">
-                <article>
-                    <header>
-                        <span class="productReview-rating rating--small">
-                            {{> components/products/ratings rating=rating}}
-                            <span class="productReview-ratingNumber">{{ rating }}</span>
-                        </span>
-                        <h5 class="productReview-title">{{{ sanitize title }}}</h5>
-                        {{#if name}}
-                            <p class="productReview-author">
-                                {{{lang 'products.reviews.post_on_by' date=date name=(sanitize name) }}}
-                            </p>
+{{#if product.reviews.total}}
+<!-- ============== REVIEWS ============== -->
+<section class="nx-pdp-reviews-section" data-num-reviews="{{product.num_reviews}}" data-product-rating="{{product.rating}}">
+    <h2 class="nx-pdp-display nx-pdp-center" style="color: #0D0D0E;">Customer reviews</h2>
+
+    <div class="nx-pdp-reviews-wrapper" data-reviews-list="{{#each product.reviews.list}}{{this.rating}},{{/each}}">
+        <div class="nx-pdp-reviews-summary">
+            <div class="nx-pdp-rating-breakdown">
+                <p class="nx-pdp-bd-title">Average Rating:</p>
+                <div class="nx-pdp-bd-rows">
+                    {{!-- 5 Star Row --}}
+                    <div class="nx-pdp-bd-row" data-rating-row="5">
+                        <span class="nx-pdp-bd-num">5</span>
+                        <img src="{{cdn 'assets/img/custom/nexyl/star.svg'}}" alt="" />
+                        <div class="nx-pdp-bd-bar">
+                            <div class="nx-pdp-bd-fill js-rating-fill" style="width:0%"></div>
+                        </div>
+                        <span class="nx-pdp-bd-count js-rating-count">0</span>
+                    </div>
+                    {{!-- 4 Star Row --}}
+                    <div class="nx-pdp-bd-row" data-rating-row="4">
+                        <span class="nx-pdp-bd-num">4</span>
+                        <img src="{{cdn 'assets/img/custom/nexyl/star.svg'}}" alt="" />
+                        <div class="nx-pdp-bd-bar">
+                            <div class="nx-pdp-bd-fill js-rating-fill" style="width:0%"></div>
+                        </div>
+                        <span class="nx-pdp-bd-count js-rating-count">0</span>
+                    </div>
+                    {{!-- 3 Star Row --}}
+                    <div class="nx-pdp-bd-row" data-rating-row="3">
+                        <span class="nx-pdp-bd-num">3</span>
+                        <img src="{{cdn 'assets/img/custom/nexyl/star.svg'}}" alt="" />
+                        <div class="nx-pdp-bd-bar">
+                            <div class="nx-pdp-bd-fill js-rating-fill" style="width:0%"></div>
+                        </div>
+                        <span class="nx-pdp-bd-count js-rating-count">0</span>
+                    </div>
+                    {{!-- 2 Star Row --}}
+                    <div class="nx-pdp-bd-row" data-rating-row="2">
+                        <span class="nx-pdp-bd-num">2</span>
+                        <img src="{{cdn 'assets/img/custom/nexyl/star.svg'}}" alt="" />
+                        <div class="nx-pdp-bd-bar">
+                            <div class="nx-pdp-bd-fill js-rating-fill" style="width:0%"></div>
+                        </div>
+                        <span class="nx-pdp-bd-count js-rating-count">0</span>
+                    </div>
+                    {{!-- 1 Star Row --}}
+                    <div class="nx-pdp-bd-row" data-rating-row="1">
+                        <span class="nx-pdp-bd-num">1</span>
+                        <img src="{{cdn 'assets/img/custom/nexyl/star.svg'}}" alt="" />
+                        <div class="nx-pdp-bd-bar">
+                            <div class="nx-pdp-bd-fill js-rating-fill" style="width:0%"></div>
+                        </div>
+                        <span class="nx-pdp-bd-count js-rating-count">0</span>
+                    </div>
+                </div>
+            </div>
+            <div class="nx-pdp-overall-rating">
+                <p class="nx-pdp-overall-title">Overall Rating</p>
+                <div class="nx-pdp-overall-row">
+                    <p class="nx-pdp-overall-num js-exact-rating">
+                        {{#if product.rating}}
+                        {{product.rating}}
                         {{else}}
-                            <p class="productReview-author">
-                                {{lang 'products.reviews.post_on_by' date=date name=(lang 'products.reviews.anonymous_poster')}}
-                            </p>
+                        0
                         {{/if}}
-                    </header>
-                    <p class="productReview-body">{{{ sanitize text }}}</p>
-                </article>
-            </li>
-            {{/each}}
-        </ul>
-        {{> components/common/paginator pagination.reviews reload=true}}
+                    </p>
+                    <div class="nx-pdp-overall-stars">
+                        <div class="nx-pdp-stars">
+                            {{#if product.rating}}
+                            {{> components/custom/nexyl/product/ratings rating=product.rating}}
+                            {{else}}
+                            {{> components/custom/nexyl/product/ratings rating=0}}
+                            {{/if}}
+                        </div>
+                        <p class="nx-pdp-overall-meta">
+                            <span>
+                                {{#if product.num_reviews}}
+                                {{product.num_reviews}}
+                                {{else}}
+                                0
+                                {{/if}}
+                            </span>
+                            <span>reviews</span>
+                        </p>
+                    </div>
+                </div>
+                <p class="nx-pdp-recommend">
+                    {{#if product.num_reviews}}
+                    {{product.num_reviews}} out of {{product.num_reviews}} (100%) reviewers recommend this product
+                    {{/if}}
+                </p>
+            </div>
+            <a href="{{product.url}}{{#if is_ajax}}#write_review{{/if}}" {{#unless
+                is_ajax}}data-reveal-id="modal-review-form" {{/unless}} class="nx-pdp-btn-ghost"
+                style="display: inline-flex; align-items: center; justify-content: center; text-decoration: none;">
+                Write a review
+            </a>
+            {{> components/products/modals/writeReview}}
+        </div>
+
+        <div class="nx-pdp-review-list" id="nx-review-list-container" data-product-reviews>
+            {{#if product.reviews.list}}
+            {{> components/custom/nexyl/product/reviews-list reviews=product.reviews product=product urls=urls
+            pagination=pagination.reviews}}
+            {{/if}}
+        </div>
+
+        {{!-- Custom pagination controls injected by JS --}}
+        <nav class="nx-reviews-pagination" id="nx-reviews-pagination" aria-label="Reviews pagination"
+            style="display:none;"></nav>
+
+    </div>
+</section>
+{{else}}
+<!-- ============== EMPTY REVIEWS ============== -->
+<section class="nx-pdp-reviews-section" data-num-reviews="0" data-product-rating="0">
+    <h2 class="nx-pdp-display nx-pdp-center" style="color: #0D0D0E;">Customer reviews</h2>
+    <div class="nx-pdp-reviews-wrapper" style="justify-content: center; align-items: center; padding: 40px 0; border-top: 1px solid rgba(13,13,14,0.08);">
+        <div style="text-align: center;">
+            <p style="margin-bottom: 24px; color: rgba(13,13,14,0.6);">There are no reviews for this product yet.</p>
+            <a href="{{product.url}}{{#if is_ajax}}#write_review{{/if}}" {{#unless
+                is_ajax}}data-reveal-id="modal-review-form" {{/unless}} class="nx-pdp-btn-ghost"
+                style="display: inline-flex; align-items: center; justify-content: center; text-decoration: none; margin: 0 auto;">
+                Write a review
+            </a>
+        </div>
+        {{> components/products/modals/writeReview}}
     </div>
 </section>
 {{/if}}

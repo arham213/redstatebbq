@@ -1,7 +1,9 @@
-import initHomepageCustom from './homepage/index';
 import initHeaderCustom from './common/header';
+import initHomepageCustom from './homepage/index';
+import initProductCustom from './product/index';
 
 export default function initNexylCustom() {
-    initHomepageCustom();
     initHeaderCustom();
+    initHomepageCustom();
+    initProductCustom();
 }

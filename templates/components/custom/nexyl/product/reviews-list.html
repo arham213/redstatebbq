@@ -4,7 +4,7 @@
     <article class="nx-pdp-review" itemprop="review" itemscope itemtype="http://schema.org/Review">
         <header class="nx-pdp-review-head">
             <div class="nx-pdp-stars productReview-rating">
-                {{> components/custom/nexyl/product/1776-ratings rating=rating}}
+                {{> components/custom/nexyl/product/ratings rating=rating}}
             </div>
             <h4 itemprop="name" class="nx-pdp-review-title">{{ title }}</h4>
         </header>
@@ -12,10 +12,10 @@
         <footer class="nx-pdp-review-foot">
             <div class="nx-pdp-who">
                 {{#if name}}
-                    <meta itemprop="author" content="{{name}}">
-                    <span class="productReview-authorName">{{name}}</span>
+                <meta itemprop="author" content="{{name}}">
+                <span class="productReview-authorName">{{name}}</span>
                 {{else}}
-                    <span class="productReview-authorName">{{lang 'products.reviews.anonymous_poster'}}</span>
+                <span class="productReview-authorName">{{lang 'products.reviews.anonymous_poster'}}</span>
                 {{/if}}
             </div>
             <span class="nx-pdp-muted nx-pdp-review-date" data-review-date="{{date}}">{{date}}</span>

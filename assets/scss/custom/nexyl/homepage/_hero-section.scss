@@ -3,7 +3,7 @@
 // =============================================================================
 
 .nx-hero-wrapper {
-    background: #F7EBCF;
+    background: var(--nx-cream-soft);
     padding: 48px;
 
     @media (max-width: 850px) {
@@ -156,6 +156,12 @@
             backdrop-filter: none;
             max-width: 450px;
         }
+    }
+}
+
+@media (max-width: 850px) {
+    .nx-hero {
+        min-height: 550px;
     }
 }
 

@@ -12,6 +12,8 @@
 @import "common/header";
 @import "common/footer";
 @import "common/global";
+@import "common/modal";
+@import "common/gallery-section";
 
 // ---------- Layouts ----------
 @import "layouts/1776-blend";
@@ -25,10 +27,14 @@
 @import "homepage/why-section";
 @import "homepage/faq-section";
 @import "homepage/bottom-banner-section";
-@import "homepage/gallery-section";
 
 // ---------- Product Pages ----------
 @import "product/1776-product";
+@import "product/1776-reviews";
+@import "product/alabama-intro";
+@import "product/alabama-love";
+@import "product/alabama-breakdown";
+@import "product/alabama-local";
 
 // ---------- Vendor ----------
 @import "vendor/swiper";

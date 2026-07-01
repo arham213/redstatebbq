@@ -27,7 +27,7 @@
 }
 
 .paymentMethod {
-    background-color: #e5e5e5;
+    background-color: var(--nx-bg-gray);
     border: container("border");
     border-radius: remCalc(3px);
     display: flex;

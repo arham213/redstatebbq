@@ -2,6 +2,10 @@
 // NEXYL / PRODUCT / 1776 BLEND
 // =============================================================================
 
+.product-details-page {
+    background-color: var(--nx-cream-soft) !important;
+}
+
 .nx-pdp-display {
     font-family: var(--nx-font-display);
     font-weight: normal;
@@ -161,7 +165,7 @@
 
     .nx-pdp-qty {
         background: var(--nx-cream);
-        border: 1px solid #E5E5E5;
+        border: 1px solid var(--nx-border-gray);
         border-radius: 8px;
         display: flex;
         gap: 10px;
@@ -501,7 +505,7 @@
 }
 
 .nx-pdp-years-panel {
-    background: var(--nx-red);
+    background: var(--nx-dark-red);
     width: 60%;
     flex-shrink: 0;
     padding: 80px;
@@ -576,6 +580,11 @@
     > .nx-pdp-display { font-size: 48px; color: #000; margin: 0; text-transform: uppercase; }
 }
 
+.nx-pdp-reviews-section[data-num-reviews="0"] {
+    padding-bottom: 0;
+    gap: 20px;
+}
+
 .nx-pdp-reviews-wrapper {
     width: 1280px;
     max-width: 100%;
@@ -610,8 +619,6 @@
         border-bottom: 1px solid #ECE7D9; 
         display: flex; 
         flex-direction: column;
-        
-        &:last-child { border-bottom: none; padding-bottom: 0; }
     }
     
     .nx-pdp-review-head { 
@@ -776,6 +783,12 @@
     }
 }
 
+.writeReview-form {
+    @media (min-width: $screen-medium) {
+        padding-left: 2.25rem;
+    }
+}
+
 /* ============ Responsive ============ */
 @media (max-width: $screen-large) {
     .nx-pdp-hero-section, .nx-pdp-bundles-section, .nx-pdp-story-section, .nx-pdp-reviews-section { padding: 60px 40px; }
@@ -927,7 +940,7 @@
 }
 
 @media (min-width: 1441px) {
-    .nx-pdp-years-panel { border-radius: 22px; height: 855px; }
+    .nx-pdp-years-panel { border-radius: 22px; height: 855px;}
 }
 
 @media (max-width: $screen-medium) {

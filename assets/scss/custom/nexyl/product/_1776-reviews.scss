@@ -1,0 +1,71 @@
+/* ── Review list scroll offset (accounts for sticky header) ── */
+#nx-review-list-container {
+    scroll-margin-top: 50px;
+}
+
+.nx-reviews-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(13, 13, 14, 0.08);
+
+    .nx-rpg-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        padding: 0;
+        border: 1.5px solid rgba(13, 13, 14, 0.18);
+        border-radius: 50%;
+        background: transparent;
+        color: #0D0D0E;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease, box-shadow 0.18s ease;
+        letter-spacing: 0.01em;
+        text-decoration: none;
+        line-height: 1;
+
+        &:hover:not(:disabled) {
+            background: #0D0D0E;
+            border-color: #0D0D0E;
+            color: #fff;
+            box-shadow: 0 2px 8px rgba(13, 13, 14, 0.15);
+        }
+
+        &.nx-rpg-active {
+            background: #0D0D0E;
+            border-color: #0D0D0E;
+            color: #fff;
+            box-shadow: 0 2px 8px rgba(13, 13, 14, 0.18);
+            cursor: default;
+        }
+
+        &:disabled {
+            opacity: 0.32;
+            cursor: not-allowed;
+        }
+    }
+
+    .nx-rpg-arrow {
+        font-size: 16px;
+        padding: 0 12px;
+    }
+
+    .nx-rpg-ellipsis {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        height: 40px;
+        padding: 0 4px;
+        color: rgba(13, 13, 14, 0.4);
+        font-size: 14px;
+        cursor: default;
+        user-select: none;
+    }
+}

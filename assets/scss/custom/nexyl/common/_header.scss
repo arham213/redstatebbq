@@ -463,15 +463,10 @@
 
 // Drawer Internal Styles (Redesigned)
 .nx-cart-drawer {
-    --cream-1: #f7ebcf;
-    --cream-2: #fbf5e7;
-    --maroon: #6a0111;
-    --red: #d70321;
     --black: #2c2929;
-    --input-border: #e5e5e5;
     --shadow-xs: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
 
-    background: var(--cream-1);
+    background: var(--nx-cream-soft);
     font-family: 'Figtree', system-ui, sans-serif;
     color: var(--black);
     position: relative;
@@ -499,8 +494,8 @@
     }
 
     .nx-cd-display {
-        font-family: 'Moongazer', 'Rye', cursive;
-        color: var(--maroon);
+        font-family: var(--nx-font-display);
+        color: var(--nx-dark-red);
         text-transform: uppercase;
         letter-spacing: .5px;
     }
@@ -509,7 +504,7 @@
     .cart {
         width: 651px;
         max-width: 100%;
-        background: var(--cream-1);
+        background: var(--nx-cream-soft);
         display: flex;
         flex-direction: column;
         gap: 40px;
@@ -531,7 +526,7 @@
 
     /* header */
     .nx-cd-header {
-        background: var(--cream-2);
+        background: var(--nx-cream);
         display: flex;
         gap: 16px;
         align-items: flex-end;
@@ -560,7 +555,7 @@
 
     /* cart body section */
     .nx-cd-section {
-        background: var(--cream-2);
+        background: var(--nx-cream);
         padding: 24px;
         display: flex;
         flex-direction: column;
@@ -569,7 +564,7 @@
 
     /* reward banner */
     .nx-cd-reward {
-        background: var(--cream-1);
+        background: var(--nx-cream-soft);
         border-radius: 8px;
         padding: 8px;
         display: flex;
@@ -602,7 +597,7 @@
     }
 
     .nx-cd-item .nx-cd-thumb {
-        background: var(--cream-1);
+        background: var(--nx-cream-soft);
         border-radius: 12px;
         width: 140px;
         height: 121.33px;
@@ -670,8 +665,8 @@
     }
 
     .nx-cd-qty {
-        background: var(--cream-2);
-        border: 1px solid var(--input-border);
+        background: var(--nx-cream);
+        border: 1px solid var(--nx-border-gray);
         border-radius: 8px;
         height: 36px;
         padding: 4px 12px;
@@ -705,7 +700,7 @@
 
     /* customers also bought */
     .nx-cd-also {
-        background: var(--cream-1);
+        background: var(--nx-cream-soft);
         padding: 24px;
         display: flex;
         flex-direction: column;
@@ -720,6 +715,27 @@
     .nx-cd-cards {
         display: flex;
         gap: 16px;
+        width: 100%;
+        
+        .nx-skeleton-cards {
+            display: flex;
+            gap: 16px;
+            width: 100%;
+        }
+        
+        .nx-skeleton-card {
+            flex: 1;
+            height: 140px;
+            background: rgba(13, 13, 14, 0.06);
+            border-radius: 8px;
+            animation: nx-pulse 1.5s infinite ease-in-out;
+        }
+    }
+
+    @keyframes nx-pulse {
+        0% { opacity: 1; }
+        50% { opacity: 0.5; }
+        100% { opacity: 1; }
     }
 
     .nx-cd-arrows {
@@ -770,18 +786,16 @@
         margin: 0 8px;
         height: auto !important;
         display: flex !important;
-        flex-direction: column;
     }
 
     .nx-cd-cards.slick-slider .slick-slide>div {
         display: flex;
         flex-direction: column;
         flex-grow: 1;
-        width: 100%;
     }
 
     .nx-cd-pcard {
-        background: var(--cream-2);
+        background: var(--nx-cream);
         border-radius: 12px;
         padding: 16px;
         display: flex;
@@ -885,7 +899,7 @@
 
     /* footer */
     .nx-cd-footer {
-        background: var(--cream-2);
+        background: var(--nx-cream);
         padding: 24px;
         display: flex;
         flex-direction: column;
@@ -1116,8 +1130,6 @@
         padding-left: 48px;
         width: 100%;
         height: 48px;
-        border-radius: 8px;
-        border: 1px solid var(--input-border);
     }
 
     button.nx-search-btn {

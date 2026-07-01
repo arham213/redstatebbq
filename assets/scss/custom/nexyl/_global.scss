@@ -3,6 +3,7 @@
     --nx-cream: #fbf5e7;
     --nx-cream-soft: #f7ebcf;
     --nx-bg: #fdfff5;
+    --nx-bg-gray: #e5e5e5;
     --nx-dark-red: #6a0111;
     --nx-red: #d70321;
     --nx-red-2: #e51d25;
@@ -35,11 +36,6 @@ body {
     color: #000;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-}
-
-.body {
-    margin-top: 0.125rem !important;
-    margin-bottom: 0 !important;
 }
 
 .mobileShop-searchHeader {
