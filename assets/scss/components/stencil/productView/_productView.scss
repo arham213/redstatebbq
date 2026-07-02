@@ -394,6 +394,7 @@
     }
 
     .add-to-cart-wallet-buttons {
+        display: none;
         margin-top: spacing("half");
 
         div[data-smart-button-container-id] {

@@ -9,7 +9,7 @@
     align-items: flex-start;
     padding: 51px 80px 48px;
 
-    @media (max-width: 1024px) {
+    @media (max-width: $screen-large) {
         flex-direction: column;
         padding: 40px;
         gap: 40px;
@@ -25,13 +25,15 @@
     }
 
     &__gallery {
-        width: 600px;
         display: flex;
         flex-direction: column;
         gap: 8px;
+        width: 100%;
 
-        @media (max-width: 1024px) {
-            width: 100%;
+        @media (min-width: $screen-large) {
+            flex: 1 1 50%;
+            max-width: 600px;
+            min-width: 0;
         }
 
         .nx-pdp-hero-img {
@@ -62,16 +64,18 @@
         .nx-pdp-thumbs {
             display: flex;
             align-items: flex-start;
-            justify-content: space-evenly;
+            justify-content: center;
             width: 100%;
             gap: 8px;
-            overflow-x: auto;
 
             .nx-pdp-thumb {
                 background: var(--nx-cream2, #f7ebcf);
-                height: 166.58px;
-                width: 192.2px;
-                flex: none;
+                flex: 1;
+                min-width: 0;
+                max-width: 192.2px;
+                max-height: 166.58px;
+                height: auto;
+                aspect-ratio: 192.2 / 166.58;
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -85,17 +89,15 @@
                 }
 
                 img {
-                    height: 132px;
+                    height: 80%;
                     width: auto;
                     max-width: 100%;
+                    object-fit: contain;
                 }
 
                 @media (max-width: 768px) {
-                    height: 120px;
-                    width: 140px;
-
                     img {
-                        height: 90px;
+                        height: 70%;
                     }
                 }
             }
@@ -103,7 +105,8 @@
     }
 
     &__info {
-        flex: 1;
+        flex: 1 1 50%;
+        min-width: 0;
         display: flex;
         flex-direction: column;
         gap: 40px;
@@ -120,10 +123,18 @@
                 justify-content: space-between;
                 gap: 18px;
 
-                @media (max-width: 1024px) {
+                @media (max-width: $screen-medium) {
                     flex-direction: column;
                     justify-content: flex-start;
                     gap: 12px;
+                }
+
+                @media (min-width: $screen-large) {
+                    >div:first-child {
+                        flex: 1;
+                        min-width: 0;
+                        max-width: 85%;
+                    }
                 }
 
                 .nx-pdp-ptitle {
@@ -133,12 +144,14 @@
                     line-height: 1;
                     color: var(--nx-dark-red, #6a0111);
                     margin: 0;
+                    overflow-wrap: break-word;
+                    word-wrap: break-word;
 
-                    @media (max-width: 768px) {
+                    @media (max-width: $screen-medium) {
                         font-size: 48px;
                     }
 
-                    @media (max-width: 570px) {
+                    @media (max-width: $screen-small) {
                         font-size: 36px;
                     }
                 }
@@ -151,6 +164,13 @@
                     max-width: 508px;
                 }
 
+                @media (max-width: $screen-medium) {
+                    .nx-pdp-rating-block {
+                        align-items: flex-start;
+                        margin-top: 10px;
+                    }
+                }
+
                 .nx-pdp-rating-top {
                     position: absolute;
                     right: 0;
@@ -160,7 +180,7 @@
                     gap: 12px;
                     align-items: flex-end;
 
-                    @media (max-width: 1024px) {
+                    @media (max-width: $screen-large) {
                         position: relative;
                         align-items: flex-start;
                         margin-top: 16px;
@@ -259,8 +279,15 @@
                     border-radius: 16px;
                     padding: 24px;
                     display: flex;
+                    flex-wrap: wrap;
                     gap: 16px;
                     align-items: center;
+
+                    @media (max-width: 440px) {
+                        flex-wrap: wrap;
+                        padding: 16px;
+                        gap: 12px;
+                    }
 
                     .nx-pdp-radio {
                         width: 24px;
@@ -281,7 +308,8 @@
                     }
 
                     .nx-pdp-label {
-                        flex: 1;
+                        flex: 1 1 min-content;
+                        min-width: 120px;
                         font-weight: 500;
                         font-size: 18px;
                         color: #000;
@@ -293,19 +321,47 @@
                         color: #000;
                         white-space: nowrap;
 
+                        @media (max-width: 440px) {
+                            width: 100%;
+                            padding-left: 36px;
+                            margin-top: -4px;
+                        }
+
                         .rrp-price--withTax,
                         .rrp-price--withoutTax,
                         .price-section--saving {
                             display: none !important;
+                        }
+
+                        .price-section {
+                            display: inline-block;
+                            margin-left: 6px;
+
+                            &:first-child {
+                                margin-left: 0;
+                            }
+
+                            > span:not(.price) {
+                                display: none !important;
+                            }
+                        }
+
+                        .non-sale-price--withTax,
+                        .non-sale-price--withoutTax {
+                            .price {
+                                text-decoration: line-through;
+                                color: #888;
+                                font-weight: 500;
+                            }
                         }
                     }
                 }
             }
 
             [data-product-option-change] {
-                margin-bottom: 24px;
+                margin-bottom: 8px;
                 width: 100%;
-                
+
                 .form-field {
                     margin-bottom: 16px;
 
@@ -353,11 +409,12 @@
 
             .nx-pdp-buyrow {
                 display: flex;
+                flex-wrap: wrap;
                 gap: 32px;
                 align-items: center;
                 width: 100%;
 
-                @media (max-width: 768px) {
+                @media (max-width: $screen-small) {
                     flex-direction: column;
                     align-items: stretch;
                 }
@@ -366,10 +423,11 @@
                     font-weight: 500;
                     font-size: 14px;
                     color: #5f5f5f;
+                    flex: none;
                     width: 220px;
                     margin-bottom: 0;
 
-                    @media (max-width: 768px) {
+                    @media (max-width: $screen-small) {
                         width: 100%;
                     }
                 }
@@ -382,7 +440,6 @@
                     .add-to-cart-wrapper {
                         width: 100%;
                         display: flex;
-                        flex-wrap: wrap;
                         gap: 16px;
                         align-items: center;
                     }
@@ -410,6 +467,8 @@
 
                     .nx-btn {
                         border: none;
+                        min-width: 160px;
+
                         @media (min-width: $screen-large) {
                             width: 100%;
                         }
