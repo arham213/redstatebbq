@@ -6,24 +6,23 @@
 // Product view layout
 // -----------------------------------------------------------------------------
 
-.productView {
-    @include grid-row($behavior: "nest");
+// .productView {
+//     @include grid-row($behavior: "nest");
 
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    margin-left: -(spacing("base"));
-    margin-right: -(spacing("base"));
+//     display: flex;
+//     justify-content: flex-start;
+//     margin-left: -(spacing("base"));
+//     margin-right: -(spacing("base"));
 
-    @include breakpoint("medium") {
-        display: block;
-    }
+//     @include breakpoint("medium") {
+//         display: block;
+//     }
 
-    .modal & {
-        padding-bottom: 0;
-        padding-top: 0;
-    }
-}
+//     .modal & {
+//         padding-bottom: 0;
+//         padding-top: 0;
+//     }
+// }
 
 .productView--quickView {
     .socialLinks-item--print {

@@ -1,7 +1,7 @@
 import $ from 'jquery';
 
-export default function initAlabamaIntro() {
-    const $intro = $('.nx-pdp-alabama-intro');
+export default function initProductIntro() {
+    const $intro = $('.nx-pdp-product-intro');
     if (!$intro.length) return;
 
     // Gallery functionality

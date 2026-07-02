@@ -20,11 +20,11 @@ product:
     {{/each}}
 
     <div class="product-details-page">
-        <!-- Replaced default product-view with custom Alabama layout -->
-        {{> components/custom/nexyl/product/alabama-intro}}
-        {{> components/custom/nexyl/product/alabama-love}}
-        {{> components/custom/nexyl/product/alabama-breakdown}}
-        {{> components/custom/nexyl/product/alabama-local}}
+        <!-- Replaced default product-view with custom generic product layout -->
+        {{> components/products/product-view}}
+        {{> components/custom/nexyl/product/product-love}}
+        {{> components/custom/nexyl/product/product-breakdown}}
+        {{> components/custom/nexyl/product/product-local}}
         {{{region name="product_below_content"}}}
 
         {{#if product.videos.list.length}}

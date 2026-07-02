@@ -8,9 +8,7 @@
                     <button class="button button--icon" data-action="dec">
                         <span class="is-srOnly">{{lang 'products.quantity_decrease' name=product.title}}</span>
                         <i class="icon" aria-hidden="true">
-                            <svg>
-                                <use href="#icon-keyboard-arrow-down"/>
-                            </svg>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0d0d0e" stroke-width="2"><path d="M5 12h14"/></svg>
                         </i>
                     </button>
                     <input class="form-input form-input--incrementTotal"
@@ -26,9 +24,7 @@
                     <button class="button button--icon" data-action="inc">
                         <span class="is-srOnly">{{lang 'products.quantity_increase' name=product.title}}</span>
                         <i class="icon" aria-hidden="true">
-                            <svg>
-                                <use href="#icon-keyboard-arrow-up"/>
-                            </svg>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0d0d0e" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
                         </i>
                     </button>
                 </div>
@@ -55,7 +51,7 @@
                 <input
                         id="form-action-addToCart"
                         data-wait-message="{{lang 'products.adding_to_cart'}}"
-                        class="button button--primary"
+                        class="nx-btn nx-btn-primary"
                         type="submit"
                         value="{{#if product.pre_order}}{{lang 'products.pre_order'}}{{else}}{{lang 'products.add_to_cart'}}{{/if}}"
                 >

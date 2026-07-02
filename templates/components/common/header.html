@@ -79,7 +79,9 @@
                 data-options="align:bottom" href="{{urls.cart}}" aria-label="{{lang 'cart.nav_aria_label'}}">
                 <span class="nx-cart-total">{{#if cart.items}}{{cart.formatted_grand_total}}{{else}}$0.00{{/if}}</span>
                 <span class="cart-quantity nx-cart-count">{{#if cart.quantity}}{{cart.quantity}}{{else}}0{{/if}}</span>
-                <img src="{{cdn 'assets/img/custom/nexyl/cart.svg'}}" alt="">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M0.665039 0.665039H1.99837L3.77171 8.94504C3.83676 9.24828 4.00549 9.51936 4.24885 9.71161C4.49221 9.90387 4.79498 10.0053 5.10504 9.99837H11.625C11.9285 9.99788 12.2227 9.8939 12.4591 9.7036C12.6954 9.51329 12.8598 9.24806 12.925 8.95171L14.025 3.99837H2.71171M5.2985 13.2983C5.2985 13.6665 5.00003 13.965 4.63184 13.965C4.26365 13.965 3.96517 13.6665 3.96517 13.2983C3.96517 12.9302 4.26365 12.6317 4.63184 12.6317C5.00003 12.6317 5.2985 12.9302 5.2985 13.2983ZM12.6318 13.2983C12.6318 13.6665 12.3334 13.965 11.9652 13.965C11.597 13.965 11.2985 13.6665 11.2985 13.2983C11.2985 12.9302 11.597 12.6317 11.9652 12.6317C12.3334 12.6317 12.6318 12.9302 12.6318 13.2983Z" stroke="white" stroke-width="1.33" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
             </a>
             <div class="nx-cart-overlay" id="nx-cart-overlay"></div>
             <div class="dropdown-menu" id="cart-preview-dropdown" data-dropdown-content aria-hidden="true"></div>

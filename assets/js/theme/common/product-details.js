@@ -463,7 +463,16 @@ export default class ProductDetails extends ProductDetailsBase {
             }
 
             // Open preview modal and update content
-            if (this.previewModal) {
+            const $cartDropdown = $('#cart-preview-dropdown');
+            if ($cartDropdown.length) {
+                const $cartPreviewBtn = $('[data-cart-preview]');
+                $cartPreviewBtn.trigger('click');
+                
+                // Trigger global cart update to refresh quantities in header
+                utils.api.cart.getCartQuantity({ baseUrl: this.context.secureBaseUrl, bypassCache: true }, (err, qty) => {
+                    $('body').trigger('cart-quantity-update', qty);
+                });
+            } else if (this.previewModal) {
                 this.previewModal.open();
 
                 if (window.ApplePaySession) {

@@ -1,5 +1,5 @@
-<section class="nx-pdp-alabama-intro">
-    <div class="nx-pdp-alabama-intro__gallery">
+<section class="nx-pdp-product-intro">
+    <div class="nx-pdp-product-intro__gallery">
         <div class="nx-pdp-hero-img" id="nx-pdp-hero-img-container">
             <img src="{{getImage product.main_image 'product_size' (cdn theme_settings.default_image_product)}}" alt="{{product.main_image.alt}}">
         </div>
@@ -14,17 +14,17 @@
         {{/if}}
     </div>
 
-    <div class="nx-pdp-alabama-intro__info">
+    <div class="nx-pdp-product-intro__info">
         <div class="nx-pdp-info-top">
             <div class="nx-pdp-title-wrap">
-                <h1 class="nx-pdp-ptitle">{{product.title}}</h1>
-                {{#if product.description}}
-                {{#each product.custom_fields}}
-                    {{#if name '===' 'Subtitle'}}
-                        <p class="nx-pdp-psub">{{{value}}}</p>
-                    {{/if}}
-                {{/each}}
-                {{/if}}
+                <div>
+                    <h1 class="nx-pdp-ptitle">{{product.title}}</h1>
+                    {{#each product.custom_fields}}
+                        {{#if name '===' 'headline_below_title'}}
+                            <p class="nx-pdp-psub">{{{value}}}</p>
+                        {{/if}}
+                    {{/each}}
+                </div>
                 
                 {{#if settings.show_product_rating}}
                 <div class="nx-pdp-rating-block">
@@ -72,7 +72,9 @@
                         <svg width="12" height="12" viewBox="0 0 24 24" fill="var(--nx-red)"><circle cx="12" cy="12" r="12"/></svg>
                     </span>
                     <span class="nx-pdp-label">One time purchase</span>
-                    <span class="nx-pdp-price">{{product.price.without_tax.formatted}}</span>
+                    <div class="nx-pdp-price">
+                        {{> components/products/price price=product.price schema_org=schema}}
+                    </div>
                 </div>
             </div>
 
@@ -83,10 +85,10 @@
                         <span class="nx-pdp-icn nx-pdp-qty-minus"><span class="nx-pdp-minus">−</span></span>
                         <input class="nx-pdp-qty-input" type="number" name="qty[]" value="1" min="1" readonly>
                         <span class="nx-pdp-icn nx-pdp-qty-plus">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0d0d0e" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
                         </span>
                     </div>
-                    <button type="submit" class="nx-pdp-addbtn" data-wait-message="{{lang 'products.adding_to_cart'}}">Add to Cart</button>
+                    <button id="form-action-addToCart" type="submit" class="nx-pdp-addbtn" data-wait-message="{{lang 'products.adding_to_cart'}}">Add to Cart</button>
                 </div>
             </div>
         </form>
@@ -95,7 +97,7 @@
             <div class="nx-pdp-acc-item">
                 <div class="nx-pdp-acc-trigger">
                     <span class="nx-pdp-acc-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path class="nx-pdp-plus-path" d="M12 5v14M5 12h14"/><path class="nx-pdp-minus-path" d="M5 12h14" style="display:none;"/></svg>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0d0d0e" stroke-width="2"><path class="nx-pdp-plus-path" d="M12 5v14M5 12h14"/><path class="nx-pdp-minus-path" d="M5 12h14" style="display:none;"/></svg>
                     </span>
                     <span class="nx-pdp-acc-title">Description</span>
                 </div>
@@ -105,11 +107,11 @@
             </div>
             
             {{#each product.custom_fields}}
-                {{#if name '===' 'Nutritional Value'}}
+                {{#if name '===' 'nutritional_value'}}
                 <div class="nx-pdp-acc-item">
                     <div class="nx-pdp-acc-trigger">
                         <span class="nx-pdp-acc-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path class="nx-pdp-plus-path" d="M12 5v14M5 12h14"/><path class="nx-pdp-minus-path" d="M5 12h14" style="display:none;"/></svg>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0d0d0e" stroke-width="2"><path class="nx-pdp-plus-path" d="M12 5v14M5 12h14"/><path class="nx-pdp-minus-path" d="M5 12h14" style="display:none;"/></svg>
                         </span>
                         <span class="nx-pdp-acc-title">Nutritional Value</span>
                     </div>
@@ -118,11 +120,11 @@
                     </div>
                 </div>
                 {{/if}}
-                {{#if name '===' 'Ingredients'}}
+                {{#if name '===' 'ingredients'}}
                 <div class="nx-pdp-acc-item">
                     <div class="nx-pdp-acc-trigger">
                         <span class="nx-pdp-acc-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path class="nx-pdp-plus-path" d="M12 5v14M5 12h14"/><path class="nx-pdp-minus-path" d="M5 12h14" style="display:none;"/></svg>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0d0d0e" stroke-width="2"><path class="nx-pdp-plus-path" d="M12 5v14M5 12h14"/><path class="nx-pdp-minus-path" d="M5 12h14" style="display:none;"/></svg>
                         </span>
                         <span class="nx-pdp-acc-title">Ingredients</span>
                     </div>
