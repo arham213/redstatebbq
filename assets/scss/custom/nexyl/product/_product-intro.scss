@@ -2,12 +2,16 @@
     width: 100%;
     max-width: 1440px;
     margin: 0 auto;
-    background: var(--nx-cream2, #f7ebcf);
+    background: var(--nx-cream-soft, #f7ebcf);
     border-top: 3px solid var(--nx-red, #d70321);
     display: flex;
     gap: 80px;
     align-items: flex-start;
     padding: 51px 80px 48px;
+
+    @media (max-width: 1440px) {
+        padding: 48px 60px 40px;
+    }
 
     @media (max-width: $screen-large) {
         flex-direction: column;
@@ -37,7 +41,7 @@
         }
 
         .nx-pdp-hero-img {
-            background: var(--nx-cream2, #f7ebcf);
+            background: var(--nx-cream-soft, #f7ebcf);
             height: 520px;
             display: flex;
             align-items: center;
@@ -69,7 +73,7 @@
             gap: 8px;
 
             .nx-pdp-thumb {
-                background: var(--nx-cream2, #f7ebcf);
+                background: var(--nx-cream-soft, #f7ebcf);
                 flex: 1;
                 min-width: 0;
                 max-width: 192.2px;
@@ -144,11 +148,19 @@
                     line-height: 1;
                     color: var(--nx-dark-red, #6a0111);
                     margin: 0;
-                    overflow-wrap: break-word;
-                    word-wrap: break-word;
+                    // overflow-wrap: break-word;
+                    // word-wrap: break-word;
 
-                    @media (max-width: $screen-medium) {
+                    // @media (min-width: $screen-large) and (max-width: 1200px) {
+                    //     font-size: 48px;
+                    // }
+
+                    @media (max-width: 1440px) {
                         font-size: 48px;
+                    }
+
+                    @media (max-width: 1200px) {
+                        font-size: 40px;
                     }
 
                     @media (max-width: $screen-small) {
@@ -162,6 +174,10 @@
                     color: #000;
                     margin-top: 8px;
                     max-width: 508px;
+
+                    @media (max-width: 1200px) {
+                        font-size: 16px;
+                    }
                 }
 
                 @media (max-width: $screen-medium) {
@@ -238,12 +254,72 @@
                 }
             }
 
+            .nx-pdp-heat-wrap {
+                display: flex;
+                align-items: center;
+                gap: 16px;
+
+                @media (max-width: 1440px) {
+                    gap: 14px;
+                }
+
+                @media (max-width: 1200px) {
+                    gap: 12px;
+                }
+
+                .nx-pdp-heat-label {
+                    font-weight: 700;
+                    font-size: 18px;
+                    color: #000;
+
+                    @media (max-width: 1200px) {
+                        font-size: 16px;
+                    }
+                }
+
+                .nx-pdp-heat-icons {
+                    display: flex;
+                    gap: 8px;
+                    align-items: center;
+
+                    svg {
+                        width: 24px;
+                        height: 24px;
+                        opacity: 0.2;
+
+                        &.active {
+                            opacity: 1;
+                        }
+
+                        @media (max-width: 1200px) {
+                            width: 20px;
+                            height: 20px;
+                        }
+                    }
+                }
+
+                .nx-pdp-heat-score {
+                    font-weight: 700;
+                    font-size: 18px;
+                    color: #000;
+
+                    @media (max-width: 1200px) {
+                        font-size: 16px;
+                    }
+                }
+            }
+
             .nx-pdp-bestfor-label {
                 font-weight: 700;
-                font-size: 18px;
+                font-size: 20px;
                 color: #000;
                 letter-spacing: .36px;
-                margin-bottom: 8px;
+                margin-bottom: 16px;
+
+                @media (max-width: 1200px) {
+                    font-size: 18px;
+                    margin-bottom: 12px;
+                }
             }
 
             .nx-pdp-badges {
@@ -251,8 +327,12 @@
                 gap: 18px;
                 flex-wrap: wrap;
 
+                @media (max-width: 1440px) {
+                    gap: 12px 16px;
+                }
+
                 .nx-pdp-badge {
-                    background: var(--nx-cream2, #f7ebcf);
+                    background: var(--nx-cream-soft, #f7ebcf);
                     border: 2px solid var(--nx-dark-red, #6a0111);
                     border-radius: 24px;
                     padding: 8px 16px;
@@ -260,6 +340,11 @@
                     font-size: 16px;
                     color: var(--nx-dark-red, #6a0111);
                     line-height: 20px;
+
+                    @media (max-width: 1200px) {
+                        padding: 6px 14px;
+                        font-size: 15px;
+                    }
                 }
             }
         }
@@ -283,6 +368,16 @@
                     gap: 16px;
                     align-items: center;
 
+                    @media (max-width: 1440px) {
+                        padding: 20px;
+                        gap: 14px;
+                    }
+
+                    @media (max-width: 1200px) {
+                        padding: 16px;
+                        gap: 12px;
+                    }
+
                     @media (max-width: 440px) {
                         flex-wrap: wrap;
                         padding: 16px;
@@ -305,6 +400,16 @@
                             width: 12px;
                             height: 12px;
                         }
+
+                        @media (max-width: 1200px) {
+                            width: 20px;
+                            height: 20px;
+
+                            &.on svg {
+                                width: 10px;
+                                height: 10px;
+                            }
+                        }
                     }
 
                     .nx-pdp-label {
@@ -313,6 +418,10 @@
                         font-weight: 500;
                         font-size: 18px;
                         color: #000;
+
+                        @media (max-width: 1200px) {
+                            font-size: 16px;
+                        }
                     }
 
                     .nx-pdp-price {
@@ -320,6 +429,10 @@
                         font-size: 18px;
                         color: #000;
                         white-space: nowrap;
+
+                        @media (max-width: 1200px) {
+                            font-size: 16px;
+                        }
 
                         @media (max-width: 440px) {
                             width: 100%;
@@ -341,7 +454,7 @@
                                 margin-left: 0;
                             }
 
-                            > span:not(.price) {
+                            >span:not(.price) {
                                 display: none !important;
                             }
                         }
@@ -371,7 +484,7 @@
                 }
 
                 .form-label--inlineSmall {
-                    font-size: 14px;
+                    font-size: 18px;
                     font-weight: 700;
                     color: #000;
                     margin-bottom: 8px;
@@ -417,19 +530,6 @@
                 @media (max-width: $screen-small) {
                     flex-direction: column;
                     align-items: stretch;
-                }
-
-                .nx-pdp-ship {
-                    font-weight: 500;
-                    font-size: 14px;
-                    color: #5f5f5f;
-                    flex: none;
-                    width: 220px;
-                    margin-bottom: 0;
-
-                    @media (max-width: $screen-small) {
-                        width: 100%;
-                    }
                 }
 
                 .nx-pdp-native-add-to-cart {
@@ -480,7 +580,7 @@
                         border-radius: 24px;
                         box-shadow: 0px 1px 2px rgba(0, 0, 0, .05);
                         border: none;
-                        font-family: var(--nx-font-body, 'Figtree', sans-serif);
+                        font-family: var(--nx-font-body);
                         font-weight: 700;
                         font-size: 15px;
                         letter-spacing: .5px;
@@ -547,6 +647,19 @@
                     }
                 }
             }
+
+            .nx-pdp-ship {
+                color: #5F5F5F;
+                font-family: var(--nx-font-body);
+                font-size: 13.85px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: normal;
+
+                @media (max-width: $screen-small) {
+                    width: 100%;
+                }
+            }
         }
 
         .nx-pdp-accordion {
@@ -586,15 +699,76 @@
                 .nx-pdp-acc-content {
                     display: none;
                     padding-top: 16px;
-                    padding-left: 40px;
-                    color: #333;
+                    padding-left: 10px;
+                    color: var(--nx-dark-red);
                     line-height: 1.6;
-                    font-size: 16px;
+                    font-size: 18px;
+                    font-weight: 500;
+                    line-height: normal;
 
                     @media (max-width: 570px) {
                         padding-left: 0;
                     }
                 }
+            }
+        }
+    }
+}
+
+// Custom Product Description Snippet Styles
+.nx-pdp-short-desc {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 580px;
+
+    .nx-pdp-psub {
+        font-family: var(--nx-font-body, "Figtree", sans-serif);
+        font-weight: 500;
+        font-size: 18px;
+        margin: 0;
+        line-height: 1.4;
+
+        @media (max-width: 1200px) {
+            font-size: 16px;
+        }
+
+        @media (max-width: 800px) {
+            font-size: 14px;
+        }
+    }
+
+    .nx-pdp-meta-list {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        .nx-pdp-meta-row {
+            display: flex;
+            gap: 16px;
+            font-family: var(--nx-font-body, "Figtree", sans-serif);
+            font-size: 18px;
+            color: var(--nx-dark-red, #6a0111);
+
+            @media (max-width: 1200px) {
+                font-size: 16px;
+            }
+
+            @media (max-width: 800px) {
+                font-size: 14px;
+            }
+
+            .nx-pdp-meta-label {
+                font-weight: 700;
+                min-width: 75px;
+
+                @media (min-width: $screen-large) {
+                    min-width: 100px;
+                }
+            }
+
+            .nx-pdp-meta-val {
+                font-weight: 500;
             }
         }
     }

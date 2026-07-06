@@ -2,7 +2,7 @@
     width: 100%;
     max-width: 1440px;
     margin: 0 auto;
-    background: var(--nx-cream2, #f7ebcf);
+    background: var(--nx-cream-soft, #f7ebcf);
     height: 718px;
     display: flex;
     align-items: flex-start;
@@ -16,6 +16,7 @@
         height: auto;
         min-height: 500px;
     }
+
     @media (max-width: 768px) {
         padding: 24px;
         min-height: 400px;
@@ -39,8 +40,13 @@
             line-height: 1;
             margin: 0;
 
-            @media (max-width: 768px) { font-size: 48px; }
-            @media (max-width: 570px) { font-size: 36px; }
+            @media (max-width: 768px) {
+                font-size: 48px;
+            }
+
+            @media (max-width: 570px) {
+                font-size: 36px;
+            }
         }
 
         .nx-pdp-local-sub {
@@ -48,8 +54,13 @@
             font-size: 26px;
             margin: 0;
 
-            @media (max-width: 768px) { font-size: 20px; }
-            @media (max-width: 570px) { font-size: 18px; }
+            @media (max-width: 768px) {
+                font-size: 20px;
+            }
+
+            @media (max-width: 570px) {
+                font-size: 18px;
+            }
         }
     }
 
@@ -62,14 +73,21 @@
             right: -22px;
             bottom: -90px;
             width: 430px;
-            @media (max-width: 768px) { width: 200px; }
+
+            @media (max-width: 768px) {
+                width: 200px;
+            }
         }
+
         &.nx-pdp-deco6 {
             left: 0;
             top: -120px;
             width: 430px;
             transform: rotate(180deg);
-            @media (max-width: 768px) { width: 200px; }
+
+            @media (max-width: 768px) {
+                width: 200px;
+            }
         }
     }
 
@@ -92,10 +110,25 @@
             object-fit: cover;
         }
 
-        &.nx-pdp-su1 { left: 740px; top: 351px; }
-        &.nx-pdp-su2 { left: 515px; top: 377px; }
-        &.nx-pdp-su3 { left: 772px; top: 563px; }
-        &.nx-pdp-su4 { left: 499px; top: 593px; }
+        &.nx-pdp-su1 {
+            left: 740px;
+            top: 351px;
+        }
+
+        &.nx-pdp-su2 {
+            left: 515px;
+            top: 377px;
+        }
+
+        &.nx-pdp-su3 {
+            left: 772px;
+            top: 563px;
+        }
+
+        &.nx-pdp-su4 {
+            left: 499px;
+            top: 593px;
+        }
     }
 
     .nx-pdp-bigbottle {

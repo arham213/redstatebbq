@@ -21,7 +21,7 @@
 // Font families
 // -----------------------------------------------------------------------------
 
-$fontFamily-sans:               stencilFontFamily("body-font"), Arial, Helvetica, sans-serif;
+$fontFamily-sans:               var(--nx-font-body);
 $fontFamily-serif:              null;
 $fontFamily-mono:               null;
 $fontFamily-headings:           stencilFontFamily("headings-font"), Arial, Helvetica, sans-serif;

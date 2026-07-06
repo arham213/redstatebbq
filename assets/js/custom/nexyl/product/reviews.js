@@ -1,4 +1,4 @@
-export default function init1776Reviews() {
+export default function initReviews() {
     /* ─── Relative date helper ─── */
     function timeAgo(dateString) {
         if (!dateString) return '';

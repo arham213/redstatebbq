@@ -1,13 +1,16 @@
 <section class="nx-pdp-product-intro productView">
     <div class="nx-pdp-product-intro__gallery">
         <div class="nx-pdp-hero-img" id="nx-pdp-hero-img-container">
-            <img src="{{getImage product.main_image 'product_size' (cdn theme_settings.default_image_product)}}" alt="{{product.main_image.alt}}">
+            <img src="{{getImage product.main_image 'product_size' (cdn theme_settings.default_image_product)}}"
+                alt="{{product.main_image.alt}}">
         </div>
         {{#if product.images.length '>' 1}}
         <div class="nx-pdp-thumbs">
             {{#each product.images}}
-            <div class="nx-pdp-thumb {{#if @first}}is-selected{{/if}}" data-image-url="{{getImage this 'product_size' (cdn theme_settings.default_image_product)}}">
-                <img src="{{getImage this 'productview_thumb_size' (cdn theme_settings.default_image_product)}}" alt="{{this.alt}}">
+            <div class="nx-pdp-thumb {{#if @first}}is-selected{{/if}}"
+                data-image-url="{{getImage this 'product_size' (cdn theme_settings.default_image_product)}}">
+                <img src="{{getImage this 'productview_thumb_size' (cdn theme_settings.default_image_product)}}"
+                    alt="{{this.alt}}">
             </div>
             {{/each}}
         </div>
@@ -20,12 +23,12 @@
                 <div>
                     <h1 class="nx-pdp-ptitle">{{product.title}}</h1>
                     {{#each product.custom_fields}}
-                        {{#if name '===' 'headline_below_title'}}
-                            <p class="nx-pdp-psub">{{{value}}}</p>
-                        {{/if}}
+                    {{#if name '===' 'headline_below_title'}}
+                    <p class="nx-pdp-psub">{{{value}}}</p>
+                    {{/if}}
                     {{/each}}
                 </div>
-                
+
                 {{#if settings.show_product_rating}}
                 <div class="nx-pdp-rating-block">
                     <div class="nx-pdp-stars">
@@ -51,25 +54,72 @@
                 {{/if}}
             </div>
 
+            {{#each product.custom_fields}}
+            {{#if name '===' 'heat_level'}}
+            <div class="nx-pdp-heat-wrap">
+                <span class="nx-pdp-heat-label">Heat</span>
+                <div class="nx-pdp-heat-icons">
+                    <svg class="{{#if value '>=' '1'}}active{{/if}}" xmlns="http://www.w3.org/2000/svg" width="24"
+                        height="24" viewBox="0 0 24 24" fill="none">
+                        <path
+                            d="M3.98633 13.9494C3.98633 12.2054 4.40156 10.6525 5.23202 9.29052C6.06249 7.92856 6.976 6.78252 7.97255 5.8524C8.96911 4.92228 9.88262 4.21207 10.7131 3.72177L11.9588 2.9873V6.27594C11.9588 6.89048 12.1664 7.37614 12.5816 7.7329C12.9969 8.08967 13.4619 8.26839 13.9768 8.26905C14.2592 8.26905 14.5292 8.21092 14.787 8.09465C15.0448 7.97839 15.2813 7.78738 15.4965 7.52163L15.945 6.97353C17.1409 7.67112 18.1042 8.63844 18.835 9.8755C19.5658 11.1126 19.9312 12.4705 19.9312 13.9494C19.9312 15.411 19.5741 16.7441 18.8599 17.9486C18.1457 19.1531 17.2073 20.1035 16.0447 20.7997C16.327 20.4011 16.5472 19.9653 16.7054 19.4923C16.8635 19.0192 16.9422 18.517 16.9416 17.9855C16.9416 17.3211 16.817 16.6939 16.5678 16.104C16.3187 15.514 15.9616 14.9868 15.4965 14.5224L11.9588 11.0594L8.44592 14.5224C7.96425 15.0041 7.59884 15.5356 7.3497 16.1169C7.10056 16.6982 6.976 17.3211 6.976 17.9855C6.976 18.517 7.05506 19.0196 7.21318 19.4933C7.3713 19.967 7.5912 20.4028 7.8729 20.8007C6.71025 20.1031 5.77182 19.1521 5.05763 17.9476C4.34343 16.7431 3.98633 15.4104 3.98633 13.9494ZM11.9588 13.8498L14.0765 15.9176C14.3588 16.2 14.5747 16.5155 14.7242 16.8643C14.8737 17.2131 14.9484 17.5868 14.9484 17.9855C14.9484 18.7993 14.6578 19.4929 14.0765 20.0663C13.4951 20.6396 12.7892 20.926 11.9588 20.9253C11.1283 20.9246 10.4224 20.6383 9.84109 20.0663C9.25977 19.4943 8.96911 18.8007 8.96911 17.9855C8.96911 17.6035 9.04385 17.2341 9.19333 16.8773C9.34282 16.5205 9.55874 16.2006 9.84109 15.9176L11.9588 13.8498Z"
+                            fill="#6A0111" />
+                    </svg>
+                    <svg class="{{#if value '>=' '2'}}active{{/if}}" xmlns="http://www.w3.org/2000/svg" width="24"
+                        height="24" viewBox="0 0 24 24" fill="none">
+                        <path
+                            d="M3.98633 13.9494C3.98633 12.2054 4.40156 10.6525 5.23202 9.29052C6.06249 7.92856 6.976 6.78252 7.97255 5.8524C8.96911 4.92228 9.88262 4.21207 10.7131 3.72177L11.9588 2.9873V6.27594C11.9588 6.89048 12.1664 7.37614 12.5816 7.7329C12.9969 8.08967 13.4619 8.26839 13.9768 8.26905C14.2592 8.26905 14.5292 8.21092 14.787 8.09465C15.0448 7.97839 15.2813 7.78738 15.4965 7.52163L15.945 6.97353C17.1409 7.67112 18.1042 8.63844 18.835 9.8755C19.5658 11.1126 19.9312 12.4705 19.9312 13.9494C19.9312 15.411 19.5741 16.7441 18.8599 17.9486C18.1457 19.1531 17.2073 20.1035 16.0447 20.7997C16.327 20.4011 16.5472 19.9653 16.7054 19.4923C16.8635 19.0192 16.9422 18.517 16.9416 17.9855C16.9416 17.3211 16.817 16.6939 16.5678 16.104C16.3187 15.514 15.9616 14.9868 15.4965 14.5224L11.9588 11.0594L8.44592 14.5224C7.96425 15.0041 7.59884 15.5356 7.3497 16.1169C7.10056 16.6982 6.976 17.3211 6.976 17.9855C6.976 18.517 7.05506 19.0196 7.21318 19.4933C7.3713 19.967 7.5912 20.4028 7.8729 20.8007C6.71025 20.1031 5.77182 19.1521 5.05763 17.9476C4.34343 16.7431 3.98633 15.4104 3.98633 13.9494ZM11.9588 13.8498L14.0765 15.9176C14.3588 16.2 14.5747 16.5155 14.7242 16.8643C14.8737 17.2131 14.9484 17.5868 14.9484 17.9855C14.9484 18.7993 14.6578 19.4929 14.0765 20.0663C13.4951 20.6396 12.7892 20.926 11.9588 20.9253C11.1283 20.9246 10.4224 20.6383 9.84109 20.0663C9.25977 19.4943 8.96911 18.8007 8.96911 17.9855C8.96911 17.6035 9.04385 17.2341 9.19333 16.8773C9.34282 16.5205 9.55874 16.2006 9.84109 15.9176L11.9588 13.8498Z"
+                            fill="#6A0111" />
+                    </svg>
+                    <svg class="{{#if value '>=' '3'}}active{{/if}}" xmlns="http://www.w3.org/2000/svg" width="24"
+                        height="24" viewBox="0 0 24 24" fill="none">
+                        <path
+                            d="M3.98633 13.9494C3.98633 12.2054 4.40156 10.6525 5.23202 9.29052C6.06249 7.92856 6.976 6.78252 7.97255 5.8524C8.96911 4.92228 9.88262 4.21207 10.7131 3.72177L11.9588 2.9873V6.27594C11.9588 6.89048 12.1664 7.37614 12.5816 7.7329C12.9969 8.08967 13.4619 8.26839 13.9768 8.26905C14.2592 8.26905 14.5292 8.21092 14.787 8.09465C15.0448 7.97839 15.2813 7.78738 15.4965 7.52163L15.945 6.97353C17.1409 7.67112 18.1042 8.63844 18.835 9.8755C19.5658 11.1126 19.9312 12.4705 19.9312 13.9494C19.9312 15.411 19.5741 16.7441 18.8599 17.9486C18.1457 19.1531 17.2073 20.1035 16.0447 20.7997C16.327 20.4011 16.5472 19.9653 16.7054 19.4923C16.8635 19.0192 16.9422 18.517 16.9416 17.9855C16.9416 17.3211 16.817 16.6939 16.5678 16.104C16.3187 15.514 15.9616 14.9868 15.4965 14.5224L11.9588 11.0594L8.44592 14.5224C7.96425 15.0041 7.59884 15.5356 7.3497 16.1169C7.10056 16.6982 6.976 17.3211 6.976 17.9855C6.976 18.517 7.05506 19.0196 7.21318 19.4933C7.3713 19.967 7.5912 20.4028 7.8729 20.8007C6.71025 20.1031 5.77182 19.1521 5.05763 17.9476C4.34343 16.7431 3.98633 15.4104 3.98633 13.9494ZM11.9588 13.8498L14.0765 15.9176C14.3588 16.2 14.5747 16.5155 14.7242 16.8643C14.8737 17.2131 14.9484 17.5868 14.9484 17.9855C14.9484 18.7993 14.6578 19.4929 14.0765 20.0663C13.4951 20.6396 12.7892 20.926 11.9588 20.9253C11.1283 20.9246 10.4224 20.6383 9.84109 20.0663C9.25977 19.4943 8.96911 18.8007 8.96911 17.9855C8.96911 17.6035 9.04385 17.2341 9.19333 16.8773C9.34282 16.5205 9.55874 16.2006 9.84109 15.9176L11.9588 13.8498Z"
+                            fill="#6A0111" />
+                    </svg>
+                    <svg class="{{#if value '>=' '4'}}active{{/if}}" xmlns="http://www.w3.org/2000/svg" width="24"
+                        height="24" viewBox="0 0 24 24" fill="none">
+                        <path
+                            d="M3.98633 13.9494C3.98633 12.2054 4.40156 10.6525 5.23202 9.29052C6.06249 7.92856 6.976 6.78252 7.97255 5.8524C8.96911 4.92228 9.88262 4.21207 10.7131 3.72177L11.9588 2.9873V6.27594C11.9588 6.89048 12.1664 7.37614 12.5816 7.7329C12.9969 8.08967 13.4619 8.26839 13.9768 8.26905C14.2592 8.26905 14.5292 8.21092 14.787 8.09465C15.0448 7.97839 15.2813 7.78738 15.4965 7.52163L15.945 6.97353C17.1409 7.67112 18.1042 8.63844 18.835 9.8755C19.5658 11.1126 19.9312 12.4705 19.9312 13.9494C19.9312 15.411 19.5741 16.7441 18.8599 17.9486C18.1457 19.1531 17.2073 20.1035 16.0447 20.7997C16.327 20.4011 16.5472 19.9653 16.7054 19.4923C16.8635 19.0192 16.9422 18.517 16.9416 17.9855C16.9416 17.3211 16.817 16.6939 16.5678 16.104C16.3187 15.514 15.9616 14.9868 15.4965 14.5224L11.9588 11.0594L8.44592 14.5224C7.96425 15.0041 7.59884 15.5356 7.3497 16.1169C7.10056 16.6982 6.976 17.3211 6.976 17.9855C6.976 18.517 7.05506 19.0196 7.21318 19.4933C7.3713 19.967 7.5912 20.4028 7.8729 20.8007C6.71025 20.1031 5.77182 19.1521 5.05763 17.9476C4.34343 16.7431 3.98633 15.4104 3.98633 13.9494ZM11.9588 13.8498L14.0765 15.9176C14.3588 16.2 14.5747 16.5155 14.7242 16.8643C14.8737 17.2131 14.9484 17.5868 14.9484 17.9855C14.9484 18.7993 14.6578 19.4929 14.0765 20.0663C13.4951 20.6396 12.7892 20.926 11.9588 20.9253C11.1283 20.9246 10.4224 20.6383 9.84109 20.0663C9.25977 19.4943 8.96911 18.8007 8.96911 17.9855C8.96911 17.6035 9.04385 17.2341 9.19333 16.8773C9.34282 16.5205 9.55874 16.2006 9.84109 15.9176L11.9588 13.8498Z"
+                            fill="#6A0111" />
+                    </svg>
+                    <svg class="{{#if value '>=' '5'}}active{{/if}}" xmlns="http://www.w3.org/2000/svg" width="24"
+                        height="24" viewBox="0 0 24 24" fill="none">
+                        <path
+                            d="M3.98633 13.9494C3.98633 12.2054 4.40156 10.6525 5.23202 9.29052C6.06249 7.92856 6.976 6.78252 7.97255 5.8524C8.96911 4.92228 9.88262 4.21207 10.7131 3.72177L11.9588 2.9873V6.27594C11.9588 6.89048 12.1664 7.37614 12.5816 7.7329C12.9969 8.08967 13.4619 8.26839 13.9768 8.26905C14.2592 8.26905 14.5292 8.21092 14.787 8.09465C15.0448 7.97839 15.2813 7.78738 15.4965 7.52163L15.945 6.97353C17.1409 7.67112 18.1042 8.63844 18.835 9.8755C19.5658 11.1126 19.9312 12.4705 19.9312 13.9494C19.9312 15.411 19.5741 16.7441 18.8599 17.9486C18.1457 19.1531 17.2073 20.1035 16.0447 20.7997C16.327 20.4011 16.5472 19.9653 16.7054 19.4923C16.8635 19.0192 16.9422 18.517 16.9416 17.9855C16.9416 17.3211 16.817 16.6939 16.5678 16.104C16.3187 15.514 15.9616 14.9868 15.4965 14.5224L11.9588 11.0594L8.44592 14.5224C7.96425 15.0041 7.59884 15.5356 7.3497 16.1169C7.10056 16.6982 6.976 17.3211 6.976 17.9855C6.976 18.517 7.05506 19.0196 7.21318 19.4933C7.3713 19.967 7.5912 20.4028 7.8729 20.8007C6.71025 20.1031 5.77182 19.1521 5.05763 17.9476C4.34343 16.7431 3.98633 15.4104 3.98633 13.9494ZM11.9588 13.8498L14.0765 15.9176C14.3588 16.2 14.5747 16.5155 14.7242 16.8643C14.8737 17.2131 14.9484 17.5868 14.9484 17.9855C14.9484 18.7993 14.6578 19.4929 14.0765 20.0663C13.4951 20.6396 12.7892 20.926 11.9588 20.9253C11.1283 20.9246 10.4224 20.6383 9.84109 20.0663C9.25977 19.4943 8.96911 18.8007 8.96911 17.9855C8.96911 17.6035 9.04385 17.2341 9.19333 16.8773C9.34282 16.5205 9.55874 16.2006 9.84109 15.9176L11.9588 13.8498Z"
+                            fill="#6A0111" />
+                    </svg>
+                </div>
+                <span class="nx-pdp-heat-score">{{value}}/5</span>
+            </div>
+            {{/if}}
+            {{/each}}
+
+            {{#each product.custom_fields}}
+            {{#if name '===' 'best_for'}}
             <div>
                 <p class="nx-pdp-bestfor-label">Best For</p>
                 <div class="nx-pdp-badges">
-                    <span class="nx-pdp-badge">Steak</span>
-                    <span class="nx-pdp-badge">Burgers</span>
-                    <span class="nx-pdp-badge">Ribs</span>
-                    <span class="nx-pdp-badge">Brisket</span>
+                    {{#each (split value ',')}}
+                    <span class="nx-pdp-badge">{{this}}</span>
+                    {{/each}}
                 </div>
             </div>
+            {{/if}}
+            {{/each}}
         </div>
 
-        <form class="nx-pdp-purchase-form" method="post" action="{{product.cart_url}}" enctype="multipart/form-data" data-cart-item-add>
+        <form class="nx-pdp-purchase-form" method="post" action="{{product.cart_url}}" enctype="multipart/form-data"
+            data-cart-item-add>
             <input type="hidden" name="action" value="add">
-            <input type="hidden" name="product_id" value="{{product.id}}"/>
-            
+            <input type="hidden" name="product_id" value="{{product.id}}" />
+
             <div class="nx-pdp-purchase-options">
                 <div class="nx-pdp-pcard">
                     <span class="nx-pdp-radio on">
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="var(--nx-red)"><circle cx="12" cy="12" r="12"/></svg>
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="var(--nx-red)">
+                            <circle cx="12" cy="12" r="12" />
+                        </svg>
                     </span>
                     <span class="nx-pdp-label">One time purchase</span>
                     <div class="nx-pdp-price">
@@ -80,23 +130,29 @@
 
             <div data-product-option-change style="display:none;">
                 {{#each product.options}}
-                    {{{dynamicComponent 'components/products/options'}}}
+                {{{dynamicComponent 'components/products/options'}}}
                 {{/each}}
             </div>
 
             <div class="nx-pdp-buyrow">
-                <p class="nx-pdp-ship">Ships in 1–2 business days<br>30-day money-back guarantee</p>
                 <div class="nx-pdp-native-add-to-cart">
                     {{> components/products/add-to-cart with_wallet_buttons=true}}
                 </div>
             </div>
+            <p class="nx-pdp-ship">Ships fast — arrives in about 5–7 days. Broken or leaked in transit? We'll replace it
+                or refund you.</p>
         </form>
 
-        <div class="nx-pdp-accordion">
+        {{{region name="product-view-extra-info"}}}
+
+        <div class="nx-pdp-accordion" style="display: none;">
             <div class="nx-pdp-acc-item">
                 <div class="nx-pdp-acc-trigger">
                     <span class="nx-pdp-acc-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0d0d0e" stroke-width="2"><path class="nx-pdp-plus-path" d="M12 5v14M5 12h14"/><path class="nx-pdp-minus-path" d="M5 12h14" style="display:none;"/></svg>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0d0d0e" stroke-width="2">
+                            <path class="nx-pdp-plus-path" d="M12 5v14M5 12h14" />
+                            <path class="nx-pdp-minus-path" d="M5 12h14" style="display:none;" />
+                        </svg>
                     </span>
                     <span class="nx-pdp-acc-title">Description</span>
                 </div>
@@ -104,34 +160,40 @@
                     {{{product.description}}}
                 </div>
             </div>
-            
+
             {{#each product.custom_fields}}
-                {{#if name '===' 'nutritional_value'}}
-                <div class="nx-pdp-acc-item">
-                    <div class="nx-pdp-acc-trigger">
-                        <span class="nx-pdp-acc-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0d0d0e" stroke-width="2"><path class="nx-pdp-plus-path" d="M12 5v14M5 12h14"/><path class="nx-pdp-minus-path" d="M5 12h14" style="display:none;"/></svg>
-                        </span>
-                        <span class="nx-pdp-acc-title">Nutritional Value</span>
-                    </div>
-                    <div class="nx-pdp-acc-content">
-                        {{{value}}}
-                    </div>
+            {{#if name '===' 'nutritional_value'}}
+            <div class="nx-pdp-acc-item">
+                <div class="nx-pdp-acc-trigger">
+                    <span class="nx-pdp-acc-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0d0d0e" stroke-width="2">
+                            <path class="nx-pdp-plus-path" d="M12 5v14M5 12h14" />
+                            <path class="nx-pdp-minus-path" d="M5 12h14" style="display:none;" />
+                        </svg>
+                    </span>
+                    <span class="nx-pdp-acc-title">Nutritional Value</span>
                 </div>
-                {{/if}}
-                {{#if name '===' 'ingredients'}}
-                <div class="nx-pdp-acc-item">
-                    <div class="nx-pdp-acc-trigger">
-                        <span class="nx-pdp-acc-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0d0d0e" stroke-width="2"><path class="nx-pdp-plus-path" d="M12 5v14M5 12h14"/><path class="nx-pdp-minus-path" d="M5 12h14" style="display:none;"/></svg>
-                        </span>
-                        <span class="nx-pdp-acc-title">Ingredients</span>
-                    </div>
-                    <div class="nx-pdp-acc-content">
-                        {{{value}}}
-                    </div>
+                <div class="nx-pdp-acc-content">
+                    {{{value}}}
                 </div>
-                {{/if}}
+            </div>
+            {{/if}}
+            {{#if name '===' 'ingredients'}}
+            <div class="nx-pdp-acc-item">
+                <div class="nx-pdp-acc-trigger">
+                    <span class="nx-pdp-acc-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0d0d0e" stroke-width="2">
+                            <path class="nx-pdp-plus-path" d="M12 5v14M5 12h14" />
+                            <path class="nx-pdp-minus-path" d="M5 12h14" style="display:none;" />
+                        </svg>
+                    </span>
+                    <span class="nx-pdp-acc-title">Ingredients</span>
+                </div>
+                <div class="nx-pdp-acc-content">
+                    {{{value}}}
+                </div>
+            </div>
+            {{/if}}
             {{/each}}
         </div>
     </div>

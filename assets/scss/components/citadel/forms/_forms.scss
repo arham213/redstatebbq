@@ -146,7 +146,7 @@
 }
 
 .form-label--alternate {
-    font-family: fontFamily("headingSans");
+    font-family: var(--nx-font-body);
     font-size: fontSize("smallest");
     margin-bottom: spacing("half");
 }

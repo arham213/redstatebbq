@@ -467,7 +467,7 @@
     --shadow-xs: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
 
     background: var(--nx-cream-soft);
-    font-family: 'Figtree', system-ui, sans-serif;
+    font-family: var(--nx-font-body);
     color: var(--black);
     position: relative;
     display: flex;

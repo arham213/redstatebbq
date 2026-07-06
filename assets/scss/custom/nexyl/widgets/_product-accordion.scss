@@ -1,0 +1,136 @@
+/* Self-contained Responsive CSS for the Widget Accordion */
+.nx-widget-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 24px;
+
+    @media (max-width: 800px) {
+        gap: 10px;
+        margin-top: 20px;
+    }
+
+    .nx-pdp-acc-item {
+        background: var(--nx-cream, #fbf5e7);
+        border-radius: 16px;
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+
+        @media (max-width: 800px) {
+            padding: 12px 14px;
+        }
+    }
+
+    .nx-pdp-acc-trigger {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+        cursor: pointer;
+
+        @media (max-width: 800px) {
+            gap: 12px;
+        }
+    }
+
+    .nx-pdp-acc-icon {
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--nx-dark-red, #6a0111);
+        flex-shrink: 0;
+
+        @media (max-width: 800px) {
+            width: 20px;
+            height: 20px;
+
+            svg {
+                width: 20px;
+                height: 20px;
+            }
+        }
+    }
+
+    .nx-pdp-acc-title {
+        font-weight: 500;
+        font-size: 18px;
+        color: #000;
+        font-family: var(--nx-font-body, "Figtree", sans-serif);
+
+        @media (max-width: 800px) {
+            font-size: 16px;
+        }
+    }
+
+    .nx-pdp-acc-content {
+        display: none;
+        padding-top: 16px;
+        padding-left: 40px;
+        color: var(--nx-dark-red, #6a0111);
+        line-height: 1.5;
+        font-size: 18px;
+        font-weight: 500;
+        font-family: var(--nx-font-body, "Figtree", sans-serif);
+
+        // Custom Product Description Snippet Styles
+        .nx-pdp-short-desc {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 580px;
+
+            .nx-pdp-meta-list {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+
+                .nx-pdp-meta-row {
+                    display: flex;
+                    gap: 16px;
+
+                    .nx-pdp-meta-label {
+                        font-weight: 700;
+                        min-width: 75px;
+
+                        @media (min-width: $screen-large) {
+                            min-width: 100px;
+                        }
+                    }
+                }
+            }
+        }
+
+        @media (max-width: $screen-large) {
+            padding-left: 32px;
+            font-size: 16px;
+            padding-top: 12px;
+        }
+
+        @media (max-width: $screen-small) {
+            padding-left: 0;
+            font-size: 15px;
+        }
+
+        /* Force Raw HTML to inherit the exact same styling as Description */
+        p,
+        span,
+        div {
+            font-family: inherit;
+            font-size: inherit;
+            font-weight: inherit;
+            color: inherit;
+            line-height: inherit;
+        }
+
+        p {
+            margin-top: 0;
+            margin-bottom: 12px;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+}

@@ -1,14 +1,14 @@
 <div class="nx-pdp-stars-container" style="position: relative; display: inline-flex; vertical-align: middle;">
     <div class="nx-pdp-stars-empty" style="display: flex; gap: 2px;">
         {{#for 1 5}}
-        <img src="{{cdn 'assets/img/custom/nexyl/star.svg'}}" alt="" class="nx-pdp-star-icon"
+        <img src="{{cdn 'assets/img/custom/nexyl/yellow-star.svg'}}" alt="" class="nx-pdp-star-icon"
             style="filter: grayscale(1); opacity: 0.2;" />
         {{/for}}
     </div>
     <div class="nx-pdp-stars-filled"
         style="position: absolute; top: 0; left: 0; display: flex; gap: 2px; overflow: hidden; width: {{multiply (divide rating 5) 100}}%; white-space: nowrap;">
         {{#for 1 5}}
-        <img src="{{cdn 'assets/img/custom/nexyl/star.svg'}}" alt="" class="nx-pdp-star-icon"
+        <img src="{{cdn 'assets/img/custom/nexyl/yellow-star.svg'}}" alt="" class="nx-pdp-star-icon"
             style="min-width: 14px;" />
         {{/for}}
     </div>
