@@ -5,6 +5,10 @@
 .nx-gallery {
   width: 100%;
   background: var(--nx-cream);
+
+  &.nx-gallery--product {
+    background: var(--nx-cream-soft);
+  }
   padding: 72px 0;
   display: flex;
   justify-content: center;

@@ -16,7 +16,7 @@
     }
 
     @media (min-width: $screen-large) {
-        padding: 40px 80px 90px;
+        padding: 80px;
         gap: 30px;
     }
 
@@ -134,6 +134,24 @@
                     margin-bottom: 22px;
                 }
             }
+
+            .nx-pdp-banners__pad {
+                padding: 28px 24px 24px;
+                position: relative;
+                z-index: 2;
+
+                @media (min-width: 768px) {
+                    padding: 40px 44px 36px;
+                }
+
+                @media (min-width: $screen-large) {
+                    padding: 52px 60px 170px;
+                }
+
+                @media (min-width: 1201px) {
+                    padding: 52px 60px 100px;
+                }
+            }
         }
     }
 
@@ -212,15 +230,23 @@
 
     // Decorative SVG swoosh on Card B
     &__swoosh {
+        display: none;
         position: absolute;
         inset: 0;
         pointer-events: none;
         z-index: 0;
+        bottom: 0;
+        right: 0;
+        top: auto;
+
+        @media (min-width: $screen-large) {
+            display: block;
+        }
 
         path {
             fill: none;
             stroke: #f3e7cf;
-            stroke-width: 3;
+            // stroke-width: 3;
             opacity: 0.85;
         }
     }
@@ -250,7 +276,7 @@
         flex: 1 1 0;
         min-width: 0;
         height: auto;
-        aspect-ratio: 220 / 230;
+        aspect-ratio: 292 / 251;
         object-fit: cover;
         border-radius: 10px;
         display: block;

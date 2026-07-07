@@ -1,6 +1,7 @@
 import initReviews from './reviews';
 import initReviewsBreakdown from './reviews-breakdown';
 import initProductIntro from './product-intro';
+import initRelated from './related';
 
 export default function initProductCustom() {
     // Only run if the reviews section exists on the page
@@ -11,5 +12,9 @@ export default function initProductCustom() {
 
     if (document.querySelector('.nx-pdp-product-intro')) {
         initProductIntro();
+    }
+
+    if (document.querySelector('.nx-related-slider-shell')) {
+        initRelated();
     }
 }

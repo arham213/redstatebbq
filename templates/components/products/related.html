@@ -1,8 +1,25 @@
-<h4>{{lang 'products.related_products' }}</h4>
-<ul class="product-list" data-list-name="Related Products">
-    {{#each this}}
-    <li class="product-card">
-            {{>components/products/card settings=../settings theme_settings=../theme_settings event="list" position=(add @index 1)}}
-    </li>
-    {{/each}}
-</ul>
+{{#if products}}
+<section class="nx-sauces container">
+    {{#if products.length '>=' 3}}
+    <img class="nx-splatter-1" src="{{cdn 'assets/img/custom/nexyl/splatter-1.svg'}}" alt="">
+    <img class="nx-splatter-2" src="{{cdn 'assets/img/custom/nexyl/splatter-2.svg'}}" alt="">
+    {{/if}}
+
+    <h2 class="nx-section-title">{{lang 'products.related_products' }}</h2>
+
+    <div class="nx-related-slider-shell" id="nx-related-slider-shell">
+        <div class="nx-sauces-row {{#if products.length '>=' 3}}nx-many-sauces{{/if}}" id="nx-related-grid" data-list-name="Related Products">
+            {{#each products}}
+            {{> components/custom/nexyl/homepage/regional-sauce-card settings=../settings theme_settings=../theme_settings
+            customer=../customer event="list" position=(add @index 1)}}
+            {{/each}}
+        </div>
+    </div>
+
+    <div class="nx-sauces-foot">
+        <a href="/shop-all/" class="nx-btn nx-btn-outline"
+            style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center;">EXPLORE
+            ALL</a>
+    </div>
+</section>
+{{/if}}

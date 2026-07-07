@@ -103,7 +103,11 @@
 
 .nx-sauces-row {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
+
+  &.nx-many-sauces {
+    justify-content: space-between;
+  }
   align-items: flex-end;
   width: 100%;
   max-width: 1171px;
@@ -181,6 +185,12 @@
 
 }
 
+.nx-suace-region-info {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
 .nx-sauce-region {
   color: var(--nx-dark-red);
   font-size: 16px;
@@ -198,6 +208,7 @@
   letter-spacing: .03em;
   font-weight: 400;
   margin: 0;
+  text-align: center;
 }
 
 .nx-sauce-desc {

@@ -5,14 +5,14 @@
 
   <h2 class="nx-section-title">our regional sauces</h2>
 
-  <div class="nx-sauces-row">
+  <div class="nx-sauces-row {{#if products.featured.length '>=' 3}}nx-many-sauces{{/if}}" data-list-name="Featured Products">
     {{#each products.featured}}
-    {{> components/custom/nexyl/homepage/regional-sauce-card theme_settings=../theme_settings}}
+      {{> components/custom/nexyl/homepage/regional-sauce-card settings=../settings theme_settings=../theme_settings customer=../customer event="list" position=(add @index 1)}}
     {{/each}}
   </div>
 
   <div class="nx-sauces-foot">
     <p>Made by our sauce-master with the finest ingredients to give you a lasting taste from all regions</p>
-    <button class="nx-btn nx-btn-outline">EXPLORE ALL</button>
+    <a href="/shop-all/" class="nx-btn nx-btn-outline" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center;">EXPLORE ALL</a>
   </div>
 </section>

@@ -1,713 +1,713 @@
-.nx-pdp-product-intro {
-    width: 100%;
-    max-width: 1440px;
-    margin: 0 auto;
+.nx-pdp-product-intro-wrapper {
     background: var(--nx-cream-soft, #f7ebcf);
     border-top: 3px solid var(--nx-red, #d70321);
-    display: flex;
-    gap: 80px;
-    align-items: flex-start;
-    padding: 51px 80px 48px;
 
-    @media (max-width: 1440px) {
-        padding: 48px 60px 40px;
-    }
-
-    @media (max-width: $screen-large) {
-        flex-direction: column;
-        padding: 40px;
-        gap: 40px;
-    }
-
-    @media (max-width: 768px) {
-        padding: 24px;
-        gap: 32px;
-    }
-
-    @media (max-width: 570px) {
-        padding: 16px;
-    }
-
-    &__gallery {
+    .nx-pdp-product-intro {
         display: flex;
-        flex-direction: column;
-        gap: 8px;
-        width: 100%;
+        gap: 80px;
+        align-items: flex-start;
+        padding: 51px 80px 48px;
 
-        @media (min-width: $screen-large) {
-            flex: 1 1 50%;
-            max-width: 600px;
-            min-width: 0;
+        @media (max-width: 1440px) {
+            padding: 48px 60px 40px;
         }
 
-        .nx-pdp-hero-img {
-            background: var(--nx-cream-soft, #f7ebcf);
-            height: 520px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            width: 100%;
-
-            img {
-                height: 413.5px;
-                width: auto;
-                max-width: 100%;
-                object-fit: contain;
-            }
-
-            @media (max-width: 768px) {
-                height: 400px;
-
-                img {
-                    height: 320px;
-                }
-            }
+        @media (max-width: $screen-large) {
+            flex-direction: column;
+            padding: 40px;
+            gap: 40px;
         }
 
-        .nx-pdp-thumbs {
+        @media (max-width: 768px) {
+            padding: 24px;
+            gap: 32px;
+        }
+
+        @media (max-width: 570px) {
+            padding: 16px;
+        }
+
+        &__gallery {
             display: flex;
-            align-items: flex-start;
-            justify-content: center;
-            width: 100%;
+            flex-direction: column;
             gap: 8px;
+            width: 100%;
 
-            .nx-pdp-thumb {
-                background: var(--nx-cream-soft, #f7ebcf);
-                flex: 1;
+            @media (min-width: $screen-large) {
+                flex: 1 1 50%;
+                max-width: 600px;
                 min-width: 0;
-                max-width: 192.2px;
-                max-height: 166.58px;
-                height: auto;
-                aspect-ratio: 192.2 / 166.58;
+            }
+
+            .nx-pdp-hero-img {
+                background: var(--nx-cream-soft, #f7ebcf);
+                height: 520px;
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 overflow: hidden;
-                cursor: pointer;
-                border: 2px solid transparent;
-                border-radius: 16px;
-
-                &.is-selected {
-                    border-color: var(--nx-red, #d70321);
-                }
+                width: 100%;
 
                 img {
-                    height: 80%;
+                    height: 413.5px;
                     width: auto;
                     max-width: 100%;
                     object-fit: contain;
                 }
 
                 @media (max-width: 768px) {
+                    height: 400px;
+
                     img {
-                        height: 70%;
+                        height: 320px;
                     }
                 }
             }
-        }
-    }
 
-    &__info {
-        flex: 1 1 50%;
-        min-width: 0;
-        display: flex;
-        flex-direction: column;
-        gap: 40px;
-        align-self: stretch;
-
-        .nx-pdp-info-top {
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
-
-            .nx-pdp-title-wrap {
-                position: relative;
+            .nx-pdp-thumbs {
                 display: flex;
-                justify-content: space-between;
-                gap: 18px;
+                align-items: flex-start;
+                justify-content: center;
+                width: 100%;
+                gap: 8px;
 
-                @media (max-width: $screen-medium) {
-                    flex-direction: column;
-                    justify-content: flex-start;
-                    gap: 12px;
-                }
-
-                @media (min-width: $screen-large) {
-                    >div:first-child {
-                        flex: 1;
-                        min-width: 0;
-                        max-width: 85%;
-                    }
-                }
-
-                .nx-pdp-ptitle {
-                    font-family: var(--nx-font-display, "Rye", serif);
-                    text-transform: uppercase;
-                    font-size: 68px;
-                    line-height: 1;
-                    color: var(--nx-dark-red, #6a0111);
-                    margin: 0;
-                    // overflow-wrap: break-word;
-                    // word-wrap: break-word;
-
-                    // @media (min-width: $screen-large) and (max-width: 1200px) {
-                    //     font-size: 48px;
-                    // }
-
-                    @media (max-width: 1440px) {
-                        font-size: 48px;
-                    }
-
-                    @media (max-width: 1200px) {
-                        font-size: 40px;
-                    }
-
-                    @media (max-width: $screen-small) {
-                        font-size: 36px;
-                    }
-                }
-
-                .nx-pdp-psub {
-                    font-weight: 500;
-                    font-size: 18px;
-                    color: #000;
-                    margin-top: 8px;
-                    max-width: 508px;
-
-                    @media (max-width: 1200px) {
-                        font-size: 16px;
-                    }
-                }
-
-                @media (max-width: $screen-medium) {
-                    .nx-pdp-rating-block {
-                        align-items: flex-start;
-                        margin-top: 10px;
-                    }
-                }
-
-                .nx-pdp-rating-top {
-                    position: absolute;
-                    right: 0;
-                    top: 0;
-                    display: flex;
-                    flex-direction: column;
-                    gap: 12px;
-                    align-items: flex-end;
-
-                    @media (max-width: $screen-large) {
-                        position: relative;
-                        align-items: flex-start;
-                        margin-top: 16px;
-                    }
-
-                    .nx-pdp-nums {
-                        display: flex;
-                        gap: 12px;
-                        align-items: center;
-                        font-weight: 500;
-                        font-size: 16px;
-                        color: #000;
-                        letter-spacing: .32px;
-                    }
-                }
-            }
-
-            .nx-pdp-price {
-                display: flex;
-                flex-direction: column;
-                align-items: flex-end;
-                gap: 4px;
-
-                .price-section {
-                    display: flex;
-                    align-items: baseline;
-                    gap: 6px;
-                }
-
-                .price-label,
-                .price-now-label,
-                abbr {
-                    font-size: 12px;
-                    color: #555;
-                    font-weight: 500;
-                }
-
-                .price {
-                    font-weight: 800;
-                    font-size: 18px;
-                    color: #000;
-                    white-space: nowrap;
-                }
-
-                .price--rrp,
-                .price--non-sale {
-                    text-decoration: line-through;
-                    color: #888;
-                    font-size: 14px;
-                }
-
-                .price--saving {
-                    color: var(--nx-red, #d70321);
-                    font-size: 14px;
-                }
-            }
-
-            .nx-pdp-heat-wrap {
-                display: flex;
-                align-items: center;
-                gap: 16px;
-
-                @media (max-width: 1440px) {
-                    gap: 14px;
-                }
-
-                @media (max-width: 1200px) {
-                    gap: 12px;
-                }
-
-                .nx-pdp-heat-label {
-                    font-weight: 700;
-                    font-size: 18px;
-                    color: #000;
-
-                    @media (max-width: 1200px) {
-                        font-size: 16px;
-                    }
-                }
-
-                .nx-pdp-heat-icons {
-                    display: flex;
-                    gap: 8px;
-                    align-items: center;
-
-                    svg {
-                        width: 24px;
-                        height: 24px;
-                        opacity: 0.2;
-
-                        &.active {
-                            opacity: 1;
-                        }
-
-                        @media (max-width: 1200px) {
-                            width: 20px;
-                            height: 20px;
-                        }
-                    }
-                }
-
-                .nx-pdp-heat-score {
-                    font-weight: 700;
-                    font-size: 18px;
-                    color: #000;
-
-                    @media (max-width: 1200px) {
-                        font-size: 16px;
-                    }
-                }
-            }
-
-            .nx-pdp-bestfor-label {
-                font-weight: 700;
-                font-size: 20px;
-                color: #000;
-                letter-spacing: .36px;
-                margin-bottom: 16px;
-
-                @media (max-width: 1200px) {
-                    font-size: 18px;
-                    margin-bottom: 12px;
-                }
-            }
-
-            .nx-pdp-badges {
-                display: flex;
-                gap: 18px;
-                flex-wrap: wrap;
-
-                @media (max-width: 1440px) {
-                    gap: 12px 16px;
-                }
-
-                .nx-pdp-badge {
+                .nx-pdp-thumb {
                     background: var(--nx-cream-soft, #f7ebcf);
-                    border: 2px solid var(--nx-dark-red, #6a0111);
-                    border-radius: 24px;
-                    padding: 8px 16px;
-                    font-weight: 600;
-                    font-size: 16px;
-                    color: var(--nx-dark-red, #6a0111);
-                    line-height: 20px;
+                    flex: 1;
+                    min-width: 0;
+                    max-width: 192.2px;
+                    max-height: 166.58px;
+                    height: auto;
+                    aspect-ratio: 192.2 / 166.58;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    overflow: hidden;
+                    cursor: pointer;
+                    border: 2px solid transparent;
+                    border-radius: 16px;
 
-                    @media (max-width: 1200px) {
-                        padding: 6px 14px;
-                        font-size: 15px;
+                    &.is-selected {
+                        border-color: var(--nx-red, #d70321);
+                    }
+
+                    img {
+                        height: 80%;
+                        width: auto;
+                        max-width: 100%;
+                        object-fit: contain;
+                    }
+
+                    @media (max-width: 768px) {
+                        img {
+                            height: 70%;
+                        }
                     }
                 }
             }
         }
 
-        .nx-pdp-purchase-form {
+        &__info {
+            flex: 1 1 50%;
+            min-width: 0;
             display: flex;
             flex-direction: column;
-            gap: 24px;
+            gap: 40px;
+            align-self: stretch;
 
-            .nx-pdp-purchase-options {
+            .nx-pdp-info-top {
                 display: flex;
                 flex-direction: column;
-                gap: 12px;
+                gap: 24px;
 
-                .nx-pdp-pcard {
-                    background: var(--nx-cream, #fbf5e7);
-                    border-radius: 16px;
-                    padding: 24px;
+                .nx-pdp-title-wrap {
+                    position: relative;
                     display: flex;
-                    flex-wrap: wrap;
-                    gap: 16px;
-                    align-items: center;
+                    justify-content: space-between;
+                    gap: 18px;
 
-                    @media (max-width: 1440px) {
-                        padding: 20px;
-                        gap: 14px;
-                    }
-
-                    @media (max-width: 1200px) {
-                        padding: 16px;
+                    @media (max-width: $screen-medium) {
+                        flex-direction: column;
+                        justify-content: flex-start;
                         gap: 12px;
                     }
 
-                    @media (max-width: 440px) {
-                        flex-wrap: wrap;
-                        padding: 16px;
-                        gap: 12px;
+                    @media (min-width: $screen-large) {
+                        >div:first-child {
+                            flex: 1;
+                            min-width: 0;
+                            max-width: 85%;
+                        }
                     }
 
-                    .nx-pdp-radio {
-                        width: 24px;
-                        height: 24px;
-                        flex: none;
-                        border: 1.5px solid #e5e5e5;
-                        border-radius: 50%;
-                        background: #fff;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        overflow: hidden;
+                    .nx-pdp-ptitle {
+                        font-family: var(--nx-font-display, "Rye", serif);
+                        text-transform: uppercase;
+                        font-size: 68px;
+                        line-height: 1;
+                        color: var(--nx-dark-red, #6a0111);
+                        margin: 0;
+                        // overflow-wrap: break-word;
+                        // word-wrap: break-word;
 
-                        &.on svg {
-                            width: 12px;
-                            height: 12px;
+                        // @media (min-width: $screen-large) and (max-width: 1200px) {
+                        //     font-size: 48px;
+                        // }
+
+                        @media (max-width: 1440px) {
+                            font-size: 48px;
                         }
 
                         @media (max-width: 1200px) {
-                            width: 20px;
-                            height: 20px;
+                            font-size: 40px;
+                        }
 
-                            &.on svg {
-                                width: 10px;
-                                height: 10px;
-                            }
+                        @media (max-width: $screen-small) {
+                            font-size: 36px;
                         }
                     }
 
-                    .nx-pdp-label {
-                        flex: 1 1 min-content;
-                        min-width: 120px;
+                    .nx-pdp-psub {
                         font-weight: 500;
                         font-size: 18px;
                         color: #000;
+                        margin-top: 8px;
+                        max-width: 508px;
 
                         @media (max-width: 1200px) {
                             font-size: 16px;
                         }
                     }
 
-                    .nx-pdp-price {
+                    @media (max-width: $screen-medium) {
+                        .nx-pdp-rating-block {
+                            align-items: flex-start;
+                            margin-top: 10px;
+                        }
+                    }
+
+                    .nx-pdp-rating-top {
+                        position: absolute;
+                        right: 0;
+                        top: 0;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 12px;
+                        align-items: flex-end;
+
+                        @media (max-width: $screen-large) {
+                            position: relative;
+                            align-items: flex-start;
+                            margin-top: 16px;
+                        }
+
+                        .nx-pdp-nums {
+                            display: flex;
+                            gap: 12px;
+                            align-items: center;
+                            font-weight: 500;
+                            font-size: 16px;
+                            color: #000;
+                            letter-spacing: .32px;
+                        }
+                    }
+                }
+
+                .nx-pdp-price {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-end;
+                    gap: 4px;
+
+                    .price-section {
+                        display: flex;
+                        align-items: baseline;
+                        gap: 6px;
+                    }
+
+                    .price-label,
+                    .price-now-label,
+                    abbr {
+                        font-size: 12px;
+                        color: #555;
+                        font-weight: 500;
+                    }
+
+                    .price {
                         font-weight: 800;
                         font-size: 18px;
                         color: #000;
                         white-space: nowrap;
+                    }
+
+                    .price--rrp,
+                    .price--non-sale {
+                        text-decoration: line-through;
+                        color: #888;
+                        font-size: 14px;
+                    }
+
+                    .price--saving {
+                        color: var(--nx-red, #d70321);
+                        font-size: 14px;
+                    }
+                }
+
+                .nx-pdp-heat-wrap {
+                    display: flex;
+                    align-items: center;
+                    gap: 16px;
+
+                    @media (max-width: 1440px) {
+                        gap: 14px;
+                    }
+
+                    @media (max-width: 1200px) {
+                        gap: 12px;
+                    }
+
+                    .nx-pdp-heat-label {
+                        font-weight: 700;
+                        font-size: 18px;
+                        color: #000;
 
                         @media (max-width: 1200px) {
                             font-size: 16px;
                         }
+                    }
 
-                        @media (max-width: 440px) {
-                            width: 100%;
-                            padding-left: 36px;
-                            margin-top: -4px;
-                        }
+                    .nx-pdp-heat-icons {
+                        display: flex;
+                        gap: 8px;
+                        align-items: center;
 
-                        .rrp-price--withTax,
-                        .rrp-price--withoutTax,
-                        .price-section--saving {
-                            display: none !important;
-                        }
+                        svg {
+                            width: 24px;
+                            height: 24px;
+                            opacity: 0.2;
 
-                        .price-section {
-                            display: inline-block;
-                            margin-left: 6px;
-
-                            &:first-child {
-                                margin-left: 0;
+                            &.active {
+                                opacity: 1;
                             }
 
-                            >span:not(.price) {
-                                display: none !important;
-                            }
-                        }
-
-                        .non-sale-price--withTax,
-                        .non-sale-price--withoutTax {
-                            .price {
-                                text-decoration: line-through;
-                                color: #888;
-                                font-weight: 500;
+                            @media (max-width: 1200px) {
+                                width: 20px;
+                                height: 20px;
                             }
                         }
                     }
+
+                    .nx-pdp-heat-score {
+                        font-weight: 700;
+                        font-size: 18px;
+                        color: #000;
+
+                        @media (max-width: 1200px) {
+                            font-size: 16px;
+                        }
+                    }
                 }
-            }
 
-            [data-product-option-change] {
-                margin-bottom: 8px;
-                width: 100%;
-
-                .form-field {
+                .nx-pdp-bestfor-label {
+                    font-weight: 700;
+                    font-size: 20px;
+                    color: #000;
+                    letter-spacing: .36px;
                     margin-bottom: 16px;
 
-                    &:last-child {
-                        margin-bottom: 0;
+                    @media (max-width: 1200px) {
+                        font-size: 18px;
+                        margin-bottom: 12px;
                     }
                 }
 
-                .form-label--inlineSmall {
-                    font-size: 18px;
-                    font-weight: 700;
-                    color: #000;
-                    margin-bottom: 8px;
-                    display: block;
-
-                    small {
-                        font-weight: 400;
-                        color: #777;
-                        margin-left: 4px;
-                    }
-                }
-
-                .form-option-wrapper {
+                .nx-pdp-badges {
                     display: flex;
-                    align-items: center;
-                    gap: 8px;
+                    gap: 18px;
+                    flex-wrap: wrap;
 
-                    .form-checkbox {
-                        margin: 0;
-                        accent-color: var(--nx-red, #d70321);
-                        width: 16px;
-                        height: 16px;
-                        cursor: pointer;
+                    @media (max-width: 1440px) {
+                        gap: 12px 16px;
                     }
 
-                    .form-label {
-                        font-size: 14px;
-                        color: #333;
-                        margin: 0;
-                        cursor: pointer;
-                        user-select: none;
+                    .nx-pdp-badge {
+                        background: var(--nx-cream-soft, #f7ebcf);
+                        border: 2px solid var(--nx-dark-red, #6a0111);
+                        border-radius: 24px;
+                        padding: 8px 16px;
+                        font-weight: 600;
+                        font-size: 16px;
+                        color: var(--nx-dark-red, #6a0111);
+                        line-height: 20px;
+
+                        @media (max-width: 1200px) {
+                            padding: 6px 14px;
+                            font-size: 15px;
+                        }
                     }
                 }
             }
 
-            .nx-pdp-buyrow {
+            .nx-pdp-purchase-form {
                 display: flex;
-                flex-wrap: wrap;
-                gap: 32px;
-                align-items: center;
-                width: 100%;
+                flex-direction: column;
+                gap: 24px;
 
-                @media (max-width: $screen-small) {
-                    flex-direction: column;
-                    align-items: stretch;
-                }
-
-                .nx-pdp-native-add-to-cart {
+                .nx-pdp-purchase-options {
                     display: flex;
-                    flex: 1;
-                    width: 100%;
+                    flex-direction: column;
+                    gap: 12px;
 
-                    .add-to-cart-wrapper {
-                        width: 100%;
-                        display: flex;
-                        gap: 16px;
-                        align-items: center;
-                    }
-
-                    .form-field--increments {
-                        margin-bottom: 0;
-
-                        .form-label {
-                            display: none;
-                            /* Hide default qty block label */
-                        }
-                    }
-
-                    .add-to-cart-buttons {
-                        display: flex;
-                        gap: 16px;
-                        align-items: center;
-                        width: 100%;
-                    }
-
-                    .form-action {
-                        flex: 1;
-                        margin: 0;
-                    }
-
-                    .nx-btn {
-                        border: none;
-                        min-width: 160px;
-
-                        @media (min-width: $screen-large) {
-                            width: 100%;
-                        }
-                    }
-
-                    .button--primary {
-                        background: var(--nx-red, #d70321);
-                        color: var(--nx-cream, #fff);
-                        border-radius: 24px;
-                        box-shadow: 0px 1px 2px rgba(0, 0, 0, .05);
-                        border: none;
-                        font-family: var(--nx-font-body);
-                        font-weight: 700;
-                        font-size: 15px;
-                        letter-spacing: .5px;
-                        cursor: pointer;
-                        width: 100%;
-                        display: block;
-                        padding: 12px 16px;
-                        margin: 0;
-                        transition: transform .15s ease, opacity .15s ease;
-
-                        &:hover {
-                            opacity: .92;
-                        }
-                    }
-
-                    .form-increment {
-                        display: flex;
-                        gap: 10px;
-                        align-items: center;
-                        height: 44px;
-                        padding: 4px 12px;
+                    .nx-pdp-pcard {
                         background: var(--nx-cream, #fbf5e7);
-                        border: 1px solid #e5e5e5;
-                        border-radius: 8px;
-                        box-shadow: 0px 1px 2px rgba(0, 0, 0, .05);
+                        border-radius: 16px;
+                        padding: 24px;
+                        display: flex;
+                        flex-wrap: wrap;
+                        gap: 16px;
+                        align-items: center;
 
-                        .button--icon {
-                            padding: 0;
-                            border: none;
-                            background: transparent;
-                            width: 18px;
-                            height: 18px;
+                        @media (max-width: 1440px) {
+                            padding: 20px;
+                            gap: 14px;
+                        }
+
+                        @media (max-width: 1200px) {
+                            padding: 16px;
+                            gap: 12px;
+                        }
+
+                        @media (max-width: 440px) {
+                            flex-wrap: wrap;
+                            padding: 16px;
+                            gap: 12px;
+                        }
+
+                        .nx-pdp-radio {
+                            width: 24px;
+                            height: 24px;
+                            flex: none;
+                            border: 1.5px solid #e5e5e5;
+                            border-radius: 50%;
+                            background: #fff;
                             display: flex;
                             align-items: center;
                             justify-content: center;
-                            cursor: pointer;
+                            overflow: hidden;
 
-                            .icon {
-                                width: 14px;
-                                height: 14px;
-                                fill: #000;
+                            &.on svg {
+                                width: 12px;
+                                height: 12px;
+                            }
+
+                            @media (max-width: 1200px) {
+                                width: 20px;
+                                height: 20px;
+
+                                &.on svg {
+                                    width: 10px;
+                                    height: 10px;
+                                }
                             }
                         }
 
-                        .form-input--incrementTotal {
-                            font-weight: 600;
-                            font-size: 14px;
+                        .nx-pdp-label {
+                            flex: 1 1 min-content;
+                            min-width: 120px;
+                            font-weight: 500;
+                            font-size: 18px;
                             color: #000;
-                            line-height: 20px;
-                            border: none;
-                            background: transparent;
-                            text-align: center;
-                            width: 30px;
-                            padding: 0;
-                            margin: 0;
-                            -moz-appearance: textfield;
 
-                            &::-webkit-outer-spin-button,
-                            &::-webkit-inner-spin-button {
-                                -webkit-appearance: none;
-                                margin: 0;
+                            @media (max-width: 1200px) {
+                                font-size: 16px;
+                            }
+                        }
+
+                        .nx-pdp-price {
+                            font-weight: 800;
+                            font-size: 18px;
+                            color: #000;
+                            white-space: nowrap;
+
+                            @media (max-width: 1200px) {
+                                font-size: 16px;
+                            }
+
+                            @media (max-width: 440px) {
+                                width: 100%;
+                                padding-left: 36px;
+                                margin-top: -4px;
+                            }
+
+                            .rrp-price--withTax,
+                            .rrp-price--withoutTax,
+                            .price-section--saving {
+                                display: none !important;
+                            }
+
+                            .price-section {
+                                display: inline-block;
+                                margin-left: 6px;
+
+                                &:first-child {
+                                    margin-left: 0;
+                                }
+
+                                >span:not(.price) {
+                                    display: none !important;
+                                }
+                            }
+
+                            .non-sale-price--withTax,
+                            .non-sale-price--withoutTax {
+                                .price {
+                                    text-decoration: line-through;
+                                    color: #888;
+                                    font-weight: 500;
+                                }
                             }
                         }
                     }
                 }
-            }
 
-            .nx-pdp-ship {
-                color: #5F5F5F;
-                font-family: var(--nx-font-body);
-                font-size: 13.85px;
-                font-style: normal;
-                font-weight: 500;
-                line-height: normal;
-
-                @media (max-width: $screen-small) {
+                [data-product-option-change] {
+                    margin-bottom: 8px;
                     width: 100%;
-                }
-            }
-        }
 
-        .nx-pdp-accordion {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
+                    .form-field {
+                        margin-bottom: 16px;
 
-            .nx-pdp-acc-item {
-                background: var(--nx-cream, #fbf5e7);
-                border-radius: 16px;
-                padding: 16px;
-                display: flex;
-                flex-direction: column;
+                        &:last-child {
+                            margin-bottom: 0;
+                        }
+                    }
 
-                .nx-pdp-acc-trigger {
-                    display: flex;
-                    gap: 16px;
-                    align-items: center;
-                    cursor: pointer;
+                    .form-label--inlineSmall {
+                        font-size: 18px;
+                        font-weight: 700;
+                        color: #000;
+                        margin-bottom: 8px;
+                        display: block;
 
-                    .nx-pdp-acc-icon {
-                        width: 24px;
-                        height: 24px;
+                        small {
+                            font-weight: 400;
+                            color: #777;
+                            margin-left: 4px;
+                        }
+                    }
+
+                    .form-option-wrapper {
                         display: flex;
                         align-items: center;
-                        justify-content: center;
-                        color: var(--nx-dark-red, #6a0111);
-                    }
+                        gap: 8px;
 
-                    .nx-pdp-acc-title {
-                        font-weight: 500;
-                        font-size: 18px;
-                        color: #000;
+                        .form-checkbox {
+                            margin: 0;
+                            accent-color: var(--nx-red, #d70321);
+                            width: 16px;
+                            height: 16px;
+                            cursor: pointer;
+                        }
+
+                        .form-label {
+                            font-size: 14px;
+                            color: #333;
+                            margin: 0;
+                            cursor: pointer;
+                            user-select: none;
+                        }
                     }
                 }
 
-                .nx-pdp-acc-content {
-                    display: none;
-                    padding-top: 16px;
-                    padding-left: 10px;
-                    color: var(--nx-dark-red);
-                    line-height: 1.6;
-                    font-size: 18px;
+                .nx-pdp-buyrow {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 32px;
+                    align-items: center;
+                    width: 100%;
+
+                    @media (max-width: $screen-small) {
+                        flex-direction: column;
+                        align-items: stretch;
+                    }
+
+                    .nx-pdp-native-add-to-cart {
+                        display: flex;
+                        flex: 1;
+                        width: 100%;
+
+                        .add-to-cart-wrapper {
+                            width: 100%;
+                            display: flex;
+                            gap: 16px;
+                            align-items: center;
+                        }
+
+                        .form-field--increments {
+                            margin-bottom: 0;
+
+                            .form-label {
+                                display: none;
+                                /* Hide default qty block label */
+                            }
+                        }
+
+                        .add-to-cart-buttons {
+                            display: flex;
+                            gap: 16px;
+                            align-items: center;
+                            width: 100%;
+                        }
+
+                        .form-action {
+                            flex: 1;
+                            margin: 0;
+                        }
+
+                        .nx-btn {
+                            border: none;
+                            min-width: 160px;
+
+                            @media (min-width: $screen-large) {
+                                width: 100%;
+                            }
+                        }
+
+                        .button--primary {
+                            background: var(--nx-red, #d70321);
+                            color: var(--nx-cream, #fff);
+                            border-radius: 24px;
+                            box-shadow: 0px 1px 2px rgba(0, 0, 0, .05);
+                            border: none;
+                            font-family: var(--nx-font-body);
+                            font-weight: 700;
+                            font-size: 15px;
+                            letter-spacing: .5px;
+                            cursor: pointer;
+                            width: 100%;
+                            display: block;
+                            padding: 12px 16px;
+                            margin: 0;
+                            transition: transform .15s ease, opacity .15s ease;
+
+                            &:hover {
+                                opacity: .92;
+                            }
+                        }
+
+                        .form-increment {
+                            display: flex;
+                            gap: 10px;
+                            align-items: center;
+                            height: 44px;
+                            padding: 4px 12px;
+                            background: var(--nx-cream, #fbf5e7);
+                            border: 1px solid #e5e5e5;
+                            border-radius: 8px;
+                            box-shadow: 0px 1px 2px rgba(0, 0, 0, .05);
+
+                            .button--icon {
+                                padding: 0;
+                                border: none;
+                                background: transparent;
+                                width: 18px;
+                                height: 18px;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                cursor: pointer;
+
+                                .icon {
+                                    width: 14px;
+                                    height: 14px;
+                                    fill: #000;
+                                }
+                            }
+
+                            .form-input--incrementTotal {
+                                font-weight: 600;
+                                font-size: 14px;
+                                color: #000;
+                                line-height: 20px;
+                                border: none;
+                                background: transparent;
+                                text-align: center;
+                                width: 30px;
+                                padding: 0;
+                                margin: 0;
+                                -moz-appearance: textfield;
+
+                                &::-webkit-outer-spin-button,
+                                &::-webkit-inner-spin-button {
+                                    -webkit-appearance: none;
+                                    margin: 0;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .nx-pdp-ship {
+                    color: #5F5F5F;
+                    font-family: var(--nx-font-body);
+                    font-size: 13.85px;
+                    font-style: normal;
                     font-weight: 500;
                     line-height: normal;
 
-                    @media (max-width: 570px) {
-                        padding-left: 0;
+                    @media (max-width: $screen-small) {
+                        width: 100%;
+                    }
+                }
+            }
+
+            .nx-pdp-accordion {
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+
+                .nx-pdp-acc-item {
+                    background: var(--nx-cream, #fbf5e7);
+                    border-radius: 16px;
+                    padding: 16px;
+                    display: flex;
+                    flex-direction: column;
+
+                    .nx-pdp-acc-trigger {
+                        display: flex;
+                        gap: 16px;
+                        align-items: center;
+                        cursor: pointer;
+
+                        .nx-pdp-acc-icon {
+                            width: 24px;
+                            height: 24px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            color: var(--nx-dark-red, #6a0111);
+                        }
+
+                        .nx-pdp-acc-title {
+                            font-weight: 500;
+                            font-size: 18px;
+                            color: #000;
+                        }
+                    }
+
+                    .nx-pdp-acc-content {
+                        display: none;
+                        padding-top: 16px;
+                        padding-left: 10px;
+                        color: var(--nx-dark-red);
+                        line-height: 1.6;
+                        font-size: 18px;
+                        font-weight: 500;
+                        line-height: normal;
+
+                        @media (max-width: 570px) {
+                            padding-left: 0;
+                        }
                     }
                 }
             }

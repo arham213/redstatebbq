@@ -22,16 +22,22 @@ product:
     <div class="product-details-page">
         <!-- Replaced default product-view with custom generic product layout -->
         {{> components/products/product-view}}
-        {{> components/custom/nexyl/product/product-love}}
-        {{> components/custom/nexyl/product/product-breakdown}}
-        {{> components/custom/nexyl/product/product-local}}
+        {{assignVar 'isBBQSauce' 0}}
+        {{#each product.category}}
+            {{#if this '===' 'BBQ Sauces'}}
+                {{assignVar 'isBBQSauce' 1}}
+            {{/if}}
+        {{/each}}
+
+        {{#if (getVar 'isBBQSauce') '===' 1}}
+            {{> components/custom/nexyl/product/tradition}}
+            {{> components/custom/nexyl/product/banners}}
+        {{else}}
+            {{> components/custom/nexyl/product/product-local}}
+        {{/if}}
         {{{region name="product_below_content"}}}
 
-        {{#if product.videos.list.length}}
-            {{> components/products/videos product.videos}}
-        {{/if}}
-
-        {{> components/custom/nexyl/product/250-years-of-fire}}
+        {{> components/products/related products=product.related_products}}
 
         {{#all settings.show_product_reviews theme_settings.show_product_reviews (if theme_settings.show_product_details_tabs '!==' true)}}
             {{> components/products/reviews reviews=product.reviews product=product urls=urls}}

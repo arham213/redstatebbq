@@ -1,0 +1,65 @@
+// =============================================================================
+// PRODUCT PAGE: RELATED PRODUCTS SLIDER
+// =============================================================================
+
+.nx-related-slider-shell {
+    position: relative;
+    width: 100%;
+    max-width: 1171px;
+    margin: 0 auto;
+}
+
+.nx-related-viewport {
+    overflow: hidden;
+    padding-top: 20px;
+    padding-bottom: 30px;
+    margin-top: -20px;
+    margin-bottom: -30px;
+}
+
+.nx-related-arrow {
+    display: flex;
+    width: 64px;
+    height: 64px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.22s ease, transform 0.18s ease;
+    pointer-events: auto;
+    padding: 0;
+}
+
+.nx-related-slider-nav {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 32px;
+}
+
+.nx-related-slider-shell.is-slider .nx-related-slider-nav {
+    display: flex;
+}
+
+.nx-related-arrow:hover:not(.nx-ba-hidden) {
+    transform: scale(1.07);
+}
+
+.nx-related-arrow.nx-ba-hidden {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.nx-related-slider-shell.is-slider .nx-sauces-row {
+    justify-content: flex-start !important;
+    flex-wrap: nowrap;
+    gap: 30px !important;
+}
+
+.nx-related-slider-shell.is-slider .nx-sauce {
+    flex: 0 0 calc((100% - 60px) / 3) !important;
+    max-width: none !important;
+    min-width: 0;
+}

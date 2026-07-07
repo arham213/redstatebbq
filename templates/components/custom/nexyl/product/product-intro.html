@@ -1,139 +1,141 @@
 <section class="nx-pdp-product-intro">
-    <div class="nx-pdp-product-intro__gallery">
-        <div class="nx-pdp-hero-img" id="nx-pdp-hero-img-container">
-            <img src="{{getImage product.main_image 'product_size' (cdn theme_settings.default_image_product)}}" alt="{{product.main_image.alt}}">
-        </div>
-        {{#if product.images.length '>' 1}}
-        <div class="nx-pdp-thumbs">
-            {{#each product.images}}
-            <div class="nx-pdp-thumb {{#if @first}}is-selected{{/if}}" data-image-url="{{getImage this 'product_size' (cdn theme_settings.default_image_product)}}">
-                <img src="{{getImage this 'productview_thumb_size' (cdn theme_settings.default_image_product)}}" alt="{{this.alt}}">
+    <div class="container">
+        <div class="nx-pdp-product-intro__gallery">
+            <div class="nx-pdp-hero-img" id="nx-pdp-hero-img-container">
+                <img src="{{getImage product.main_image 'product_size' (cdn theme_settings.default_image_product)}}" alt="{{product.main_image.alt}}">
             </div>
-            {{/each}}
+            {{#if product.images.length '>' 1}}
+            <div class="nx-pdp-thumbs">
+                {{#each product.images}}
+                <div class="nx-pdp-thumb {{#if @first}}is-selected{{/if}}" data-image-url="{{getImage this 'product_size' (cdn theme_settings.default_image_product)}}">
+                    <img src="{{getImage this 'productview_thumb_size' (cdn theme_settings.default_image_product)}}" alt="{{this.alt}}">
+                </div>
+                {{/each}}
+            </div>
+            {{/if}}
         </div>
-        {{/if}}
-    </div>
 
-    <div class="nx-pdp-product-intro__info">
-        <div class="nx-pdp-info-top">
-            <div class="nx-pdp-title-wrap">
+        <div class="nx-pdp-product-intro__info">
+            <div class="nx-pdp-info-top">
+                <div class="nx-pdp-title-wrap">
+                    <div>
+                        <h1 class="nx-pdp-ptitle">{{product.title}}</h1>
+                        {{#each product.custom_fields}}
+                            {{#if name '===' 'headline_below_title'}}
+                                <p class="nx-pdp-psub">{{{value}}}</p>
+                            {{/if}}
+                        {{/each}}
+                    </div>
+                    
+                    {{#if settings.show_product_rating}}
+                    <div class="nx-pdp-rating-block">
+                        <div class="nx-pdp-stars">
+                            {{> components/custom/nexyl/product/ratings rating=product.rating}}
+                        </div>
+                        <p class="nx-pdp-rating-meta" style="color: #000;">
+                            <span>
+                                {{#if product.num_reviews}}
+                                {{product.rating}}
+                                {{else}}
+                                0
+                                {{/if}}
+                            </span>
+                            <span>
+                                ({{#if product.num_reviews}}
+                                {{product.num_reviews}}
+                                {{else}}
+                                0
+                                {{/if}})
+                            </span>
+                        </p>
+                    </div>
+                    {{/if}}
+                </div>
+
                 <div>
-                    <h1 class="nx-pdp-ptitle">{{product.title}}</h1>
-                    {{#each product.custom_fields}}
-                        {{#if name '===' 'headline_below_title'}}
-                            <p class="nx-pdp-psub">{{{value}}}</p>
-                        {{/if}}
-                    {{/each}}
+                    <p class="nx-pdp-bestfor-label">Best For</p>
+                    <div class="nx-pdp-badges">
+                        <span class="nx-pdp-badge">Steak</span>
+                        <span class="nx-pdp-badge">Burgers</span>
+                        <span class="nx-pdp-badge">Ribs</span>
+                        <span class="nx-pdp-badge">Brisket</span>
+                    </div>
+                </div>
+            </div>
+
+            <form class="nx-pdp-purchase-form" method="post" action="{{product.cart_url}}" enctype="multipart/form-data" data-cart-item-add>
+                <input type="hidden" name="action" value="add">
+                <input type="hidden" name="product_id" value="{{product.id}}"/>
+                
+                <div class="nx-pdp-purchase-options">
+                    <div class="nx-pdp-pcard">
+                        <span class="nx-pdp-radio on">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="var(--nx-red)"><circle cx="12" cy="12" r="12"/></svg>
+                        </span>
+                        <span class="nx-pdp-label">One time purchase</span>
+                        <div class="nx-pdp-price">
+                            {{> components/products/price price=product.price schema_org=schema}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="nx-pdp-buyrow">
+                    <p class="nx-pdp-ship">Ships in 1–2 business days<br>30-day money-back guarantee</p>
+                    <div class="nx-pdp-controls">
+                        <div class="nx-pdp-stepper">
+                            <span class="nx-pdp-icn nx-pdp-qty-minus"><span class="nx-pdp-minus">−</span></span>
+                            <input class="nx-pdp-qty-input" type="number" name="qty[]" value="1" min="1" readonly>
+                            <span class="nx-pdp-icn nx-pdp-qty-plus">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0d0d0e" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+                            </span>
+                        </div>
+                        <button id="form-action-addToCart" type="submit" class="nx-pdp-addbtn" data-wait-message="{{lang 'products.adding_to_cart'}}">Add to Cart</button>
+                    </div>
+                </div>
+            </form>
+
+            <div class="nx-pdp-accordion">
+                <div class="nx-pdp-acc-item">
+                    <div class="nx-pdp-acc-trigger">
+                        <span class="nx-pdp-acc-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0d0d0e" stroke-width="2"><path class="nx-pdp-plus-path" d="M12 5v14M5 12h14"/><path class="nx-pdp-minus-path" d="M5 12h14" style="display:none;"/></svg>
+                        </span>
+                        <span class="nx-pdp-acc-title">Description</span>
+                    </div>
+                    <div class="nx-pdp-acc-content">
+                        {{{product.description}}}
+                    </div>
                 </div>
                 
-                {{#if settings.show_product_rating}}
-                <div class="nx-pdp-rating-block">
-                    <div class="nx-pdp-stars">
-                        {{> components/custom/nexyl/product/ratings rating=product.rating}}
+                {{#each product.custom_fields}}
+                    {{#if name '===' 'nutritional_value'}}
+                    <div class="nx-pdp-acc-item">
+                        <div class="nx-pdp-acc-trigger">
+                            <span class="nx-pdp-acc-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0d0d0e" stroke-width="2"><path class="nx-pdp-plus-path" d="M12 5v14M5 12h14"/><path class="nx-pdp-minus-path" d="M5 12h14" style="display:none;"/></svg>
+                            </span>
+                            <span class="nx-pdp-acc-title">Nutritional Value</span>
+                        </div>
+                        <div class="nx-pdp-acc-content">
+                            {{{value}}}
+                        </div>
                     </div>
-                    <p class="nx-pdp-rating-meta" style="color: #000;">
-                        <span>
-                            {{#if product.num_reviews}}
-                            {{product.rating}}
-                            {{else}}
-                            0
-                            {{/if}}
-                        </span>
-                        <span>
-                            ({{#if product.num_reviews}}
-                            {{product.num_reviews}}
-                            {{else}}
-                            0
-                            {{/if}})
-                        </span>
-                    </p>
-                </div>
-                {{/if}}
+                    {{/if}}
+                    {{#if name '===' 'ingredients'}}
+                    <div class="nx-pdp-acc-item">
+                        <div class="nx-pdp-acc-trigger">
+                            <span class="nx-pdp-acc-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0d0d0e" stroke-width="2"><path class="nx-pdp-plus-path" d="M12 5v14M5 12h14"/><path class="nx-pdp-minus-path" d="M5 12h14" style="display:none;"/></svg>
+                            </span>
+                            <span class="nx-pdp-acc-title">Ingredients</span>
+                        </div>
+                        <div class="nx-pdp-acc-content">
+                            {{{value}}}
+                        </div>
+                    </div>
+                    {{/if}}
+                {{/each}}
             </div>
-
-            <div>
-                <p class="nx-pdp-bestfor-label">Best For</p>
-                <div class="nx-pdp-badges">
-                    <span class="nx-pdp-badge">Steak</span>
-                    <span class="nx-pdp-badge">Burgers</span>
-                    <span class="nx-pdp-badge">Ribs</span>
-                    <span class="nx-pdp-badge">Brisket</span>
-                </div>
-            </div>
-        </div>
-
-        <form class="nx-pdp-purchase-form" method="post" action="{{product.cart_url}}" enctype="multipart/form-data" data-cart-item-add>
-            <input type="hidden" name="action" value="add">
-            <input type="hidden" name="product_id" value="{{product.id}}"/>
-            
-            <div class="nx-pdp-purchase-options">
-                <div class="nx-pdp-pcard">
-                    <span class="nx-pdp-radio on">
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="var(--nx-red)"><circle cx="12" cy="12" r="12"/></svg>
-                    </span>
-                    <span class="nx-pdp-label">One time purchase</span>
-                    <div class="nx-pdp-price">
-                        {{> components/products/price price=product.price schema_org=schema}}
-                    </div>
-                </div>
-            </div>
-
-            <div class="nx-pdp-buyrow">
-                <p class="nx-pdp-ship">Ships in 1–2 business days<br>30-day money-back guarantee</p>
-                <div class="nx-pdp-controls">
-                    <div class="nx-pdp-stepper">
-                        <span class="nx-pdp-icn nx-pdp-qty-minus"><span class="nx-pdp-minus">−</span></span>
-                        <input class="nx-pdp-qty-input" type="number" name="qty[]" value="1" min="1" readonly>
-                        <span class="nx-pdp-icn nx-pdp-qty-plus">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0d0d0e" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
-                        </span>
-                    </div>
-                    <button id="form-action-addToCart" type="submit" class="nx-pdp-addbtn" data-wait-message="{{lang 'products.adding_to_cart'}}">Add to Cart</button>
-                </div>
-            </div>
-        </form>
-
-        <div class="nx-pdp-accordion">
-            <div class="nx-pdp-acc-item">
-                <div class="nx-pdp-acc-trigger">
-                    <span class="nx-pdp-acc-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0d0d0e" stroke-width="2"><path class="nx-pdp-plus-path" d="M12 5v14M5 12h14"/><path class="nx-pdp-minus-path" d="M5 12h14" style="display:none;"/></svg>
-                    </span>
-                    <span class="nx-pdp-acc-title">Description</span>
-                </div>
-                <div class="nx-pdp-acc-content">
-                    {{{product.description}}}
-                </div>
-            </div>
-            
-            {{#each product.custom_fields}}
-                {{#if name '===' 'nutritional_value'}}
-                <div class="nx-pdp-acc-item">
-                    <div class="nx-pdp-acc-trigger">
-                        <span class="nx-pdp-acc-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0d0d0e" stroke-width="2"><path class="nx-pdp-plus-path" d="M12 5v14M5 12h14"/><path class="nx-pdp-minus-path" d="M5 12h14" style="display:none;"/></svg>
-                        </span>
-                        <span class="nx-pdp-acc-title">Nutritional Value</span>
-                    </div>
-                    <div class="nx-pdp-acc-content">
-                        {{{value}}}
-                    </div>
-                </div>
-                {{/if}}
-                {{#if name '===' 'ingredients'}}
-                <div class="nx-pdp-acc-item">
-                    <div class="nx-pdp-acc-trigger">
-                        <span class="nx-pdp-acc-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0d0d0e" stroke-width="2"><path class="nx-pdp-plus-path" d="M12 5v14M5 12h14"/><path class="nx-pdp-minus-path" d="M5 12h14" style="display:none;"/></svg>
-                        </span>
-                        <span class="nx-pdp-acc-title">Ingredients</span>
-                    </div>
-                    <div class="nx-pdp-acc-content">
-                        {{{value}}}
-                    </div>
-                </div>
-                {{/if}}
-            {{/each}}
         </div>
     </div>
 </section>

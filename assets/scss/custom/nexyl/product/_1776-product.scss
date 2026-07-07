@@ -2,10 +2,6 @@
 // NEXYL / PRODUCT / 1776 BLEND
 // =============================================================================
 
-.product-details-page {
-    background-color: var(--nx-cream-soft) !important;
-}
-
 .nx-pdp-display {
     font-family: var(--nx-font-display);
     font-weight: normal;
@@ -569,7 +565,7 @@
 
 /* ============ Reviews ============ */
 .nx-pdp-reviews-section {
-    background: var(--nx-cream);
+    background: var(--nx-cream-soft);
     padding: 80px;
     display: flex;
     flex-direction: column;
@@ -577,7 +573,7 @@
     align-items: center;
     color: #000;
 
-    > .nx-pdp-display { font-size: 48px; color: #000; margin: 0; text-transform: uppercase; }
+    > .nx-pdp-display { font-size: 48px; color: var(--nx-dark-red); margin: 0; text-transform: uppercase; }
 }
 
 .nx-pdp-reviews-section[data-num-reviews="0"] {
@@ -699,7 +695,7 @@
         }
     }
     .nx-pdp-bd-title { 
-        font-size: 26px; font-weight: 600; color: var(--nx-red); margin: 0; 
+        font-size: 26px; font-weight: 600; color: var(--nx-dark-red); margin: 0; 
         @media (max-width: 1440px) { font-size: 22px; }
     }
     .nx-pdp-bd-rows { 
@@ -711,7 +707,7 @@
         @media (max-width: 1440px) { gap: 15px; }
     }
     .nx-pdp-bd-num { 
-        color: var(--nx-red); font-size: 26px; font-weight: 500; width: 24px; 
+        color: var(--nx-dark-red); font-size: 26px; font-weight: 500; width: 24px; 
         @media (max-width: 1440px) { font-size: 22px; width: 20px; }
     }
     .nx-pdp-bd-row img { 
@@ -722,9 +718,9 @@
         flex: 1; min-width: 228px; max-width: 228px; height: 11px; background: #ECE7D9; border-radius: 6px; overflow: hidden; 
         @media (max-width: 1440px) { min-width: 150px; max-width: 200px; height: 8px; }
     }
-    .nx-pdp-bd-fill { height: 100%; background: var(--nx-red); border-radius: 6px; }
+    .nx-pdp-bd-fill { height: 100%; background: var(--nx-dark-red); border-radius: 6px; }
     .nx-pdp-bd-count { 
-        color: var(--nx-red); font-size: 22px; font-weight: 500; min-width: 50px; 
+        color: var(--nx-dark-red); font-size: 22px; font-weight: 500; min-width: 50px; 
         @media (max-width: 1440px) { font-size: 18px; min-width: 40px; }
     }
     
@@ -733,7 +729,7 @@
         @media (max-width: 1440px) { gap: 20px; }
     }
     .nx-pdp-overall-title { 
-        font-size: 26px; font-weight: 600; color: var(--nx-red); margin: 0; 
+        font-size: 26px; font-weight: 600; color: var(--nx-dark-red); margin: 0; 
         @media (max-width: 1440px) { font-size: 22px; }
     }
     .nx-pdp-overall-row { 
@@ -741,7 +737,7 @@
         @media (max-width: 1440px) { gap: 30px; }
     }
     .nx-pdp-overall-num { 
-        font-size: 76px; font-weight: 500; color: var(--nx-red); margin: 0; line-height: 1; 
+        font-size: 76px; font-weight: 500; color: var(--nx-dark-red); margin: 0; line-height: 1; 
         @media (max-width: 1440px) { font-size: 64px; }
     }
     .nx-pdp-overall-stars { 
@@ -920,7 +916,6 @@
 
 @media (min-width: 802px) {
     .nx-pdp-years-panel { height: 650px; }
-    .nx-pdp-reviews-section { padding-top: 0; }
 }
 
 @media (min-width: 1101px) {

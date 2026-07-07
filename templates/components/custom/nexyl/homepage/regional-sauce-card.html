@@ -1,6 +1,68 @@
-<div class="nx-sauce">
+<article
+    class="card nx-sauce{{#if alternate}} card--alternate{{/if}}"
+    data-test="card-{{id}}"
+    data-event-type="{{event}}"
+    data-entity-id="{{id}}"
+    data-position="{{position}}"
+    data-name="{{name}}"
+    data-product-category="
+    {{#each category}}
+        {{#if @last}}
+            {{this}}
+        {{else}}
+            {{this}},
+        {{/if}}
+    {{/each}}"
+    data-product-brand="{{brand.name}}"
+    data-product-price="
+    {{#or customer (unless settings.hide_price_from_guests)}}
+        {{#if price.with_tax}}
+            {{price.with_tax.value}}
+        {{else}}
+            {{price.without_tax.value}}
+        {{/if}}
+    {{else}}
+        {{lang 'common.login_for_pricing'}}
+    {{/or}}"
+>
   <div class="nx-sauce-img">
-    <a href="{{url}}">
+        {{#if stock_level '===' 0}}
+            {{#if theme_settings.pdp_sold_out_label '===' ''}}
+                {{> components/products/product-badge
+                    badge-type='sold-out'
+                    badge_view=theme_settings.product_sold_out_badges
+                    badge_label=(lang "page_builder.pdp_sold_out_label")
+                }}
+            {{else}}
+                {{> components/products/product-badge
+                    badge-type='sold-out'
+                    badge_view=theme_settings.product_sold_out_badges
+                    badge_label=theme_settings.pdp_sold_out_label
+                }}
+            {{/if}}
+        {{else}}
+            {{#or price.sale_price_with_tax.value price.sale_price_without_tax.value}}
+                {{#if theme_settings.pdp_sale_badge_label '===' ''}}
+                    {{> components/products/product-badge
+                        badge-type='sale'
+                        badge_view=theme_settings.product_sale_badges
+                        badge_label=(lang "page_builder.pdp_sale_badge_label")
+                    }}
+                {{else}}
+                    {{> components/products/product-badge
+                        badge-type='sale'
+                        badge_view=theme_settings.product_sale_badges
+                        badge_label=theme_settings.pdp_sale_badge_label
+                    }}
+                {{/if}}
+            {{/or}}
+        {{/if}}
+
+    <a href="{{url}}"
+       class="card-figure__link"
+       aria-label="{{name}}"
+       data-event-type="product-click"
+    >
       {{#if image}}
       <img src="{{getImage image 'productgallery_size' (cdn theme_settings.default_image_product)}}" alt="{{image.alt}}"
         title="{{image.alt}}">
@@ -11,28 +73,87 @@
   </div>
   <div class="nx-sauce-info">
     {{#each custom_fields}}
-    {{#if name '===' 'title_part_1'}}
-    <p class="nx-sauce-region">{{value}}</p>
-    {{/if}}
-    {{#if name '===' 'title_part_2'}}
-    <p class="nx-sauce-name">{{value}}</p>
-    {{/if}}
+      {{#if name '===' 'sauce_region'}}
+        <div class="nx-suace-region-info">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path opacity="0.4" d="M13.7466 5.63366C13.0466 2.55366 10.3599 1.16699 7.99994 1.16699C7.99994 1.16699 7.99994 1.16699 7.99327 1.16699C5.63994 1.16699 2.94661 2.54699 2.24661 5.62699C1.46661 9.06699 3.57328 11.9803 5.47994 13.8137C6.18661 14.4937 7.09328 14.8337 7.99994 14.8337C8.90661 14.8337 9.81328 14.4937 10.5133 13.8137C12.4199 11.9803 14.5266 9.07366 13.7466 5.63366Z" fill="#6A0111"/>
+            <path d="M8.00002 8.97344C9.15982 8.97344 10.1 8.03324 10.1 6.87344C10.1 5.71364 9.15982 4.77344 8.00002 4.77344C6.84023 4.77344 5.90002 5.71364 5.90002 6.87344C5.90002 8.03324 6.84023 8.97344 8.00002 8.97344Z" fill="#6A0111"/>
+          </svg>
+          <p class="nx-sauce-region">{{value}}</p>
+        </div>
+      {{/if}}
     {{/each}}
 
+    {{#filter custom_fields 'nick_name' property='name'}}
+      <p class="nx-sauce-name">
+        <a href="{{../url}}"
+           aria-label="{{../name}}"
+           data-event-type="product-click"
+           style="color: inherit; text-decoration: none;"
+        >
+          {{value}}
+        </a>
+      </p>
+    {{else}}
+      <p class="nx-sauce-name">
+        <a href="{{url}}"
+           aria-label="{{name}}"
+           data-event-type="product-click"
+           style="color: inherit; text-decoration: none;"
+        >
+          {{name}}
+        </a>
+      </p>
+    {{/filter}}
+
     <p class="nx-sauce-price-weight">
-      {{#if price.with_tax}}
-      {{price.with_tax.formatted}}
-      {{else if price.without_tax}}
-      {{price.without_tax.formatted}}
-      {{/if}}
+      <span data-test-info-type="price">
+        {{#or customer (unless settings.hide_price_from_guests)}}
+          {{#if price.with_tax}}
+            {{price.with_tax.formatted}}
+          {{else if price.without_tax}}
+            {{price.without_tax.formatted}}
+          {{/if}}
+        {{else}}
+          {{#if settings.hide_price_from_guests}}
+            {{lang 'common.login_for_pricing'}}
+          {{else}}
+            {{#if price.with_tax}}
+              {{price.with_tax.formatted}}
+            {{else if price.without_tax}}
+              {{price.without_tax.formatted}}
+            {{/if}}
+          {{/if}}
+        {{/or}}
+      </span>
       <span class="nx-sauce-sep">|</span>
-      <span class="nx-sauce-weight">{{#if weight.value}}{{round weight.value}}{{else}}{{weight}}{{/if}} oz bottle</span>
+      <span class="nx-sauce-weight">
+        {{#if weight.value}}
+          {{round weight.value}} oz bottle
+        {{else if weight}}
+          {{weight}} oz bottle
+        {{else}}
+          16 oz bottle
+        {{/if}}
+      </span>
     </p>
 
-    {{#if has_options}}
-    <a href="{{url}}" class="nx-btn nx-btn-primary nx-btn-primary-lg">Buy Now</a>
+    {{#if show_cart_action}}
+        {{#if has_options}}
+            <a href="{{url}}" data-event-type="product-click" class="nx-btn nx-btn-primary nx-btn-primary-lg" data-product-id="{{id}}">Buy Now</a>
+        {{/if}}
+        {{#if pre_order}}
+            <a href="{{pre_order_add_to_cart_url}}" data-event-type="product-click" class="nx-btn nx-btn-primary nx-btn-primary-lg">{{lang 'products.pre_order'}}</a>
+        {{/if}}
+        {{#if add_to_cart_url }}
+            <a href="{{add_to_cart_url}}" data-event-type="product-click" data-button-type="add-cart" class="nx-btn nx-btn-primary nx-btn-primary-lg">Buy Now</a>
+            <span class="product-status-message aria-description--hidden" style="display:none;">{{lang 'category.add_cart_announcement'}}</span>
+        {{/if}}
+        {{#if out_of_stock_message }}
+            <a href="{{url}}" data-event-type="product-click" class="nx-btn nx-btn-primary nx-btn-primary-lg" data-product-id="{{id}}">{{out_of_stock_message}}</a>
+        {{/if}}
     {{else}}
-    <a href="{{add_to_cart_url}}" class="nx-btn nx-btn-primary nx-btn-primary-lg">Buy Now</a>
+        <a href="{{url}}" data-event-type="product-click" class="nx-btn nx-btn-primary nx-btn-primary-lg">Buy Now</a>
     {{/if}}
   </div>
-</div>
+</article>

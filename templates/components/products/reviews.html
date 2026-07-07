@@ -1,7 +1,7 @@
 {{#if product.reviews.total}}
 <!-- ============== REVIEWS ============== -->
 <section class="nx-pdp-reviews-section" data-num-reviews="{{product.num_reviews}}" data-product-rating="{{product.rating}}">
-    <h2 class="nx-pdp-display nx-pdp-center" style="color: #0D0D0E;">Customer reviews</h2>
+    <h2 class="nx-pdp-display nx-pdp-center">Customer reviews</h2>
 
     <div class="nx-pdp-reviews-wrapper" data-reviews-list="{{#each product.reviews.list}}{{this.rating}},{{/each}}">
         <div class="nx-pdp-reviews-summary">
@@ -115,7 +115,7 @@
 {{else}}
 <!-- ============== EMPTY REVIEWS ============== -->
 <section class="nx-pdp-reviews-section" data-num-reviews="0" data-product-rating="0">
-    <h2 class="nx-pdp-display nx-pdp-center" style="color: #0D0D0E;">Customer reviews</h2>
+    <h2 class="nx-pdp-display nx-pdp-center">Customer reviews</h2>
     <div class="nx-pdp-reviews-wrapper" style="justify-content: center; align-items: center; padding: 40px 0; border-top: 1px solid rgba(13,13,14,0.08);">
         <div style="text-align: center;">
             <p style="margin-bottom: 24px; color: rgba(13,13,14,0.6);">There are no reviews for this product yet.</p>
