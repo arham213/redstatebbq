@@ -1,8 +1,10 @@
 <!-- ============== REVIEWS ============== -->
-<section class="nx-pdp-reviews-section" data-num-reviews="{{product.num_reviews}}" data-product-rating="{{product.rating}}" data-static-reviews="13" data-static-sum="63">
+<section class="nx-pdp-reviews-section" data-num-reviews="{{product.num_reviews}}"
+    data-product-rating="{{product.rating}}" data-static-reviews="13" data-static-sum="63">
     <h2 class="nx-pdp-display nx-pdp-center" style="color: #0D0D0E;">Customer reviews</h2>
 
-    <div class="nx-pdp-reviews-wrapper" data-reviews-list="5,5,5,5,5,5,5,5,5,5,5,4,4,{{#each product.reviews.list}}{{this.rating}},{{/each}}">
+    <div class="nx-pdp-reviews-wrapper"
+        data-reviews-list="5,5,5,5,5,5,5,5,5,5,5,4,4,{{#each product.reviews.list}}{{this.rating}},{{/each}}">
         <div class="nx-pdp-reviews-summary">
             <div class="nx-pdp-rating-breakdown">
                 <p class="nx-pdp-bd-title">Average Rating:</p>
@@ -114,6 +116,12 @@
         </div>
 
         <div class="nx-pdp-review-list" id="nx-review-list-container" data-product-reviews>
+            {{!-- real bigcommerce reviews follow --}}
+            {{#if product.reviews.list}}
+            {{> components/custom/nexyl/product/reviews-list reviews=product.reviews product=product urls=urls
+            pagination=pagination.reviews}}
+            {{/if}}
+
             {{!-- featured/hardcoded reviews only show on page 1 (no previous page) --}}
             {{#unless pagination.reviews.previous}}
             {{!-- New Reviews (Today) --}}
@@ -297,12 +305,6 @@
                 </footer>
             </article>
             {{/unless}}
-
-            {{!-- real bigcommerce reviews follow --}}
-            {{#if product.reviews.list}}
-            {{> components/custom/nexyl/product/reviews-list reviews=product.reviews product=product urls=urls
-            pagination=pagination.reviews}}
-            {{/if}}
         </div>
 
         {{!-- Custom pagination controls injected by JS --}}

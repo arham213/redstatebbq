@@ -1,65 +1,89 @@
+// =============================================================================
+// PRODUCT LOCAL SECTION (100% LOCALLY MADE)
+// =============================================================================
+
 .nx-pdp-product-local {
     width: 100%;
     max-width: 1440px;
     margin: 0 auto;
     background: var(--nx-cream-soft, #f7ebcf);
-    height: 718px;
     display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    padding: 80px;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 24px;
+    height: auto;
+    min-height: 400px;
     overflow: hidden;
     position: relative;
 
-    @media (max-width: 1024px) {
-        padding: 40px;
-        height: auto;
+    @media (min-width: 768px) {
         min-height: 500px;
     }
 
-    @media (max-width: 768px) {
-        padding: 24px;
-        min-height: 400px;
+    @media (min-width: 1024px) {
+        height: 718px;
+        min-height: 0;
+        padding: 80px;
+        align-items: flex-start;
+        justify-content: center;
     }
 
     .nx-pdp-local-inner {
         flex: 1;
         display: flex;
         flex-direction: column;
-        gap: 28px;
         align-items: center;
         text-align: center;
         color: var(--nx-dark-red, #6a0111);
         position: relative;
         z-index: 2;
+        margin: 0 auto;
 
         .nx-pdp-local-title {
             font-family: var(--nx-font-display, "Rye", serif);
+            color: var(--nx-dark-red);
             text-transform: uppercase;
-            font-size: 68px;
-            line-height: 1;
+            font-size: 32px;
+            line-height: 1.1;
             margin: 0;
 
-            @media (max-width: 768px) {
+            @media (min-width: 570px) {
+                font-size: 40px;
+            }
+
+            @media (min-width: 768px) {
                 font-size: 48px;
             }
 
-            @media (max-width: 570px) {
-                font-size: 36px;
+            @media (min-width: 1024px) {
+                font-size: 56px;
+                line-height: 1;
+            }
+
+            @media (min-width: 1280px) {
+                font-size: 68px;
             }
         }
 
         .nx-pdp-local-sub {
             font-weight: 500;
-            font-size: 26px;
+            font-size: 18px;
             margin: 0;
 
-            @media (max-width: 768px) {
+            @media (min-width: 570px) {
                 font-size: 20px;
             }
 
-            @media (max-width: 570px) {
-                font-size: 18px;
+            @media (min-width: 768px) {
+                font-size: 22px;
+            }
+
+            @media (min-width: 1024px) {
+                font-size: 24px;
+            }
+
+            @media (min-width: 1280px) {
+                font-size: 26px;
             }
         }
     }
@@ -68,85 +92,157 @@
         position: absolute;
         pointer-events: none;
         mix-blend-mode: multiply;
+        width: 200px;
+
+        @media (min-width: 768px) {
+            width: 300px;
+        }
+
+        @media (min-width: 1024px) {
+            width: 430px;
+        }
 
         &.nx-pdp-deco5 {
             right: -22px;
             bottom: -90px;
-            width: 430px;
-
-            @media (max-width: 768px) {
-                width: 200px;
-            }
         }
 
         &.nx-pdp-deco6 {
             left: 0;
             top: -120px;
-            width: 430px;
             transform: rotate(180deg);
+        }
+    }
 
-            @media (max-width: 768px) {
-                width: 200px;
-            }
+    // ── Bottle & Floating Images Wrapper ─────────────────────────────────────
+    .nx-pdp-bottle-container {
+        position: relative;
+        width: 100%;
+        max-width: 440px;
+        height: 250px;
+        margin: 25px auto 0;
+        z-index: 1;
+
+        @media (min-width: 570px) {
+            height: 330px;
+            margin-top: 30px;
+        }
+
+        @media (min-width: 1024px) {
+            position: absolute;
+            left: 0;
+            top: 0;
+            max-width: 100%;
+            height: 100%;
+            margin: 0;
+            pointer-events: none;
         }
     }
 
     .nx-pdp-sauce-use {
         position: absolute;
-        width: 149px;
-        height: 185.6px;
+        width: 75px;
+        height: 93.5px;
         border-radius: 6.5px;
         overflow: hidden;
         display: flex;
         align-items: center;
-
-        @media (max-width: 1024px) {
-            display: none; // Hide floating images on smaller screens to keep it clean
-        }
+        pointer-events: auto;
 
         img {
-            width: 157.5px;
-            height: 196.9px;
+            width: 100%;
+            height: 100%;
             object-fit: cover;
         }
 
+        @media (min-width: 570px) {
+            width: 110px;
+            height: 137px;
+        }
+
+        @media (min-width: 1024px) {
+            width: 149px;
+            height: 185.6px;
+        }
+
+        // --- Positions for Viewport < 570px ---
         &.nx-pdp-su1 {
-            left: 740px;
-            top: 351px;
+            left: calc(50% + 10px);
+            top: 55px;
+
+            @media (min-width: 570px) {
+                left: calc(50% + 14px);
+                top: 75px;
+            }
+
+            @media (min-width: 1024px) {
+                left: calc(50% + 20px);
+                top: 351px;
+            }
         }
 
         &.nx-pdp-su2 {
-            left: 515px;
-            top: 377px;
+            left: calc(50% - 100px);
+            top: 65px;
+
+            @media (min-width: 570px) {
+                left: calc(50% - 150px);
+                top: 85px;
+            }
+
+            @media (min-width: 1024px) {
+                left: calc(50% - 205px);
+                top: 377px;
+            }
         }
 
         &.nx-pdp-su3 {
-            left: 772px;
-            top: 563px;
+            left: calc(50% + 26px);
+            top: 140px;
+
+            @media (min-width: 570px) {
+                left: calc(50% + 36px);
+                top: 185px;
+            }
+
+            @media (min-width: 1024px) {
+                left: calc(50% + 52px);
+                top: 563px;
+            }
         }
 
         &.nx-pdp-su4 {
-            left: 499px;
-            top: 593px;
+            left: calc(50% - 110px);
+            top: 155px;
+
+            @media (min-width: 570px) {
+                left: calc(50% - 160px);
+                top: 205px;
+            }
+
+            @media (min-width: 1024px) {
+                left: calc(50% - 221px);
+                top: 593px;
+            }
         }
     }
 
     .nx-pdp-bigbottle {
         position: absolute;
         left: 50%;
-        top: calc(50% + 218px);
+        top: 65%;
         transform: translate(-50%, -50%);
-        height: 530px;
+        height: 220px;
         width: auto;
         z-index: 1;
 
-        @media (max-width: 1024px) {
-            position: relative;
-            left: auto;
-            top: auto;
-            transform: none;
+        @media (min-width: 570px) {
             height: 300px;
-            margin-top: 40px;
+        }
+
+        @media (min-width: 1024px) {
+            top: calc(50% + 218px);
+            height: 530px;
         }
     }
 }

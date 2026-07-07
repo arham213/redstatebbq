@@ -1,0 +1,251 @@
+// =============================================================================
+// TRADITION SECTION
+// =============================================================================
+
+.nx-pdp-tradition-wrapper {
+    background-color: var(--nx-cream);
+
+    .nx-pdp-tradition {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        padding: 0;
+        width: 100%;
+        max-width: 1440px;
+        margin: 0 auto;
+
+        @media (min-width: $screen-large) {
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            gap: 32px;
+            padding: 80px 80px 60px;
+        }
+
+        @media (min-width: 1280px) {
+            padding: 80px;
+        }
+
+        @media (min-width: 1441px) {
+            gap: 64px;
+        }
+
+        // ── Content column (left side) ──────────────────────────────────────
+        &__content {
+            flex: 1 1 auto;
+            min-width: 0;
+            padding: 48px 24px 40px;
+            order: 2;
+
+            @media (min-width: $screen-medium) {
+                padding: 60px 60px 48px;
+            }
+
+            @media (min-width: $screen-large) {
+                padding: 0;
+                order: 1;
+                max-width: 580px;
+            }
+        }
+
+        // ── Composite image column (right side) ─────────────────────────────
+        &__composite {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            order: 1;
+            padding: 40px 0 0px;
+
+            @media (min-width: $screen-medium) {
+                padding: 48px 0 0px;
+            }
+
+            @media (min-width: $screen-large) {
+                justify-content: flex-end;
+                flex: 0 0 50%;
+                max-width: 50%;
+                order: 2;
+            }
+
+            @media (min-width: 1281px) {
+                flex: 0 0 530px;
+                max-width: 530px;
+            }
+
+            @media (min-width: 1351px) {
+                flex: 1;
+                max-width: 100%;
+                min-height: 830px;
+            }
+        }
+
+        &__composite-img {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            display: block;
+
+            @media (max-width: 1023px) {
+                max-height: 400px;
+                width: auto;
+            }
+
+            @media (min-width: $screen-large) {
+                max-width: 100%;
+            }
+        }
+
+        // ── Section title ────────────────────────────────────────────────────
+        &__title {
+            font-family: var(--nx-font-display);
+            font-size: 40px;
+            font-weight: 400;
+            letter-spacing: .01em;
+            color: var(--nx-dark-red);
+            text-transform: uppercase;
+            line-height: 1;
+            margin: 0 0 16px;
+
+            @media (min-width: $screen-medium) {
+                font-size: 48px;
+                margin-bottom: 18px;
+            }
+
+            @media (min-width: $screen-large) {
+                font-size: 52px;
+                margin-bottom: 20px;
+            }
+
+            @media (min-width: 1280px) {
+                font-size: 60px;
+            }
+
+            @media (min-width: 1440px) {
+                font-size: 68px;
+            }
+        }
+
+        // ── Lead paragraph ───────────────────────────────────────────────────
+        &__lead {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--nx-dark-red);
+            max-width: 100%;
+            margin-bottom: 32px;
+            line-height: 1.35;
+
+            @media (min-width: $screen-medium) {
+                font-size: 20px;
+                margin-bottom: 44px;
+            }
+
+            @media (min-width: $screen-large) {
+                font-size: 18px;
+                margin-bottom: 40px;
+            }
+
+            @media (min-width: 1280px) {
+                font-size: 22px;
+                margin-bottom: 56px;
+            }
+
+            @media (min-width: 1440px) {
+                font-size: 26px;
+                margin-bottom: 64px;
+            }
+        }
+
+        // ── Horseradish card ─────────────────────────────────────────────────
+        &__horse-card {
+            background-color: var(--nx-cream-soft);
+            border-radius: 18px;
+            padding: 24px;
+            max-width: 100%;
+        }
+
+        &__horse-title {
+            font-family: var(--nx-font-display);
+            font-size: 22px;
+            color: var(--nx-dark-red);
+            font-style: normal;
+            font-weight: 400;
+            line-height: 1.1;
+            text-transform: uppercase;
+            margin: 0 0 12px;
+
+            @media (min-width: $screen-medium) {
+                font-size: 26px;
+                margin-bottom: 14px;
+            }
+
+            @media (min-width: $screen-large) {
+                font-size: 24px;
+                margin-bottom: 12px;
+            }
+
+            @media (min-width: 1280px) {
+                font-size: 30px;
+                line-height: 1.1;
+                margin-bottom: 14px;
+            }
+
+            @media (min-width: 1440px) {
+                font-size: 34px;
+                line-height: 37px;
+                margin-bottom: 16px;
+            }
+        }
+
+        &__horse-text {
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 1.45;
+            color: var(--nx-dark-red);
+            max-width: 100%;
+
+            @media (min-width: $screen-medium) {
+                font-size: 16px;
+            }
+
+            @media (min-width: $screen-large) {
+                font-size: 15px;
+            }
+
+            @media (min-width: 1280px) {
+                font-size: 17px;
+            }
+
+            @media (min-width: 1440px) {
+                font-size: 18px;
+                max-width: 560px;
+            }
+        }
+
+        &__carrot {
+            width: 100px;
+            height: auto;
+            margin-top: 18px;
+
+            @media (min-width: $screen-medium) {
+                width: 130px;
+                margin-top: 20px;
+            }
+
+            @media (min-width: $screen-large) {
+                width: 110px;
+                margin-top: 18px;
+            }
+
+            @media (min-width: 1280px) {
+                width: 130px;
+                margin-top: 20px;
+            }
+
+            @media (min-width: 1440px) {
+                width: 150px;
+                margin-top: 22px;
+            }
+        }
+    }
+}
