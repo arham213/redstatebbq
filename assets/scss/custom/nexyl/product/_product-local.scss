@@ -2,7 +2,7 @@
 // PRODUCT LOCAL SECTION (100% LOCALLY MADE)
 // =============================================================================
 
-.nx-pdp-product-local {
+.nx-pdp-product-showcase {
     width: 100%;
     margin: 0 auto;
     background: var(--nx-cream);
@@ -27,7 +27,7 @@
         justify-content: center;
     }
 
-    .nx-pdp-local-inner {
+    .nx-pdp-showcase-inner {
         flex: 1;
         display: flex;
         flex-direction: column;
@@ -38,7 +38,7 @@
         z-index: 2;
         margin: 0 auto;
 
-        .nx-pdp-local-title {
+        .nx-pdp-showcase-title {
             font-family: var(--nx-font-display, "Rye", serif);
             color: var(--nx-dark-red);
             text-transform: uppercase;
@@ -64,7 +64,7 @@
             }
         }
 
-        .nx-pdp-local-sub {
+        .nx-pdp-showcase-sub {
             font-weight: 500;
             font-size: 18px;
             margin: 0;
@@ -137,7 +137,7 @@
         }
     }
 
-    .nx-pdp-sauce-use {
+    .nx-pdp-item-use {
         position: absolute;
         width: 75px;
         height: 93.5px;
@@ -164,7 +164,7 @@
         }
 
         // --- Positions for Viewport < 570px ---
-        &.nx-pdp-su1 {
+        &.nx-pdp-iu1 {
             left: calc(50% + 10px);
             top: 55px;
 
@@ -179,7 +179,7 @@
             }
         }
 
-        &.nx-pdp-su2 {
+        &.nx-pdp-iu2 {
             left: calc(50% - 100px);
             top: 65px;
 
@@ -194,7 +194,7 @@
             }
         }
 
-        &.nx-pdp-su3 {
+        &.nx-pdp-iu3 {
             left: calc(50% + 26px);
             top: 140px;
 
@@ -209,7 +209,7 @@
             }
         }
 
-        &.nx-pdp-su4 {
+        &.nx-pdp-iu4 {
             left: calc(50% - 110px);
             top: 155px;
 
