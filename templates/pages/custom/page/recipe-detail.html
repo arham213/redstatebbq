@@ -1,0 +1,168 @@
+---
+blog:
+    recent_posts:
+        limit: 6
+---
+{{#partial "page"}}
+<div class="nx-recipe-page">
+
+    <!-- ============ DETAIL HERO ============ -->
+    <section class="recipe-hero-detail">
+        <div class="hero-row">
+            <div class="hero-left">
+                <div class="hero-top">
+                    <div class="badges">
+                        <span class="badge">BBQ</span>
+                        <span class="badge">Recipe</span>
+                        <span class="badge">5 min read</span>
+                    </div>
+                    <div class="actions">
+                        <div class="action-btn"><img src="{{cdn 'assets/img/icon-heart.svg'}}" alt="Save to favourites"></div>
+                        <div class="action-btn"><img src="{{cdn 'assets/img/icon-share.svg'}}" alt="Share"></div>
+                        <div class="action-btn"><img src="{{cdn 'assets/img/icon-printer.svg'}}" alt="Print"></div>
+                        <div class="action-btn"><img src="{{cdn 'assets/img/icon-save.svg'}}" alt="Bookmark"></div>
+                    </div>
+                </div>
+                
+                <h1 class="hero-title">{{page.title}}</h1>
+                <p class="hero-desc">The simplicity of this recipe really gives the harissa paste a chance to shine, with the sweet and sharp flavours of the pomegranate really complimenting the richness of the sausages.</p>
+                
+                <div class="divider"></div>
+                
+                <div class="meta-row">
+                    <div class="meta-item">
+                        <img src="{{cdn 'assets/img/icon-utensils.svg'}}" alt="">
+                        <span>Serves 4</span>
+                    </div>
+                    <div class="meta-item">
+                        <img src="{{cdn 'assets/img/icon-cookingpot.svg'}}" alt="">
+                        <span>Cook 15 mins</span>
+                    </div>
+                    <div class="meta-item">
+                        <img class="big" src="{{cdn 'assets/img/icon-clock.svg'}}" alt="">
+                        <span>Prep 30 mins</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-card">
+                <img src="{{cdn 'assets/img/photo-brisket.png'}}" alt="{{page.title}}">
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ INGREDIENTS + METHOD ============ -->
+    <section class="recipe-section">
+        <img class="recipe-bg" src="{{cdn 'assets/img/bg-vector.svg'}}" alt="">
+        <div class="cards">
+            <div class="card card-ingredients">
+                <h2 class="card-title">Ingredients</h2>
+                <div class="ingredient-list">
+                    <div class="ingredient-row"><span>30g</span><span>Unsalted butter, cubed</span></div>
+                    <div class="ingredient-row"><span>1 cup</span><span>All-purpose flour, sifted</span></div>
+                    <div class="ingredient-row"><span>2 tsp</span><span>Baking powder</span></div>
+                    <div class="ingredient-row"><span>1/2 tsp</span><span>Salt</span></div>
+                    <div class="ingredient-row"><span>3/4 cup</span><span>Granulated sugar</span></div>
+                    <div class="ingredient-row"><span>2</span><span>Large eggs, beaten</span></div>
+                </div>
+            </div>
+            
+            <div class="card card-method">
+                <h2 class="card-title">Method</h2>
+                <!-- If the user puts content in the page WYSIWYG, we can render it here -->
+                {{#if page.content}}
+                    <div class="method-content">
+                        {{{page.content}}}
+                    </div>
+                {{else}}
+                    <div class="method-list">
+                        <div class="method-step"><span class="num">1</span><p class="txt">Preheat the oven on a grill setting to high.</p></div>
+                        <div class="method-step"><span class="num">2</span><p class="txt">Place a large nonstick frying pan over high heat, and add half the butter. When hot and bubbling, add in your sausages and colour them on both sides for 3-4 minutes. Remove the sausages from the pan and set aside.</p></div>
+                        <div class="method-step"><span class="num">3</span><p class="txt">Turn the heat down to medium high, add in the rest of the butter, followed by the onions and 1 teaspoon flaked sea salt. Cook for 4 minutes until soft, stirring often. Add in the crushed garlic and dark brown sugar, and caramelise for another 3 minutes until sticky and dark. Add in the harissa and mix to combine. Return the sausages to the pan, nestle them in, and then slide the pan under the grill for 5 minutes.</p></div>
+                        <div class="method-step"><span class="num">4</span><p class="txt">Remove the pan from the oven, and set aside for a couple of minutes. Serve the sausages and sticky onions in toasted hot dog buns, with toppings of your choice (we like sweet dill pickle relish, mustard, crispy onions and salted crisps on the side).</p></div>
+                    </div>
+                {{/if}}
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ RELATED RECIPES ============ -->
+    <section class="related">
+        <div class="related-inner">
+            <h2 class="related-title">Related Recipes That You Might Like</h2>
+            
+            <div class="swiper nx-related-recipes-swiper">
+                <div class="swiper-wrapper">
+                    {{#each blog.recent_posts}}
+                        <div class="swiper-slide">
+                            <article class="recipe-card">
+                                <div class="thumb">
+                                    <a href="{{url}}">
+                                        <img src="{{getImage thumbnail 'original'}}" alt="{{title}}">
+                                    </a>
+                                </div>
+                                <div class="body">
+                                    <span class="card-badge">
+                                        {{#if tags}}
+                                            {{tags.0.name}}
+                                        {{else}}
+                                            5 min read
+                                        {{/if}}
+                                    </span>
+                                    <h3 class="name"><a href="{{url}}">{{title}}</a></h3>
+                                    <div class="rating">
+                                        <img class="stars" src="{{cdn 'assets/img/icon-stars.svg'}}" alt="4.8 stars">
+                                        <div class="score"><span>4.8</span><span>(546)</span></div>
+                                    </div>
+                                    <div class="time">
+                                        <img src="{{cdn 'assets/img/icon-clock.svg'}}" alt="">
+                                        <span>1 hr 10 mins</span>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    {{/each}}
+                    
+                    {{#unless blog.recent_posts}}
+                        <div class="swiper-slide">
+                            <article class="recipe-card">
+                                <div class="thumb"><img src="{{cdn 'assets/img/photo-poboy.png'}}" alt="Sausage Po'Boy"></div>
+                                <div class="body">
+                                    <span class="card-badge">5 min read</span>
+                                    <h3 class="name">Sausage Po&rsquo;Boy</h3>
+                                    <div class="rating">
+                                        <img class="stars" src="{{cdn 'assets/img/icon-stars.svg'}}" alt="4.8 stars">
+                                        <div class="score"><span>4.8</span><span>(546)</span></div>
+                                    </div>
+                                    <div class="time"><img src="{{cdn 'assets/img/icon-clock.svg'}}" alt=""><span>1 hr 10 mins</span></div>
+                                </div>
+                            </article>
+                        </div>
+                        <div class="swiper-slide">
+                            <article class="recipe-card">
+                                <div class="thumb"><img src="{{cdn 'assets/img/photo-chicken.png'}}" alt="Pulled Chicken Sandwich"></div>
+                                <div class="body">
+                                    <span class="card-badge">5 min read</span>
+                                    <h3 class="name">Pulled Chicken Sandwich</h3>
+                                    <div class="rating">
+                                        <img class="stars" src="{{cdn 'assets/img/icon-stars.svg'}}" alt="4.8 stars">
+                                        <div class="score"><span>4.8</span><span>(546)</span></div>
+                                    </div>
+                                    <div class="time"><img src="{{cdn 'assets/img/icon-clock.svg'}}" alt=""><span>1 hr 10 mins</span></div>
+                                </div>
+                            </article>
+                        </div>
+                    {{/unless}}
+                </div>
+                
+                <div class="arrows nx-recipe-arrows">
+                    <img class="swiper-button-prev" src="{{cdn 'assets/img/icon-arrow-left.svg'}}" alt="Previous">
+                    <img class="swiper-button-next" src="{{cdn 'assets/img/icon-arrow-right.svg'}}" alt="Next">
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+</div>
+{{/partial}}
+{{> layout/base}}

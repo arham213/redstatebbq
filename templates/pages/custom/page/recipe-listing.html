@@ -1,0 +1,142 @@
+---
+blog:
+    recent_posts:
+        limit: 50
+---
+{{#partial "page"}}
+<div class="nx-recipe-page">
+
+    <!-- ================= HERO ================= -->
+    <section class="recipe-hero-listing">
+        <h1 class="display section-title">{{page.title}}</h1>
+        <div class="hero-cards">
+            {{#each blog.recent_posts}}
+                {{#if @index '<' 3}}
+                <div class="hero-card">
+                    <img src="{{getImage thumbnail 'original'}}" alt="{{title}}" />
+                    <div class="hero-overlay"><p class="display">{{title}}</p></div>
+                </div>
+                {{/if}}
+            {{/each}}
+            <!-- Fallback if no posts -->
+            {{#unless blog.recent_posts}}
+            <div class="hero-card">
+                <img src="{{cdn 'assets/img/food-poboy.png'}}" alt="Sausage Po'Boy" />
+                <div class="hero-overlay"><p class="display">Sausage Po'Boy</p></div>
+            </div>
+            <div class="hero-card">
+                <img src="{{cdn 'assets/img/food-brisket.png'}}" alt="Sliced Brisket" />
+                <div class="hero-overlay"><p class="display">Sliced Brisket</p></div>
+            </div>
+            <div class="hero-card">
+                <img src="{{cdn 'assets/img/food-chicken.png'}}" alt="Pulled Chicken Sandwich" />
+                <div class="hero-overlay"><p class="display">Pulled Chicken Sandwich</p></div>
+            </div>
+            {{/unless}}
+        </div>
+    </section>
+
+    <!-- ================= CATEGORIES ================= -->
+    <section class="categories">
+        <div class="deco deco-1">
+            <img src="{{cdn 'assets/img/vector.svg'}}" alt="" />
+        </div>
+        <div class="deco deco-2">
+            <img src="{{cdn 'assets/img/vector1.svg'}}" alt="" />
+        </div>
+
+        <div class="cat-head">
+            <h2 class="display section-title">Our Categories</h2>
+            <div class="tabs">
+                <div class="tab active">All</div>
+                <div class="tab">Beef Burgers</div>
+                <div class="tab">Chicken Burgers</div>
+                <div class="tab">Brisket</div>
+                <div class="tab">Sandwiches</div>
+                <div class="tab">Steaks</div>
+                <div class="tab">Ribs</div>
+            </div>
+        </div>
+
+        <div class="cat-cards">
+            <div class="card-row">
+                {{#each blog.recent_posts}}
+                <article class="rcard">
+                    <div class="rcard-img">
+                        <a href="{{url}}">
+                            <img src="{{getImage thumbnail 'original'}}" alt="{{title}}" />
+                        </a>
+                    </div>
+                    <div class="rcard-body">
+                        <h3 class="rcard-title display"><a href="{{url}}">{{title}}</a></h3>
+                        <div class="rating">
+                            <img class="stars" src="{{cdn 'assets/img/stars.svg'}}" alt="4.8 stars" />
+                            <div class="rating-num"><p>4.8</p><p>(546)</p></div>
+                        </div>
+                        <div class="time">
+                            <img src="{{cdn 'assets/img/clock.svg'}}" alt="" />
+                            <p>1 hr 10 mins</p>
+                        </div>
+                        <div class="badge">
+                            {{#if tags}}
+                                {{tags.0.name}}
+                            {{else}}
+                                5 min read
+                            {{/if}}
+                        </div>
+                    </div>
+                </article>
+                {{/each}}
+
+                {{#unless blog.recent_posts}}
+                <article class="rcard">
+                    <div class="rcard-img">
+                        <img src="{{cdn 'assets/img/food-poboy.png'}}" alt="" />
+                    </div>
+                    <div class="rcard-body">
+                        <h3 class="rcard-title display">Sausage Po'Boy</h3>
+                        <div class="rating">
+                            <img class="stars" src="{{cdn 'assets/img/stars.svg'}}" alt="4.8 stars" />
+                            <div class="rating-num"><p>4.8</p><p>(546)</p></div>
+                        </div>
+                        <div class="time">
+                            <img src="{{cdn 'assets/img/clock.svg'}}" alt="" />
+                            <p>1 hr 10 mins</p>
+                        </div>
+                        <div class="badge">5 min read</div>
+                    </div>
+                </article>
+                <!-- Add more static cards as needed -->
+                {{/unless}}
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= TESTIMONIAL ================= -->
+    <div class="band-wrap">
+        <section class="testimonial">
+            <div class="test-inner">
+                <h2 class="display test-title">Recipes loved By All</h2>
+                <div class="test-quote-row">
+                    <div class="test-person">
+                        <div class="avatar"></div>
+                        <div class="test-name">David Carroll</div>
+                    </div>
+                    <p class="test-quote">&ldquo;We&rsquo;ve had regional sauces on the tables at Red State for 13 years. For America&rsquo;s 250th birthday, I wanted to make one sauce that represented the whole country.&rdquo;</p>
+                </div>
+            </div>
+            <div class="brands">
+                <div class="brand-row">
+                    <img src="{{cdn 'assets/img/logo-foodcity.svg'}}" alt="Food City" />
+                    <img src="{{cdn 'assets/img/logo-generic.svg'}}" alt="Logo" />
+                    <img src="{{cdn 'assets/img/logo-kfc.svg'}}" alt="KFC" />
+                    <img src="{{cdn 'assets/img/logo-bbqguys.svg'}}" alt="BBQGuys" />
+                </div>
+                <p class="also">Also Seen At</p>
+            </div>
+        </section>
+    </div>
+
+</div>
+{{/partial}}
+{{> layout/base}}

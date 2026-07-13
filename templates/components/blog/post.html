@@ -1,51 +1,26 @@
-<article class="blog">
-    <div class="blog-post-figure">
-        {{#if post.thumbnail}}
-            <figure class="blog-thumbnail">
-                <a href="{{post.url}}">
-                    {{> components/common/responsive-img
-                        image=post.thumbnail
-                        fallback_size=theme_settings.blog_size
-                        lazyload=theme_settings.lazyload_mode
-                    }}
-                </a>
-            </figure>
-        {{/if}}
+<article class="bcard nx-blog-post">
+    <div class="bcard-img">
+        <a href="{{post.url}}">
+            {{> components/common/responsive-img
+                image=post.thumbnail
+                fallback_size=theme_settings.blog_size
+                lazyload=theme_settings.lazyload_mode
+                default_image=theme_settings.default_image_product
+            }}
+        </a>
     </div>
-
-    <div class="blog-post-body">
-        <header class="blog-header">
-            <h{{#if is_blog_post}}1{{else}}2{{/if}} class="blog-title">
-                <a href="{{post.url}}">{{post.title}}</a>
-            </h{{#if is_blog_post}}1{{else}}2{{/if}}>
-            <p class="blog-date">{{#if post.author}}{{lang 'blog.posted_by' name=post.author}} on {{/if}}{{post.date_published}}</p>
-        </header>
-
-        <div class="blog-post">
-            {{#if post.body}}
-                {{{post.body}}}
-            {{else}}
-                {{{post.summary}}}
-                {{#if post.show_read_more}}
-                    &hellip; <a href="{{url}}" aria-label="{{post.title}} {{lang 'blog.read_more'}}">{{lang 'blog.read_more'}}</a>
-                {{/if}}
-            {{/if}}
+    <div class="bcard-body">
+        <h3 class="bcard-title display"><a href="{{post.url}}">{{post.title}}</a></h3>
+        <div class="time">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M22 12C22 17.52 17.52 22 12 22C6.48 22 2 17.52 2 12C2 6.48 6.48 2 12 2C17.52 2 22 6.48 22 12Z" stroke="#4B4B4A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M15.7109 15.1798L12.6109 13.3298C12.0709 13.0098 11.6309 12.2398 11.6309 11.6098V7.50977" stroke="#4B4B4A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <p class="nx-blog-date" data-blog-date="{{post.date_published}}">{{post.date_published}}</p>
         </div>
-
-
-        {{#if show_tags}}
-            {{#if post.tags}}
-                <ul class="tags">
-                    {{#each post.tags}}
-                    <li class="tag">
-                        <a href="{{url}}">#{{name}}</a>
-                    </li>
-                    {{/each}}
-                </ul>
-            {{/if}}
-        {{/if}}
-
-        {{>components/common/share url=post.url}}
-
+        <div class="bcard-foot">
+            <div class="badge nx-blog-badge" data-tags="{{#each post.tags}}{{name}},{{/each}}">Blog</div>
+            <a href="{{post.url}}" class="btn-outline">Read</a>
+        </div>
     </div>
 </article>

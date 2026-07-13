@@ -1,9 +1,10 @@
 ---
 blog:
     posts:
-        limit: 5
+        limit: 6
         pages: 3
         summary: 200
+gql: "query featuredPost { site { content { blog { posts(filters: {tags: [\"featured\"]}, first: 1) { edges { node { name url: path summary: plainTextSummary thumbnailImage { url(width: 800) } } } } } } } }"
 ---
 {{#partial "head"}}
     {{#if pagination.blog.previous}}
@@ -12,23 +13,72 @@ blog:
     {{#if pagination.blog.next}}
         <link rel="next" href="{{{pagination.blog.next}}}">
     {{/if}}
+    <script>
+        window.stencilStorefrontToken = '{{settings.storefront_api.token}}';
+        window.stencilDefaultImage = '{{getImage theme_settings.default_image_product "blog_size"}}';
+    </script>
 {{/partial}}
 
 {{#partial "page"}}
+<main class="page nx-blog-page">
 
-{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+  <!-- FEATURED BLOG -->
+  <section class="featured">
+    <div class="container">
+      <h1 class="display section-title">Featured Blog</h1>
+      
+      {{#each gql.data.site.content.blog.posts.edges}}
+        <div class="featured-card">
+          <div class="featured-img">
+            <a href="{{node.url}}">
+              {{#if node.thumbnailImage.url}}
+                <img src="{{node.thumbnailImage.url}}" alt="{{node.name}}">
+              {{/if}}
+            </a>
+          </div>
+          <div class="featured-text">
+            <div class="inner">
+              <h2 class="display featured-title">{{node.name}}</h2>
+              <p class="featured-sub">{{node.summary}}</p>
+            </div>
+            <a href="{{node.url}}" class="btn-outline red">Read now</a>
+          </div>
+        </div>
+      {{/each}}
+    </div>
+  </section>
 
-<main class="page">
-    {{#unless theme_settings.hide_blog_page_heading }}
-        <h1 class="page-heading">{{ blog.name }}</h1>
-    {{/unless}}
+  <!-- EXPLORE -->
+  <section class="explore">
+    <div class="container explore-container">
+      <div class="explore-head">
+        <h2 class="display section-title">Explore</h2>
+        <div class="nx-blog-search">
+          <input type="text" id="nx-blog-search-input" placeholder="Search">
+          <img class="search-icon" src="{{cdn 'assets/img/icon-search.svg'}}" alt="Search">
+        </div>
+      </div>
 
-    {{#each blog.posts}}
-        {{> components/blog/post post=this theme_settings=../theme_settings}}
-    {{/each}}
+      <div class="cards-wrap" id="nx-blog-cards-wrap">
+        <div class="card-row">
+          {{#each blog.posts}}
+            {{> components/blog/post post=this theme_settings=../theme_settings}}
+          {{/each}}
+        </div>
+      </div>
 
-    {{> components/common/paginator pagination.blog}}
+      <div class="nx-blog-actions">
+        {{#if pagination.blog.next}}
+          <button id="nx-blog-load-more" class="btn-outline" data-next-page="{{pagination.blog.next}}">Load More</button>
+        {{/if}}
+      </div>
+      
+      <div style="display: none;">
+        {{> components/common/paginator pagination.blog}}
+      </div>
+    </div>
+  </section>
+
 </main>
-
 {{/partial}}
 {{> layout/base}}
