@@ -76,7 +76,6 @@
             gap: 24px;
             padding: 32px 16px;
             width: 100%;
-            max-width: 1280px;
             margin: 0 auto;
 
             @media (min-width: 768px) {
@@ -102,6 +101,9 @@
             }
 
             @media (min-width: 1024px) {
+                > * {
+                    flex-basis: 100% !important;
+                }
                 flex-direction: row;
                 align-items: stretch;
             }
@@ -131,6 +133,7 @@
                 position: relative;
                 top: auto;
                 right: auto;
+                height: 533px;
             }
 
             a {
@@ -161,9 +164,13 @@
 
             @media (min-width: 1024px) {
                 flex: 1;
-                padding: 64px 80px;
+                padding: 64px 60px;
                 order: 1;
                 position: relative;
+            }
+
+            @media (min-width: 1200px) {
+                padding: 64px 80px;
             }
 
             .inner {
@@ -229,7 +236,6 @@
             position: relative;
             z-index: 1;
             width: 100%;
-            max-width: 1280px;
             margin: 0 auto;
             padding: 32px 16px;
 
@@ -279,7 +285,7 @@
             position: relative;
             z-index: 1;
 
-            @media (min-width: 768px) {
+            @media (min-width: 570px) {
                 flex-direction: row;
                 justify-content: space-between;
                 gap: 0;
@@ -291,55 +297,79 @@
                 margin-bottom: 0;
                 text-align: center;
 
-                @media (min-width: 768px) {
+                @media (min-width: 570px) {
                     text-align: left;
                 }
             }
 
             .nx-blog-search {
-                position: relative;
-                width: 100%;
-                max-width: 400px;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                border-bottom: 1px solid var(--nx-dark-red, #6a0111);
+                margin: 0;
+                width: 200px;
+                transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s ease, box-shadow 0.3s ease;
 
-                @media (min-width: 768px) {
-                    width: auto;
+                &:focus-within {
+                    width: 250px;
+                    border-bottom-color: var(--nx-red, #b12028);
+                    box-shadow: 0 1px 0 0 var(--nx-red, #b12028);
                 }
 
-                input {
-                    width: 100%;
-                    height: 48px;
-                    border-radius: 24px;
-                    border: 2px solid var(--nx-dark-red, #6a0111);
-                    background: transparent;
-                    padding: 0 48px 0 24px;
-                    font-family: var(--nx-font-body, "Figtree", sans-serif);
-                    font-size: 16px;
-                    font-weight: 500;
-                    color: var(--nx-dark-red, #6a0111);
-                    outline: none;
-                    transition: all 0.2s ease;
 
-                    &:focus {
-                        box-shadow: 0 0 0 3px rgba(#6a0111, 0.1);
+
+                @media (min-width: 768px) {
+                    width: 250px;
+
+                    &:focus-within {
+                        width: 300px;
                     }
+                }
 
-                    &::placeholder {
-                        color: rgba(106, 1, 17, 0.5);
-                    }
+                @media (min-width: 1024px) {
+                    width: 300px;
 
-                    @media (min-width: 768px) {
-                        width: 320px;
+                    &:focus-within {
+                        width: 350px;
                     }
                 }
 
                 .search-icon {
-                    position: absolute;
-                    right: 16px;
-                    top: 50%;
-                    transform: translateY(-50%);
-                    width: 20px;
-                    height: 20px;
+                    width: 16px;
+                    height: 16px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex-shrink: 0;
                     pointer-events: none;
+                    
+                    svg {
+                        width: 16px;
+                        height: 16px;
+                    }
+                }
+
+                input {
+                    border: none;
+                    background: transparent;
+                    outline: none;
+                    color: var(--nx-dark-red, #6a0111);
+                    font-family: var(--nx-font-inter, sans-serif);
+                    font-size: 14px;
+                    line-height: 20px;
+                    width: 100%;
+                    padding: 10px 0;
+
+                    &::placeholder {
+                        color: var(--nx-dark-red, #6a0111);
+                        opacity: 1;
+                        transition: opacity 0.2s ease;
+                    }
+
+                    &:focus::placeholder {
+                        opacity: 0.5;
+                    }
                 }
             }
         }
@@ -571,25 +601,62 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            flex-wrap: wrap; // Wrap on small screens
+            gap: 16px;
             width: 100%;
-        }
 
-        .actions {
-            display: flex;
-            gap: 8px;
-            align-items: center;
-            justify-content: flex-end;
+            @media (min-width: 570px) {
+                flex-wrap: nowrap;
+            }
 
-            // overrides for AddThis sharing icons
-            .addthis_toolbox {
-                margin: 0;
+            .back-btn {
+                gap: 8px;
+                padding: 0;
+                border: none;
+                height: auto;
+                
+                .back-text-full {
+                    display: none;
+                }
+                
+                svg {
+                    width: 16px;
+                    height: 16px;
+                }
+
+                @media (min-width: 420px) {
+                    padding: 8px 24px;
+                    border: 2px solid var(--nx-dark-red, #6a0111);
+                    height: 40px;
+                }
+
+                @media (min-width: 570px) {
+                    .back-icon, .back-text-short {
+                        display: none;
+                    }
+                    .back-text-full {
+                        display: inline;
+                    }
+                }
             }
         }
 
         .nx-blog-actions-bar {
             display: flex;
             align-items: center;
-            gap: 12px;
+            flex-wrap: wrap; // Allow buttons to wrap if extremely narrow
+            gap: 8px;
+            
+            // Adjust the margin on small screens if they wrap below
+            margin-top: 0;
+
+            @media (min-width: 420px) {
+                gap: 12px;
+            }
+
+            @media (min-width: 570px) {
+                flex-wrap: nowrap;
+            }
 
             .nx-share-wrapper {
                 position: relative;
@@ -599,17 +666,38 @@
                 display: none;
                 position: absolute;
                 bottom: calc(100% + 8px); // For bottom buttons, open upwards. Toprow can override.
-                right: -50px;
                 background: #FBF5E7;
                 border: 2px solid var(--nx-dark-red, #6a0111);
                 border-radius: 24px;
-                padding: 12px 16px;
+                padding: 8px 12px;
                 z-index: 100;
                 white-space: nowrap;
                 box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 
-                @media (min-width: 768px) {
-                    right: 0;
+                &.align-left {
+                    left: -10px;
+                    right: auto;
+                    @media (min-width: 420px) {
+                        left: -20px;
+                    }
+                    @media (min-width: 570px) {
+                        left: 0;
+                    }
+                }
+
+                &.align-right {
+                    right: -10px;
+                    left: auto;
+                    @media (min-width: 420px) {
+                        right: -20px;
+                    }
+                    @media (min-width: 570px) {
+                        right: 0;
+                    }
+                }
+
+                @media (min-width: 420px) {
+                    padding: 12px 16px;
                 }
 
                 &.is-open {
@@ -619,10 +707,18 @@
                 .socialLinks {
                     display: flex;
                     align-items: center;
-                    gap: 16px;
+                    gap: 8px;
                     margin: 0;
                     padding: 0;
                     list-style: none;
+
+                    @media (min-width: 420px) {
+                        gap: 12px;
+                    }
+
+                    @media (min-width: 570px) {
+                        gap: 16px;
+                    }
 
                     li {
                         margin: 0;
@@ -640,8 +736,18 @@
                         }
 
                         svg {
-                            width: 24px;
-                            height: 24px;
+                            width: 16px;
+                            height: 16px;
+
+                            @media (min-width: 420px) {
+                                width: 20px;
+                                height: 20px;
+                            }
+
+                            @media (min-width: 570px) {
+                                width: 24px;
+                                height: 24px;
+                            }
                         }
                     }
                 }
@@ -649,14 +755,38 @@
 
             .action-btn {
                 display: flex;
-                padding: 16px;
+                padding: 8px;
                 align-items: center;
-                gap: 8px;
+                gap: 6px;
                 cursor: pointer;
                 border-radius: 24px;
                 background: #FBF5E7;
                 border: none;
                 transition: all 0.2s ease;
+
+                svg {
+                    width: 16px;
+                    height: 16px;
+                }
+
+                @media (min-width: 420px) {
+                    padding: 12px;
+                    gap: 8px;
+                    
+                    svg {
+                        width: 20px;
+                        height: 20px;
+                    }
+                }
+
+                @media (min-width: 570px) {
+                    padding: 16px;
+                    
+                    svg {
+                        width: 24px;
+                        height: 24px;
+                    }
+                }
 
                 svg path,
                 svg rect,
@@ -960,6 +1090,13 @@
             justify-content: space-between;
             padding: 24px;
             border-top: 1px solid var(--nx-grey-300, #c2c8cb);
+            flex-wrap: wrap;
+            gap: 16px;
+
+            @media (min-width: 570px) {
+                align-items: center;
+                flex-wrap: nowrap;
+            }
 
             @media (min-width: 768px) {
                 padding: 32px;

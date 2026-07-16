@@ -270,7 +270,9 @@ export default function initSearchLoadMore() {
             const themeFallback = window.stencilDefaultImage;
             const fallbackImg = '/stencil/00000000-0000-0000-0000-000000000001/img/ProductDefault.gif'; 
             const imgUrl = node.thumbnailImage ? node.thumbnailImage.url : fallbackImg;
-            const dateStr = new Date(node.publishedDate.utc).toLocaleDateString('en-US', {
+            // Strip timezone to parse as local midnight and prevent offset shifts
+            const localDate = new Date(node.publishedDate.utc.split('T')[0].replace(/-/g, '/'));
+            const dateStr = localDate.toLocaleDateString('en-US', {
                 month: 'short', day: 'numeric', year: 'numeric'
             });
 
@@ -290,7 +292,7 @@ export default function initSearchLoadMore() {
                                 <path d="M22 12C22 17.52 17.52 22 12 22C6.48 22 2 17.52 2 12C2 6.48 6.48 2 12 2C17.52 2 22 6.48 22 12Z" stroke="#4B4B4A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                 <path d="M15.7109 15.1798L12.6109 13.3298C12.0709 13.0098 11.6309 12.2398 11.6309 11.6098V7.50977" stroke="#4B4B4A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
-                            <p class="nx-blog-date" data-blog-date="${node.publishedDate.utc}">${dateStr}</p>
+                            <p class="nx-blog-date" data-blog-date="${dateStr}">${dateStr}</p>
                         </div>
                         <div class="bcard-foot">
                             <div class="badge nx-blog-badge" data-tags="${tagsStr}">Blog</div>

@@ -12,6 +12,18 @@ export default function initBlogActions() {
                     if (dd !== shareDropdown) dd.classList.remove('is-open');
                 });
                 
+                // Dynamic positioning
+                const rect = shareBtn.getBoundingClientRect();
+                const windowWidth = window.innerWidth;
+                
+                shareDropdown.classList.remove('align-right', 'align-left');
+                
+                if (rect.right > windowWidth / 2) {
+                    shareDropdown.classList.add('align-right');
+                } else {
+                    shareDropdown.classList.add('align-left');
+                }
+                
                 shareDropdown.classList.toggle('is-open');
             });
             
