@@ -3,6 +3,7 @@
 // =============================================================================
 
 .nx-fans {
+    position: relative;
     width: 100%;
     background: var(--nx-dark-red);
     display: flex;
@@ -10,21 +11,29 @@
     align-items: center;
     gap: 80px;
     padding: 60px 24px;
+    overflow: hidden;
 
     @media (max-width: $screen-medium) {
-        gap: 40px;
+        gap: 80px;
         padding: 40px 16px;
     }
 }
 
 .nx-fans-title {
-    color: var(--nx-cream);
-    font-size: 20px;
-    font-weight: 400;
-    font-family: var(--nx-font-display);
+    font-size: 28px;
+    color: var(--nx-cream, #fbf5e7);
     text-transform: uppercase;
-    letter-spacing: .06em;
-    margin: 0 0 -20px 0;
+    margin: 0;
+    text-align: center;
+    font-family: var(--nx-font-display);
+    font-weight: 400;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+
+    @media (min-width: 768px) {
+        font-size: 38px;
+    }
 }
 
 .nx-quote-row {
@@ -71,6 +80,7 @@
     font-size: 26px;
     line-height: 1.2;
     max-width: 551px;
+    width: 100%;
     margin: 0;
 
     @media (max-width: $screen-medium) {
@@ -114,4 +124,61 @@
     font-weight: 500;
     font-size: 18px;
     margin: 0;
+}
+
+.nx-testimonial-arrows {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    margin-top: 24px;
+    z-index: 10;
+    order: 3; // Put it at the bottom visually on mobile
+
+    @media (min-width: 1024px) {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100%;
+        max-width: 1000px;
+        justify-content: space-between;
+        transform: translate(-50%, -50%);
+        margin-top: 0;
+        pointer-events: none; // let clicks pass through to content
+    }
+}
+
+.nx-testimonial-prev,
+.nx-testimonial-next {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #FBF5E7;
+    pointer-events: auto; // restore clicks
+    background: transparent;
+    transition: background 0.3s;
+
+    &:hover {
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    @media (min-width: 1024px) {
+        position: absolute;
+    }
+}
+
+.nx-testimonial-prev {
+    @media (min-width: 1024px) {
+        left: 0;
+    }
+}
+
+.nx-testimonial-next {
+    @media (min-width: 1024px) {
+        right: 0;
+    }
 }

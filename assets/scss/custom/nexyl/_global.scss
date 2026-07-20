@@ -49,3 +49,10 @@ body {
 .go2324193863.go2324193863.go2324193863:focus-visible {
     outline: none;
 }
+
+.swiper-button-next ::slotted(svg),
+.swiper-button-next svg,
+.swiper-button-prev ::slotted(svg),
+.swiper-button-prev svg {
+    fill: transparent !important;
+}

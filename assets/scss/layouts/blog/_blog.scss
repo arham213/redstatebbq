@@ -641,184 +641,6 @@
             }
         }
 
-        .nx-blog-actions-bar {
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap; // Allow buttons to wrap if extremely narrow
-            gap: 8px;
-            
-            // Adjust the margin on small screens if they wrap below
-            margin-top: 0;
-
-            @media (min-width: 420px) {
-                gap: 12px;
-            }
-
-            @media (min-width: 570px) {
-                flex-wrap: nowrap;
-            }
-
-            .nx-share-wrapper {
-                position: relative;
-            }
-
-            .nx-share-dropdown {
-                display: none;
-                position: absolute;
-                bottom: calc(100% + 8px); // For bottom buttons, open upwards. Toprow can override.
-                background: #FBF5E7;
-                border: 2px solid var(--nx-dark-red, #6a0111);
-                border-radius: 24px;
-                padding: 8px 12px;
-                z-index: 100;
-                white-space: nowrap;
-                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-
-                &.align-left {
-                    left: -10px;
-                    right: auto;
-                    @media (min-width: 420px) {
-                        left: -20px;
-                    }
-                    @media (min-width: 570px) {
-                        left: 0;
-                    }
-                }
-
-                &.align-right {
-                    right: -10px;
-                    left: auto;
-                    @media (min-width: 420px) {
-                        right: -20px;
-                    }
-                    @media (min-width: 570px) {
-                        right: 0;
-                    }
-                }
-
-                @media (min-width: 420px) {
-                    padding: 12px 16px;
-                }
-
-                &.is-open {
-                    display: block;
-                }
-
-                .socialLinks {
-                    display: flex;
-                    align-items: center;
-                    gap: 8px;
-                    margin: 0;
-                    padding: 0;
-                    list-style: none;
-
-                    @media (min-width: 420px) {
-                        gap: 12px;
-                    }
-
-                    @media (min-width: 570px) {
-                        gap: 16px;
-                    }
-
-                    li {
-                        margin: 0;
-                        padding: 0;
-                    }
-
-                    a {
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        transition: transform 0.2s ease;
-
-                        &:hover {
-                            transform: translateY(-3px);
-                        }
-
-                        svg {
-                            width: 16px;
-                            height: 16px;
-
-                            @media (min-width: 420px) {
-                                width: 20px;
-                                height: 20px;
-                            }
-
-                            @media (min-width: 570px) {
-                                width: 24px;
-                                height: 24px;
-                            }
-                        }
-                    }
-                }
-            }
-
-            .action-btn {
-                display: flex;
-                padding: 8px;
-                align-items: center;
-                gap: 6px;
-                cursor: pointer;
-                border-radius: 24px;
-                background: #FBF5E7;
-                border: none;
-                transition: all 0.2s ease;
-
-                svg {
-                    width: 16px;
-                    height: 16px;
-                }
-
-                @media (min-width: 420px) {
-                    padding: 12px;
-                    gap: 8px;
-                    
-                    svg {
-                        width: 20px;
-                        height: 20px;
-                    }
-                }
-
-                @media (min-width: 570px) {
-                    padding: 16px;
-                    
-                    svg {
-                        width: 24px;
-                        height: 24px;
-                    }
-                }
-
-                svg path,
-                svg rect,
-                svg circle,
-                svg polyline {
-                    transition: stroke 0.2s ease;
-                }
-
-                &:hover {
-                    background: var(--nx-dark-red, #6a0111);
-                    color: white;
-
-                    svg path,
-                    svg rect,
-                    svg circle,
-                    svg polyline {
-                        stroke: white;
-                    }
-                }
-
-                &.is-saved svg path {
-                    fill: var(--nx-dark-red, #6a0111);
-                    stroke: var(--nx-dark-red, #6a0111);
-                }
-            }
-        }
-
-        .hero-toprow .nx-share-dropdown {
-            top: calc(100% + 8px);
-            bottom: auto;
-        }
-
         .title-block {
             display: flex;
             flex-direction: column;
@@ -1242,3 +1064,182 @@
         }
     }
 }
+// --- Global Actions Bar ---
+.nx-blog-actions-bar {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap; // Allow buttons to wrap if extremely narrow
+    gap: 8px;
+    
+    // Adjust the margin on small screens if they wrap below
+    margin-top: 0;
+
+    @media (min-width: 420px) {
+        gap: 12px;
+    }
+
+    @media (min-width: 570px) {
+        flex-wrap: nowrap;
+    }
+
+    .nx-share-wrapper {
+        position: relative;
+    }
+
+    .nx-share-dropdown {
+        display: none;
+        position: absolute;
+        bottom: calc(100% + 8px); // For bottom buttons, open upwards. Toprow can override.
+        background: #FBF5E7;
+        border: 2px solid var(--nx-dark-red, #6a0111);
+        border-radius: 24px;
+        padding: 8px 12px;
+        z-index: 100;
+        white-space: nowrap;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+        &.align-left {
+            left: -10px;
+            right: auto;
+            @media (min-width: 420px) {
+                left: -20px;
+            }
+            @media (min-width: 570px) {
+                left: 0;
+            }
+        }
+
+        &.align-right {
+            right: -10px;
+            left: auto;
+            @media (min-width: 420px) {
+                right: -20px;
+            }
+            @media (min-width: 570px) {
+                right: 0;
+            }
+        }
+
+        @media (min-width: 420px) {
+            padding: 12px 16px;
+        }
+
+        &.is-open {
+            display: block;
+        }
+
+        .socialLinks {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+
+            @media (min-width: 420px) {
+                gap: 12px;
+            }
+
+            @media (min-width: 570px) {
+                gap: 16px;
+            }
+
+            li {
+                margin: 0;
+                padding: 0;
+            }
+
+            a {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: transform 0.2s ease;
+
+                &:hover {
+                    transform: translateY(-3px);
+                }
+
+                svg {
+                    width: 16px;
+                    height: 16px;
+
+                    @media (min-width: 420px) {
+                        width: 20px;
+                        height: 20px;
+                    }
+
+                    @media (min-width: 570px) {
+                        width: 24px;
+                        height: 24px;
+                    }
+                }
+            }
+        }
+    }
+
+    .action-btn {
+        display: flex;
+        padding: 8px;
+        align-items: center;
+        gap: 6px;
+        cursor: pointer;
+        border-radius: 24px;
+        background: #FBF5E7;
+        border: none;
+        transition: all 0.2s ease;
+
+        svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        @media (min-width: 420px) {
+            padding: 12px;
+            gap: 8px;
+            
+            svg {
+                width: 20px;
+                height: 20px;
+            }
+        }
+
+        @media (min-width: 570px) {
+            padding: 16px;
+            
+            svg {
+                width: 24px;
+                height: 24px;
+            }
+        }
+
+        svg path,
+        svg rect,
+        svg circle,
+        svg polyline {
+            transition: stroke 0.2s ease;
+        }
+
+        &:hover {
+            background: var(--nx-dark-red, #6a0111);
+            color: white;
+
+            svg path,
+            svg rect,
+            svg circle,
+            svg polyline {
+                stroke: white;
+            }
+        }
+
+        &.is-saved svg path {
+            fill: var(--nx-dark-red, #6a0111);
+            stroke: var(--nx-dark-red, #6a0111);
+        }
+    }
+}
+
+.top-actions .nx-share-dropdown {
+    top: calc(100% + 8px);
+    bottom: auto;
+}
+

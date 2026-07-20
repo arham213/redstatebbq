@@ -1,51 +1,80 @@
----
-blog:
-    recent_posts:
-        limit: 6
----
 {{#partial "page"}}
+<script>
+    window.stencilStorefrontToken = '{{settings.storefront_api.token}}';
+</script>
 <div class="nx-recipe-page">
 
     <!-- ============ DETAIL HERO ============ -->
+    <div id="raw-recipe-data" style="display:none;">{{{page.content}}}</div>
+
     <section class="recipe-hero-detail">
-        <div class="hero-row">
+        <div class="hero-row container">
             <div class="hero-left">
                 <div class="hero-top">
-                    <div class="badges">
-                        <span class="badge">BBQ</span>
-                        <span class="badge">Recipe</span>
-                        <span class="badge">5 min read</span>
+                    <div class="badges" id="nx-recipe-badges">
+                        <div class="skeleton-badge" style="width: 40px; height: 24px; border-radius: 12px;"></div>
+                        <div class="skeleton-badge" style="width: 60px; height: 24px; border-radius: 12px;"></div>
+                        <div class="skeleton-badge" style="width: 80px; height: 24px; border-radius: 12px;"></div>
                     </div>
-                    <div class="actions">
-                        <div class="action-btn"><img src="{{cdn 'assets/img/icon-heart.svg'}}" alt="Save to favourites"></div>
-                        <div class="action-btn"><img src="{{cdn 'assets/img/icon-share.svg'}}" alt="Share"></div>
-                        <div class="action-btn"><img src="{{cdn 'assets/img/icon-printer.svg'}}" alt="Print"></div>
-                        <div class="action-btn"><img src="{{cdn 'assets/img/icon-save.svg'}}" alt="Bookmark"></div>
-                    </div>
+                    {{> components/custom/nexyl/common/post-actions url=page.url}}
                 </div>
-                
+
                 <h1 class="hero-title">{{page.title}}</h1>
-                <p class="hero-desc">The simplicity of this recipe really gives the harissa paste a chance to shine, with the sweet and sharp flavours of the pomegranate really complimenting the richness of the sausages.</p>
-                
+                <div class="hero-desc" id="nx-recipe-desc">
+                    <div class="skeleton-text" style="width: 100%; height: 20px; margin-bottom: 8px;"></div>
+                    <div class="skeleton-text" style="width: 100%; height: 20px; margin-bottom: 8px;"></div>
+                    <div class="skeleton-text" style="width: 100%; height: 20px; margin-bottom: 8px;"></div>
+                    <div class="skeleton-text" style="width: 40%; height: 20px;"></div>
+                </div>
+
                 <div class="divider"></div>
-                
+
                 <div class="meta-row">
                     <div class="meta-item">
-                        <img src="{{cdn 'assets/img/icon-utensils.svg'}}" alt="">
-                        <span>Serves 4</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path
+                                d="M2.5 1.6665V7.49984C2.5 8.4165 3.25 9.1665 4.16667 9.1665H7.5C7.94203 9.1665 8.36595 8.99091 8.67851 8.67835C8.99107 8.36579 9.16667 7.94186 9.16667 7.49984V1.6665M5.83333 1.6665V18.3332M17.5 12.4998V1.6665C16.3949 1.6665 15.3351 2.10549 14.5537 2.88689C13.7723 3.66829 13.3333 4.7281 13.3333 5.83317V10.8332C13.3333 11.7498 14.0833 12.4998 15 12.4998H17.5ZM17.5 12.4998V18.3332"
+                                stroke="#6A0111" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <span id="nx-recipe-servings">
+                            <div class="skeleton-inline" style="width: 60px; height: 16px;"></div>
+                        </span>
                     </div>
                     <div class="meta-item">
-                        <img src="{{cdn 'assets/img/icon-cookingpot.svg'}}" alt="">
-                        <span>Cook 15 mins</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <g clip-path="url(#clip0_421_2023)">
+                                <path
+                                    d="M1.66699 9.99976H18.3337M16.667 9.99976V16.6664C16.667 17.1085 16.4914 17.5324 16.1788 17.8449C15.8663 18.1575 15.4424 18.3331 15.0003 18.3331H5.00033C4.5583 18.3331 4.13437 18.1575 3.82181 17.8449C3.50925 17.5324 3.33366 17.1085 3.33366 16.6664V9.99976M3.33366 6.66642L16.667 3.33309M7.38366 5.64979L7.00866 4.14146C6.95493 3.92915 6.94357 3.70834 6.97523 3.49164C7.00689 3.27494 7.08094 3.0666 7.19316 2.87854C7.30538 2.69048 7.45356 2.52637 7.62924 2.39561C7.80491 2.26485 8.00464 2.16999 8.21699 2.11646L9.83366 1.71646C10.0465 1.66286 10.2679 1.65184 10.485 1.68404C10.7022 1.71623 10.9108 1.791 11.099 1.90405C11.2871 2.0171 11.4511 2.1662 11.5815 2.3428C11.7118 2.5194 11.806 2.72002 11.8587 2.93312L12.2337 4.43313"
+                                    stroke="#6A0111" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_421_2023">
+                                    <rect width="20" height="20" fill="white" />
+                                </clipPath>
+                            </defs>
+                        </svg>
+                        <span id="nx-recipe-cook-time">
+                            <div class="skeleton-inline" style="width: 80px; height: 16px;"></div>
+                        </span>
                     </div>
                     <div class="meta-item">
-                        <img class="big" src="{{cdn 'assets/img/icon-clock.svg'}}" alt="">
-                        <span>Prep 30 mins</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path
+                                d="M22 12C22 17.52 17.52 22 12 22C6.48 22 2 17.52 2 12C2 6.48 6.48 2 12 2C17.52 2 22 6.48 22 12Z"
+                                stroke="#4B4B4A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            <path
+                                d="M15.7099 15.1798L12.6099 13.3298C12.0699 13.0098 11.6299 12.2398 11.6299 11.6098V7.50977"
+                                stroke="#4B4B4A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <span id="nx-recipe-prep-time">
+                            <div class="skeleton-inline" style="width: 80px; height: 16px;"></div>
+                        </span>
                     </div>
                 </div>
             </div>
-            <div class="hero-card">
-                <img src="{{cdn 'assets/img/photo-brisket.png'}}" alt="{{page.title}}">
+            <div class="hero-card" id="nx-recipe-hero-image">
+                <div class="skeleton-img"></div>
             </div>
         </div>
     </section>
@@ -53,34 +82,70 @@ blog:
     <!-- ============ INGREDIENTS + METHOD ============ -->
     <section class="recipe-section">
         <img class="recipe-bg" src="{{cdn 'assets/img/bg-vector.svg'}}" alt="">
-        <div class="cards">
-            <div class="card card-ingredients">
-                <h2 class="card-title">Ingredients</h2>
-                <div class="ingredient-list">
-                    <div class="ingredient-row"><span>30g</span><span>Unsalted butter, cubed</span></div>
-                    <div class="ingredient-row"><span>1 cup</span><span>All-purpose flour, sifted</span></div>
-                    <div class="ingredient-row"><span>2 tsp</span><span>Baking powder</span></div>
-                    <div class="ingredient-row"><span>1/2 tsp</span><span>Salt</span></div>
-                    <div class="ingredient-row"><span>3/4 cup</span><span>Granulated sugar</span></div>
-                    <div class="ingredient-row"><span>2</span><span>Large eggs, beaten</span></div>
+        <div class="container">
+            <div class="cards">
+                <div class="card card-ingredients">
+                    <h2 class="card-title">Ingredients</h2>
+                    <div class="ingredient-list" id="nx-recipe-ingredients">
+                        <div class="ingredient-row" style="display: flex; gap: 24px; padding: 12px 0;">
+                            <div class="skeleton-text" style="width: 40px; height: 16px; margin: 0; flex-shrink: 0;">
+                            </div>
+                            <div class="skeleton-text" style="flex: 1; height: 16px; margin: 0;"></div>
+                        </div>
+                        <div class="ingredient-row" style="display: flex; gap: 24px; padding: 12px 0;">
+                            <div class="skeleton-text" style="width: 60px; height: 16px; margin: 0; flex-shrink: 0;">
+                            </div>
+                            <div class="skeleton-text" style="flex: 1; height: 16px; margin: 0;"></div>
+                        </div>
+                        <div class="ingredient-row" style="display: flex; gap: 24px; padding: 12px 0;">
+                            <div class="skeleton-text" style="width: 30px; height: 16px; margin: 0; flex-shrink: 0;">
+                            </div>
+                            <div class="skeleton-text" style="flex: 1; height: 16px; margin: 0;"></div>
+                        </div>
+                        <div class="ingredient-row" style="display: flex; gap: 24px; padding: 12px 0;">
+                            <div class="skeleton-text" style="width: 50px; height: 16px; margin: 0; flex-shrink: 0;">
+                            </div>
+                            <div class="skeleton-text" style="flex: 1; height: 16px; margin: 0;"></div>
+                        </div>
+                        <div class="ingredient-row" style="display: flex; gap: 24px; padding: 12px 0;">
+                            <div class="skeleton-text" style="width: 40px; height: 16px; margin: 0; flex-shrink: 0;">
+                            </div>
+                            <div class="skeleton-text" style="flex: 1; height: 16px; margin: 0;"></div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="card card-method">
-                <h2 class="card-title">Method</h2>
-                <!-- If the user puts content in the page WYSIWYG, we can render it here -->
-                {{#if page.content}}
-                    <div class="method-content">
-                        {{{page.content}}}
+
+                <div class="card card-method">
+                    <h2 class="card-title">Method</h2>
+                    <div class="method-list" id="nx-recipe-method">
+                        <div class="method-step" style="display: flex; gap: 16px; padding: 16px 0;">
+                            <div class="skeleton-text" style="width: 16px; height: 16px; margin: 0; flex-shrink: 0;">
+                            </div>
+                            <div style="flex: 1; display: flex; flex-direction: column; gap: 8px;">
+                                <div class="skeleton-text" style="width: 100%; height: 16px; margin: 0;"></div>
+                                <div class="skeleton-text" style="width: 100%; height: 16px; margin: 0;"></div>
+                                <div class="skeleton-text" style="width: 80%; height: 16px; margin: 0;"></div>
+                            </div>
+                        </div>
+                        <div class="method-step" style="display: flex; gap: 16px; padding: 16px 0;">
+                            <div class="skeleton-text" style="width: 16px; height: 16px; margin: 0; flex-shrink: 0;">
+                            </div>
+                            <div style="flex: 1; display: flex; flex-direction: column; gap: 8px;">
+                                <div class="skeleton-text" style="width: 100%; height: 16px; margin: 0;"></div>
+                                <div class="skeleton-text" style="width: 100%; height: 16px; margin: 0;"></div>
+                                <div class="skeleton-text" style="width: 40%; height: 16px; margin: 0;"></div>
+                            </div>
+                        </div>
+                        <div class="method-step" style="display: flex; gap: 16px; padding: 16px 0;">
+                            <div class="skeleton-text" style="width: 16px; height: 16px; margin: 0; flex-shrink: 0;">
+                            </div>
+                            <div style="flex: 1; display: flex; flex-direction: column; gap: 8px;">
+                                <div class="skeleton-text" style="width: 100%; height: 16px; margin: 0;"></div>
+                                <div class="skeleton-text" style="width: 60%; height: 16px; margin: 0;"></div>
+                            </div>
+                        </div>
                     </div>
-                {{else}}
-                    <div class="method-list">
-                        <div class="method-step"><span class="num">1</span><p class="txt">Preheat the oven on a grill setting to high.</p></div>
-                        <div class="method-step"><span class="num">2</span><p class="txt">Place a large nonstick frying pan over high heat, and add half the butter. When hot and bubbling, add in your sausages and colour them on both sides for 3-4 minutes. Remove the sausages from the pan and set aside.</p></div>
-                        <div class="method-step"><span class="num">3</span><p class="txt">Turn the heat down to medium high, add in the rest of the butter, followed by the onions and 1 teaspoon flaked sea salt. Cook for 4 minutes until soft, stirring often. Add in the crushed garlic and dark brown sugar, and caramelise for another 3 minutes until sticky and dark. Add in the harissa and mix to combine. Return the sausages to the pan, nestle them in, and then slide the pan under the grill for 5 minutes.</p></div>
-                        <div class="method-step"><span class="num">4</span><p class="txt">Remove the pan from the oven, and set aside for a couple of minutes. Serve the sausages and sticky onions in toasted hot dog buns, with toppings of your choice (we like sweet dill pickle relish, mustard, crispy onions and salted crisps on the side).</p></div>
-                    </div>
-                {{/if}}
+                </div>
             </div>
         </div>
     </section>
@@ -89,80 +154,113 @@ blog:
     <section class="related">
         <div class="related-inner">
             <h2 class="related-title">Related Recipes That You Might Like</h2>
-            
+
             <div class="swiper nx-related-recipes-swiper">
-                <div class="swiper-wrapper">
-                    {{#each blog.recent_posts}}
-                        <div class="swiper-slide">
-                            <article class="recipe-card">
-                                <div class="thumb">
-                                    <a href="{{url}}">
-                                        <img src="{{getImage thumbnail 'original'}}" alt="{{title}}">
-                                    </a>
-                                </div>
-                                <div class="body">
-                                    <span class="card-badge">
-                                        {{#if tags}}
-                                            {{tags.0.name}}
-                                        {{else}}
-                                            5 min read
-                                        {{/if}}
-                                    </span>
-                                    <h3 class="name"><a href="{{url}}">{{title}}</a></h3>
-                                    <div class="rating">
-                                        <img class="stars" src="{{cdn 'assets/img/icon-stars.svg'}}" alt="4.8 stars">
-                                        <div class="score"><span>4.8</span><span>(546)</span></div>
-                                    </div>
-                                    <div class="time">
-                                        <img src="{{cdn 'assets/img/icon-clock.svg'}}" alt="">
-                                        <span>1 hr 10 mins</span>
-                                    </div>
-                                </div>
-                            </article>
-                        </div>
-                    {{/each}}
-                    
-                    {{#unless blog.recent_posts}}
-                        <div class="swiper-slide">
-                            <article class="recipe-card">
-                                <div class="thumb"><img src="{{cdn 'assets/img/photo-poboy.png'}}" alt="Sausage Po'Boy"></div>
-                                <div class="body">
-                                    <span class="card-badge">5 min read</span>
-                                    <h3 class="name">Sausage Po&rsquo;Boy</h3>
-                                    <div class="rating">
-                                        <img class="stars" src="{{cdn 'assets/img/icon-stars.svg'}}" alt="4.8 stars">
-                                        <div class="score"><span>4.8</span><span>(546)</span></div>
-                                    </div>
-                                    <div class="time"><img src="{{cdn 'assets/img/icon-clock.svg'}}" alt=""><span>1 hr 10 mins</span></div>
-                                </div>
-                            </article>
-                        </div>
-                        <div class="swiper-slide">
-                            <article class="recipe-card">
-                                <div class="thumb"><img src="{{cdn 'assets/img/photo-chicken.png'}}" alt="Pulled Chicken Sandwich"></div>
-                                <div class="body">
-                                    <span class="card-badge">5 min read</span>
-                                    <h3 class="name">Pulled Chicken Sandwich</h3>
-                                    <div class="rating">
-                                        <img class="stars" src="{{cdn 'assets/img/icon-stars.svg'}}" alt="4.8 stars">
-                                        <div class="score"><span>4.8</span><span>(546)</span></div>
-                                    </div>
-                                    <div class="time"><img src="{{cdn 'assets/img/icon-clock.svg'}}" alt=""><span>1 hr 10 mins</span></div>
-                                </div>
-                            </article>
-                        </div>
-                    {{/unless}}
+                <div class="swiper-wrapper" id="nx-recipe-related-wrapper">
+                    <!-- Skeleton Cards -->
+                    <div class="swiper-slide">
+                        <article class="rcard skeleton-card">
+                            <div class="rcard-img">
+                                <div class="skeleton-img"></div>
+                            </div>
+                            <div class="rcard-body">
+                                <div class="skeleton-text" style="height: 24px; width: 80%; margin-bottom: 24px;"></div>
+                                <div class="skeleton-text" style="height: 16px; width: 40%; margin-bottom: 12px;"></div>
+                                <div class="skeleton-text" style="height: 16px; width: 30%;"></div>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="swiper-slide">
+                        <article class="rcard skeleton-card">
+                            <div class="rcard-img">
+                                <div class="skeleton-img"></div>
+                            </div>
+                            <div class="rcard-body">
+                                <div class="skeleton-text" style="height: 24px; width: 70%; margin-bottom: 24px;"></div>
+                                <div class="skeleton-text" style="height: 16px; width: 50%; margin-bottom: 12px;"></div>
+                                <div class="skeleton-text" style="height: 16px; width: 40%;"></div>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="swiper-slide">
+                        <article class="rcard skeleton-card">
+                            <div class="rcard-img">
+                                <div class="skeleton-img"></div>
+                            </div>
+                            <div class="rcard-body">
+                                <div class="skeleton-text" style="height: 24px; width: 85%; margin-bottom: 24px;"></div>
+                                <div class="skeleton-text" style="height: 16px; width: 45%; margin-bottom: 12px;"></div>
+                                <div class="skeleton-text" style="height: 16px; width: 35%;"></div>
+                            </div>
+                        </article>
+                    </div>
                 </div>
-                
+
                 <div class="arrows nx-recipe-arrows">
-                    <img class="swiper-button-prev" src="{{cdn 'assets/img/icon-arrow-left.svg'}}" alt="Previous">
-                    <img class="swiper-button-next" src="{{cdn 'assets/img/icon-arrow-right.svg'}}" alt="Next">
+                    <div class="nx-prev-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
+                            <g>
+                                <path d="M31.9997 58.6663C46.7273 58.6663 58.6663 46.7273 58.6663 31.9997C58.6663
+                                17.2721 46.7273 5.33301 31.9997 5.33301C17.2721 5.33301 5.33301 17.2721
+                                5.33301 31.9997C5.33301 46.7273 17.2721 58.6663 31.9997 58.6663Z" stroke="white"
+                                    stroke-width="4" stroke-miterlimit="10" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M35.3603 41.4136L25.9736 32.0002L35.3603 22.5869" stroke="white"
+                                    stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="nx-next-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
+                            <g>
+                                <path d="M31.9997 58.6663C46.7273 58.6663 58.6663 46.7273 58.6663 31.9997C58.6663
+                                17.2721 46.7273 5.33301 31.9997 5.33301C17.2721 5.33301 5.33301 17.2721
+                                5.33301 31.9997C5.33301 46.7273 17.2721 58.6663 31.9997 58.6663Z" stroke="white"
+                                    stroke-width="4" stroke-miterlimit="10" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M28.6396 41.4136L38.0263 32.0002L28.6396 22.5869" stroke="white"
+                                    stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+                            </g>
+                        </svg>
+                    </div>
+                    <!-- <img class="swiper-button-prev" src="{{cdn 'assets/img/icon-arrow-left.svg'}}" alt="Previous"> -->
+                    <!-- <img class="swiper-button-next" src="{{cdn 'assets/img/icon-arrow-right.svg'}}" alt="Next"> -->
                 </div>
             </div>
-            
+
         </div>
     </section>
 
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "Recipe",
+      "name": "{{product.title}}",
+      "image": [
+        "{{getImage product.main_image 'original'}}"
+      ],
+      "author": {
+        "@type": "Person",
+        "name": "David Carroll"
+      },
+      "description": "{{#each product.custom_fields}}{{#if name '===' 'Summary'}}{{{value}}}{{/if}}{{/each}}",
+      "prepTime": "PT30M",
+      "cookTime": "PT15M",
+      "totalTime": "PT45M",
+      "recipeYield": "{{#each product.custom_fields}}{{#if name '===' 'Servings'}}{{value}}{{/if}}{{/each}}",
+      "recipeCategory": "BBQ",
+      "recipeCuisine": "American",
+      "recipeIngredient": [
+        "See full ingredient list"
+      ],
+      "recipeInstructions": [
+        {
+          "@type": "HowToStep",
+          "text": "See full method"
+        }
+      ]
+    }
+    </script>
 </div>
 {{/partial}}
 {{> layout/base}}
