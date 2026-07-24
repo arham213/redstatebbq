@@ -1,0 +1,531 @@
+// =============================================================================
+// NEXYL / CONTACT PAGE
+// Covers: hero, contact section (info + form), FAQ section
+// Breakpoints: mobile 570px · tablet 768px · desktop 1024px
+// =============================================================================
+
+
+// =============================================================================
+// 1. CONTACT HERO
+// =============================================================================
+
+.nx-contact-hero {
+    width: 100%;
+    background: var(--nx-cream);
+    padding: 20px 16px;
+
+    @media (min-width: 768px) {
+        padding: 32px 24px;
+    }
+
+    @media (min-width: 1024px) {
+        padding: 48px;
+    }
+}
+
+.nx-contact-hero__frame {
+    width: 100%;
+    height: 240px;
+    border-radius: 10px;
+    overflow: hidden;
+
+    @media (min-width: 480px) {
+        height: 320px;
+        border-radius: 12px;
+    }
+
+    @media (min-width: 570px) {
+        height: 400px;
+        border-radius: 14px;
+    }
+
+    @media (min-width: 640px) {
+        height: 480px;
+        border-radius: 16px;
+    }
+
+    @media (min-width: 768px) {
+        height: 560px;
+        border-radius: 18px;
+    }
+
+    @media (min-width: 900px) {
+        height: 680px;
+        border-radius: 20px;
+    }
+
+    @media (min-width: 1024px) {
+        height: 700px;
+        border-radius: 24px;
+    }
+
+    @media (min-width: 1200px) {
+        height: 800px;
+    }
+}
+
+.nx-contact-hero__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+
+// =============================================================================
+// 2. CONTACT SECTION
+// =============================================================================
+
+.nx-contact {
+    width: 100%;
+    background: var(--nx-cream);
+    padding: 24px 16px;
+
+    @media (min-width: 768px) {
+        padding: 32px 24px;
+    }
+
+    @media (min-width: 1024px) {
+        padding: 48px;
+    }
+}
+
+.nx-contact__inner {
+    width: 100%;
+    max-width: 1344px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: flex-start;
+
+    @media (min-width: 768px) {
+        gap: 48px;
+    }
+
+    @media (min-width: 1024px) {
+        flex-direction: row;
+        gap: 60px;
+        justify-content: space-between;
+    }
+
+    @media (min-width: 1200px) {
+        gap: 80px;
+    }
+}
+
+
+// ---------- Info panel (left) ----------
+
+.nx-contact__info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 32px;
+
+    @media (min-width: 768px) {
+        gap: 40px;
+    }
+
+    @media (min-width: 1024px) {
+        flex: 1 1 50%;
+        max-width: 570px;
+        align-items: flex-start;
+        text-align: left;
+        gap: 40px;
+    }
+
+    @media (min-width: 1200px) {
+        gap: 56px;
+    }
+}
+
+.nx-contact__heading {
+    margin: 0;
+    font-family: var(--nx-font-display);
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 1.05;
+    text-transform: uppercase;
+    color: var(--nx-dark-red);
+    max-width: 650px;
+
+    @media (min-width: 768px) {
+        font-size: 34px;
+    }
+
+    @media (min-width: 1024px) {
+        font-size: 40px;
+        max-width: 100%;
+    }
+}
+
+// Details grid
+
+.nx-contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    @media (max-width: 570px) {
+        gap: 28px;
+    }
+}
+
+.nx-contact-details__row {
+    display: flex;
+    gap: 48px;
+    justify-content: center;
+
+    @media (max-width: 570px) {
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    @media (min-width: 1024px) {
+        justify-content: flex-start;
+    }
+}
+
+.nx-contact-detail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+
+    @media (min-width: 1024px) {
+        align-items: flex-start;
+    }
+
+    &--grow {
+        flex: 1 0 0;
+    }
+}
+
+.nx-contact-detail__label {
+    margin: 0;
+    font-family: var(--nx-font-display);
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 1.3;
+    letter-spacing: 0.04em;
+    color: var(--nx-dark-red);
+}
+
+.nx-contact-detail__value-row {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+}
+
+.nx-contact-detail__icon {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    color: var(--nx-dark-red);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+        width: 24px;
+        height: 24px;
+    }
+}
+
+.nx-contact-detail__value {
+    margin: 0;
+    font-family: var(--nx-font-body);
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.4;
+    letter-spacing: 0.02em;
+    color: var(--nx-dark-red);
+
+    a {
+        color: inherit;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+.nx-contact-socials {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+
+    a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0.85;
+        transition: opacity 0.2s ease, transform 0.2s ease;
+
+        &:hover {
+            opacity: 1;
+            transform: translateY(-2px);
+        }
+    }
+
+    img {
+        display: block;
+        width: 34px;
+        height: 34px;
+    }
+}
+
+
+// ---------- Form card (right) ----------
+
+.nx-contact-form-card {
+    flex: 1 1 100%;
+    min-width: 0;
+    width: 100%;
+    max-width: 650px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px 16px;
+    background: var(--nx-cream-soft);
+    border: 1px solid var(--nx-dark-red);
+    border-radius: 14px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+
+    @media (min-width: 375px) {
+        padding: 24px 20px;
+    }
+
+    @media (min-width: 570px) {
+        padding: 24px;
+        border-radius: 18px;
+    }
+
+    @media (min-width: 768px) {
+        padding: 32px 28px;
+        border-radius: 24px;
+    }
+
+    @media (min-width: 1024px) {
+        flex: 1 1 50%;
+        margin: 0;
+        padding: 36px;
+        border-radius: 32px;
+    }
+}
+
+// Success message
+
+.nx-contact-success {
+    font-family: var(--nx-font-body);
+    font-size: 16px;
+    color: var(--nx-dark-red);
+    line-height: 1.5;
+
+    a {
+        color: var(--nx-red);
+        text-decoration: underline;
+    }
+}
+
+.nx-contact-page-content {
+    font-family: var(--nx-font-body);
+    font-size: 16px;
+    color: var(--nx-dark-red);
+    margin: 0 0 20px;
+    line-height: 1.5;
+}
+
+
+// ---------- Form internals ----------
+
+.nx-contact-form__error {
+    margin-bottom: 8px;
+}
+
+.nx-contact-form__fields {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    margin-bottom: 32px;
+}
+
+.nx-contact-form__group {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    width: 100%;
+
+    .form-field {
+        margin: 0;
+    }
+}
+
+.nx-contact-form__captcha {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.nx-contact-form__captcha-q {
+    font-family: var(--nx-font-body);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--nx-dark-red);
+}
+
+.nx-contact-form__note {
+    margin: 0;
+    font-family: var(--nx-font-body);
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 1.6;
+    letter-spacing: 0.02em;
+    color: var(--nx-dark-red);
+    opacity: 0.75;
+}
+
+.nx-contact-form__actions {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.nx-contact-form__submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background: var(--nx-red);
+    border: none;
+    border-radius: 24px;
+    font-family: var(--nx-font-body);
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.4;
+    color: #fff;
+    padding: 8px 32px;
+    height: 40px;
+    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.05));
+    transition: opacity 0.2s ease;
+
+    &:hover {
+        opacity: 0.9;
+    }
+}
+
+
+
+
+
+// =============================================================================
+// 3. CONTACT FAQ
+// =============================================================================
+
+.nx-contact-faq {
+    width: 100%;
+    background: var(--nx-dark-red);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 64px 24px;
+
+    @media (max-width: 768px) {
+        padding: 48px 16px;
+    }
+}
+
+.nx-contact-faq__container {
+    width: 100%;
+    max-width: 672px;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+
+    @media (max-width: 768px) {
+        gap: 32px;
+    }
+}
+
+.nx-contact-faq__title {
+    margin: 0;
+    font-family: var(--nx-font-display);
+    font-weight: 400;
+    font-size: 38px;
+    line-height: 1.2;
+    text-transform: uppercase;
+    text-align: center;
+    color: var(--nx-cream);
+
+    @media (max-width: 768px) {
+        font-size: 28px;
+    }
+}
+
+// Accordion on dark background — override tokens for cream-on-maroon
+
+.nx-contact-faq {
+    .nx-acc-item {
+        border-bottom-color: rgba(251, 245, 231, 0.3);
+    }
+
+    .nx-acc-trigger p {
+        color: var(--nx-cream);
+    }
+
+    .nx-acc-chev {
+        color: var(--nx-cream);
+    }
+
+    .nx-acc-content {
+        color: rgba(251, 245, 231, 0.8);
+    }
+}
+
+// CTA card at the bottom of the FAQ
+
+.nx-contact-faq-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    padding: 32px;
+    background: var(--nx-cream);
+    border-radius: 14px;
+    width: 100%;
+
+    @media (max-width: 768px) {
+        padding: 24px;
+    }
+}
+
+.nx-contact-faq-cta__text {
+    text-align: center;
+    width: 100%;
+}
+
+.nx-contact-faq-cta__title {
+    margin: 0 0 8px;
+    font-family: var(--nx-font-inter);
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 1.33;
+    color: var(--nx-dark-red);
+}
+
+.nx-contact-faq-cta__subtitle {
+    margin: 0;
+    font-family: var(--nx-font-inter);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--nx-dark-red);
+    opacity: 0.75;
+}

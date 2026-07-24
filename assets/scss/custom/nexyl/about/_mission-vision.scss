@@ -1,0 +1,114 @@
+.nx-about-mv {
+    background: var(--nx-cream, #fbf5e7); 
+    overflow: hidden;
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    gap: 34px;
+    padding: 40px 16px;
+
+    @media (min-width: 768px) {
+        padding: 80px;
+    }
+
+    &__row { 
+        display: flex; 
+        flex-direction: column; 
+        gap: 24px; 
+        align-items: stretch; 
+        width: 100%; 
+
+        @media (min-width: 1024px) {
+            flex-direction: row; 
+            gap: 34px;
+        }
+        @media (min-width: 1440px) {
+            height: 654px; 
+        }
+    }
+
+    &__img { 
+        flex: 1 0 0; 
+        min-width: 0; 
+        border-radius: var(--nx-r-3xl, 24px); 
+        overflow: hidden; 
+        height: 300px;
+
+        @media (min-width: 1024px) {
+            height: auto;
+        }
+
+        img { width: 100%; height: 100%; object-fit: cover; }
+    }
+
+    &__card {
+        position: relative; 
+        overflow: hidden;
+        background: var(--nx-cream-soft, #f7ebcf); 
+        border-radius: var(--nx-r-3xl, 24px);
+        display: flex; 
+        flex-direction: column; 
+        align-items: flex-start; 
+        gap: 16px;
+        padding: 150px 24px 24px;
+
+        @media (min-width: 1024px) {
+            flex: 0 0 45%; 
+            padding: 180px 24px 24px;
+            gap: 20px;
+        }
+        @media (min-width: 1440px) {
+            flex: none;
+            width: 523px; 
+            padding: 226px 24px 24px;
+        }
+    }
+
+    &__deco { 
+        position: absolute; 
+        width: 200px; 
+        opacity: .5; 
+        pointer-events: none; 
+
+        @media (min-width: 1024px) {
+            width: 300px;
+        }
+
+        &--r { top: -40px; right: -40px; transform: rotate(8deg); }
+        &--l { top: -40px; left: -40px; transform: scaleX(-1) rotate(8deg); }
+        
+        @media (min-width: 1024px) {
+            &--r { top: -70px; right: -60px; }
+            &--l { top: -70px; left: -60px; }
+        }
+    }
+
+    &__title {
+        font-family: var(--nx-font-display, "Rye", serif); 
+        text-transform: uppercase; 
+        color: var(--nx-red, #d70321);
+        font-size: 38px; 
+        line-height: 1; 
+        margin-bottom: 0;
+        
+        @media (min-width: 1024px) {
+            font-size: 58px; 
+            white-space: nowrap;
+        }
+    }
+
+    &__body {
+        font-family: var(--nx-font-body, sans-serif); 
+        font-weight: 500; 
+        font-size: 18px;
+        line-height: 1.35; 
+        letter-spacing: 0.46px; 
+        color: var(--nx-maroon, #6a0111); 
+        width: 100%;
+
+        @media (min-width: 1024px) {
+            font-size: 23px;
+            line-height: 1.25; 
+        }
+    }
+}

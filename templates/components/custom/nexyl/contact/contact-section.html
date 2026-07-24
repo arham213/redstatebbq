@@ -1,0 +1,93 @@
+<!-- ============== CONTACT PAGE: CONTACT SECTION ============== -->
+<section class="nx-contact container">
+    <div class="nx-contact__inner">
+
+        <!-- Left: info panel -->
+        <div class="nx-contact__info">
+            <h1 class="nx-contact__heading">We are always here to help you and answer your questions</h1>
+
+            <div class="nx-contact-details">
+                <div class="nx-contact-details__row">
+                    <div class="nx-contact-detail">
+                        <p class="nx-contact-detail__label">Phone</p>
+                        <div class="nx-contact-detail__value-row">
+                            <span class="nx-contact-detail__icon" aria-hidden="true">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none">
+                                    <path
+                                        d="M6.62 10.79a15.053 15.053 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.61 21 3 13.39 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.57 3.58a1 1 0 0 1-.25 1.01l-2.2 2.2Z"
+                                        fill="currentColor" />
+                                </svg>
+                            </span>
+                            <p class="nx-contact-detail__value"><a href="tel:8592337898">(859)&nbsp;233-7898</a></p>
+                        </div>
+                    </div>
+
+                    <div class="nx-contact-detail nx-contact-detail--grow">
+                        <p class="nx-contact-detail__label">Location</p>
+                        <div class="nx-contact-detail__value-row">
+                            <span class="nx-contact-detail__icon" aria-hidden="true">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none">
+                                    <path
+                                        d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"
+                                        fill="currentColor" />
+                                </svg>
+                            </span>
+                            <p class="nx-contact-detail__value">4020 Georgetown Rd<br />Lexington, KY 40511</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="nx-contact-details__row">
+                    <div class="nx-contact-detail">
+                        <p class="nx-contact-detail__label">Email</p>
+                        <div class="nx-contact-detail__value-row">
+                            <span class="nx-contact-detail__icon" aria-hidden="true">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none">
+                                    <path
+                                        d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5-8-5V6l8 5 8-5v2Z"
+                                        fill="currentColor" />
+                                </svg>
+                            </span>
+                            <p class="nx-contact-detail__value"><a
+                                    href="mailto:info@redstatebbq.com">info@redstatebbq.com</a></p>
+                        </div>
+                    </div>
+
+                    <div class="nx-contact-detail nx-contact-detail--grow">
+                        <p class="nx-contact-detail__label">Socials</p>
+                        <div class="nx-contact-socials">
+                            <a href="https://www.facebook.com/redstatebbq" target="_blank" rel="noopener noreferrer"
+                                aria-label="Facebook">
+                                <img src="{{cdn 'assets/img/custom/nexyl/social-fb.svg'}}" alt="Facebook" width="34"
+                                    height="34" />
+                            </a>
+                            <a href="https://www.instagram.com/redstatebbq" target="_blank" rel="noopener noreferrer"
+                                aria-label="Instagram">
+                                <img src="{{cdn 'assets/img/custom/nexyl/social-ig.svg'}}" alt="Instagram" width="34"
+                                    height="34" />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right: form card -->
+        <div class="nx-contact-form-card">
+            {{#if forms.contact.success}}
+            <div id="contact-us-success" class="nx-contact-success">
+                {{{lang 'forms.contact_us.successful' shopPath=urls.home}}}
+            </div>
+            {{else}}
+            {{#if page.content}}
+            <p class="nx-contact-page-content">{{{page.content}}}</p>
+            {{/if}}
+            {{> components/page/contact-us-form}}
+            {{/if}}
+        </div>
+
+    </div>
+</section>

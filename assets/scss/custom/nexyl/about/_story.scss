@@ -1,0 +1,62 @@
+.nx-about-story {
+    background: var(--nx-cream-osft, #f7ebcf);
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center;
+    gap: 24px; 
+    padding: 32px 16px;
+
+    @media (min-width: 768px) {
+        padding: 48px;
+        min-height: 893px;
+    }
+
+    &__row { 
+        display: flex; 
+        flex-direction: column;
+        gap: 24px; 
+        align-items: stretch; 
+        width: 100%; 
+
+        @media (min-width: 768px) {
+            flex-direction: row;
+        }
+        @media (min-width: 1440px) {
+            height: 723px; 
+        }
+    }
+
+    &__left { 
+        flex: 1 0 0; 
+        min-width: 0; 
+        border-radius: var(--nx-r-3xl, 24px); 
+        overflow: hidden; 
+        height: 300px;
+
+        @media (min-width: 768px) {
+            height: auto;
+        }
+    }
+
+    &__right { 
+        border-radius: var(--nx-r-3xl, 24px); 
+        overflow: hidden; 
+        height: 300px;
+        
+        @media (min-width: 768px) {
+            flex: 0 0 35%;
+            height: auto;
+        }
+        @media (min-width: 1440px) {
+            flex: none;
+            width: 361px;
+        }
+    }
+
+    img { 
+        width: 100%; 
+        height: 100%; 
+        object-fit: cover; 
+    }
+}

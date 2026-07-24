@@ -48,3 +48,68 @@ html, body {
         transform: rotate(360deg);
     }
 }
+// ---------- Global Form Overrides ----------
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+}
+
+.form-label {
+    margin: 0;
+    font-family: var(--nx-font-body);
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 1;
+    color: var(--nx-dark-red);
+
+    small {
+        font-size: 12px;
+        font-weight: 400;
+        opacity: 0.7;
+        margin-left: 4px;
+    }
+}
+
+.form-input,
+.form-select {
+    width: 100%;
+    background: var(--nx-cream);
+    border: 1px solid #c9bd9d;
+    border-radius: 10px;
+    padding: 10px 12px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    font-family: var(--nx-font-inter);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--nx-dark-red);
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    appearance: none;
+    -webkit-appearance: none;
+
+    &::placeholder {
+        color: #c9bd9d;
+    }
+
+    &:focus {
+        border-color: var(--nx-dark-red);
+        box-shadow: 0 0 0 3px rgba(106, 1, 17, 0.12);
+        outline: none;
+    }
+}
+
+.form-field--error {
+    .form-input,
+    .form-select {
+        border-color: var(--nx-red) !important;
+        box-shadow: 0 0 0 1px var(--nx-red) !important;
+    }
+}
+
+textarea.form-input {
+    min-height: 80px;
+    resize: vertical;
+}

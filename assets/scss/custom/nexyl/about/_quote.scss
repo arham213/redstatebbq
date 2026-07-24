@@ -1,0 +1,111 @@
+.nx-about-quote {
+    background: var(--nx-maroon, #6a0111); 
+    color: var(--nx-cream-light, #fbf5e7);
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    gap: 30px;
+    padding: 60px 16px; 
+
+    @media (min-width: 768px) {
+        gap: 40px;
+        padding: 60px 80px; 
+        min-height: 529px;
+    }
+
+    &__mark { 
+        width: 40px; 
+        height: 30px; 
+
+        @media (min-width: 768px) {
+            width: 62px; 
+            height: 47px; 
+        }
+
+        img { width: 100%; height: 100%; object-fit: contain; }
+    }
+
+    &__block { 
+        display: flex; 
+        flex-direction: column; 
+        align-items: flex-start; 
+        gap: 20px; 
+
+        @media (min-width: 768px) {
+            gap: 24px; 
+        }
+    }
+
+    &__text {
+        font-family: var(--nx-font-body, sans-serif); 
+        font-weight: 500; 
+        font-size: 20px;
+        line-height: 1.3; 
+        color: var(--nx-cream-light, #fbf5e7); 
+        width: 100%; 
+        max-width: 846px;
+
+        @media (min-width: 768px) {
+            font-size: 30px;
+            line-height: 1.25; 
+        }
+    }
+
+    &__author { 
+        display: flex; 
+        gap: 16px; 
+        align-items: center; 
+        width: 100%; 
+
+        @media (min-width: 768px) {
+            gap: 20px; 
+        }
+    }
+
+    &__avatar { 
+        width: 48px; 
+        height: 48px; 
+        border-radius: 9999px; 
+        background: var(--nx-avatar, #ece7d9); 
+        flex: none; 
+
+        @media (min-width: 768px) {
+            width: 56px; 
+            height: 56px; 
+        }
+    }
+
+    &__meta { 
+        display: flex; 
+        flex-direction: column; 
+        gap: 2px; 
+
+        @media (min-width: 768px) {
+            gap: 4px; 
+        }
+    }
+
+    &__name { 
+        font-family: var(--nx-font-body, sans-serif); 
+        font-weight: 600; 
+        font-size: 14px; 
+        line-height: 1.2; 
+        margin-bottom: 0;
+
+        @media (min-width: 768px) {
+            font-size: 16px; 
+        }
+    }
+
+    &__role { 
+        font-family: var(--nx-font-body, sans-serif); 
+        font-weight: 400; 
+        font-size: 14px; 
+        line-height: 1.2; 
+        margin-bottom: 0;
+
+        @media (min-width: 768px) {
+            font-size: 16px; 
+        }
+    }
+}

@@ -1,0 +1,31 @@
+@import "story";
+@import "origin";
+@import "mission-vision";
+@import "bottles";
+@import "why-regional";
+@import "awards";
+@import "products";
+@import "quote";
+
+.nx-about-page {
+    background: var(--nx-cream-soft, #f7ebcf);
+    overflow: hidden;
+
+    // Common section title utility
+    .nx-section-title {
+        font-family: var(--nx-font-display, "Rye", serif);
+        font-weight: 400;
+        text-transform: uppercase;
+        color: var(--nx-red, #d70321);
+        font-size: 28px;
+        text-align: center;
+        line-height: 1.15;
+        margin-top: 0;
+        margin-bottom: 24px;
+
+        @media (min-width: 768px) {
+            font-size: 38px;
+            margin-bottom: 32px;
+        }
+    }
+}
