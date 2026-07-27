@@ -3,9 +3,9 @@
     {{inject 'contactQuestion' (lang 'forms.validate.contact.question')}}
 
     {{#if forms.contact.error}}
-        <div id="contact-us-error" class="nx-contact-form__error">
-            {{> components/common/alert/alert-error forms.contact.error}}
-        </div>
+    <div id="contact-us-error" class="nx-contact-form__error">
+        {{> components/common/alert/alert-error forms.contact.error}}
+    </div>
     {{/if}}
 
     <input type="hidden" name="page_id" id="page_id" value="{{forms.contact.page_id}}">
@@ -13,38 +13,68 @@
     <div class="nx-contact-form__fields">
 
         <div class="nx-contact-form__group">
+            {{#if forms.contact.name}}
             <div class="form-field">
                 <label class="form-label" for="contact_fullname">Your Name *</label>
                 <input class="form-input" type="text" id="contact_fullname" name="contact_fullname" value="{{customer.name}}" placeholder="First and last name" required>
             </div>
+            {{/if}}
 
             <div class="form-field">
                 <label class="form-label" for="contact_email">Email *</label>
                 <input class="form-input" type="email" id="contact_email" name="contact_email" value="{{customer.email}}" placeholder="e.g. hello@example.com" required>
             </div>
 
+            {{#if forms.contact.phone}}
             <div class="form-field">
-                <label class="form-label" for="contact_subject">Subject</label>
-                <input class="form-input" type="text" id="contact_subject" name="contact_companyname" placeholder="Give subject to the query">
+                <label class="form-label" for="contact_phone">{{lang 'forms.contact_us.phone'}}</label>
+                <input class="form-input" type="text" id="contact_phone" name="contact_phone" value="{{customer.phone}}">
+            </div>
+            {{/if}}
+
+            {{#if forms.contact.company}}
+            <div class="form-field">
+                <label class="form-label" for="contact_companyname">Company Name</label>
+                <input class="form-input" type="text" id="contact_companyname" name="contact_companyname">
+            </div>
+            {{/if}}
+
+            {{#if forms.contact.order}}
+            <div class="form-field">
+                <label class="form-label" for="contact_orderno">{{lang 'forms.contact_us.order'}}</label>
+                <input class="form-input" type="text" id="contact_orderno" name="contact_orderno">
+            </div>
+            {{/if}}
+
+            {{#if forms.contact.rma}}
+            <div class="form-field">
+                <label class="form-label" for="contact_rma">{{lang 'forms.contact_us.rma'}}</label>
+                <input class="form-input" type="text" id="contact_rma" name="contact_rma">
+            </div>
+            {{/if}}
+
+            <div class="form-field">
+                <label class="form-label" for="custom_contact_subject">Subject</label>
+                <input class="form-input" type="text" id="custom_contact_subject" name="custom_contact_subject" placeholder="Give subject to the query">
             </div>
 
             <div class="form-field">
-                <label class="form-label nx-contact-form__label--sm" for="contact_question">Message</label>
-                <textarea class="form-input" name="contact_question" id="contact_question" rows="5" cols="50" placeholder="Type your query.."></textarea>
+                <label class="form-label nx-contact-form__label--sm" for="contact_question">Message *</label>
+                <textarea class="form-input" name="contact_question" id="contact_question" rows="2" cols="50" placeholder="Type your query.." required></textarea>
             </div>
         </div>
 
         {{#if forms.contact.manualcaptcha}}
-            <div class="form-field">
-                <label class="form-label" for="{{forms.contact.manualcaptcha.name}}">
-                    {{lang 'forms.contact_us.manual_captcha_instruction'}}
-                    <small>{{lang 'common.required'}}</small>
-                </label>
-                <div class="nx-contact-form__captcha">
-                    <span class="nx-contact-form__captcha-q">{{forms.contact.manualcaptcha.question}}</span>
-                    <input class="form-input" type="text" id="{{forms.contact.manualcaptcha.name}}" name="{{forms.contact.manualcaptcha.name}}" value="" aria-disabled="true" autocomplete="off" required>
-                </div>
+        <div class="form-field">
+            <label class="form-label" for="{{forms.contact.manualcaptcha.name}}">
+                {{lang 'forms.contact_us.manual_captcha_instruction'}}
+                <small>{{lang 'common.required'}}</small>
+            </label>
+            <div class="nx-contact-form__captcha">
+                <span class="nx-contact-form__captcha-q">{{forms.contact.manualcaptcha.question}}</span>
+                <input class="form-input" type="text" id="{{forms.contact.manualcaptcha.name}}" name="{{forms.contact.manualcaptcha.name}}" value="" aria-disabled="true" autocomplete="off" required>
             </div>
+        </div>
         {{/if}}
 
         <p class="nx-contact-form__note">Expect a response from us within 1–2 working days.</p>

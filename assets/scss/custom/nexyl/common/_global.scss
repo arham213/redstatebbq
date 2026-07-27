@@ -9,7 +9,8 @@ details:focus,
     outline: none !important
 }
 
-html, body {
+html,
+body {
     overflow-x: hidden;
     max-width: 100vw;
 }
@@ -48,6 +49,7 @@ html, body {
         transform: rotate(360deg);
     }
 }
+
 // ---------- Global Form Overrides ----------
 
 .form-field {
@@ -55,6 +57,14 @@ html, body {
     flex-direction: column;
     gap: 8px;
     width: 100%;
+
+    &::before {
+        content: none;
+    }
+
+    &::after {
+        content: none;
+    }
 }
 
 .form-label {
@@ -102,6 +112,7 @@ html, body {
 }
 
 .form-field--error {
+
     .form-input,
     .form-select {
         border-color: var(--nx-red) !important;
@@ -109,7 +120,33 @@ html, body {
     }
 }
 
+// Disable default BigCommerce success styles (green tick / green border)
+.form-field--success .form-input {
+    background-image: none !important;
+    padding-right: 12px !important; // override BC padding
+    border-color: #c9bd9d !important;
+    
+    &:focus {
+        border-color: var(--nx-dark-red) !important;
+        box-shadow: 0 0 0 1px var(--nx-dark-red) !important;
+    }
+}
+
 textarea.form-input {
     min-height: 80px;
-    resize: vertical;
+    resize: none;
+}
+
+.rc-anchor-light {
+    border-radius: 10px !important;
+
+    .rc-anchor-normal {
+        .rc-anchor-content {
+            width: 150px !important;
+        }
+
+        .rc-anchor-checkbox-label {
+            width: 90px !important;
+        }
+    }
 }

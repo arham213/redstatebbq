@@ -2,7 +2,11 @@
 
 {{> components/custom/nexyl/contact/contact-hero}}
 
-{{> components/custom/nexyl/contact/contact-section}}
+{{#if page.title '===' 'Wholesale'}}
+    {{> components/custom/nexyl/wholesale/wholesale-section}}
+{{else}}
+    {{> components/custom/nexyl/contact/contact-section}}
+{{/if}}
 
 {{> components/custom/nexyl/contact/contact-faq}}
 {{/partial}}

@@ -320,7 +320,7 @@ export default function initRecipeDetail() {
                 prevEl: '.nx-recipe-arrows .nx-prev-btn',
             },
             breakpoints: {
-                768: {
+                570: {
                     slidesPerView: 2,
                     spaceBetween: 16,
                 },

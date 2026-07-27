@@ -1,0 +1,192 @@
+.nx-wholesale {
+    width: 100%;
+    padding: 24px 16px;
+
+    @media (min-width: 769px) {
+        padding: 32px 24px;
+    }
+
+    @media (min-width: 1024px) {
+        padding: 48px;
+    }
+}
+
+.nx-wholesale__inner {
+    width: 100%;
+    max-width: 1344px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: flex-start;
+
+    @media (min-width: 769px) {
+        gap: 48px;
+    }
+
+    @media (min-width: 1024px) {
+        flex-direction: row;
+        gap: 40px;
+        justify-content: space-between;
+    }
+
+    @media (min-width: 1201px) {
+        gap: 80px;
+    }
+}
+
+.nx-wholesale__info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 32px;
+    color: var(--nx-dark-red);
+
+    @media (min-width: 769px) {
+        gap: 40px;
+    }
+
+    @media (min-width: 1024px) {
+        flex: 1 1 50%;
+        max-width: 570px;
+        align-items: flex-start;
+        text-align: left;
+        gap: 32px;
+    }
+
+    @media (min-width: 1201px) {
+        gap: 56px;
+    }
+}
+
+.nx-wholesale__heading {
+    font-family: var(--nx-font-display);
+    text-transform: uppercase;
+    font-size: 32px;
+    line-height: 1.1;
+    color: var(--nx-dark-red);
+    margin: 0;
+
+    @media (min-width: 769px) {
+        font-size: 40px;
+        line-height: 42px;
+    }
+
+    @media (min-width: 1024px) {
+        max-width: 350px;
+    }
+}
+
+.nx-wholesale__desc {
+    font-family: var(--nx-font-body);
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.4;
+    color: var(--nx-dark-red);
+    margin: 0;
+
+    @media (min-width: 769px) {
+        font-size: 20px;
+        line-height: 26px;
+        letter-spacing: 0.4px;
+    }
+}
+.nx-wholesale__form-card {
+    flex: 1 1 100%;
+    min-width: 0;
+    width: 100%;
+    max-width: 650px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px 16px;
+    background: var(--nx-cream-soft);
+    border: 1px solid var(--nx-dark-red);
+    border-radius: 14px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+
+    @media (min-width: 375px) {
+        padding: 24px 20px;
+    }
+
+    @media (min-width: 571px) {
+        padding: 24px;
+        border-radius: 18px;
+    }
+
+    @media (min-width: 769px) {
+        padding: 32px 28px;
+        border-radius: 24px;
+    }
+
+    @media (min-width: 1024px) {
+        flex: 1 1 50%;
+        margin: 0;
+        padding: 36px;
+        border-radius: 32px;
+    }
+
+    // Preserve height dynamically via JS, but keep alignment styles
+    .nx-contact-success {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100%;
+    }
+}
+
+.nx-wholesale-form__grid {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    @media (min-width: 769px) {
+        gap: 40px;
+    }
+
+    .form-field {
+        margin: 0;
+    }
+}
+
+.nx-wholesale-form__row {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    
+    @media (min-width: 571px) {
+        flex-direction: row;
+        gap: 24px;
+    }
+    
+    @media (min-width: 769px) {
+        gap: 40px;
+    }
+}
+
+.nx-wholesale-form__note {
+    font-family: var(--nx-font-body);
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 26px;
+    letter-spacing: 0.32px;
+    color: var(--nx-dark-red);
+}
+
+.nx-wholesale-form__actions {
+    margin-top: 16px;
+    display: flex;
+    justify-content: center;
+
+    @media (min-width: 571px) {
+        margin-top: 32px;
+        justify-content: flex-end;
+    }
+
+    @media (min-width: 1201px) {
+        margin-top: 56px;
+    }
+}

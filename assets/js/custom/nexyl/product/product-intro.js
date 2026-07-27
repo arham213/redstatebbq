@@ -8,7 +8,7 @@ export default function initProductIntro() {
     const $heroImg = $intro.find('#nx-pdp-hero-img-container img');
     const $thumbs = $intro.find('.nx-pdp-thumb');
 
-    $thumbs.on('click', function() {
+    $thumbs.on('click', function () {
         const $this = $(this);
         const newSrc = $this.data('image-url');
         if (newSrc) {
@@ -20,7 +20,7 @@ export default function initProductIntro() {
 
     // Accordion functionality
     const $accTriggers = $intro.find('.nx-pdp-acc-trigger');
-    $accTriggers.on('click', function() {
+    $accTriggers.on('click', function () {
         const $this = $(this);
         const $parent = $this.closest('.nx-pdp-acc-item');
         const $content = $this.siblings('.nx-pdp-acc-content');
@@ -50,12 +50,12 @@ export default function initProductIntro() {
     const $qtyPlus = $intro.find('.nx-pdp-qty-plus');
     const $qtyMinus = $intro.find('.nx-pdp-qty-minus');
 
-    $qtyPlus.on('click', function() {
+    $qtyPlus.on('click', function () {
         let val = parseInt($qtyInput.val(), 10) || 1;
         $qtyInput.val(val + 1).trigger('change');
     });
 
-    $qtyMinus.on('click', function() {
+    $qtyMinus.on('click', function () {
         let val = parseInt($qtyInput.val(), 10) || 1;
         if (val > 1) {
             $qtyInput.val(val - 1).trigger('change');

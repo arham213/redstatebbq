@@ -1,0 +1,25 @@
+<section class="nx-wholesale container">
+    <div class="nx-wholesale__inner">
+
+        <!-- Left: info panel -->
+        <div class="nx-wholesale__info">
+            <h1 class="nx-wholesale__heading">PUT OUR BOTTLES ON YOUR SHELF.</h1>
+            <p class="nx-wholesale__desc">Tell us about your store and we'll email your wholesale line sheet and pricing within one business day. Order by the case, restock in days, sell sauce people drive back for.</p>
+        </div>
+
+        <!-- Right: form card -->
+        <div class="nx-wholesale__form-card">
+            {{#if forms.contact.success}}
+            <div id="contact-us-success" class="nx-contact-success">
+                <img src="{{cdn 'assets/img/custom/nexyl/tick-circle.svg'}}" alt="">
+                <p>{{{lang 'forms.contact_us.successful' shopPath=urls.home}}}</p>
+            </div>
+            {{/if}}
+            
+            <div id="contact-us-form-wrapper" {{#if forms.contact.success}}style="display:none;"{{/if}}>
+                {{> components/custom/nexyl/wholesale/wholesale-form}}
+            </div>
+        </div>
+
+    </div>
+</section>

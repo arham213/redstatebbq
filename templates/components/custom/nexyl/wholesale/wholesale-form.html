@@ -1,0 +1,93 @@
+<form data-contact-form class="nx-contact-form nx-wholesale-form" action="{{urls.contact_us_submit}}" method="post">
+    {{inject 'contactEmail' (lang 'forms.validate.contact.email_address')}}
+    
+    {{#if forms.contact.error}}
+    <div id="contact-us-error" class="nx-contact-form__error">
+        {{> components/common/alert/alert-error forms.contact.error}}
+    </div>
+    {{/if}}
+
+    <input type="hidden" name="page_id" id="page_id" value="{{forms.contact.page_id}}">
+    
+    <!-- Hidden textarea that BigCommerce REQUIRES -->
+    <textarea style="display:none;" name="contact_question" id="wholesale_contact_question" required>Wholesale Pricing Sheet Request</textarea>
+
+    <div class="nx-contact-form__fields">
+        <div class="nx-wholesale-form__grid">
+            {{#if forms.contact.company}}
+            <div class="form-field">
+                <label class="form-label" for="contact_companyname">Business name</label>
+                <input class="form-input" type="text" id="contact_companyname" name="contact_companyname" placeholder="Your business name">
+            </div>
+            {{/if}}
+
+            <div class="nx-wholesale-form__row">
+                {{#if forms.contact.name}}
+                <div class="form-field">
+                    <label class="form-label" for="contact_fullname">Your Name</label>
+                    <input class="form-input" type="text" id="contact_fullname" name="contact_fullname" value="{{customer.name}}" placeholder="First and last name" required>
+                </div>
+                {{/if}}
+
+                <div class="form-field">
+                    <label class="form-label" for="contact_email">Email</label>
+                    <input class="form-input" type="email" id="contact_email" name="contact_email" value="{{customer.email}}" placeholder="e.g @abcorporation.gmail.com" required>
+                </div>
+            </div>
+
+            <div class="nx-wholesale-form__row">
+                {{#if forms.contact.phone}}
+                <div class="form-field">
+                    <label class="form-label" for="contact_phone">Phone</label>
+                    <input class="form-input" type="tel" id="contact_phone" name="contact_phone" value="{{customer.phone}}" placeholder="Your contact no.">
+                </div>
+                {{/if}}
+
+                <div class="form-field">
+                    <label class="form-label" for="custom_city_state">City & State</label>
+                    <input class="form-input" type="text" id="custom_city_state" name="custom_city_state" placeholder="e.g Austin, TX">
+                </div>
+            </div>
+
+            <div class="form-field">
+                <label class="form-label" for="custom_location">Location</label>
+                <input class="form-input" type="text" id="custom_location" name="custom_location" placeholder="Type your store's location">
+            </div>
+
+            {{#if forms.contact.order}}
+            <div class="form-field">
+                <label class="form-label" for="contact_orderno">{{lang 'forms.contact_us.order'}}</label>
+                <input class="form-input" type="text" id="contact_orderno" name="contact_orderno">
+            </div>
+            {{/if}}
+
+            {{#if forms.contact.rma}}
+            <div class="form-field">
+                <label class="form-label" for="contact_rma">{{lang 'forms.contact_us.rma'}}</label>
+                <input class="form-input" type="text" id="contact_rma" name="contact_rma">
+            </div>
+            {{/if}}
+        </div>
+
+        {{#if forms.contact.manualcaptcha}}
+        <div class="form-field">
+            <label class="form-label" for="{{forms.contact.manualcaptcha.name}}">
+                {{lang 'forms.contact_us.manual_captcha_instruction'}}
+                <small>{{lang 'common.required'}}</small>
+            </label>
+            <div class="nx-contact-form__captcha">
+                <span class="nx-contact-form__captcha-q">{{forms.contact.manualcaptcha.question}}</span>
+                <input class="form-input" type="text" id="{{forms.contact.manualcaptcha.name}}" name="{{forms.contact.manualcaptcha.name}}" value="" aria-disabled="true" autocomplete="off" required>
+            </div>
+        </div>
+        {{/if}}
+
+        <p class="nx-wholesale-form__note">We don't post wholesale prices publicly we set them to your store and volume, then send them straight to your inbox.</p>
+    </div>
+
+    {{{forms.contact.recaptcha.markup}}}
+
+    <div class="nx-contact-form__actions nx-wholesale-form__actions">
+        <button class="nx-contact-form__submit" type="submit">Request Pricing Sheet</button>
+    </div>
+</form>

@@ -2,7 +2,7 @@
     background: var(--nx-cream-soft, #f7ebcf); 
     padding: 0 16px 32px;
 
-    @media (min-width: 768px) {
+    @media (min-width: 769px) {
         padding: 0; 
     }
 }
@@ -17,7 +17,7 @@
     align-items: center; 
     gap: 40px;
 
-    @media (min-width: 768px) {
+    @media (min-width: 769px) {
         border-radius: 820px 820px 34px 34px;
         padding: 159px 80px 155px;
         gap: 60px;
@@ -27,7 +27,7 @@
         width: 100px; 
         height: 200px; 
 
-        @media (min-width: 768px) {
+        @media (min-width: 769px) {
             width: 153.88px; 
             height: 312.19px; 
         }
@@ -45,7 +45,7 @@
         max-width: 1180px;
         margin-bottom: 0;
 
-        @media (min-width: 768px) {
+        @media (min-width: 769px) {
             font-size: 64px; 
             line-height: 76px; 
         }

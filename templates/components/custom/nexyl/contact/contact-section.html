@@ -59,15 +59,15 @@
                     <div class="nx-contact-detail nx-contact-detail--grow">
                         <p class="nx-contact-detail__label">Socials</p>
                         <div class="nx-contact-socials">
-                            <a href="https://www.facebook.com/redstatebbq" target="_blank" rel="noopener noreferrer"
-                                aria-label="Facebook">
-                                <img src="{{cdn 'assets/img/custom/nexyl/social-fb.svg'}}" alt="Facebook" width="34"
-                                    height="34" />
+                            <a href="https://www.facebook.com/redstatebbq" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34" fill="none">
+                                    <path d="M31.1663 22.9365C31.1663 28.0932 28.0922 31.1673 22.9355 31.1673H21.2497C20.4705 31.1673 19.833 30.5298 19.833 29.7507V21.5765C19.833 21.194 20.1447 20.8682 20.5272 20.8682L23.0205 20.8257C23.2188 20.8115 23.3889 20.6698 23.4314 20.4715L23.9272 17.7657C23.9697 17.5107 23.7713 17.2698 23.5022 17.2698L20.4847 17.3123C20.088 17.3123 19.7764 17.0007 19.7622 16.6182L19.7055 13.1473C19.7055 12.9206 19.8897 12.7223 20.1305 12.7223L23.5305 12.6657C23.7713 12.6657 23.9555 12.4815 23.9555 12.2407L23.8988 8.84064C23.8988 8.5998 23.7147 8.41565 23.4739 8.41565L19.6488 8.47233C17.2972 8.51483 15.4272 10.4415 15.4697 12.7931L15.5405 16.689C15.5547 17.0857 15.243 17.3973 14.8464 17.4115L13.1463 17.4398C12.9055 17.4398 12.7214 17.624 12.7214 17.8648L12.7639 20.5565C12.7639 20.7973 12.948 20.9815 13.1888 20.9815L14.8889 20.9532C15.2855 20.9532 15.5972 21.2648 15.6113 21.6473L15.7388 29.7223C15.753 30.5157 15.1155 31.1673 14.3222 31.1673H11.0638C5.90717 31.1673 2.83301 28.0931 2.83301 22.9223V11.0648C2.83301 5.90815 5.90717 2.83398 11.0638 2.83398H22.9355C28.0922 2.83398 31.1663 5.90815 31.1663 11.0648V22.9365Z" fill="#6A0111"/>
+                                </svg>
                             </a>
-                            <a href="https://www.instagram.com/redstatebbq" target="_blank" rel="noopener noreferrer"
-                                aria-label="Instagram">
-                                <img src="{{cdn 'assets/img/custom/nexyl/social-ig.svg'}}" alt="Instagram" width="34"
-                                    height="34" />
+                            <a href="https://www.instagram.com/redstatebbq" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34" fill="none">
+                                    <path d="M22.9355 2.83398H11.0638C5.90717 2.83398 2.83301 5.90815 2.83301 11.0648V22.9223C2.83301 28.0932 5.90717 31.1673 11.0638 31.1673H22.9213C28.078 31.1673 31.1522 28.0932 31.1522 22.9365V11.0648C31.1663 5.90815 28.0922 2.83398 22.9355 2.83398ZM16.9997 22.4973C13.968 22.4973 11.503 20.0323 11.503 17.0007C11.503 13.969 13.968 11.504 16.9997 11.504C20.0313 11.504 22.4963 13.969 22.4963 17.0007C22.4963 20.0323 20.0313 22.4973 16.9997 22.4973ZM25.3863 9.74732C25.3155 9.91732 25.2163 10.0732 25.0888 10.2148C24.9472 10.3423 24.7913 10.4415 24.6213 10.5123C24.4513 10.5832 24.2672 10.6257 24.083 10.6257C23.7005 10.6257 23.3463 10.484 23.0772 10.2148C22.9497 10.0732 22.8505 9.91732 22.7797 9.74732C22.7088 9.57732 22.6663 9.39315 22.6663 9.20898C22.6663 9.02482 22.7088 8.84065 22.7797 8.67065C22.8505 8.48648 22.9497 8.34482 23.0772 8.20315C23.403 7.87732 23.8988 7.72148 24.3522 7.82065C24.4513 7.83482 24.5363 7.86315 24.6213 7.90565C24.7063 7.93398 24.7913 7.97648 24.8763 8.03315C24.9472 8.07565 25.018 8.14648 25.0888 8.20315C25.2163 8.34482 25.3155 8.48648 25.3863 8.67065C25.4572 8.84065 25.4997 9.02482 25.4997 9.20898C25.4997 9.39315 25.4572 9.57732 25.3863 9.74732Z" fill="#6A0111"/>
+                                </svg>
                             </a>
                         </div>
                     </div>
@@ -79,14 +79,17 @@
         <div class="nx-contact-form-card">
             {{#if forms.contact.success}}
             <div id="contact-us-success" class="nx-contact-success">
-                {{{lang 'forms.contact_us.successful' shopPath=urls.home}}}
+                <img src="{{cdn 'assets/img/custom/nexyl/tick-circle.svg'}}" alt="">
+                <p>{{{lang 'forms.contact_us.successful' shopPath=urls.home}}}</p>
             </div>
-            {{else}}
-            {{#if page.content}}
-            <p class="nx-contact-page-content">{{{page.content}}}</p>
             {{/if}}
-            {{> components/page/contact-us-form}}
-            {{/if}}
+            
+            <div id="contact-us-form-wrapper" {{#if forms.contact.success}}style="display:none;"{{/if}}>
+                {{#if page.content}}
+                <p class="nx-contact-page-content">{{{page.content}}}</p>
+                {{/if}}
+                {{> components/page/contact-us-form}}
+            </div>
         </div>
 
     </div>
