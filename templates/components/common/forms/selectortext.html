@@ -1,7 +1,7 @@
 <div class="form-field" id="{{id}}" data-validation="{{validation}}" {{#if private_id}}data-type="{{private_id}}"{{/if}}>
     <noscript>
-        <label class="form-label" for="{{id}}_input">{{label}}
-            {{#if required}}<small>{{lang 'common.required' }}</small>{{/if}}
+        <label class="form-label" for="{{id}}_input">
+            {{label}} {{#if required}}{{lang 'common.required' }}{{/if}}
         </label>
         <input type="text"
                id="{{id}}_input"
@@ -16,10 +16,8 @@
         />
     </noscript>
 
-    <label class="form-label" for="{{id}}_select">{{label}}
-        {{#if required}}
-            <small>{{lang 'common.required'}}</small>
-        {{/if}}
+    <label class="form-label" for="{{id}}_select">
+        {{label}} {{#if required}}*{{/if}}
     </label>
     <select name="{{name}}"
             class="form-select"

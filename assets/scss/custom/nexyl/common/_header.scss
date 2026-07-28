@@ -31,7 +31,6 @@
 .nx-header {
     width: 100%;
     background: var(--nx-cream);
-    border-bottom: 2px solid var(--nx-red-2);
     backdrop-filter: blur(19px);
     position: relative;
     z-index: 50;
@@ -716,13 +715,13 @@
         display: flex;
         gap: 16px;
         width: 100%;
-        
+
         .nx-skeleton-cards {
             display: flex;
             gap: 16px;
             width: 100%;
         }
-        
+
         .nx-skeleton-card {
             flex: 1;
             height: 140px;
@@ -733,9 +732,17 @@
     }
 
     @keyframes nx-pulse {
-        0% { opacity: 1; }
-        50% { opacity: 0.5; }
-        100% { opacity: 1; }
+        0% {
+            opacity: 1;
+        }
+
+        50% {
+            opacity: 0.5;
+        }
+
+        100% {
+            opacity: 1;
+        }
     }
 
     .nx-cd-arrows {

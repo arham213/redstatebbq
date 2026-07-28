@@ -1,23 +1,23 @@
 // ---------- CSS Custom Properties ----------
 :root {
-    --nx-cream: #fbf5e7;
-    --nx-cream-soft: #f7ebcf;
+    // Dynamic Mapping (Powered by Page Builder's "Warm" Theme)
+    --nx-red: #{stencilColor("color-primary")};
+    --nx-dark-red: #{stencilColor("color-textHeading")};
+    --nx-cream: #{stencilColor("color-secondary")};
+    --nx-cream-soft: #{stencilColor("color-secondaryDark")};
+    
+    // Safely Hardcoded (Keeps custom design stable)
     --nx-bg: #fdfff5;
     --nx-bg-gray: #e5e5e5;
-    --nx-dark-red: #6a0111;
-    --nx-red: #d70321;
-    --nx-red-2: #e51d25;
-    --nx-yellow: #ffa100;
     --nx-pink: #fc9eab;
     --nx-pink-2: #ebe3cf;
+    --nx-yellow: #ffa100;
     --nx-text-muted: #666050;
     --nx-border-gray: #e5e5e5;
 
-    --nx-font-body: 'Figtree', system-ui, -apple-system, sans-serif;
+    // Typography
+    --nx-font-body: #{stencilFontFamily("body-font")}, sans-serif;
     --nx-font-inter: 'Inter', system-ui, -apple-system, sans-serif;
-    --nx-font-head: "Alfa Slab One", serif;
-    --nx-font-head-2: 'Anton', 'Impact', 'Oswald', sans-serif;
-    --nx-font-serif: 'Playfair Display', Georgia, serif;
     --nx-font-display: 'Moongazer', 'Courier New', serif;
 }
 

@@ -1,16 +1,16 @@
 {{#partial "page"}}
 
-{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
-
-<main class="page">
-    <section class="page-content page-content--centered">
-        <h1 class="page-heading">{{lang 'forbidden.page_heading'}}</h1>
-        <p class="u-textAlignCenter">
+<main class="page nx-utility-page">
+    <section class="page-content page-content--centered nx-utility-page__inner nx-404-page">
+        <h1 class="page-heading nx-utility-page__heading">{{lang 'forbidden.page_heading'}}</h1>
+        <p class="u-textAlignCenter nx-utility-page__text">
             {{lang 'forbidden.if_you_were_signed_in'}}
             <a href="{{urls.auth.login}}">{{lang 'forbidden.sign_in'}}</a>
             {{lang 'forbidden.to_continue'}}
         </p>
-        {{> components/common/search-box}}
+        <div class="nx-404-search">
+            {{> components/common/search-box}}
+        </div>
     </section>
 </main>
 

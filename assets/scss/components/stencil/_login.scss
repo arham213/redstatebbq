@@ -3,14 +3,14 @@
 // =============================================================================
 
 .login {
-    margin: spacing("double") auto spacing("double")*2;
-    max-width: remCalc(900px);
-}
+    max-width: remCalc(900px);    
+    
+    .container {
+        max-width: 32rem !important;
 
-.login-row {
-    @include grid-row();
-    @include breakpoint("medium") {
-        margin-top: spacing("double")*2;
+        @media (min-width: 769px) {
+            max-width: 64rem !important;
+        }
     }
 }
 
@@ -22,10 +22,18 @@
 
         margin-top: spacing("double");
     }
+
+    .form-actions {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+    }
 }
 
 .new-customer {
     @include grid-column(12);
+
     @include breakpoint("medium") {
         @include grid-column(6);
     }

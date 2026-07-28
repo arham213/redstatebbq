@@ -7,7 +7,9 @@
 // -----------------------------------------------------------------------------
 
 .account {
-    margin-bottom: spacing("single");
+    .container {
+        max-width: 900px;
+    }
 }
 
 .account--fixed {
@@ -44,6 +46,7 @@
 
 .account-body {
     @include grid-row($behavior: "nest");
+    margin: 0;
 }
 
 .account-content {

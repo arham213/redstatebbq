@@ -1,0 +1,209 @@
+// =============================================================================
+// NEXYL — Auth Pages
+// =============================================================================
+
+.nx-utility-page {
+    display: flex;
+
+    .container {
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    &__inner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+
+        @media (min-width: 571px) {
+            padding: 0 24px;
+        }
+    }
+
+    &__heading {
+        font-family: var(--nx-font-display);
+        font-size: 48px;
+        text-transform: uppercase;
+        color: var(--nx-red);
+        margin-bottom: 32px;
+        line-height: 1.1;
+
+        @media (min-width: 768px) {
+            font-size: 82px;
+            margin-bottom: 40px;
+        }
+    }
+
+    &__text {
+        font-family: var(--nx-font-body);
+        font-size: 16px;
+        color: #000;
+        font-weight: 600;
+        margin-bottom: 32px;
+        line-height: 1.5;
+
+        @media (min-width: 768px) {
+            font-size: 18px;
+            margin-bottom: 40px;
+        }
+    }
+
+    &__btn {
+        min-width: 240px;
+        width: 100%;
+        margin-top: 16px;
+    }
+}
+
+.nx-reset-password {
+
+    .forgot-password-form,
+    .new-password-form {
+        width: 100%;
+        max-width: 600px;
+        text-align: left;
+    }
+
+    .nx-auth-form-field {
+        text-align: left;
+        margin-bottom: 24px;
+    }
+}
+
+.nx-404-page {
+    .nx-404-search {
+        width: 100%;
+        max-width: 800px;
+        margin-top: 16px;
+
+        .form-fieldset {
+            margin: 0;
+            padding: 0;
+            border: none;
+        }
+
+        .form-prefixPostfix {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+
+            .form-input {
+                margin: 0;
+            }
+
+            .button {
+                margin: 0;
+                min-width: 120px;
+                flex-shrink: 0;
+            }
+        }
+    }
+}
+
+
+.nx-utility-page__text {
+    color: var(--nx-dark-red);
+}
+
+// Account Layout Extensions
+.nx-account-layout {
+    .nx-utility-page__inner {
+        max-width: 1200px;
+    }
+
+    .nx-account-nav {
+        width: 100%;
+
+        .navBar {
+            margin: 0;
+        }
+
+        .navBar-section {
+            display: flex;
+            justify-content: flex-start;
+            gap: 12px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none; // Hide scrollbar in Firefox
+
+            &::-webkit-scrollbar {
+                display: none; // Hide scrollbar in Chrome/Safari
+            }
+
+            @media (min-width: 769px) {
+                gap: 24px;
+                justify-content: center;
+            }
+        }
+
+        .navBar-item {
+            margin: 0;
+            flex-shrink: 0;
+        }
+
+        .navBar-action {
+            display: block;
+            padding: 4px;
+            color: var(--nx-grey, #818181);
+            font-size: 16px;
+            font-weight: 400;
+            text-decoration: none;
+            text-transform: capitalize;
+            white-space: nowrap;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s ease;
+
+            @media (min-width: 769px) {
+                font-size: 18px;
+            }
+
+            &:hover,
+            &:focus {
+                color: var(--nx-red, #d70321);
+            }
+        }
+
+        .navBar-item.is-active .navBar-action {
+            color: var(--nx-red, #d70321);
+            font-weight: 600;
+            border-bottom-color: var(--nx-red, #d70321);
+        }
+    }
+
+    .nx-account-main {
+        width: 100%;
+        max-width: 1000px;
+        margin: 0 auto;
+
+        .alertBox {
+            background-color: #818181;
+            border: 1px solid #818181;
+            color: #ffffff;
+            border-radius: 4px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 16px 24px;
+            
+            .icon {
+                fill: #ffffff;
+                margin: 0;
+                
+                svg {
+                    fill: #ffffff;
+                }
+            }
+
+            p {
+                margin: 0;
+            }
+        }
+    }
+}

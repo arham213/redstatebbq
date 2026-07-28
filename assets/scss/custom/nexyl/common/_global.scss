@@ -99,7 +99,18 @@ body {
     transition: border-color 0.15s ease, box-shadow 0.15s ease;
     appearance: none;
     -webkit-appearance: none;
+}
 
+.form-select {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z' fill='%236a0111'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 20px;
+    padding-right: 36px;
+}
+
+.form-input,
+.form-select {
     &::placeholder {
         color: #c9bd9d;
     }
@@ -121,8 +132,8 @@ body {
 }
 
 // Disable default BigCommerce success styles (green tick / green border)
-.form-field--success .form-input {
-    background-image: none !important;
+.form-field--success .form-input,
+.form-field--success .form-select {
     padding-right: 12px !important; // override BC padding
     border-color: #c9bd9d !important;
     
@@ -130,6 +141,16 @@ body {
         border-color: var(--nx-dark-red) !important;
         box-shadow: 0 0 0 1px var(--nx-dark-red) !important;
     }
+}
+
+.form-field--success .form-input {
+    background-image: none !important;
+}
+
+// Preserve the dropdown arrow for form-select on success
+.form-field--success .form-select {
+    padding-right: 36px !important;
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z' fill='%236a0111'/%3E%3C/svg%3E") !important;
 }
 
 textarea.form-input {
@@ -148,5 +169,106 @@ textarea.form-input {
         .rc-anchor-checkbox-label {
             width: 90px !important;
         }
+    }
+}
+
+// ---------- Global Button Overrides (To match Nexyl CTA) ----------
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: 40px;
+    padding: 8px 32px;
+    border-radius: 24px;
+    font-family: var(--nx-font-inter);
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+    transition: transform .15s ease, opacity .15s ease, background-color .15s ease, color .15s ease;
+    text-decoration: none;
+    cursor: pointer;
+    text-transform: none;
+
+    &:hover {
+        opacity: .92;
+    }
+}
+
+.button--primary {
+    background: var(--nx-red) !important;
+    color: var(--nx-cream) !important;
+    border: none !important;
+
+    &:hover {
+        background: var(--nx-red) !important;
+        color: var(--nx-cream) !important;
+    }
+}
+
+.button--default {
+    background: var(--nx-cream);
+    color: var(--nx-dark-red);
+    border: 1px solid var(--nx-dark-red);
+
+    &:hover,
+    &:focus {
+        background: var(--nx-dark-red);
+        color: #ffffff;
+    }
+}
+
+// ---------- Global Layout & Typography Overrides ----------
+
+.page {
+    margin: 0;
+    padding: 40px 24px;
+
+    @media (min-width: 571px) {
+        padding: 40px 32px;
+    }
+    @media (min-width: 769px) {
+        padding: 40px 48px;
+    }
+    @media (min-width: 1024px) {
+        padding: 48px 60px;
+    }
+    @media (min-width: 1201px) {
+        padding: 56px 80px;
+    }
+}
+
+.page-heading {
+    color: var(--nx-red) !important;
+    font-family: var(--nx-font-display) !important;
+    font-style: normal;
+    font-weight: 400;
+    text-transform: uppercase;
+    text-align: center;
+    
+    // Mobile-first responsive font-sizing & margins
+    font-size: 42px;
+    line-height: 1;
+    margin-bottom: 24px;
+
+    @media (min-width: 570px) {
+        font-size: 52px;
+        line-height: 1;
+        margin-bottom: 32px;
+    }
+    @media (min-width: 768px) {
+        font-size: 64px;
+        line-height: 1;
+        margin-bottom: 40px;
+    }
+    @media (min-width: 1024px) {
+        font-size: 72px;
+        line-height: 1;
+    }
+    @media (min-width: 1200px) {
+        font-size: 78px;
+        line-height: 68px; /* 87.179% */
     }
 }
