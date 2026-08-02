@@ -1,12 +1,13 @@
 {{#partial "page"}}
+<div class="page nx-utility-page nx-account-layout">
+    <div class="container nx-utility-page__inner">
+    <h2 class="page-heading nx-utility-page__heading">{{lang 'forms.payment_methods.edit.heading'}}</h2>
 
-    {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+    <div class="nx-account-nav">
+        {{> components/account/navigation account_page='payment_methods'}}
+    </div>
 
-    <h2 class="page-heading">{{lang 'forms.payment_methods.edit.heading'}}</h2>
-
-    {{> components/account/navigation account_page='payment_methods'}}
-
-    <div class="account account--fixed">
+    <main class="account account--fixed nx-account-main">
         {{#if forms.error}}
             {{> components/common/alert/alert-error forms.error}}
         {{/if}}
@@ -66,6 +67,8 @@
                 </div>
             </form>
         {{/with}}
+    </main>
     </div>
+</div>
 {{/partial}}
 {{> layout/base}}

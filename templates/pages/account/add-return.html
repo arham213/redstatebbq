@@ -1,10 +1,12 @@
 {{#partial "page"}}
+<div class="page nx-utility-page nx-account-layout">
+    <div class="container nx-utility-page__inner">
+<h1 class="page-heading nx-utility-page__heading">{{lang 'account.returns.new_return' }}</h1>
+<div class="nx-account-nav">
+    {{> components/account/navigation account_page='returns'}}
+</div>
 
-{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
-<h1 class="page-heading">{{lang 'account.returns.new_return' }}</h1>
-{{> components/account/navigation account_page='returns'}}
-
-<main class="account account--fixed account--addReturn">
+<main class="account account--fixed account--addReturn nx-account-main">
     <div class="account-body">
         <section class="account-content">
 
@@ -101,6 +103,8 @@
         </section>
     </div>
 </main>
+    </div>
+</div>
 
 {{/partial}}
 {{> layout/base}}

@@ -14,44 +14,73 @@ category:
 {{/partial}}
 
 {{#partial "page"}}
+<div class="nx-category-page">
+    
+    <!-- Header Section -->
+    <section class="nx-category-header">
+        <div class="nx-category-header__heading">
+            <h1 class="nx-category-header__title">{{category.name}}</h1>
+        </div>
+        
+        <div class="nx-tabs-wrapper" role="group" aria-label="Category Navigation">
+            <button type="button" class="nx-tabs-toggle" aria-expanded="false" aria-controls="nx-tabs-menu">
+                <span class="nx-tabs-toggle-text">{{category.name}}</span>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="nx-tabs" id="nx-tabs-menu">
+                <a href="/bbq-sauces/" class="nx-tab">All Items</a>
+                {{#each categories}}
+                    <a href="{{url}}" class="nx-tab {{#if ../category.name '===' name}}nx-tab--active{{/if}}">
+                        {{name}}
+                        {{#if name '===' 'Clearance'}}
+                            <span class="nx-sale-badge">SALE</span>
+                        {{/if}}
+                    </a>
+                {{/each}}
+            </div>
+        </div>
+    </section>
 
-{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
-{{#if category.image}}
-    {{> components/common/responsive-img
-        image=category.image
-        fallback_size=theme_settings.zoom_size
-        lazyload=theme_settings.lazyload_mode
-        class="category-header-image"
-    }}
-{{/if}}
-{{#unless theme_settings.hide_category_page_heading }}
-    <h1 class="page-heading">{{category.name}}</h1>
-    {{{region name="category_below_header"}}}
-{{/unless}}
-{{{category.description}}}
-<div class="page">
-    {{#if category.faceted_search_enabled}}
-        <aside class="page-sidebar" id="faceted-search-container">
-            {{> components/category/sidebar}}
-        </aside>
-    {{else if category.subcategories}}
-        <aside class="page-sidebar" id="faceted-search-container">
-            {{> components/category/sidebar}}
-        </aside>
-    {{else if theme_settings.shop_by_price_visibility}}
-        <aside class="page-sidebar" id="faceted-search-container">
-            {{> components/category/sidebar}}
-        </aside>
-    {{/if}}
+    <!-- Main Results Section -->
+    <section class="nx-category-results container">
+        <div class="nx-category-results__items">
+            
+            <div class="nx-toolbar-wrapper">
+                <div class="nx-toolbar">
+                    <span class="nx-toolbar__count">{{category.total_products}} Items</span>
+                    <button class="nx-filters-toggle" type="button" aria-controls="faceted-search-container" aria-expanded="false">
+                        <span class="icon16">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M2.66699 4H13.3337" stroke="#6A0111" stroke-width="1.5" stroke-linecap="round"/>
+                                <path d="M5.33301 8H10.6663" stroke="#6A0111" stroke-width="1.5" stroke-linecap="round"/>
+                                <path d="M7.33301 12H8.66634" stroke="#6A0111" stroke-width="1.5" stroke-linecap="round"/>
+                            </svg>
+                        </span>
+                        <span class="nx-filters__label">Filters</span>
+                        <span class="icon16">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M4 6L8 10L12 6" stroke="#6A0111" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                    </button>
+                </div>
 
-    <main class="page-content" id="product-listing-container">
-        {{> components/category/product-listing}}
-    </main>
+                <!-- Filters Dropdown Container -->
+                <div class="nx-filters-dropdown" id="faceted-search-container">
+                    {{> components/category/sidebar}}
+                </div>
+            </div>
 
-    <div class="page-region">
-        {{{region name="category_below_content"}}}
-    </div>
+            <!-- Product Grid -->
+            <main class="nx-grid" id="product-listing-container">
+                {{> components/category/product-listing}}
+            </main>
+        </div>
+    </section>
+
+    <!-- Static Join Community Section (Optional on categories, but included per plan) -->
+    {{> components/custom/nexyl/common/community-section}}
+    
 </div>
-
 {{/partial}}
 {{> layout/base}}

@@ -1,13 +1,13 @@
 {{#partial "page"}}
-<div class="account" data-pagination-wishlist>
-
+<div class="page nx-utility-page nx-account-layout">
+    <div class="container nx-utility-page__inner">
+    <h2 class="page-heading nx-utility-page__heading">{{lang 'account.wishlists.view_heading' name=wishlist.name}}</h2>
     {{#if wishlist.is_editable}}
-        {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+        <div class="nx-account-nav">
+            {{> components/account/navigation account_page='wishlists'}}
+        </div>
     {{/if}}
-    <h2 class="page-heading">{{lang 'account.wishlists.view_heading' name=wishlist.name}}</h2>
-    {{#if wishlist.is_editable}}
-        {{> components/account/navigation account_page='wishlists'}}
-    {{/if}}
+    <main class="account nx-account-main" data-pagination-wishlist>
 
     {{#if wishlist.is_editable}}
         {{#if wishlist.is_public '>' 0}}
@@ -26,6 +26,8 @@
         {{> components/common/alert/alert-info (lang 'account.wishlists.empty_wishlist')}}
     {{/if}}
 
+    </main>
+    </div>
 </div>
 {{/partial}}
 {{> layout/base}}

@@ -49,10 +49,6 @@
     margin: 0;
 }
 
-.account-content {
-    @include grid-column(12);
-}
-
 .account-content--fixed {
 
     @include breakpoint("medium") {

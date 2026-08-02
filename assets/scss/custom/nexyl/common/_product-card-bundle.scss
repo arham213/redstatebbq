@@ -1,0 +1,125 @@
+.nx-product-card-bundle {
+  flex: 1 1 300px; 
+  max-width: 394px;
+  border: 2px solid #2c2929; 
+  border-radius: 16px;
+  overflow: hidden; 
+  padding-bottom: 14px;
+  background: inherit;
+  display: flex; 
+  flex-direction: column;
+
+  &__image {
+    aspect-ratio: 240 / 180; 
+    width: 100%;
+    background: #750102;
+    position: relative;
+    
+    img { 
+        width: 100%; 
+        height: 100%; 
+        object-fit: cover; 
+    }
+  }
+
+  &__badge {
+    position: absolute;
+    top: 10px; 
+    right: 10px;
+    background: #ffae00;
+    color: #4a4a4a;
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    padding: 4px 8px;
+    border-radius: 24px;
+    z-index: 2;
+  }
+
+  &__body { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 10px; 
+    padding: 20px 20px 12px; 
+    flex-grow: 1;
+  }
+
+  &__info { 
+    border-bottom: 1px solid #cdc2ab; 
+    padding-bottom: 14px; 
+    display: flex; 
+    flex-direction: column; 
+    gap: 10px; 
+    flex-grow: 1;
+  }
+
+  &__title { 
+    margin: 0; 
+    font-family: var(--nx-font-display, 'Moongazer', serif); 
+    font-weight: 400; 
+    font-size: 24px; 
+    line-height: 1.2; 
+    color: var(--nx-dark-red, #6a0111); 
+    text-transform: uppercase; 
+    overflow-wrap: break-word;
+    word-break: break-word;
+    
+    a { 
+        text-decoration: none; 
+        color: inherit; 
+    }
+  }
+
+  &__desc  { 
+    margin: 0; 
+    font-family: var(--nx-font-body, 'Figtree', sans-serif); 
+    font-weight: 400; 
+    font-size: 16px; 
+    line-height: 1.5; 
+    color: #000; 
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  &__foot { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 8px; 
+  }
+
+  &__price-row { 
+    display: flex; 
+    align-items: baseline; 
+    gap: 8px; 
+
+    .amount { 
+        margin: 0; 
+        font-family: var(--nx-font-body, 'Figtree', sans-serif); 
+        font-weight: 500; 
+        font-size: 32px; 
+        letter-spacing: 0.64px; 
+        color: #000; 
+    }
+    .amount-rrp { 
+        text-decoration: line-through; 
+        font-size: 18px; 
+        color: #818181; 
+    }
+  }
+
+  .tax { 
+    margin: 0; 
+    font-family: var(--nx-font-body, 'Figtree', sans-serif); 
+    font-weight: 500; 
+    font-size: 18px; 
+    letter-spacing: 0.36px; 
+    color: #000; 
+  }
+
+  .nx-btn { 
+    align-self: flex-start; 
+    margin-top: 4px; 
+  }
+}

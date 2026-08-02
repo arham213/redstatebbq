@@ -1,10 +1,28 @@
 {{#if content_results}}
-    {{> components/search/content-sort-box sort=pagination.content_results.sort}}
-    <ul>
+    <div class="nx-content-results-header">
+        {{> components/search/content-sort-box sort=pagination.content_results.sort}}
+    </div>
+    
+    <div class="nx-content-list">
         {{#each content_results}}
-            <strong><a href="{{url}}">{{{title}}}</a></strong>({{type}})
-            <p>{{{content}}}</p>
+            <article class="nx-content-card">
+                <div class="nx-content-card__header">
+                    <span class="nx-content-card__type">{{type}}</span>
+                    <h3 class="nx-content-card__title">
+                        <a href="{{url}}">{{{title}}}</a>
+                    </h3>
+                </div>
+                <div class="nx-content-card__body">
+                    <p>{{{content}}}</p>
+                </div>
+                <div class="nx-content-card__footer">
+                    <a href="{{url}}" class="nx-content-card__read-more">Read Full {{#if type '===' 'page'}}Page{{else}}{{#if type '===' 'Page'}}Page{{else}}Post{{/if}}{{/if}}</a>
+                </div>
+            </article>
         {{/each}}
-    </ul>
-    {{> components/common/paginator pagination.content_results reload=true}}
+    </div>
+    
+    <div class="nx-content-pagination">
+        {{> components/common/paginator pagination.content_results reload=true}}
+    </div>
 {{/if}}

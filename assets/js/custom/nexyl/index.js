@@ -4,6 +4,7 @@ import initProductCustom from './product/index';
 import initWidgetsCustom from './widgets/index';
 import initBlogCustom from './blog/index';
 import initRecipesCustom from './recipes/index';
+import initCategoryCustom from './category/index';
 
 export default function initNexylCustom() {
     initCommonCustom();
@@ -12,4 +13,5 @@ export default function initNexylCustom() {
     initWidgetsCustom();
     initBlogCustom();
     initRecipesCustom();
+    initCategoryCustom();
 }

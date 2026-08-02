@@ -1,0 +1,100 @@
+.community {
+    background: var(--nx-dark-red, #6a0111);
+    overflow: hidden;
+
+    &__inner {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 28px;
+        text-align: center;
+        padding: 80px clamp(20px, 5.5vw, 80px);
+        max-width: 1440px;
+        margin-inline: auto;
+
+        > :not(.community__photos) {
+            position: relative;
+            z-index: 1;
+        }
+    }
+
+    &__title {
+        font-family: var(--nx-font-display, 'Moongazer', serif);
+        font-weight: 400;
+        color: var(--nx-cream-soft, #f7ebcf);
+        font-size: clamp(40px, 6vw, 68px);
+        line-height: 1;
+        text-transform: uppercase;
+        margin: 0;
+    }
+
+    &__text {
+        font-family: var(--nx-font-body, 'Figtree', sans-serif);
+        font-weight: 500;
+        font-size: 26px;
+        line-height: 1.3;
+        color: var(--nx-cream-soft, #f7ebcf);
+        max-width: 617px;
+        margin: 0;
+
+        @media (max-width: $screen-large) {
+            font-size: 20px;
+        }
+    }
+
+    &__btn {
+        background: var(--nx-cream-soft, #f7ebcf);
+        color: #2c2929;
+        border-radius: 40px;
+        padding: 8px 32px;
+        font-family: var(--nx-font-body, 'Figtree', sans-serif);
+        font-weight: 600;
+        font-size: 16px;
+        text-decoration: none;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        height: 40px;
+        border: none;
+        cursor: pointer;
+        transition: background 0.2s, transform 0.2s;
+
+        &:hover {
+            background: var(--nx-red, #D70321);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+    }
+
+    &__photos {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    &__photo {
+        position: absolute;
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        border: 1px solid rgba(0,0,0,0.5);
+        border-radius: 6px;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+
+        &--1 { left: 6%; top: -18px; transform: rotate(18.38deg); }
+        &--2 { right: 6%; top: -14px; transform: rotate(-25.14deg); }
+        &--3 { left: 8%; bottom: -18px; transform: rotate(-13.97deg); }
+        &--4 { right: 8%; bottom: -10px; transform: rotate(20.77deg); }
+
+        @media (max-width: $screen-medium) {
+            width: 96px;
+            height: 96px;
+        }
+
+        @media (max-width: $screen-small) {
+            display: none;
+        }
+    }
+}

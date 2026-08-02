@@ -18,7 +18,6 @@
     margin-bottom: spacing("single");
 
     .product {
-        @include grid-column(6, $float: none);
         display: inline-block;
         font-size: fontSize("base"); // 1
         vertical-align: top;

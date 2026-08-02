@@ -29,9 +29,17 @@
         margin-bottom: 32px;
         line-height: 1.1;
 
-        @media (min-width: 768px) {
-            font-size: 82px;
+        @media (min-width: $screen-medium) {
+            font-size: 56px;
             margin-bottom: 40px;
+        }
+
+        @media (min-width: $screen-large) {
+            font-size: 64px;
+        }
+
+        @media (min-width: $screen-xlarge) {
+            font-size: 82px;
         }
     }
 
@@ -114,95 +122,389 @@
 
     .nx-account-nav {
         width: 100%;
+        position: relative;
+        z-index: 10;
 
         .navBar {
             margin: 0;
         }
 
-        .navBar-section {
-            display: flex;
-            justify-content: flex-start;
-            gap: 12px;
-            margin: 0;
-            padding: 0;
-            list-style: none;
-            flex-wrap: nowrap;
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none; // Hide scrollbar in Firefox
+        .navBar--account {
+            display: block !important;
+        }
 
-            &::-webkit-scrollbar {
-                display: none; // Hide scrollbar in Chrome/Safari
+        &__toggle {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            background: var(--nx-cream, #fbf5e7);
+            border: 1px solid #c9bd9d;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+            border-radius: 10px;
+            padding: 14px 20px;
+            color: var(--nx-dark-red, #6A0111);
+            font-family: var(--nx-font-body, 'Figtree', sans-serif);
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            text-transform: capitalize;
+
+            @media (min-width: 769px) {
+                display: none;
+            }
+
+            svg {
+                transition: transform 0.2s ease;
+            }
+
+            &[aria-expanded="true"] svg {
+                transform: rotate(180deg);
+            }
+        }
+
+        .navBar-section {
+            display: none;
+            flex-direction: column;
+            gap: 0;
+            margin: 8px 0 0;
+            padding: 8px 0;
+            list-style: none;
+            background: var(--nx-cream, #fbf5e7);
+            border: 1px solid #c9bd9d;
+            border-radius: 10px;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+
+            &.is-open {
+                display: flex;
             }
 
             @media (min-width: 769px) {
-                gap: 24px;
+                display: flex;
+                flex-direction: row;
+                position: static;
+                background-color: transparent;
+                border: none;
+                box-shadow: none;
+                border-radius: 0;
+                padding: 0;
+                margin: 0;
                 justify-content: center;
+                gap: 24px;
             }
         }
 
         .navBar-item {
             margin: 0;
             flex-shrink: 0;
+            width: 100%;
+
+            @media (min-width: 769px) {
+                width: auto;
+            }
         }
 
         .navBar-action {
             display: block;
-            padding: 4px;
+            width: 100%;
+            text-align: center;
+            padding: 12px 20px;
             color: var(--nx-grey, #818181);
             font-size: 16px;
             font-weight: 400;
             text-decoration: none;
             text-transform: capitalize;
-            white-space: nowrap;
-            border-bottom: 2px solid transparent;
-            transition: all 0.3s ease;
+            border: none;
+            transition: color 0.2s ease, background 0.2s ease;
+            border-radius: 0;
 
             @media (min-width: 769px) {
+                padding: 4px;
+                border-bottom: 2px solid transparent;
                 font-size: 18px;
             }
 
             &:hover,
             &:focus {
-                color: var(--nx-red, #d70321);
+                @media (max-width: 768px) {
+                    background: rgba(215, 3, 33, 0.05);
+                    color: var(--nx-red, #d70321);
+                }
+
+                @media (min-width: 769px) {
+                    color: var(--nx-red, #d70321);
+                }
             }
         }
 
         .navBar-item.is-active .navBar-action {
-            color: var(--nx-red, #d70321);
             font-weight: 600;
-            border-bottom-color: var(--nx-red, #d70321);
+            color: var(--nx-red, #d70321);
+
+            @media (max-width: 768px) {
+                background: rgba(215, 3, 33, 0.05);
+            }
+
+            @media (min-width: 769px) {
+                border-bottom: 2px solid var(--nx-red, #d70321);
+            }
         }
     }
 
     .nx-account-main {
         width: 100%;
         max-width: 1000px;
-        margin: 0 auto;
+        margin: 48px auto 0;
 
         .alertBox {
-            background-color: #818181;
-            border: 1px solid #818181;
-            color: #ffffff;
-            border-radius: 4px;
+            background-color: var(--nx-cream-card, #F5EDDC);
+            border: none;
+            color: var(--nx-maroon, #6A0111);
+            border-radius: var(--nx-radius-2xl, 24px);
             text-align: center;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 12px;
-            padding: 16px 24px;
-            
+            padding: 24px 32px;
+            font-family: var(--nx-font-body, 'Figtree', sans-serif);
+            font-weight: 500;
+            margin: 0;
+
             .icon {
-                fill: #ffffff;
+                fill: var(--nx-maroon, #6A0111);
                 margin: 0;
-                
+
                 svg {
-                    fill: #ffffff;
+                    fill: var(--nx-maroon, #6A0111);
                 }
             }
 
             p {
                 margin: 0;
+            }
+        }
+
+        .productGrid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            justify-content: center;
+
+            .product {
+                width: 100% !important;
+                margin: 0 !important;
+                float: none !important;
+                display: flex;
+                flex-direction: column;
+
+                @media (min-width: 570px) {
+                    width: calc(50% - 12px) !important;
+                    max-width: 400px;
+                }
+
+                @media (min-width: 1024px) {
+                    width: calc(33.333% - 16px) !important;
+                    max-width: 320px;
+                }
+            }
+        }
+
+        .addressList {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            justify-content: center;
+
+            .address {
+                width: 100% !important;
+                margin: 0 !important;
+                float: none !important;
+                display: flex;
+                flex-direction: column;
+
+                @media (min-width: 570px) {
+                    width: calc(50% - 12px) !important;
+                    max-width: 400px;
+                }
+
+                @media (min-width: 1024px) {
+                    width: calc(33.333% - 16px) !important;
+                    max-width: 320px;
+                }
+            }
+
+            .panel--address {
+                background-color: var(--nx-cream-card, #F5EDDC);
+                border: none;
+                border-radius: var(--nx-radius-2xl, 24px);
+                color: var(--nx-dark-red, #6a0111);
+                font-family: var(--nx-font-body, 'Figtree', sans-serif);
+                text-align: center;
+                height: 100%;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                padding: 24px;
+                transition: transform 0.2s, box-shadow 0.2s;
+
+                &:hover {
+                    transform: translateY(-4px);
+                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+                }
+
+                .panel-body {
+                    display: flex;
+                    flex-direction: column;
+                    width: 100%;
+
+                    form {
+                        width: 100%;
+                        margin: 0;
+                        padding: 0;
+                    }
+                }
+
+                .address-title {
+                    font-family: var(--nx-font-display, 'Moongazer', sans-serif);
+                    color: var(--nx-dark-red, #6a0111);
+                    font-size: 24px;
+                    margin-bottom: 16px;
+                    width: 100%;
+                    text-align: left;
+                }
+
+                .address-details {
+                    list-style: none;
+                    padding: 0;
+                    margin: 0 0 16px;
+                    width: 100%;
+                    text-align: left;
+
+                    li {
+                        margin-bottom: 4px;
+                        color: inherit;
+                    }
+                }
+
+                .form-actions {
+                    margin: auto 0 0 0 !important;
+                    padding: 0 !important;
+                    display: flex !important;
+                    gap: 12px;
+                    justify-content: flex-start !important;
+                    position: static !important;
+                    width: 100% !important;
+
+                    .button {
+                        margin: 0 !important;
+                        min-width: 80px;
+                    }
+
+                    .button.secondary {
+                        background-color: transparent;
+                        border: 1px solid var(--nx-maroon, #6A0111);
+                        color: var(--nx-maroon, #6A0111);
+
+                        &:hover {
+                            background-color: var(--nx-maroon, #6A0111);
+                            color: #fff;
+                        }
+                    }
+
+                    &::before {
+                        content: none;
+                    }
+
+                    &::after {
+                        content: none;
+                    }
+                }
+            }
+
+            .panel--newAddress {
+                background-color: transparent;
+                border: 2px dashed var(--nx-maroon, #6A0111);
+                color: var(--nx-maroon, #6A0111);
+
+                &:hover {
+                    background-color: rgba(106, 1, 17, 0.05);
+                }
+
+                .address-addNew {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+
+                    .address-symbol {
+                        font-size: 48px;
+                        line-height: 1;
+                        margin-bottom: 8px;
+                    }
+
+                    .address-title {
+                        margin: 0;
+                        text-align: center;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Login Page Overrides
+.login {
+    .new-customer {
+        .panel {
+            background-color: var(--nx-cream-card, #F5EDDC);
+            border: none;
+            border-radius: var(--nx-radius-2xl, 24px);
+            padding: 32px;
+
+            .panel-header {
+                border-bottom: none;
+                background-color: transparent;
+
+                .panel-title {
+                    font-family: var(--nx-font-display, 'Moongazer', sans-serif);
+                    font-size: 32px;
+                    color: var(--nx-maroon, #6A0111);
+                    text-transform: uppercase;
+                    margin: 0;
+                }
+            }
+
+            .panel-body {
+                font-family: var(--nx-font-body, 'Figtree', sans-serif);
+                color: var(--nx-dark-red, #6a0111);
+                background-color: transparent;
+                margin-bottom: 0;
+
+                p,
+                li {
+                    color: inherit;
+                }
+
+                .new-customer-fact-list {
+                    margin-bottom: 24px;
+                }
+
+                .button--primary {
+                    margin: 0;
+                }
             }
         }
     }

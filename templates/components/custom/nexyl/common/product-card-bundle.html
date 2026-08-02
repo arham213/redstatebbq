@@ -1,0 +1,60 @@
+<article class="nx-product-card-bundle">
+    <div class="nx-product-card-bundle__image">
+        {{#or price.non_sale_price_with_tax price.non_sale_price_without_tax price.rrp_with_tax price.rrp_without_tax}}
+            <span class="nx-product-card-bundle__badge">
+                SAVE {{#if price.non_sale_price_with_tax}}
+                    {{round (multiply (divide (subtract price.non_sale_price_with_tax.value price.with_tax.value) price.non_sale_price_with_tax.value) 100)}}
+                {{else if price.non_sale_price_without_tax}}
+                    {{round (multiply (divide (subtract price.non_sale_price_without_tax.value price.without_tax.value) price.non_sale_price_without_tax.value) 100)}}
+                {{else if price.rrp_with_tax}}
+                    {{round (multiply (divide (subtract price.rrp_with_tax.value price.with_tax.value) price.rrp_with_tax.value) 100)}}
+                {{else if price.rrp_without_tax}}
+                    {{round (multiply (divide (subtract price.rrp_without_tax.value price.without_tax.value) price.rrp_without_tax.value) 100)}}
+                {{/if}}%
+            </span>
+        {{/or}}
+        <a href="{{url}}">
+            {{#if image}}
+                <img class="card-image" src="{{getImage image (cdn ../theme_settings.default_image_product)}}" alt="{{image.alt}}" title="{{image.alt}}" loading="lazy">
+            {{else}}
+                <img class="card-image" src="{{cdn ../theme_settings.default_image_product}}" alt="{{name}}" loading="lazy">
+            {{/if}}
+        </a>
+    </div>
+    <div class="nx-product-card-bundle__body">
+        <div class="nx-product-card-bundle__info">
+            <h3 class="nx-product-card-bundle__title"><a href="{{url}}">{{name}}</a></h3>
+            {{#if summary}}
+                <p class="nx-product-card-bundle__desc">{{{summary}}}</p>
+            {{/if}}
+        </div>
+        <div class="nx-product-card-bundle__foot">
+            <div class="nx-product-card-bundle__price">
+                <div class="nx-product-card-bundle__price-row">
+                    <p class="amount">
+                        {{#if price.with_tax}}
+                            {{price.with_tax.formatted}}
+                        {{else if price.without_tax}}
+                            {{price.without_tax.formatted}}
+                        {{/if}}
+                    </p>
+                    {{#if price.non_sale_price_with_tax}}
+                        <p class="amount-rrp">{{price.non_sale_price_with_tax.formatted}}</p>
+                    {{else if price.non_sale_price_without_tax}}
+                        <p class="amount-rrp">{{price.non_sale_price_without_tax.formatted}}</p>
+                    {{else if price.rrp_with_tax}}
+                        <p class="amount-rrp">{{price.rrp_with_tax.formatted}}</p>
+                    {{else if price.rrp_without_tax}}
+                        <p class="amount-rrp">{{price.rrp_without_tax.formatted}}</p>
+                    {{/if}}
+                </div>
+                <p class="tax">Tax Included</p>
+            </div>
+            {{#if has_options}}
+                <a href="{{url}}" class="nx-btn nx-btn-primary nx-btn--sm">Choose Options</a>
+            {{else}}
+                <a href="/cart.php?action=add&product_id={{id}}" class="nx-btn nx-btn-primary nx-btn--sm">Add to Cart</a>
+            {{/if}}
+        </div>
+    </div>
+</article>

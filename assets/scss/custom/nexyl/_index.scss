@@ -14,7 +14,10 @@
 @import "common/global";
 @import "common/modal";
 @import "common/gallery-section";
+@import "common/community-section";
 @import "common/auth";
+@import "common/product-card-bundle";
+@import "common/card";
 
 // ---------- Layouts ----------
 @import "layouts/1776-blend";
@@ -53,6 +56,7 @@
 @import "contact/contact-page";
 
 // ---------- About Page ----------
+@import "category/index";
 @import "about/index";
 
 // ---------- Wholesale Page ----------

@@ -19,7 +19,6 @@
 
 .address {
     display: inline-block;
-    padding: 0 spacing("half");
     vertical-align: top;
     width: 100%;
 
@@ -50,11 +49,10 @@
 
     .panel-body {
         min-height: remCalc(250px); // 2
-        padding: spacing("single");
-
-        @include breakpoint("small") {
-            padding: spacing("single") spacing("single") (spacing("single") + spacing("double")); // 3
-        }
+        background: transparent;
+        margin: 0;
+        padding: 0;
+        border: none !important;
     }
 
     .form-actions {
@@ -62,16 +60,16 @@
         margin-top: spacing("single");
         text-align: left;
 
-        @include breakpoint("small") { // 3
+        @include breakpoint("small") {
+            // 3
             bottom: spacing("single");
-            position: absolute;
             width: auto;
         }
 
         .button {
             margin-bottom: spacing("half");
 
-            + .button {
+            +.button {
                 margin-left: 0;
                 margin-top: 0;
 
@@ -86,6 +84,7 @@
 .address-title {
     margin: 0 0 spacing("half");
     text-transform: none;
+    color: var(--nx-red, #d70321);
 }
 
 .address-details {

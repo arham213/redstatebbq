@@ -1,8 +1,9 @@
 {{#partial "page"}}
-    <div class="account">
+<div class="page nx-utility-page nx-account-layout">
+    <div class="container nx-utility-page__inner">
         {{#if settings.show_wishlist}}
-            {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
-            <h2 class="page-heading">
+
+            <h2 class="page-heading nx-utility-page__heading">
                 {{#if forms.wishlist.id}}
                     {{lang 'account.wishlists.edit'}}
                 {{else}}
@@ -13,9 +14,14 @@
                     {{/if}}
                 {{/if}}
             </h2>
-            {{> components/account/navigation account_page='wishlists'}}
-            {{> components/account/add-wishlist}}
+            <div class="nx-account-nav">
+                {{> components/account/navigation account_page='wishlists'}}
+            </div>
+            <main class="account nx-account-main">
+                {{> components/account/add-wishlist}}
+            </main>
         {{/if}}
     </div>
+</div>
 {{/partial}}
 {{> layout/base}}

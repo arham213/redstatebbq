@@ -1,0 +1,14 @@
+<div class="nx-category-hero">
+    <div class="nx-category-hero__copy">
+        <h2 class="nx-category-hero__title" id="{{dashcase heading}}-title">{{heading}}</h2>
+        <p class="nx-category-hero__text">{{description}}</p>
+        {{#if cta_text}}
+            <a class="nx-btn nx-btn-primary" href="{{cta_url}}">{{cta_text}}</a>
+        {{/if}}
+    </div>
+    <div class="nx-category-hero__media" aria-hidden="{{#if image_url}}false{{else}}true{{/if}}">
+        {{#if image_url}}
+            <img src="{{image_url}}" alt="{{heading}}" loading="lazy">
+        {{/if}}
+    </div>
+</div>

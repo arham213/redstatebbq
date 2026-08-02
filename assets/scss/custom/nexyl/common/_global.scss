@@ -74,6 +74,7 @@ body {
     font-size: 15px;
     line-height: 1;
     color: var(--nx-dark-red);
+    text-align: left;
 
     small {
         font-size: 12px;
@@ -81,6 +82,11 @@ body {
         opacity: 0.7;
         margin-left: 4px;
     }
+}
+
+.form-inlineMessage {
+    margin: 0;
+    text-align: left;
 }
 
 .form-input,
@@ -208,6 +214,17 @@ textarea.form-input {
     }
 }
 
+.button--secondary {
+    background-color: transparent;
+    border: 2px solid var(--nx-maroon, #6A0111) !important;
+    color: var(--nx-maroon, #6A0111);
+
+    &:hover {
+        background-color: var(--nx-maroon, #6A0111);
+        color: #fff;
+    }
+}
+
 .button--default {
     background: var(--nx-cream);
     color: var(--nx-dark-red);
@@ -266,9 +283,11 @@ textarea.form-input {
     @media (min-width: 1024px) {
         font-size: 72px;
         line-height: 1;
+        margin-bottom: 60px;
     }
     @media (min-width: 1200px) {
         font-size: 78px;
         line-height: 68px; /* 87.179% */
+        margin-bottom: 80px;
     }
 }

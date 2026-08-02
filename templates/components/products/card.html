@@ -1,6 +1,5 @@
 <article
-    class="card
-    {{#if alternate}} card--alternate{{/if}}"
+    class="nx-card{{#if alternate}} nx-card--alternate{{/if}}"
     data-test="card-{{id}}"
     data-event-type="{{event}}"
     data-entity-id="{{id}}"
@@ -26,113 +25,106 @@
         {{lang 'common.login_for_pricing'}}
     {{/or}}"
 >
-    <figure class="card-figure">
-        {{#if stock_level '===' 0}}
-            {{#if theme_settings.pdp_sold_out_label '===' ''}}
-                {{> components/products/product-badge
-                    badge-type='sold-out'
-                    badge_view=theme_settings.product_sold_out_badges
-                    badge_label=(lang "page_builder.pdp_sold_out_label")
-                }}
-            {{else}}
-                {{> components/products/product-badge
-                    badge-type='sold-out'
-                    badge_view=theme_settings.product_sold_out_badges
-                    badge_label=theme_settings.pdp_sold_out_label
-                }}
-            {{/if}}
-        {{else}}
-            {{#or price.sale_price_with_tax.value price.sale_price_without_tax.value}}
-                {{#if theme_settings.pdp_sale_badge_label '===' ''}}
+    <a href="{{url}}" class="nx-card__link" aria-label="{{name}}" data-event-type="product-click">
+        <div class="nx-card__object">
+            {{#if stock_level '===' 0}}
+                {{#if theme_settings.pdp_sold_out_label '===' ''}}
                     {{> components/products/product-badge
-                        badge-type='sale'
-                        badge_view=theme_settings.product_sale_badges
-                        badge_label=(lang "page_builder.pdp_sale_badge_label")
+                        badge-type='sold-out'
+                        badge_view=theme_settings.product_sold_out_badges
+                        badge_label=(lang "page_builder.pdp_sold_out_label")
                     }}
                 {{else}}
                     {{> components/products/product-badge
-                        badge-type='sale'
-                        badge_view=theme_settings.product_sale_badges
-                        badge_label=theme_settings.pdp_sale_badge_label
+                        badge-type='sold-out'
+                        badge_view=theme_settings.product_sold_out_badges
+                        badge_label=theme_settings.pdp_sold_out_label
                     }}
                 {{/if}}
-            {{/or}}
-        {{/if}}
-
-        <a href="{{url}}"
-           class="card-figure__link"
-           aria-label="{{> components/products/product-info}}"
-           data-event-type="product-click"
-        >
-            <div class="card-img-container">
-                {{> components/common/responsive-img
-                    image=image
-                    class="card-image"
-                    fallback_size=theme_settings.productgallery_size
-                    lazyload=theme_settings.lazyload_mode
-                    default_image=theme_settings.default_image_product
-                }}
-            </div>
-        </a>
-
-        <figcaption class="card-figcaption">
-            <div class="card-figcaption-body">
-                {{#unless hide_product_quick_view}}
-                    {{#if theme_settings.show_product_quick_view}}
-                        <button type="button" class="button button--small card-figcaption-button quickview" data-event-type="product-click" data-product-id="{{id}}">{{lang 'products.quick_view'}}</button>
-                    {{/if}}
-                {{/unless}}
-                {{#if show_compare}}
-                    <label class="button button--small card-figcaption-button" for="compare-{{id}}">
-                        {{lang 'products.compare'}} <input type="checkbox" name="products[]" value="{{id}}" id="compare-{{id}}" data-compare-id="{{id}}">
-                    </label>
-                {{/if}}
-                {{#if show_cart_action}}
-                    {{#if has_options}}
-                        <a href="{{url}}" data-event-type="product-click" class="button button--small card-figcaption-button" data-product-id="{{id}}">{{lang 'products.choose_options'}}</a>
-                    {{/if}}
-                    {{#if pre_order}}
-                        <a href="{{pre_order_add_to_cart_url}}" data-event-type="product-click" class="button button--small card-figcaption-button">{{lang 'products.pre_order'}}</a>
-                    {{/if}}
-                    {{#if add_to_cart_url }}
-                        <a href="{{add_to_cart_url}}" data-event-type="product-click" data-button-type="add-cart" class="button button--small card-figcaption-button">{{lang 'products.add_to_cart'}}</a>
-                        <span class="product-status-message aria-description--hidden">{{lang 'category.add_cart_announcement'}}</span>
-                    {{/if}}
-                    {{#if out_of_stock_message }}
-                        <a href="{{url}}" data-event-type="product-click" class="button button--small card-figcaption-button" data-product-id="{{id}}">{{out_of_stock_message}}</a>
-                    {{/if}}
-                {{/if}}
-            </div>
-        </figcaption>
-    </figure>
-    <div class="card-body">
-        {{#and rating show_rating}}
-            <p class="card-text" data-test-info-type="productRating">
-                <span class="rating--small">
-                    {{> components/products/ratings rating_target=name rating=rating}}
-                </span>
-            </p>
-        {{/and}}
-        {{#if brand.name}}
-            <p class="card-text" data-test-info-type="brandName">{{brand.name}}</p>
-        {{/if}}
-        <h3 class="card-title">
-            <a aria-label="{{> components/products/product-info}}"
-               href="{{url}}"
-               data-event-type="product-click"
-            >
-                {{name}}
-            </a>
-        </h3>
-
-        <div class="card-text" data-test-info-type="price">
-            {{#or customer (unless settings.hide_price_from_guests)}}
-                {{> components/products/price price=price}}
             {{else}}
-                {{> components/common/login-for-pricing}}
-            {{/or}}
+                {{#or price.sale_price_with_tax.value price.sale_price_without_tax.value}}
+                    {{#if theme_settings.pdp_sale_badge_label '===' ''}}
+                        {{> components/products/product-badge
+                            badge-type='sale'
+                            badge_view=theme_settings.product_sale_badges
+                            badge_label=(lang "page_builder.pdp_sale_badge_label")
+                        }}
+                    {{else}}
+                        {{> components/products/product-badge
+                            badge-type='sale'
+                            badge_view=theme_settings.product_sale_badges
+                            badge_label=theme_settings.pdp_sale_badge_label
+                        }}
+                    {{/if}}
+                {{/or}}
+            {{/if}}
+
+            {{#if image}}
+                <img src="{{getImage image 'productgallery_size' (cdn theme_settings.default_image_product)}}" alt="{{image.alt}}" title="{{image.alt}}" loading="lazy">
+            {{else}}
+                <img src="{{cdn theme_settings.default_image_product}}" alt="{{name}}" loading="lazy">
+            {{/if}}
         </div>
-        {{{region name="product_item_below_price"}}}
-        {{> components/products/bulk-discount-rates}}
+    </a>
+
+    <div class="nx-card__body">
+        <div class="nx-card__meta">
+            {{#each custom_fields}}
+                {{#if name '===' 'sauce_region'}}
+                    <p class="nx-card__origin">{{value}}</p>
+                {{/if}}
+            {{/each}}
+
+            {{#filter custom_fields 'nick_name' property='name'}}
+                <p class="nx-card__name">
+                    <a href="{{../url}}"
+                    aria-label="{{../name}}"
+                    data-event-type="product-click"
+                    style="color: inherit; text-decoration: none;"
+                    >
+                    {{value}}
+                    </a>
+                </p>
+            {{else}}
+                <p class="nx-card__name">
+                    <a href="{{url}}"
+                    aria-label="{{name}}"
+                    data-event-type="product-click"
+                    style="color: inherit; text-decoration: none;"
+                    >
+                    {{name}}
+                    </a>
+                </p>
+            {{/filter}}
+
+            <div class="nx-pill">
+                <span class="nx-pill__inner">
+                    <span class="nx-pill__price">
+                        <span>
+                            {{#or customer (unless settings.hide_price_from_guests)}}
+                                {{#if price.with_tax}}
+                                    {{price.with_tax.formatted}}
+                                {{else if price.without_tax}}
+                                    {{price.without_tax.formatted}}
+                                {{/if}}
+                            {{else}}
+                                {{#if settings.hide_price_from_guests}}
+                                    {{lang 'common.login_for_pricing'}}
+                                {{else}}
+                                    {{price.without_tax.formatted}}
+                                {{/if}}
+                            {{/or}}
+                        </span>
+                    </span>
+                    {{#each custom_fields}}
+                        {{#if name '===' 'weight'}}
+                            <span class="nx-pill__size">{{value}}</span>
+                        {{else if name '===' 'size'}}
+                            <span class="nx-pill__size">{{value}}</span>
+                        {{/if}}
+                    {{/each}}
+                </span>
+            </div>
+        </div>
     </div>
 </article>

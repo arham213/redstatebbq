@@ -1,0 +1,464 @@
+---
+category:
+    shop_by_price: true
+    products:
+        limit: {{theme_settings.categorypage_products_per_page}}
+---
+{{#partial "page"}}
+
+<div class="nx-all-items-page">
+    <section class="page-header" aria-labelledby="page-title">
+        <h1 class="page-title" id="page-title">{{category.name}}</h1>
+        <div class="filters nx-category-filters" role="group" aria-label="Filter products by category">
+            <button type="button" class="nx-category-filters__toggle" aria-expanded="false" aria-controls="filter-menu">
+                <span class="nx-category-filters__toggle-text">All Categories</span>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="nx-category-filters__menu" id="filter-menu">
+                <button type="button" class="filter active" aria-current="true" data-filter="all">All</button>
+                {{#each category.subcategories}}
+                    <button type="button" class="filter" data-filter="{{dashcase name}}">{{name}}</button>
+                {{/each}}
+            </div>
+        </div>
+    </section>
+
+    <!-- BBQ Sauces Subcategory -->
+    <section class="category nx-subcategory-section" id="bbq-sauces" data-category-url="/bbq-sauces/">
+        {{> components/custom/nexyl/category/category-hero 
+            heading="BBQ Sauces" 
+            description="Discover the rich flavors of our homemade barbecue sauces, crafted with a unique blend of spices and ingredients to perfectly complement your grilled favorites." 
+            cta_text="Explore All" 
+            cta_url="/bbq-sauces/"
+            image_url="https://cdn11.bigcommerce.com/s-a00ekum4a8/images/stencil/original/image-manager/bbq-sauces-hero.jpg?t=1785268494"
+        }}
+        <div class="product-grid" style="background:#fdf7ea">
+            <div class="product-grid__inner">
+                <div class="swiper nx-category-swiper" data-card-template="standard">
+                    <div class="swiper-wrapper nx-products-wrapper">
+                        <!-- Loading Skeletons -->
+                        <div class="swiper-slide">
+                            <div class="nx-skeleton-card">
+                                <div class="nx-skeleton-card__img"></div>
+                                <div class="nx-skeleton-card__title"></div>
+                                <div class="nx-skeleton-card__price"></div>
+                                <div class="nx-skeleton-card__btn"></div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="nx-skeleton-card">
+                                <div class="nx-skeleton-card__img"></div>
+                                <div class="nx-skeleton-card__title"></div>
+                                <div class="nx-skeleton-card__price"></div>
+                                <div class="nx-skeleton-card__btn"></div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="nx-skeleton-card">
+                                <div class="nx-skeleton-card__img"></div>
+                                <div class="nx-skeleton-card__title"></div>
+                                <div class="nx-skeleton-card__price"></div>
+                                <div class="nx-skeleton-card__btn"></div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="nx-skeleton-card">
+                                <div class="nx-skeleton-card__img"></div>
+                                <div class="nx-skeleton-card__title"></div>
+                                <div class="nx-skeleton-card__price"></div>
+                                <div class="nx-skeleton-card__btn"></div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="nx-skeleton-card">
+                                <div class="nx-skeleton-card__img"></div>
+                                <div class="nx-skeleton-card__title"></div>
+                                <div class="nx-skeleton-card__price"></div>
+                                <div class="nx-skeleton-card__btn"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="nx-swiper-nav">
+                        <button type="button" class="nx-swiper-prev">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
+                                <path d="M32 58.6663C46.7276 58.6663 58.6667 46.7273 58.6667 31.9997C58.6667 17.2721 46.7276 5.33301 32 5.33301C17.2724 5.33301 5.33337 17.2721 5.33337 31.9997C5.33337 46.7273 17.2724 58.6663 32 58.6663Z" stroke="#2C2929" stroke-width="4" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M35.3601 41.4136L25.9734 32.0002L35.3601 22.5869" stroke="#2C2929" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                        <button type="button" class="nx-swiper-next">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
+                                <path d="M32 58.6663C46.7276 58.6663 58.6667 46.7273 58.6667 31.9997C58.6667 17.2721 46.7276 5.33301 32 5.33301C17.2724 5.33301 5.33337 17.2721 5.33337 31.9997C5.33337 46.7273 17.2724 58.6663 32 58.6663Z" stroke="#2C2929" stroke-width="4" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M28.64 41.4136L38.0267 32.0002L28.64 22.5869" stroke="#2C2929" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clothing Subcategory -->
+    <section class="category nx-subcategory-section" id="clothing" data-category-url="/guys/, /gals/">
+        {{> components/custom/nexyl/category/category-hero 
+            heading="Clothing" 
+            description="Dress the part with our exclusive line of BBQ-themed apparel, perfect for pitmasters and fans alike. From stylish tees to cozy hoodies, wear your passion for slow-smoked perfection." 
+            cta_text="Explore All" 
+            cta_url="/clothing/"
+            image_url="https://cdn11.bigcommerce.com/s-a00ekum4a8/images/stencil/original/image-manager/clothing-hero.png?t=1785268839"
+        }}
+        <div class="product-grid" style="background:#fbf5e7">
+            <div class="product-grid__inner">
+                <div class="swiper nx-category-swiper" data-card-template="standard">
+                    <div class="swiper-wrapper nx-products-wrapper">
+                        <!-- Loading Skeletons -->
+                        <div class="swiper-slide">
+                            <div class="nx-skeleton-card">
+                                <div class="nx-skeleton-card__img"></div>
+                                <div class="nx-skeleton-card__title"></div>
+                                <div class="nx-skeleton-card__price"></div>
+                                <div class="nx-skeleton-card__btn"></div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="nx-skeleton-card">
+                                <div class="nx-skeleton-card__img"></div>
+                                <div class="nx-skeleton-card__title"></div>
+                                <div class="nx-skeleton-card__price"></div>
+                                <div class="nx-skeleton-card__btn"></div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="nx-skeleton-card">
+                                <div class="nx-skeleton-card__img"></div>
+                                <div class="nx-skeleton-card__title"></div>
+                                <div class="nx-skeleton-card__price"></div>
+                                <div class="nx-skeleton-card__btn"></div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="nx-skeleton-card">
+                                <div class="nx-skeleton-card__img"></div>
+                                <div class="nx-skeleton-card__title"></div>
+                                <div class="nx-skeleton-card__price"></div>
+                                <div class="nx-skeleton-card__btn"></div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="nx-skeleton-card">
+                                <div class="nx-skeleton-card__img"></div>
+                                <div class="nx-skeleton-card__title"></div>
+                                <div class="nx-skeleton-card__price"></div>
+                                <div class="nx-skeleton-card__btn"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="nx-swiper-nav">
+                        <button type="button" class="nx-swiper-prev">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
+                                <path d="M32 58.6663C46.7276 58.6663 58.6667 46.7273 58.6667 31.9997C58.6667 17.2721 46.7276 5.33301 32 5.33301C17.2724 5.33301 5.33337 17.2721 5.33337 31.9997C5.33337 46.7273 17.2724 58.6663 32 58.6663Z" stroke="#2C2929" stroke-width="4" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M35.3601 41.4136L25.9734 32.0002L35.3601 22.5869" stroke="#2C2929" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                        <button type="button" class="nx-swiper-next">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
+                                <path d="M32 58.6663C46.7276 58.6663 58.6667 46.7273 58.6667 31.9997C58.6667 17.2721 46.7276 5.33301 32 5.33301C17.2724 5.33301 5.33337 17.2721 5.33337 31.9997C5.33337 46.7273 17.2724 58.6663 32 58.6663Z" stroke="#2C2929" stroke-width="4" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M28.64 41.4136L38.0267 32.0002L28.64 22.5869" stroke="#2C2929" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Static Join Community Section -->
+    {{> components/custom/nexyl/common/community-section}}
+
+    <!-- Rubs Subcategory -->
+    <section class="promo promo--rubs nx-subcategory-section" id="rubs" data-category-url="/rubs/">
+        <div class="promo__head">
+            <h2 class="promo__title">Try Our Rubs</h2>
+            <p class="promo__sub">3 words for you.. BUNDLE OF JOY!!</p>
+        </div>
+        <div class="promo__row">
+            <div class="swiper nx-promo-swiper" data-card-template="bundle">
+                <div class="swiper-wrapper nx-products-wrapper">
+                    <!-- Loading Skeletons -->
+                    <div class="swiper-slide">
+                        <div class="nx-skeleton-card-bundle">
+                            <div class="nx-skeleton-card__img"></div>
+                            <div class="nx-skeleton-card__title"></div>
+                            <div class="nx-skeleton-card__price"></div>
+                            <div class="nx-skeleton-card__btn"></div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="nx-skeleton-card-bundle">
+                            <div class="nx-skeleton-card__img"></div>
+                            <div class="nx-skeleton-card__title"></div>
+                            <div class="nx-skeleton-card__price"></div>
+                            <div class="nx-skeleton-card__btn"></div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="nx-skeleton-card-bundle">
+                            <div class="nx-skeleton-card__img"></div>
+                            <div class="nx-skeleton-card__title"></div>
+                            <div class="nx-skeleton-card__price"></div>
+                            <div class="nx-skeleton-card__btn"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="nx-swiper-nav">
+                    <button type="button" class="nx-swiper-prev">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
+                            <path
+                                    d="M32 58.6663C46.7276 58.6663 58.6667 46.7273 58.6667 31.9997C58.6667 17.2721 46.7276 5.33301 32 5.33301C17.2724 5.33301 5.33337 17.2721 5.33337 31.9997C5.33337 46.7273 17.2724 58.6663 32 58.6663Z"
+                                    stroke="#2C2929" stroke-width="4" stroke-miterlimit="10" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M35.3601 41.4136L25.9734 32.0002L35.3601 22.5869" stroke="#2C2929" stroke-width="4"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                    <button type="button" class="nx-swiper-next">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
+                            <path
+                                d="M32 58.6663C46.7276 58.6663 58.6667 46.7273 58.6667 31.9997C58.6667 17.2721 46.7276 5.33301 32 5.33301C17.2724 5.33301 5.33337 17.2721 5.33337 31.9997C5.33337 46.7273 17.2724 58.6663 32 58.6663Z"
+                                stroke="#2C2929" stroke-width="4" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M28.64 41.4136L38.0267 32.0002L28.64 22.5869" stroke="#2C2929" stroke-width="4" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Static Split Banner (Clearance / Limited) -->
+    <section class="split-banner" aria-label="Featured promotions">
+        <div class="split-banner__row">
+            <div class="split-banner__col split-banner__col--clearance">
+                <h2 class="split-banner__title">Clearance Sale</h2>
+                <p class="split-banner__text">Be a part of Our exclusive community experience with tons of benefits and activities.</p>
+                <a class="nx-btn nx-btn-primary nx-btn-primary-lg" href="/clearance">Buy Now</a>
+            </div>
+            <div class="split-banner__col split-banner__col--limited">
+                <img src="{{cdn 'assets/img/custom/nexyl/limited-bg-vector.svg'}}" alt="" class="split-banner__deco">
+                <h2 class="split-banner__title">Shop Limited Edition</h2>
+                <p class="split-banner__text">Be a part of Our exclusive community experience with tons of benefits and activities.</p>
+                <a class="nx-btn nx-btn-cream nx-btn-primary-lg" href="/limited-edition">Buy Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gift Packs Subcategory -->
+    <section class="category nx-subcategory-section" id="gift-packs" data-category-url="/gift-certificate/" style="border-top:3px solid #fbf5e7">
+        {{> components/custom/nexyl/category/category-hero 
+            heading="Gift Packs" 
+            description="Check out our gift packs featuring BBQ sauces, shirts, and more—perfect for pitmasters and fans who love slow-smoked flavor. Grab stylish tees and tasty sauces all in one bundle." 
+            cta_text="Explore All" 
+            cta_url="/gift-certificate/"
+            image_url="https://cdn11.bigcommerce.com/s-a00ekum4a8/images/stencil/original/image-manager/gift-packs-hero.png?t=1785268844"
+        }}
+        <div class="product-grid" style="background:#fbf5e7">
+            <div class="product-grid__inner">
+                <div class="swiper nx-category-swiper" data-card-template="standard">
+                    <div class="swiper-wrapper nx-products-wrapper">
+                        <!-- Loading Skeletons -->
+                        <div class="swiper-slide">
+                            <div class="nx-skeleton-card">
+                                <div class="nx-skeleton-card__img"></div>
+                                <div class="nx-skeleton-card__title"></div>
+                                <div class="nx-skeleton-card__price"></div>
+                                <div class="nx-skeleton-card__btn"></div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="nx-skeleton-card">
+                                <div class="nx-skeleton-card__img"></div>
+                                <div class="nx-skeleton-card__title"></div>
+                                <div class="nx-skeleton-card__price"></div>
+                                <div class="nx-skeleton-card__btn"></div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="nx-skeleton-card">
+                                <div class="nx-skeleton-card__img"></div>
+                                <div class="nx-skeleton-card__title"></div>
+                                <div class="nx-skeleton-card__price"></div>
+                                <div class="nx-skeleton-card__btn"></div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="nx-skeleton-card">
+                                <div class="nx-skeleton-card__img"></div>
+                                <div class="nx-skeleton-card__title"></div>
+                                <div class="nx-skeleton-card__price"></div>
+                                <div class="nx-skeleton-card__btn"></div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="nx-skeleton-card">
+                                <div class="nx-skeleton-card__img"></div>
+                                <div class="nx-skeleton-card__title"></div>
+                                <div class="nx-skeleton-card__price"></div>
+                                <div class="nx-skeleton-card__btn"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="nx-swiper-nav">
+                        <button type="button" class="nx-swiper-prev">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
+                                <path d="M32 58.6663C46.7276 58.6663 58.6667 46.7273 58.6667 31.9997C58.6667 17.2721 46.7276 5.33301 32 5.33301C17.2724 5.33301 5.33337 17.2721 5.33337 31.9997C5.33337 46.7273 17.2724 58.6663 32 58.6663Z" stroke="#2C2929" stroke-width="4" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M35.3601 41.4136L25.9734 32.0002L35.3601 22.5869" stroke="#2C2929" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                        <button type="button" class="nx-swiper-next">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
+                                <path d="M32 58.6663C46.7276 58.6663 58.6667 46.7273 58.6667 31.9997C58.6667 17.2721 46.7276 5.33301 32 5.33301C17.2724 5.33301 5.33337 17.2721 5.33337 31.9997C5.33337 46.7273 17.2724 58.6663 32 58.6663Z" stroke="#2C2929" stroke-width="4" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M28.64 41.4136L38.0267 32.0002L28.64 22.5869" stroke="#2C2929" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Accessories Subcategory -->
+    <section class="category nx-subcategory-section" id="accessories" data-category-url="/accessories/" style="border-top:3px solid #d70321">
+        {{> components/custom/nexyl/category/category-hero 
+            heading="Accessories" 
+            description="Dress the part with our exclusive line of BBQ-themed apparel, perfect for pitmasters and fans alike. From stylish tees to cozy hoodies, wear your passion for slow-smoked perfection." 
+            cta_text="Explore All" 
+            cta_url="/accessories/"
+            image_url=""
+        }}
+        <div class="product-grid" style="background:#fbf5e7">
+            <div class="product-grid__inner">
+                <div class="swiper nx-category-swiper" data-card-template="standard">
+                    <div class="swiper-wrapper nx-products-wrapper">
+                        <!-- Loading Skeletons -->
+                        <div class="swiper-slide">
+                            <div class="nx-skeleton-card">
+                                <div class="nx-skeleton-card__img"></div>
+                                <div class="nx-skeleton-card__title"></div>
+                                <div class="nx-skeleton-card__price"></div>
+                                <div class="nx-skeleton-card__btn"></div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="nx-skeleton-card">
+                                <div class="nx-skeleton-card__img"></div>
+                                <div class="nx-skeleton-card__title"></div>
+                                <div class="nx-skeleton-card__price"></div>
+                                <div class="nx-skeleton-card__btn"></div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="nx-skeleton-card">
+                                <div class="nx-skeleton-card__img"></div>
+                                <div class="nx-skeleton-card__title"></div>
+                                <div class="nx-skeleton-card__price"></div>
+                                <div class="nx-skeleton-card__btn"></div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="nx-skeleton-card">
+                                <div class="nx-skeleton-card__img"></div>
+                                <div class="nx-skeleton-card__title"></div>
+                                <div class="nx-skeleton-card__price"></div>
+                                <div class="nx-skeleton-card__btn"></div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="nx-skeleton-card">
+                                <div class="nx-skeleton-card__img"></div>
+                                <div class="nx-skeleton-card__title"></div>
+                                <div class="nx-skeleton-card__price"></div>
+                                <div class="nx-skeleton-card__btn"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="nx-swiper-nav">
+                        <button type="button" class="nx-swiper-prev">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
+                                <path d="M32 58.6663C46.7276 58.6663 58.6667 46.7273 58.6667 31.9997C58.6667 17.2721 46.7276 5.33301 32 5.33301C17.2724 5.33301 5.33337 17.2721 5.33337 31.9997C5.33337 46.7273 17.2724 58.6663 32 58.6663Z" stroke="#2C2929" stroke-width="4" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M35.3601 41.4136L25.9734 32.0002L35.3601 22.5869" stroke="#2C2929" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                        <button type="button" class="nx-swiper-next">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
+                                <path d="M32 58.6663C46.7276 58.6663 58.6667 46.7273 58.6667 31.9997C58.6667 17.2721 46.7276 5.33301 32 5.33301C17.2724 5.33301 5.33337 17.2721 5.33337 31.9997C5.33337 46.7273 17.2724 58.6663 32 58.6663Z" stroke="#2C2929" stroke-width="4" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M28.64 41.4136L38.0267 32.0002L28.64 22.5869" stroke="#2C2929" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hats Promo Subcategory -->
+    <section class="promo promo--hats nx-subcategory-section" id="hats" data-category-url="/hats/">
+        <div class="promo__head">
+            <h2 class="promo__title">Try Our Hats</h2>
+            <p class="promo__sub">Top off your BBQ look with our premium hats!</p>
+        </div>
+        <div class="promo__row">
+            <div class="swiper nx-promo-swiper" data-card-template="bundle">
+                <div class="swiper-wrapper nx-products-wrapper">
+                    <!-- Loading Skeletons -->
+                    <div class="swiper-slide">
+                        <div class="nx-skeleton-card-bundle">
+                            <div class="nx-skeleton-card__img"></div>
+                            <div class="nx-skeleton-card__title"></div>
+                            <div class="nx-skeleton-card__price"></div>
+                            <div class="nx-skeleton-card__btn"></div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="nx-skeleton-card-bundle">
+                            <div class="nx-skeleton-card__img"></div>
+                            <div class="nx-skeleton-card__title"></div>
+                            <div class="nx-skeleton-card__price"></div>
+                            <div class="nx-skeleton-card__btn"></div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="nx-skeleton-card-bundle">
+                            <div class="nx-skeleton-card__img"></div>
+                            <div class="nx-skeleton-card__title"></div>
+                            <div class="nx-skeleton-card__price"></div>
+                            <div class="nx-skeleton-card__btn"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="nx-swiper-nav">
+                    <button type="button" class="nx-swiper-prev">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
+                            <path
+                                    d="M32 58.6663C46.7276 58.6663 58.6667 46.7273 58.6667 31.9997C58.6667 17.2721 46.7276 5.33301 32 5.33301C17.2724 5.33301 5.33337 17.2721 5.33337 31.9997C5.33337 46.7273 17.2724 58.6663 32 58.6663Z"
+                                    stroke="#2C2929" stroke-width="4" stroke-miterlimit="10" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M35.3601 41.4136L25.9734 32.0002L35.3601 22.5869" stroke="#2C2929" stroke-width="4"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                    <button type="button" class="nx-swiper-next">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
+                            <path
+                                d="M32 58.6663C46.7276 58.6663 58.6667 46.7273 58.6667 31.9997C58.6667 17.2721 46.7276 5.33301 32 5.33301C17.2724 5.33301 5.33337 17.2721 5.33337 31.9997C5.33337 46.7273 17.2724 58.6663 32 58.6663Z"
+                                stroke="#2C2929" stroke-width="4" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M28.64 41.4136L38.0267 32.0002L28.64 22.5869" stroke="#2C2929" stroke-width="4" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+{{/partial}}
+{{> layout/base}}

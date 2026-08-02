@@ -94,7 +94,6 @@
     flex-direction: column;
     align-items: center;
     gap: 24px;
-    margin-top: 20px;
 }
 
 .nx-logo-row {
@@ -126,59 +125,28 @@
     margin: 0;
 }
 
-.nx-testimonial-arrows {
+.nx-testimonial-pagination {
     display: flex;
-    justify-content: center;
     align-items: center;
-    gap: 16px;
-    width: 100%;
-    margin-top: 24px;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 80px;
     z-index: 10;
     order: 3; // Put it at the bottom visually on mobile
 
-    @media (min-width: 1024px) {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 100%;
-        max-width: 1000px;
-        justify-content: space-between;
-        transform: translate(-50%, -50%);
-        margin-top: 0;
-        pointer-events: none; // let clicks pass through to content
-    }
-}
-
-.nx-testimonial-prev,
-.nx-testimonial-next {
-    width: 48px;
-    height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    color: #FBF5E7;
-    pointer-events: auto; // restore clicks
-    background: transparent;
-    transition: background 0.3s;
-
-    &:hover {
-        background: rgba(255, 255, 255, 0.1);
+    .swiper-pagination-bullet {
+        width: 12px;
+        height: 5px;
+        border-radius: 5px !important;
+        background: var(--nx-text-muted); // Inactive color (dark grayish olive)
+        opacity: 1;
+        margin: 0 !important; // Override swiper default margins
+        transition: width 0.3s ease, background-color 0.3s ease;
+        cursor: pointer;
     }
 
-    @media (min-width: 1024px) {
-        position: absolute;
-    }
-}
-
-.nx-testimonial-prev {
-    @media (min-width: 1024px) {
-        left: 0;
-    }
-}
-
-.nx-testimonial-next {
-    @media (min-width: 1024px) {
-        right: 0;
+    .swiper-pagination-bullet-active {
+        width: 24px;
+        background: var(--nx-cream-light, #fbf5e7); // Active color
     }
 }

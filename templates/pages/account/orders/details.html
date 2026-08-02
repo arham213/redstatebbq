@@ -1,11 +1,13 @@
 {{#partial "page"}}
 {{inject 'selectItem' (lang 'forms.validate.account.reorder.select_item')}}
+<div class="page nx-utility-page nx-account-layout">
+    <div class="container nx-utility-page__inner">
+<h2 class="page-heading nx-utility-page__heading title">{{lang 'account.orders.details.heading' number=order.id}}</h2>
+<div class="nx-account-nav">
+    {{> components/account/navigation account_page='orders'}}
+</div>
 
-{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
-<h2 class="page-heading title">{{lang 'account.orders.details.heading' number=order.id}}</h2>
-{{> components/account/navigation account_page='orders'}}
-
-<div class="account">
+<main class="account nx-account-main">
     <div class="account-body">
         {{#each order.status_messages}}
             {{> components/common/alert/alert-info message}}
@@ -186,6 +188,8 @@
             </section>
         </aside>
 
+    </div>
+    </main>
     </div>
 </div>
 {{/partial}}

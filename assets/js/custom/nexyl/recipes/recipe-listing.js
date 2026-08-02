@@ -1,4 +1,5 @@
 import Swiper from 'swiper';
+import { Autoplay } from 'swiper/modules';
 
 export default function initRecipeListing() {
     const heroContainer = document.getElementById('nx-recipe-hero-container');
@@ -160,10 +161,16 @@ export default function initRecipeListing() {
 
         // Initialize Swiper
         new Swiper('.nx-recipe-hero-swiper', {
+            modules: [Autoplay],
             slidesPerView: 'auto',
             spaceBetween: 16,
             centeredSlides: true,
             loop: recipes.length > 1,
+            speed: 4000,
+            autoplay: {
+                delay: 0,
+                disableOnInteraction: false,
+            },
             breakpoints: {
                 768: {
                     slidesPerView: 'auto',
@@ -190,22 +197,38 @@ export default function initRecipeListing() {
         }
 
         if (titleEl) titleEl.textContent = 'Our Categories';
-        if (tabsContainer) tabsContainer.style.display = 'flex'; // or block based on css
+        if (tabsContainer) tabsContainer.style.display = ''; // let CSS handle display
 
-        let html = `<div class="tab ${currentCategory === 'All' ? 'active' : ''}" data-cat="All">All</div>`;
+        let html = `<div class="nx-tab ${currentCategory === 'All' ? 'nx-tab--active' : ''}" data-cat="All">All</div>`;
         categories.forEach(c => {
             if (c !== 'Recipes For You') {
-                html += `<div class="tab ${currentCategory === c ? 'active' : ''}" data-cat="${c}">${c}</div>`;
+                html += `<div class="nx-tab ${currentCategory === c ? 'nx-tab--active' : ''}" data-cat="${c}">${c}</div>`;
             }
         });
         tabsContainer.innerHTML = html;
 
         // Bind events
-        tabsContainer.querySelectorAll('.tab').forEach(tab => {
+        tabsContainer.querySelectorAll('.nx-tab').forEach(tab => {
             tab.addEventListener('click', (e) => {
-                tabsContainer.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-                e.target.classList.add('active');
+                tabsContainer.querySelectorAll('.nx-tab').forEach(t => {
+                    t.classList.remove('nx-tab--active');
+                });
+                e.target.classList.add('nx-tab--active');
                 currentCategory = e.target.getAttribute('data-cat');
+                
+                // Update toggle text
+                const toggleText = document.querySelector('.nx-tabs-toggle-text');
+                if (toggleText) {
+                    toggleText.textContent = currentCategory;
+                }
+                
+                // Close dropdown if open
+                if (tabsContainer.classList.contains('is-open')) {
+                    tabsContainer.classList.remove('is-open');
+                    const tabsToggle = document.querySelector('.nx-tabs-toggle');
+                    if (tabsToggle) tabsToggle.setAttribute('aria-expanded', 'false');
+                }
+
                 currentDisplayCount = 0;
                 gridContainer.innerHTML = ''; // Clear grid
                 renderGrid();
@@ -320,6 +343,23 @@ export default function initRecipeListing() {
         if (loadMoreBtn) {
             loadMoreBtn.addEventListener('click', () => {
                 renderGrid();
+            });
+        }
+
+        // Tabs toggle logic for mobile
+        const tabsToggle = document.querySelector('.nx-tabs-toggle');
+        if (tabsToggle && tabsContainer) {
+            tabsToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isOpen = tabsContainer.classList.toggle('is-open');
+                tabsToggle.setAttribute('aria-expanded', isOpen);
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!tabsContainer.contains(e.target) && !tabsToggle.contains(e.target)) {
+                    tabsContainer.classList.remove('is-open');
+                    tabsToggle.setAttribute('aria-expanded', 'false');
+                }
             });
         }
     }

@@ -84,6 +84,7 @@
 
         .hero-cards {
             width: 100%;
+            transition-timing-function: linear !important;
             // Let Swiper handle flex direction, gap, and alignment.
             // Overriding flex-direction or adding gap here breaks Swiper.
         }

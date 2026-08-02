@@ -3,16 +3,19 @@
   <img class="nx-splatter-1" src="{{cdn 'assets/img/custom/nexyl/splatter-1.svg'}}" alt="">
   <img class="nx-splatter-2" src="{{cdn 'assets/img/custom/nexyl/splatter-2.svg'}}" alt="">
 
-  <h2 class="nx-section-title">our regional sauces</h2>
+  <div class="nx-sauces-head">
+      <img src="{{cdn 'assets/img/custom/nexyl/regional-map.png'}}" alt="Regional Map">
+      <h2 class="nx-section-title">Sauces from different regions</h2>
+  </div>
 
   <div class="nx-sauces-row {{#if products.featured.length '>=' 3}}nx-many-sauces{{/if}}" data-list-name="Featured Products">
     {{#each products.featured}}
-      {{> components/custom/nexyl/homepage/regional-sauce-card settings=../settings theme_settings=../theme_settings customer=../customer event="list" position=(add @index 1)}}
+      {{> components/custom/nexyl/common/product-card-v1 settings=../settings theme_settings=../theme_settings customer=../customer event="list" position=(add @index 1)}}
     {{/each}}
   </div>
 
   <div class="nx-sauces-foot">
     <p>Made by our sauce-master with the finest ingredients to give you a lasting taste from all regions</p>
-    <a href="/shop-all/" class="nx-btn nx-btn-outline" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center;">EXPLORE ALL</a>
+    <a href="/shop-all/" class="button button--secondary">EXPLORE ALL</a>
   </div>
 </section>

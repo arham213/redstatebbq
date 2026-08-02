@@ -30,13 +30,15 @@
     {{inject 'storeLocale' settings.request.locale }}
     {{inject 'themeSettings' theme_settings}}
 
-    {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+<div class="page nx-utility-page nx-account-layout">
+    <div class="container nx-utility-page__inner">
+    <h2 class="page-heading nx-utility-page__heading">{{lang 'forms.payment_methods.add.heading'}}</h2>
 
-    <h2 class="page-heading">{{lang 'forms.payment_methods.add.heading'}}</h2>
+    <div class="nx-account-nav">
+        {{> components/account/navigation account_page='payment_methods'}}
+    </div>
 
-    {{> components/account/navigation account_page='payment_methods'}}
-
-    <div class="account account--fixed">
+    <main class="account account--fixed nx-account-main">
 
         {{#if forms.error}}
             {{> components/common/alert/alert-error forms.error}}
@@ -118,7 +120,9 @@
                 </div>
             </form>
         {{/if}}
+    </main>
     </div>
+</div>
 
 {{/partial}}
 {{> layout/base}}

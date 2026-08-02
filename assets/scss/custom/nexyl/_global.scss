@@ -5,7 +5,7 @@
     --nx-dark-red: #{stencilColor("color-textHeading")};
     --nx-cream: #{stencilColor("color-secondary")};
     --nx-cream-soft: #{stencilColor("color-secondaryDark")};
-    
+
     // Safely Hardcoded (Keeps custom design stable)
     --nx-bg: #fdfff5;
     --nx-bg-gray: #e5e5e5;
@@ -14,9 +14,13 @@
     --nx-yellow: #ffa100;
     --nx-text-muted: #666050;
     --nx-border-gray: #e5e5e5;
+    --nx-cream-card: #F5EDDC;
+    --nx-maroon: #6A0111;
+    --border-button: #C7C0B3;
 
     // Typography
-    --nx-font-body: #{stencilFontFamily("body-font")}, sans-serif;
+    --nx-font-body: #{stencilFontFamily("body-font")},
+    sans-serif;
     --nx-font-inter: 'Inter', system-ui, -apple-system, sans-serif;
     --nx-font-display: 'Moongazer', 'Courier New', serif;
 }
@@ -55,4 +59,14 @@ body {
 .swiper-button-prev ::slotted(svg),
 .swiper-button-prev svg {
     fill: transparent !important;
+}
+
+.productGrid {
+    &::before {
+        content: none;
+    }
+
+    &::after {
+        content: none;
+    }
 }

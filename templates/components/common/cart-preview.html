@@ -118,9 +118,9 @@
       <span>{{#if cart.items.length}}{{cart.sub_total.formatted}}{{else}}$0.00{{/if}}</span>
     </div>
     <div class="nx-cd-actions">
-      <a href="{{urls.cart}}" class="nx-cd-btn nx-cd-ghost" id="nx-cart-continue-btn">Continue Shopping</a>
+      <a href="{{urls.cart}}" class="nx-cd-btn nx-cd-ghost button button--secondary" id="nx-cart-continue-btn">Continue Shopping</a>
       {{#if cart.show_primary_checkout_button}}
-      <a href="{{urls.checkout.single_address}}" class="nx-btn nx-btn-primary">Checkout</a>
+      <a href="{{urls.checkout.single_address}}" class="nx-btn nx-btn-primary button button--primary">Checkout</a>
       {{/if}}
     </div>
   </footer>

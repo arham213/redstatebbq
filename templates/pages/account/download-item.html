@@ -1,10 +1,12 @@
 {{#partial "page"}}
+<div class="page nx-utility-page nx-account-layout">
+    <div class="container nx-utility-page__inner">
+    <h1 class="page-heading nx-utility-page__heading">{{lang 'account.orders.downloads.heading' number=downloads.order_id}}</h1>
+    <div class="nx-account-nav">
+        {{> components/account/navigation account_page='orders'}}
+    </div>
 
-    {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
-    <h1 class="page-heading">{{lang 'account.orders.downloads.heading' number=downloads.order_id}}</h1>
-    {{> components/account/navigation account_page='orders'}}
-
-    <div class="account account--fixedLarge">
+    <main class="account account--fixedLarge nx-account-main">
         <div class="account-body">
             <figure class="account-sidebar">
                 {{#each downloads.images}}
@@ -52,7 +54,9 @@
             </section>
 
         </div>
+    </main>
     </div>
+</div>
 
 {{/partial}}
 {{> layout/base}}

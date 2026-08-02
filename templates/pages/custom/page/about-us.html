@@ -1,3 +1,9 @@
+---
+testimonials:
+  - name: David Carroll
+    role: "Owner, Red State BBQ"
+    content: "Every recipe has a story, and every sauce represents a different regional barbecue tradition from somewhere in America. We want customers to feel like they're exploring American barbecue not just buying a bottle of sauce."
+---
 {{#partial "page"}}
 <div class="nx-about-page">
     
@@ -8,7 +14,7 @@
     {{> components/custom/nexyl/about/why-regional}}
     {{> components/custom/nexyl/about/awards}}
     {{> components/custom/nexyl/about/products}}
-    {{> components/custom/nexyl/about/quote}}
+    {{> components/custom/nexyl/common/testimonial-slider hide_title=true hide_logos=true show_quote_mark=true testimonials=page.testimonials}}
 
 </div>
 {{/partial}}

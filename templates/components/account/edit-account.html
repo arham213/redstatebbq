@@ -12,7 +12,7 @@
                     {{else}}
                         {{forms.edit_account.first_name_label}}
                     {{/if}}
-                    <small>{{lang 'common.required' }}</small>
+                    {{lang 'common.required' }}
                 </label>
                 <input aria-labelledby="account_firstname_id" aria-live="polite" autocomplete="given-name" type="text" class="form-input" name="account_firstname" id="account_firstname" value="{{forms.edit_account.first_name}}">
             </div>
@@ -23,7 +23,7 @@
                     {{else}}
                         {{forms.edit_account.last_name_label}}
                     {{/if}}
-                    <small>{{lang 'common.required' }}</small>
+                    {{lang 'common.required' }}
                 </label>
                 <input aria-labelledby="account_lastname_id" aria-live="polite" autocomplete="family-name" type="text" class="form-input" name="account_lastname" id="account_lastname" value="{{forms.edit_account.last_name}}">
             </div>

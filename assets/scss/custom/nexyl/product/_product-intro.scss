@@ -517,6 +517,140 @@
                             user-select: none;
                         }
                     }
+
+                    // ---------- Universal Variant Label Design ----------
+                    [data-product-attribute] {
+                        > .form-label {
+                            width: 100%;
+                            margin-bottom: 8px;
+                            color: #000;
+                            font-size: 18px;
+                            font-weight: 700;
+                            display: flex;
+                            align-items: center;
+
+                            small {
+                                display: inline-flex;
+                                align-items: center;
+                                justify-content: center;
+                                font-size: 12px;
+                                font-weight: 600;
+                                color: var(--nx-dark-red, #6a0111);
+                                background: rgba(106, 1, 17, 0.08);
+                                padding: 2px 8px;
+                                border-radius: 12px;
+                                margin-left: 8px;
+                                letter-spacing: 0.5px;
+                                text-transform: uppercase;
+                            }
+                        }
+
+                        // General Text/Number Inputs
+                        .form-input {
+                            background: #ffffff;
+                            border: 1px solid #e5e5e5;
+                            border-radius: 8px;
+                            padding: 12px 16px;
+                            color: #000;
+                            font-family: var(--nx-font-body);
+                            transition: all 0.2s ease;
+
+                            &:focus {
+                                border-color: var(--nx-red);
+                                outline: none;
+                            }
+                        }
+                    }
+
+                    // ---------- Custom Variant Design (Pills & Swatches) ----------
+                    [data-product-attribute="set-rectangle"],
+                    [data-product-attribute="swatch"] {
+                        display: flex !important;
+                        flex-direction: row !important;
+                        flex-wrap: wrap !important;
+                        align-items: center;
+                        gap: 12px;
+
+                        > .form-label {
+                            margin-bottom: 4px; // tighter margin for pills
+                        }
+
+                        .form-option-wrapper {
+                            margin: 0 !important;
+                            display: inline-flex !important;
+                            width: auto !important;
+                            flex: 0 0 auto !important;
+                        }
+
+                        .form-option {
+                            display: inline-flex;
+                            align-items: center;
+                            justify-content: center;
+                            border-radius: 30px !important;
+                            border: 1px solid var(--nx-dark-red) !important;
+                            background: transparent !important;
+                            padding: 8px 16px !important;
+                            min-width: 48px;
+                            text-align: center;
+                            transition: all 0.2s ease;
+                            cursor: pointer;
+                            margin: 0 !important;
+
+                            .form-option-variant {
+                                color: var(--nx-dark-red) !important;
+                                font-weight: 600;
+                                font-size: 14px;
+                            }
+
+                            // Hover State for Options
+                            &:hover {
+                                background: var(--nx-dark-red) !important;
+
+                                .form-option-variant {
+                                    color: #ffffff !important;
+                                }
+                            }
+                        }
+
+                        // Selected State for Options
+                        .form-radio:checked + .form-option {
+                            background: var(--nx-dark-red) !important;
+                            
+                            .form-option-variant {
+                                color: #ffffff !important;
+                            }
+                        }
+                    }
+
+                    // Specific adjustments for Color Swatches
+                    [data-product-attribute="swatch"] {
+                        .form-option {
+                            padding: 2px !important;
+                            border-radius: 50% !important; // Circle swatches
+                            min-width: 0;
+                            width: 38px;
+                            height: 38px;
+
+                            .form-option-variant--color,
+                            .form-option-variant--pattern {
+                                border-radius: 50% !important;
+                                width: 32px !important;
+                                height: 32px !important;
+                                margin: 0;
+                            }
+
+                            .form-option-variant--none {
+                                display: inline-flex;
+                                align-items: center;
+                                justify-content: center;
+                                width: 100% !important;
+                                height: 100% !important;
+                                font-size: 10px; // Make text fit
+                                border-radius: 50% !important;
+                                line-height: 1;
+                            }
+                        }
+                    }
                 }
 
                 .nx-pdp-buyrow {
@@ -545,6 +679,9 @@
 
                         .form-field--increments {
                             margin-bottom: 0;
+                            flex: 0 0 auto !important;
+                            width: auto !important;
+                            min-width: 110px;
 
                             .form-label {
                                 display: none;
@@ -631,10 +768,10 @@
                                 line-height: 20px;
                                 border: none;
                                 background: transparent;
-                                text-align: center;
-                                width: 30px;
-                                padding: 0;
-                                margin: 0;
+                                text-align: center !important;
+                                width: 40px !important;
+                                padding: 0 !important;
+                                margin: 0 !important;
                                 -moz-appearance: textfield;
 
                                 &::-webkit-outer-spin-button,

@@ -1,59 +1,47 @@
+{{#if testimonials}}
 <section class="nx-fans">
+  {{#if show_quote_mark}}
+  <div style="display: flex; justify-content: center; margin-bottom: 24px;">
+      <img class="lazyload" data-sizes="auto" src="{{cdn 'img/loading.svg'}}" data-src="{{cdn 'assets/img/custom/nexyl/about/quote-mark.svg'}}" alt="" style="width: 62px; height: 47px; object-fit: contain;" />
+  </div>
+  {{/if}}
+  {{#unless hide_title}}
   {{#if title}}
   <p class="nx-fans-title">{{title}}</p>
   {{else}}
   <p class="nx-fans-title">WHAT OUR FANS SAY</p>
   {{/if}}
+  {{/unless}}
 
   <div class="nx-fans-slider-container" style="position: relative; max-width: 900px; margin: 0 auto; width: 100%;">
     <!-- Swiper -->
     <div class="swiper nx-testimonial-swiper">
       <div class="swiper-wrapper">
-
-        <!-- Slide 1 -->
-        <div class="swiper-slide">
-          <div class="nx-quote-row">
-            <div class="nx-avatar-block">
-              <div class="nx-avatar"></div>
-              <p class="nx-avatar-name">David Carroll</p>
+          {{#each testimonials}}
+          <div class="swiper-slide">
+            <div class="nx-quote-row">
+              <div class="nx-avatar-block" style="display: flex; flex-direction: column; align-items: center;">
+                {{#if image}}
+                <img src="{{image}}" alt="{{name}}" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; margin-bottom: 12px;" />
+                {{else}}
+                <div class="nx-avatar" style="width: 80px; height: 80px; border-radius: 50%; background: var(--nx-cream); margin-bottom: 12px;"></div>
+                {{/if}}
+                <p class="nx-avatar-name" style="text-align: center; margin: 0;">{{name}}</p>
+                {{#if role}}
+                <p class="nx-avatar-role" style="text-align: center; margin: 0; font-size: 14px; font-weight: 400; color: var(--nx-cream);">{{role}}</p>
+                {{/if}}
+              </div>
+              <p class="nx-quote">{{content}}</p>
             </div>
-            <p class="nx-quote">"We've had regional sauces on the tables at Red State for 13 years. For America's 250th
-              birthday, I wanted to make one sauce that represented the whole country."</p>
           </div>
-        </div>
-
-        <!-- Slide 2 -->
-        <div class="swiper-slide">
-          <div class="nx-quote-row">
-            <div class="nx-avatar-block" style="display: flex; flex-direction: column; align-items: center;">
-              <img src="https://i.pravatar.cc/150?img=47" alt="Sarah Jenkins"
-                style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; margin-bottom: 12px;" />
-              <p class="nx-avatar-name" style="text-align: center; margin: 0;">Sarah Jenkins</p>
-            </div>
-            <p class="nx-quote">"The best BBQ I have ever had! The pulled chicken is out of this world, and the sauces
-              are incredible. I come here every weekend with my family."</p>
-          </div>
-        </div>
-
-        <!-- Slide 3 -->
-        <div class="swiper-slide">
-          <div class="nx-quote-row">
-            <div class="nx-avatar-block" style="display: flex; flex-direction: column; align-items: center;">
-              <img src="https://i.pravatar.cc/150?img=11" alt="Mark Thompson"
-                style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; margin-bottom: 12px;" />
-              <p class="nx-avatar-name" style="text-align: center; margin: 0;">Mark Thompson</p>
-            </div>
-            <p class="nx-quote">"I ordered the brisket online and it arrived perfectly packaged. Tasted just as good as
-              fresh out of the smoker. Highly recommended!"</p>
-          </div>
-        </div>
-
+          {{/each}}
       </div>
     </div>
-
-
+      <!-- Pagination Dots -->
+    <div class="nx-testimonial-pagination"></div>
   </div>
 
+  {{#unless hide_logos}}
   <div class="nx-also-seen">
     <div class="nx-logo-row">
       <svg xmlns="http://www.w3.org/2000/svg" width="36" height="44" viewBox="0 0 36 44" fill="none">
@@ -105,41 +93,7 @@
     </div>
     <p class="nx-also-seen-label">Also Seen At</p>
   </div>
-
-  <!-- Navigation Arrows -->
-  <div class="nx-testimonial-arrows">
-    <div class="nx-testimonial-prev">
-      <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
-        <path
-          d="M24 44C35.0457 44 44 35.0457 44 24C44 12.9543 35.0457 4 24 4C12.9543 4 4 12.9543 4 24C4 35.0457 12.9543 44 24 44Z"
-          stroke="white" stroke-width="4" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
-        <path d="M26.5205 31.0604L19.4805 24.0004L26.5205 16.9404" stroke="white" stroke-width="4"
-          stroke-linecap="round" stroke-linejoin="round" />
-      </svg>
-    </div>
-    <div class="nx-testimonial-next">
-      <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
-        <path
-          d="M24 44C35.0457 44 44 35.0457 44 24C44 12.9543 35.0457 4 24 4C12.9543 4 4 12.9543 4 24C4 35.0457 12.9543 44 24 44Z"
-          stroke="white" stroke-width="4" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
-        <path d="M21.4805 31.0604L28.5205 24.0004L21.4805 16.9404" stroke="white" stroke-width="4"
-          stroke-linecap="round" stroke-linejoin="round" />
-      </svg>
-    </div>
-  </div>
+  {{/unless}}
 
 </section>
-
-<!-- Initialize Swiper -->
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    new Swiper('.nx-testimonial-swiper', {
-      slidesPerView: 1,
-      loop: true,
-      navigation: {
-        nextEl: '.nx-testimonial-next',
-        prevEl: '.nx-testimonial-prev',
-      },
-    });
-  });
-</script>
+{{/if}}

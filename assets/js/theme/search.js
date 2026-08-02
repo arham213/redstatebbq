@@ -42,11 +42,8 @@ export default class Search extends CatalogPage {
         this.$facetedSearchContainer.removeClass('u-hidden');
         this.$contentResultsContainer.addClass('u-hidden');
 
-        $('[data-content-results-toggle]').removeClass('navBar-action-color--active');
-        $('[data-content-results-toggle]').addClass('navBar-action');
-
-        $('[data-product-results-toggle]').removeClass('navBar-action');
-        $('[data-product-results-toggle]').addClass('navBar-action-color--active');
+        $('[data-content-results-toggle]').removeClass('nx-tab--active');
+        $('[data-product-results-toggle]').addClass('nx-tab--active');
 
         this.activateTab($('[data-product-results-toggle]'));
 
@@ -67,11 +64,8 @@ export default class Search extends CatalogPage {
         this.$productListingContainer.addClass('u-hidden');
         this.$facetedSearchContainer.addClass('u-hidden');
 
-        $('[data-product-results-toggle]').removeClass('navBar-action-color--active');
-        $('[data-product-results-toggle]').addClass('navBar-action');
-
-        $('[data-content-results-toggle]').removeClass('navBar-action');
-        $('[data-content-results-toggle]').addClass('navBar-action-color--active');
+        $('[data-product-results-toggle]').removeClass('nx-tab--active');
+        $('[data-content-results-toggle]').addClass('nx-tab--active');
 
         this.activateTab($('[data-content-results-toggle]'));
 
@@ -151,6 +145,42 @@ export default class Search extends CatalogPage {
         } else {
             this.onSortBySubmit = this.onSortBySubmit.bind(this);
             hooks.on('sortBy-submitted', this.onSortBySubmit);
+        }
+
+        // Custom Filters toggle logic
+        const filterToggle = document.querySelector('.nx-filters-toggle');
+        const filterDropdown = document.getElementById('faceted-search-container');
+        if (filterToggle && filterDropdown) {
+            filterToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isOpen = filterDropdown.classList.toggle('is-open');
+                filterToggle.setAttribute('aria-expanded', isOpen);
+            });
+            document.addEventListener('click', (e) => {
+                if (!filterDropdown.contains(e.target) && !filterToggle.contains(e.target)) {
+                    filterDropdown.classList.remove('is-open');
+                    filterToggle.setAttribute('aria-expanded', 'false');
+                }
+            });
+        }
+
+        // Tabs toggle logic
+        const tabsToggle = document.querySelector('.nx-tabs-toggle');
+        const tabsMenu = document.getElementById('nx-tabs-menu');
+    
+        if (tabsToggle && tabsMenu) {
+            tabsToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isOpen = tabsMenu.classList.toggle('is-open');
+                tabsToggle.setAttribute('aria-expanded', isOpen);
+            });
+    
+            document.addEventListener('click', (e) => {
+                if (!tabsMenu.contains(e.target) && !tabsToggle.contains(e.target)) {
+                    tabsMenu.classList.remove('is-open');
+                    tabsToggle.setAttribute('aria-expanded', 'false');
+                }
+            });
         }
 
         // Init collapsibles

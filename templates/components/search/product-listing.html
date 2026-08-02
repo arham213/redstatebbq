@@ -1,7 +1,7 @@
 {{inject 'noCompareMessage' (lang 'compare.no_compare')}}
 
 {{#if product_results.products.length}}
-    {{> components/products/filter sort=pagination.product_results.sort}}
+    <!-- Sort filter removed to match category page -->
 {{/if}}
 <div data-list-name="Search Results">
     {{#if theme_settings.product_list_display_mode '===' 'grid'}}

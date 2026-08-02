@@ -1,8 +1,11 @@
 {{#partial "page"}}
-<div class="account">
-    {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
-    <h2 class="page-heading">{{lang 'account.recent_items.heading' }}</h2>
-    {{> components/account/navigation account_page='recent_items'}}
+<div class="page nx-utility-page nx-account-layout">
+    <div class="container nx-utility-page__inner">
+    <h2 class="page-heading nx-utility-page__heading">{{lang 'account.recent_items.heading' }}</h2>
+    <div class="nx-account-nav">
+        {{> components/account/navigation account_page='recent_items'}}
+    </div>
+    <main class="account nx-account-main">
 
     {{#unless customer.recently_viewed_products.items}}
         {{> components/common/alert/alert-info (lang 'account.recent_items.no_items')}}
@@ -10,6 +13,8 @@
 
     <div>
         {{> components/products/grid products=customer.recently_viewed_products.items show_compare=customer.recently_viewed_products.show_compare}}
+    </div>
+    </main>
     </div>
 </div>
 {{/partial}}

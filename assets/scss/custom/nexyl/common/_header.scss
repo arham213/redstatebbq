@@ -350,6 +350,11 @@
     color: var(--nx-cream) !important;
 }
 
+.nx-btn-cream {
+    background: var(--nx-cream-soft, #f7ebcf);
+    color: var(--nx-dark-red, #6a0111) !important;
+}
+
 .nx-btn-primary-lg {
     padding: 8px 32px;
 }
@@ -942,7 +947,6 @@
         line-height: 20px;
         text-align: center;
         cursor: pointer;
-        border: 2px solid transparent;
         box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
         font-family: var(--nx-font-inter);
         transition: transform 0.15s ease, opacity 0.15s ease, background 0.15s ease;
@@ -950,12 +954,6 @@
         &:hover {
             opacity: 0.92;
         }
-    }
-
-    .nx-cd-btn.nx-cd-ghost {
-        background: transparent;
-        border-color: var(--nx-dark-red);
-        color: var(--nx-dark-red) !important;
     }
 
     .nx-cd-btn.nx-cd-primary {

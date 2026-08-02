@@ -1,16 +1,16 @@
 {{#partial "page"}}
-
-    {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
-
-    {{#if forms.address.address_id}}
-        <h2 class="page-heading">{{lang 'forms.address.edit.heading'}}</h2>
+<div class="page nx-utility-page nx-account-layout">
+    <div class="container nx-utility-page__inner">    {{#if forms.address.address_id}}
+        <h2 class="page-heading nx-utility-page__heading">{{lang 'forms.address.edit.heading'}}</h2>
     {{else}}
-        <h2 class="page-heading">{{lang 'forms.address.add.heading'}}</h2>
+        <h2 class="page-heading nx-utility-page__heading">{{lang 'forms.address.add.heading'}}</h2>
     {{/if}}
 
-    {{> components/account/navigation account_page='addresses'}}
+    <div class="nx-account-nav">
+        {{> components/account/navigation account_page='addresses'}}
+    </div>
 
-    <div class="account account--fixed">
+    <main class="account account--fixed nx-account-main">
 
         {{#if forms.address.error}}
             {{> components/common/alert/alert-error forms.address.error}}
@@ -31,14 +31,15 @@
                     </fieldset>
                     <div class="form-actions">
                         <input type="submit" class="button button--primary" value="{{lang 'forms.address.submit_value'}}">
-                        <a href="{{urls.account.addresses}}" class="button">{{lang 'common.cancel'}}</a>
+                        <a href="{{urls.account.addresses}}" class="button button--secondary">{{lang 'common.cancel'}}</a>
                         {{inject 'required' (lang 'common.required')}}
                         {{inject 'state_error' (lang 'errors.state_error')}}
                     </div>
                 </form>
             </section>
         </div>
+    </main>
     </div>
-
+</div>
 {{/partial}}
 {{> layout/base}}

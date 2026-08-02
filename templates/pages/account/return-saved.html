@@ -1,8 +1,11 @@
 {{#partial "page"}}
-<div class="account">
-    {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
-    <h2 class="page-heading">{{lang 'account.returns.heading'}}</h2>
-    {{> components/account/navigation account_page='returns'}}
+<div class="page nx-utility-page nx-account-layout">
+    <div class="container nx-utility-page__inner">
+    <h2 class="page-heading nx-utility-page__heading">{{lang 'account.returns.heading'}}</h2>
+    <div class="nx-account-nav">
+        {{> components/account/navigation account_page='returns'}}
+    </div>
+    <main class="account nx-account-main">
     <div class="account-row">
         <p>
             {{lang 'account.returns.successful'}}
@@ -11,6 +14,8 @@
             <h3>{{lang 'account.returns.instructions'}}</h3>
             <p>{{nl2br return.instructions}}</p>
         {{/if}}
+    </div>
+    </main>
     </div>
 </div>
 {{/partial}}

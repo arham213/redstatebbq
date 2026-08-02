@@ -32,7 +32,6 @@
 // -----------------------------------------------------------------------------
 
 .pagination-item {
-    border: $pagination-item-border;
     line-height: 1;
 
     .pagination-link {
@@ -59,10 +58,6 @@
 
             &:hover {
                 color: $pagination-item-previousNext-color-hover;
-
-                .icon > svg {
-                    fill: $pagination-item-previousNext-color-hover;
-                }
             }
         }
     }
@@ -79,17 +74,13 @@
 
 .pagination-item--previous {
     float: left;
-
-    .icon {
-        margin-left: -(remCalc(12px));
-    }
 }
 
 .pagination-item--next {
     float: right;
 
     .icon {
-        margin-right: -(remCalc(12px));
+        margin-right: -(remCalc(2px));
     }
 }
 
