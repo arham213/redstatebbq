@@ -1,0 +1,124 @@
+.nx-custom-filter-clear {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.nx-clear-filters-btn {
+  background: none;
+  border: none;
+  color: var(--nx-red, #d70321);
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+
+  &:hover {
+    color: #a30219;
+  }
+}
+
+.nx-custom-filter-block {
+  border-bottom: none;
+
+  .nx-filter-heading {
+    border-bottom: 1px solid #e5e5e5;
+    margin-bottom: 12px;
+    margin-top: 0;
+
+    .accordion-navigation {
+      pointer-events: none;
+      padding: 12px 0 8px;
+      border: none;
+    }
+
+    .nx-filter-title {
+      color: var(--nx-red, #d70321);
+      font-weight: 700;
+      text-transform: capitalize;
+      font-size: 14px;
+      padding: 0;
+    }
+  }
+
+  .nx-filter-content {
+    padding: 0;
+  }
+
+  .nx-filter-list {
+    margin-bottom: 0;
+  }
+
+  .nx-filter-item {
+    margin-bottom: 4px;
+
+    .nx-filter-action {
+      color: var(--nx-muted, #818181);
+      font-size: 15px;
+      padding-left: 28px;
+      transition: color 0.2s ease;
+
+      &:hover {
+        &::before {
+          border-color: var(--nx-red, #d70321);
+        }
+      }
+
+      &.is-selected {
+        &::before {
+          background-color: var(--nx-red, #d70321);
+          border-color: var(--nx-red, #d70321);
+        }
+
+        &::after {
+          background-image: none !important;
+          border-bottom: 2px solid #fff !important;
+          border-left: 2px solid #fff !important;
+          border-top: none !important;
+          border-right: none !important;
+          content: "" !important;
+          display: block !important;
+          height: 5px !important;
+          width: 10px !important;
+          transform: rotate(-45deg) !important;
+          top: 50% !important;
+          margin-top: -3px !important;
+          left: 4px !important;
+        }
+      }
+    }
+  }
+}
+
+.nx-custom-filter-empty {
+  padding: 24px;
+  text-align: center;
+  width: 100%;
+}
+
+.nx-load-more-wrap {
+  text-align: center;
+  margin-top: 40px;
+  width: 100%;
+}
+
+.nx-filter-skeleton-img {
+  height: 250px;
+  width: 100%;
+  background: #eee;
+  border-radius: 8px;
+}
+
+.nx-filter-skeleton-name {
+  width: 80%;
+  height: 20px;
+  background: #eee;
+  margin-top: 16px;
+}
+
+.nx-filter-skeleton-pill {
+  width: 100px;
+  height: 32px;
+  background: #eee;
+  border-radius: 16px;
+  margin-top: 12px;
+  border: none !important;
+}

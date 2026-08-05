@@ -123,11 +123,11 @@ export default function initAllItems() {
                     },
                     1024: {
                         slidesPerView: templateType === 'bundle' ? 3 : 4,
-                        spaceBetween: 30,
+                        spaceBetween: templateType === 'bundle' ? 48 : 30,
                     },
                     1200: {
                         slidesPerView: templateType === 'bundle' ? 3 : 5,
-                        spaceBetween: 30,
+                        spaceBetween: templateType === 'bundle' ? 48 : 30,
                     }
                 },
                 on: {

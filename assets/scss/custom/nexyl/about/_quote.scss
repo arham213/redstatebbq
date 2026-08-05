@@ -5,19 +5,23 @@
     flex-direction: column; 
     align-items: center; 
     gap: 30px;
-    padding: 60px 16px; 
+    padding: 32px 16px; 
 
-    @media (min-width: 769px) {
+    @media (min-width: 768px) {
         gap: 40px;
-        padding: 60px 80px; 
+        padding: 64px 48px; 
         min-height: 529px;
+    }
+
+    @media (min-width: 1440px) {
+        padding: 60px 80px; 
     }
 
     &__mark { 
         width: 40px; 
         height: 30px; 
 
-        @media (min-width: 769px) {
+        @media (min-width: 768px) {
             width: 62px; 
             height: 47px; 
         }
@@ -31,7 +35,7 @@
         align-items: flex-start; 
         gap: 20px; 
 
-        @media (min-width: 769px) {
+        @media (min-width: 768px) {
             gap: 24px; 
         }
     }
@@ -45,7 +49,7 @@
         width: 100%; 
         max-width: 846px;
 
-        @media (min-width: 769px) {
+        @media (min-width: 768px) {
             font-size: 30px;
             line-height: 1.25; 
         }
@@ -57,7 +61,7 @@
         align-items: center; 
         width: 100%; 
 
-        @media (min-width: 769px) {
+        @media (min-width: 768px) {
             gap: 20px; 
         }
     }
@@ -69,7 +73,7 @@
         background: var(--nx-avatar, #ece7d9); 
         flex: none; 
 
-        @media (min-width: 769px) {
+        @media (min-width: 768px) {
             width: 56px; 
             height: 56px; 
         }
@@ -80,7 +84,7 @@
         flex-direction: column; 
         gap: 2px; 
 
-        @media (min-width: 769px) {
+        @media (min-width: 768px) {
             gap: 4px; 
         }
     }
@@ -92,7 +96,7 @@
         line-height: 1.2; 
         margin-bottom: 0;
 
-        @media (min-width: 769px) {
+        @media (min-width: 768px) {
             font-size: 16px; 
         }
     }
@@ -104,7 +108,7 @@
         line-height: 1.2; 
         margin-bottom: 0;
 
-        @media (min-width: 769px) {
+        @media (min-width: 768px) {
             font-size: 16px; 
         }
     }

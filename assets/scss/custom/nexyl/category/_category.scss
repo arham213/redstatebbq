@@ -283,6 +283,22 @@
       display: block;
     }
   }
+
+  &.has-active-filters {
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      width: 12px;
+      height: 12px;
+      background-color: var(--nx-red, #d70321);
+      border: 2px solid #fff;
+      border-radius: 50%;
+    }
+  }
 }
 
 /* Filters Dropdown Container */

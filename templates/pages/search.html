@@ -40,36 +40,46 @@ product_results:
     </section>
 
     <!-- Search Suggestions block -->
-    {{#if forms.search.has_suggestions}}
-        <div class="nx-search-suggestions" style="max-width: 1000px; margin: 0 auto 40px; text-align: center; font-family: var(--nx-font-body, 'Figtree', sans-serif); color: var(--nx-maroon, #6A0111);">
-            {{#if forms.search.suggested_query}}
-                <div class="search-suggestion">
-                    {{lang 'forms.search.did_you_mean'}} <strong>{{forms.search.suggested_query.query}}</strong>
-                    <a href="{{forms.search.suggested_query.url}}" class="search-refine" style="color: inherit; text-decoration: underline;">{{lang 'forms.search.refine'}}</a>
+    <!-- Search Empty State / Suggestions -->
+    {{#if forms.search.query}}
+        {{#if result_count '===' 0}}
+            <div class="nx-search-empty">
+                <div class="nx-search-empty__icon">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M21 21L15.4 15.4M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
                 </div>
-
-                {{#if result_count '===' 0}}
-                    <div class="search-suggestion" style="margin-top: 16px;">
-                        <p>
-                            {{lang 'forms.search.your_search_for'}}
-                            "<strong>{{{sanitize forms.search.query}}}</strong>"
-                            {{lang 'forms.search.no_match'}}
-                        </p>
-                    </div>
+                <h2 class="nx-search-empty__title">No results found for "{{{sanitize forms.search.query}}}"</h2>
+                
+                {{#if forms.search.suggested_query}}
+                    <p class="nx-search-empty__did-you-mean">
+                        {{lang 'forms.search.did_you_mean'}} <strong>{{forms.search.suggested_query.query}}</strong>?
+                        <a href="{{forms.search.suggested_query.url}}" class="nx-btn nx-btn-secondary nx-btn--sm">Search instead</a>
+                    </p>
                 {{/if}}
-            {{/if}}
 
-            {{#if result_count '===' 0}}
-                <div class="search-suggestion" style="margin-top: 32px;">
-                    <h5 class="suggestion-title" style="font-size: 20px; font-family: var(--nx-font-display, serif); text-decoration: underline;">{{lang 'forms.search.suggestions.title'}}</h5>
-                    <ul style="list-style: none; padding: 0; margin-top: 16px; display: inline-block; text-align: left; font-size: 16px;">
+                <div class="nx-search-empty__suggestions">
+                    <h3>Search Tips:</h3>
+                    <ul>
                         <li>{{lang 'forms.search.suggestions.line1'}}</li>
                         <li>{{lang 'forms.search.suggestions.line2'}}</li>
                         <li>{{lang 'forms.search.suggestions.line3'}}</li>
                     </ul>
                 </div>
-            {{/if}}
-        </div>
+                <div class="nx-search-empty__actions">
+                    <a href="/" class="nx-btn nx-btn-primary nx-btn-primary-lg">Continue Shopping</a>
+                </div>
+            </div>
+        {{else if forms.search.has_suggestions}}
+            <div class="nx-search-suggestions">
+                {{#if forms.search.suggested_query}}
+                    <div class="search-suggestion">
+                        {{lang 'forms.search.did_you_mean'}} <strong>{{forms.search.suggested_query.query}}</strong>
+                        <a href="{{forms.search.suggested_query.url}}" class="search-refine" style="color: inherit; text-decoration: underline;">{{lang 'forms.search.refine'}}</a>
+                    </div>
+                {{/if}}
+            </div>
+        {{/if}}
     {{/if}}
 
     <!-- Main Results Section -->

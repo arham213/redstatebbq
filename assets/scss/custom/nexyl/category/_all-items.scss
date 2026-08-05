@@ -203,10 +203,10 @@
     
     .nx-promo-swiper:not(.swiper-initialized) .swiper-slide {
         @media (min-width: $screen-large) {
-            width: calc((100% - 60px) / 3); // Desktop+: 3 slides (spaceBetween: 30px)
+            width: calc((100% - 96px) / 3); // Desktop+: 3 slides (spaceBetween: 48px -> 48*2=96)
         }
         @media (min-width: $screen-xlarge) {
-            width: calc((100% - 60px) / 3); // Override the 5 slides from standard
+            width: calc((100% - 96px) / 3);
         }
     }
 
@@ -246,6 +246,36 @@
         }
     }
 
+    // Skeleton specific nav styles
+    .nx-promo-swiper:not(.swiper-initialized) {
+        @media (min-width: $screen-large) {
+            .nx-swiper-nav {
+                display: none; // 3 skeleton slides fit exactly in 3 viewable slides
+            }
+        }
+    }
+
+    .nx-category-swiper:not(.swiper-initialized), .nx-promo-swiper:not(.swiper-initialized) {
+        .nx-swiper-nav {
+            button {
+                background: #ebebeb;
+                pointer-events: none;
+                border-radius: 50%;
+                width: 44px;
+                height: 44px;
+                
+                @media (min-width: $screen-medium) {
+                    width: 64px;
+                    height: 64px;
+                }
+                
+                svg {
+                    display: none;
+                }
+            }
+        }
+    }
+
     // ---- Static Sections (Promo/Community/Split Banner) ---------------
     
     // Promo (Rubs)
@@ -254,8 +284,6 @@
         background: var(--nx-cream, #fbf5e7);
         
         &--rubs {
-            background: var(--nx-cream-soft, #f7ebcf);
-            border-top: 3px solid var(--nx-red, #d70321);
             padding-top: 83px;
         }
 
@@ -272,6 +300,11 @@
             gap: 12px;
             text-align: center;
             margin-bottom: 64px;
+        }
+
+        &__row {
+            max-width: 1280px;
+            margin-inline: auto;
         }
 
         &__title {
@@ -465,7 +498,7 @@
             width: 100%;
             height: 400px; // Mobile height
             
-            @media (min-width: 769px) {
+            @media (min-width: 768px) {
                 height: 600px; // Increased height after 768px
             }
         }

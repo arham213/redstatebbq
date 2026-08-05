@@ -27,7 +27,7 @@
         letter-spacing: 0.5px;
         margin-bottom: 0;
 
-        @media (min-width: 769px) {
+        @media (min-width: 768px) {
             font-size: 26px;
             line-height: 33px; 
             letter-spacing: 0.78px;
@@ -41,7 +41,7 @@
         line-height: 1.4; 
         white-space: pre-wrap; 
 
-        @media (min-width: 769px) {
+        @media (min-width: 768px) {
             font-size: 24px; 
             line-height: 1.28; 
         }
@@ -76,7 +76,7 @@
     color: var(--nx-maroon, #6a0111); 
     margin-top: 20px;
 
-    @media (min-width: 769px) {
+    @media (min-width: 768px) {
         font-size: 24px; 
     }
 }

@@ -1,4 +1,4 @@
-{{#if testimonials}}
+
 <section class="nx-fans">
   {{#if show_quote_mark}}
   <div style="display: flex; justify-content: center; margin-bottom: 24px;">
@@ -14,27 +14,9 @@
   {{/unless}}
 
   <div class="nx-fans-slider-container" style="position: relative; max-width: 900px; margin: 0 auto; width: 100%;">
-    <!-- Swiper -->
     <div class="swiper nx-testimonial-swiper">
       <div class="swiper-wrapper">
-          {{#each testimonials}}
-          <div class="swiper-slide">
-            <div class="nx-quote-row">
-              <div class="nx-avatar-block" style="display: flex; flex-direction: column; align-items: center;">
-                {{#if image}}
-                <img src="{{image}}" alt="{{name}}" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; margin-bottom: 12px;" />
-                {{else}}
-                <div class="nx-avatar" style="width: 80px; height: 80px; border-radius: 50%; background: var(--nx-cream); margin-bottom: 12px;"></div>
-                {{/if}}
-                <p class="nx-avatar-name" style="text-align: center; margin: 0;">{{name}}</p>
-                {{#if role}}
-                <p class="nx-avatar-role" style="text-align: center; margin: 0; font-size: 14px; font-weight: 400; color: var(--nx-cream);">{{role}}</p>
-                {{/if}}
-              </div>
-              <p class="nx-quote">{{content}}</p>
-            </div>
-          </div>
-          {{/each}}
+        {{> @partial-block }}
       </div>
     </div>
       <!-- Pagination Dots -->
@@ -96,4 +78,3 @@
   {{/unless}}
 
 </section>
-{{/if}}

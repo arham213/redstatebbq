@@ -1,14 +1,4 @@
 ---
-testimonials:
-  - name: David Carroll
-    content: "We've had regional sauces on the tables at Red State for 13 years. For America's 250th birthday, I wanted to make one sauce that represented the whole country."
-  - name: Sarah Jenkins
-    image: https://i.pravatar.cc/150?img=47
-    content: "The best BBQ I have ever had! The pulled chicken is out of this world, and the sauces are incredible. I come here every weekend with my family."
-  - name: Mark Thompson
-    image: https://i.pravatar.cc/150?img=11
-    content: "I ordered the brisket online and it arrived perfectly packaged. Tasted just as good as fresh out of the smoker. Highly recommended!"
----
 {{#partial "page"}}
 <script>
     window.stencilStorefrontToken = '{{settings.storefront_api.token}}';
@@ -145,7 +135,11 @@ testimonials:
     </section>
 
     <!-- ================= TESTIMONIAL ================= -->
-    {{> components/custom/nexyl/common/testimonial-slider title="Recipes loved By All" testimonials=page.testimonials}}
+    {{#> components/custom/nexyl/common/testimonial-slider title="Recipes loved By All"}}
+        {{> components/custom/nexyl/common/testimonial-slide name="David Carroll" content="We've had regional sauces on the tables at Red State for 13 years. For America's 250th birthday, I wanted to make one sauce that represented the whole country."}}
+        {{> components/custom/nexyl/common/testimonial-slide name="Sarah Jenkins" image="https://i.pravatar.cc/150?img=47" content="The best BBQ I have ever had! The pulled chicken is out of this world, and the sauces are incredible. I come here every weekend with my family."}}
+        {{> components/custom/nexyl/common/testimonial-slide name="Mark Thompson" image="https://i.pravatar.cc/150?img=11" content="I ordered the brisket online and it arrived perfectly packaged. Tasted just as good as fresh out of the smoker. Highly recommended!"}}
+    {{/components/custom/nexyl/common/testimonial-slider}}
 
 </div>
 {{/partial}}

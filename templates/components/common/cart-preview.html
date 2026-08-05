@@ -1,31 +1,35 @@
 <div class="previewCartWrapper nx-cart-drawer">
-  <div class="nx-cd-top">
-    <!-- Header -->
-    <header class="nx-cd-header">
-      <span class="icon nx-cart-close" id="nx-cart-close-btn" aria-label="Close Cart">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <!-- Header -->
+  <header class="nx-cd-header">
+    <span class="icon nx-cart-close" id="nx-cart-close-btn" aria-label="Close Cart">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path
+          d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+          stroke="#2C2929" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M13.2602 15.5302L9.74023 12.0002L13.2602 8.47021" stroke="#2C2929" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </span>
+    <h1 class="nx-cd-display">Your Cart</h1>
+  </header>
+
+  <!-- Reward -->
+  <section class="nx-cd-section" style="border-bottom: 1px solid #E5E5E5; box-shadow: 0 4px 12px rgba(0,0,0,0.05); position: relative; z-index: 10;">
+    <div class="nx-cd-reward" data-cart-subtotal="{{cart.sub_total.value}}">
+      <span class="star">
+        <svg viewBox="0 0 18 17.2467" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
-            d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
-            stroke="#2C2929" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
-          <path d="M13.2602 15.5302L9.74023 12.0002L13.2602 8.47021" stroke="#2C2929" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round" />
+            d="M7.83248 0.725764C8.31006 -0.241923 9.68995 -0.24192 10.1675 0.725766L11.94 4.31728C12.1297 4.70155 12.4963 4.9679 12.9204 5.02952L16.8838 5.60544C17.9517 5.76062 18.3781 7.07297 17.6054 7.82621L14.7374 10.6218C14.4305 10.9209 14.2905 11.3519 14.363 11.7742L15.04 15.7217C15.2224 16.7853 14.1061 17.5964 13.1509 17.0942L9.60586 15.2305C9.22657 15.0311 8.77344 15.0311 8.39414 15.2305L4.8491 17.0942C3.89393 17.5964 2.77758 16.7853 2.96 15.7217L3.63705 11.7742C3.70948 11.3519 3.56946 10.9209 3.2626 10.6218L0.394603 7.82621C-0.37814 7.07297 0.0482707 5.76062 1.11618 5.60544L5.07965 5.02952C5.50372 4.9679 5.87031 4.70155 6.05995 4.31728L7.83248 0.725764Z"
+            fill="#FEAE01" />
         </svg>
       </span>
-      <h1 class="nx-cd-display">Your Cart</h1>
-    </header>
+      <div class="nx-cd-txt"><b>Reward</b> <span class="nx-fs-msg"></span></div>
+    </div>
+  </section>
 
+  <div class="nx-cd-top">
     <!-- Cart -->
     <section class="nx-cd-section">
-      <div class="nx-cd-reward">
-        <span class="star">
-          <svg viewBox="0 0 18 17.2467" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M7.83248 0.725764C8.31006 -0.241923 9.68995 -0.24192 10.1675 0.725766L11.94 4.31728C12.1297 4.70155 12.4963 4.9679 12.9204 5.02952L16.8838 5.60544C17.9517 5.76062 18.3781 7.07297 17.6054 7.82621L14.7374 10.6218C14.4305 10.9209 14.2905 11.3519 14.363 11.7742L15.04 15.7217C15.2224 16.7853 14.1061 17.5964 13.1509 17.0942L9.60586 15.2305C9.22657 15.0311 8.77344 15.0311 8.39414 15.2305L4.8491 17.0942C3.89393 17.5964 2.77758 16.7853 2.96 15.7217L3.63705 11.7742C3.70948 11.3519 3.56946 10.9209 3.2626 10.6218L0.394603 7.82621C-0.37814 7.07297 0.0482707 5.76062 1.11618 5.60544L5.07965 5.02952C5.50372 4.9679 5.87031 4.70155 6.05995 4.31728L7.83248 0.725764Z"
-              fill="#FEAE01" />
-          </svg>
-        </span>
-        <div class="nx-cd-txt"><b>Reward</b><span>Spend another $10 to get free shipping</span></div>
-      </div>
 
       {{#if cart.items.length}}
       {{#each (limit cart.items 4)}}
@@ -97,19 +101,22 @@
       </div>
       {{/if}}
     </section>
-
-    <!-- Customers also bought -->
-    <section class="nx-cd-also">
-      <h3>{{#if cart.items.length}}Customers also bought{{else}}Frequently Bought{{/if}}</h3>
-      <div class="nx-cd-cards">
-        <div class="nx-skeleton-cards">
-            <div class="nx-skeleton-card"></div>
-            <div class="nx-skeleton-card"></div>
-        </div>
-      </div>
-      <div class="nx-cd-arrows"></div>
-    </section>
   </div>
+
+  <!-- Customers also bought -->
+  <section class="nx-cd-also">
+    <h3>{{#if cart.items.length}}Customers also bought{{else}}Frequently Bought{{/if}}</h3>
+    <div class="nx-cd-cards">
+      <div class="nx-skeleton-cards">
+          <div class="nx-skeleton-card"></div>
+          <div class="nx-skeleton-card"></div>
+      </div>
+    </div>
+    <div class="nx-cd-arrows">
+      <button class="nx-cd-arrow nx-cd-arrow-skeleton"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <button class="nx-cd-arrow nx-cd-arrow-skeleton"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    </div>
+  </section>
 
   <!-- Footer -->
   <footer class="nx-cd-footer">

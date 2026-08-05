@@ -8,7 +8,7 @@
     .container {
         max-width: 32rem !important;
 
-        @media (min-width: 769px) {
+        @media (min-width: 768px) {
             max-width: 64rem !important;
         }
     }

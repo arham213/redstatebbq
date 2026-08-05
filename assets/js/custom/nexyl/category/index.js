@@ -1,7 +1,9 @@
 import initAllItems from './all-items';
+import initCustomFilters from './custom-filters';
 
 export default function initCategoryCustom() {
     initAllItems();
+    initCustomFilters();
 
     // Filters toggle logic
     const filterToggle = document.querySelector('.nx-filters-toggle');

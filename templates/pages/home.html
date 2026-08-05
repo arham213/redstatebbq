@@ -10,15 +10,6 @@ carousel: {{theme_settings.homepage_show_carousel}}
 blog:
     recent_posts:
         limit: {{theme_settings.homepage_blog_posts_count}}
-testimonials:
-  - name: David Carroll
-    content: "We've had regional sauces on the tables at Red State for 13 years. For America's 250th birthday, I wanted to make one sauce that represented the whole country."
-  - name: Sarah Jenkins
-    image: https://i.pravatar.cc/150?img=47
-    content: "The best BBQ I have ever had! The pulled chicken is out of this world, and the sauces are incredible. I come here every weekend with my family."
-  - name: Mark Thompson
-    image: https://i.pravatar.cc/150?img=11
-    content: "I ordered the brisket online and it arrived perfectly packaged. Tasted just as good as fresh out of the smoker. Highly recommended!"
 ---
 {{#partial "hero"}}
     {{> components/custom/nexyl/homepage/hero-section}}
@@ -32,8 +23,11 @@ testimonials:
     {{/each}}
 
 <div class="main full">
-    <pre style="display:none">DEBUG: {{json testimonials}} | {{json page.testimonials}} | {{json theme_settings.testimonials}}</pre>
-    {{> components/custom/nexyl/common/testimonial-slider title="WHAT OUR FANS SAY" testimonials=testimonials}}
+    {{#> components/custom/nexyl/common/testimonial-slider title="WHAT OUR FANS SAY"}}
+        {{> components/custom/nexyl/common/testimonial-slide name="David Carroll" content="We've had regional sauces on the tables at Red State for 13 years. For America's 250th birthday, I wanted to make one sauce that represented the whole country."}}
+        {{> components/custom/nexyl/common/testimonial-slide name="Sarah Jenkins" image="https://i.pravatar.cc/150?img=47" content="The best BBQ I have ever had! The pulled chicken is out of this world, and the sauces are incredible. I come here every weekend with my family."}}
+        {{> components/custom/nexyl/common/testimonial-slide name="Mark Thompson" image="https://i.pravatar.cc/150?img=11" content="I ordered the brisket online and it arrived perfectly packaged. Tasted just as good as fresh out of the smoker. Highly recommended!"}}
+    {{/components/custom/nexyl/common/testimonial-slider}}
     {{> components/custom/nexyl/homepage/regional-sauces-section}}
     {{> components/custom/nexyl/homepage/state-banner-section}}
     

@@ -11,7 +11,7 @@
   gap: 60px;
   padding: 60px 80px 80px;
 
-  @media (max-width: $screen-xlarge) and (min-width: 769px) {
+  @media (max-width: $screen-xlarge) and (min-width: 768px) {
     padding: 60px 32px;
     gap: 50px;
   }

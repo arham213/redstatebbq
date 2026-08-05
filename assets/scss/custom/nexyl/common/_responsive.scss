@@ -1,0 +1,56 @@
+// Responsive overrides for About Us sections
+@media (max-width: $screen-medium) {
+
+  /* Story section */
+  .nx-about-story {
+    flex-direction: column;
+    gap: 24px;
+    padding: 32px 16px;
+  }
+
+  .nx-about-story img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  /* Origin section */
+  .nx-about-origin {
+    padding: 40px 16px;
+    flex-direction: column;
+    gap: 24px;
+    text-align: center;
+  }
+
+  .nx-about-mv__row {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .nx-about-mv__img {
+    width: 100%;
+    height: auto;
+  }
+
+  /* Bottles section */
+  .nx-about-bottles {
+    padding: 60px 16px;
+  }
+
+  .nx-about-bottles__object {
+    position: static;
+    margin: 20px auto;
+    width: 120px;
+    height: 280px;
+  }
+
+  /* Why‑Regional section */
+  .nx-about-why {
+    padding: 60px 16px;
+  }
+
+  .nx-about-why__cards {
+    flex-direction: column;
+    gap: 24px;
+  }
+}

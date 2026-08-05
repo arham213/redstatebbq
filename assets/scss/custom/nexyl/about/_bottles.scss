@@ -1,83 +1,99 @@
 .nx-about-bottles {
-    position: relative; 
-    overflow: hidden; 
+    position: relative;
+    overflow: hidden;
     background: var(--nx-cream-soft, #f7ebcf);
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     gap: 40px;
-    padding: 60px 16px;
+    padding: 32px 16px;
+
+    @media (min-width: 768px) {
+        padding: 64px 48px;
+    }
 
     @media (min-width: 1024px) {
-        padding: 125px 80px; 
+        min-height: 829px;
+    }
+
+    @media (min-width: 1440px) {
+        padding: 60px 80px;
+    }
+
+    @media (min-width: 1200px) {
         min-height: 929px;
     }
 
     &__title {
-        font-family: var(--nx-font-display, "Rye", serif); 
-        text-transform: uppercase; 
+        font-family: var(--nx-font-display, "Rye", serif);
+        text-transform: uppercase;
         color: var(--nx-red, #d70321);
-        font-size: 58px; 
-        line-height: 1; 
-        letter-spacing: -1px; 
-        text-align: center; 
+        font-size: 58px;
+        line-height: 1;
+        letter-spacing: -1px;
+        text-align: center;
         width: 100%;
         margin-bottom: 0;
-        
-        @media (min-width: 769px) {
+        margin-top: 0;
+
+        @media (min-width: 768px) {
             font-size: 72px;
         }
 
         @media (min-width: 1024px) {
-            font-size: 96px; 
-            max-width: 886px;
+            font-size: 96px;
+            max-width: 620px;
         }
 
         @media (min-width: 1440px) {
-            font-size: 138px; 
-            letter-spacing: -1.38px; 
+            font-size: 138px;
+            max-width: 886px;
+            letter-spacing: -1.38px;
         }
     }
 
-    &__object { 
-        position: relative; 
-        width: 100px; 
-        height: 240px; 
+    &__object {
+        position: relative;
+        width: 100px;
+        height: 240px;
         z-index: 3;
         margin: -20px 0;
 
         @media (min-width: 1024px) {
-            position: absolute; 
-            width: 96px; 
-            height: 226px; 
-            top: 96px; 
+            position: absolute;
+            width: auto;
+            height: 226px;
+            top: 135px;
             left: 50%;
             margin: 0 0 0 -40px;
         }
 
         @media (min-width: 1440px) {
-            width: 138px;
             height: 326px;
             top: 139px;
             margin: 0 0 0 -57px;
         }
 
-        img { width: 100%; height: 100%; object-fit: contain; }
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
     }
 
     &__para {
-        font-family: var(--nx-font-body, sans-serif); 
-        font-weight: 500; 
+        font-family: var(--nx-font-body, sans-serif);
+        font-weight: 500;
         font-size: 18px;
-        line-height: 1.5; 
-        letter-spacing: 0.4px; 
-        color: var(--nx-maroon, #6a0111); 
-        text-align: center; 
+        line-height: 1.5;
+        letter-spacing: 0.4px;
+        color: var(--nx-maroon, #6a0111);
+        text-align: center;
         width: 100%;
 
         @media (min-width: 1024px) {
             font-size: 20px;
-            line-height: 26px; 
+            line-height: 26px;
             max-width: 846px;
         }
     }

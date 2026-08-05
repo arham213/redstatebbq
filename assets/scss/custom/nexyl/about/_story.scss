@@ -7,9 +7,12 @@
     gap: 24px; 
     padding: 32px 16px;
 
-    @media (min-width: 769px) {
-        padding: 48px;
-        min-height: 893px;
+    @media (min-width: 768px) {
+        padding: 64px 48px;
+    }
+    
+    @media (min-width: 1440px) {
+        padding: 48px 48px;
     }
 
     &__row { 
@@ -19,7 +22,7 @@
         align-items: stretch; 
         width: 100%; 
 
-        @media (min-width: 769px) {
+        @media (min-width: 768px) {
             flex-direction: row;
         }
         @media (min-width: 1440px) {
@@ -28,24 +31,36 @@
     }
 
     &__left { 
-        flex: 1 0 0; 
-        min-width: 0; 
+        width: 100%;
         border-radius: var(--nx-r-3xl, 24px); 
         overflow: hidden; 
         height: 300px;
 
-        @media (min-width: 769px) {
+        @media (min-width: 570px) {
+            height: 450px;
+        }
+
+        @media (min-width: 768px) {
+            flex: 1 0 0; 
+            min-width: 0; 
+            width: auto;
             height: auto;
         }
     }
 
     &__right { 
+        width: 100%;
         border-radius: var(--nx-r-3xl, 24px); 
         overflow: hidden; 
         height: 300px;
         
-        @media (min-width: 769px) {
+        @media (min-width: 570px) {
+            height: 450px;
+        }
+
+        @media (min-width: 768px) {
             flex: 0 0 35%;
+            width: auto;
             height: auto;
         }
         @media (min-width: 1440px) {
@@ -59,4 +74,18 @@
         height: 100%; 
         object-fit: cover; 
     }
+}
+
+@media (max-width: $screen-medium) {
+  .nx-about-story {
+    flex-direction: column;
+    gap: 24px;
+    padding: 32px 16px;
+  }
+  .nx-about-story img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: left;
+  }
 }

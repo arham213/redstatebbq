@@ -1,6 +1,5 @@
 .nx-pdp-product-intro-wrapper {
     background: var(--nx-cream-soft, #f7ebcf);
-    border-top: 3px solid var(--nx-red, #d70321);
 
     .nx-pdp-product-intro {
         display: flex;
@@ -493,6 +492,7 @@
                             font-weight: 400;
                             color: #777;
                             margin-left: 4px;
+                            margin-top: 0;
                         }
                     }
 
@@ -520,7 +520,7 @@
 
                     // ---------- Universal Variant Label Design ----------
                     [data-product-attribute] {
-                        > .form-label {
+                        >.form-label {
                             width: 100%;
                             margin-bottom: 8px;
                             color: #000;
@@ -571,7 +571,7 @@
                         align-items: center;
                         gap: 12px;
 
-                        > .form-label {
+                        >.form-label {
                             margin-bottom: 4px; // tighter margin for pills
                         }
 
@@ -613,9 +613,9 @@
                         }
 
                         // Selected State for Options
-                        .form-radio:checked + .form-option {
+                        .form-radio:checked+.form-option {
                             background: var(--nx-dark-red) !important;
-                            
+
                             .form-option-variant {
                                 color: #ffffff !important;
                             }

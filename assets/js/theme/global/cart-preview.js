@@ -30,7 +30,16 @@ export default function (secureBaseUrl, cartId) {
                 useCSS: true,
                 appendArrows: $('.nx-cd-arrows', $cartDropdown),
                 prevArrow: '<button class="nx-cd-arrow"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>',
-                nextArrow: '<button class="nx-cd-arrow"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>'
+                nextArrow: '<button class="nx-cd-arrow"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>',
+                responsive: [
+                    {
+                        breakpoint: 500,
+                        settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1
+                        }
+                    }
+                ]
             });
         }
     }
@@ -41,6 +50,23 @@ export default function (secureBaseUrl, cartId) {
     let alternateInterval = null;
 
     function renderProducts() {
+        const $reward = $cartDropdown.find('.nx-cd-reward');
+        if ($reward.length) {
+            const subtotal = parseFloat($reward.data('cart-subtotal')) || 0;
+            const threshold = 85;
+            const remaining = threshold - subtotal;
+            const $msg = $reward.find('.nx-fs-msg');
+            
+            if (remaining >= threshold) {
+                $msg.text(`Spend $${threshold.toFixed(2)} to get free shipping`);
+            } else if (remaining > 0) {
+                $msg.text(`Spend another $${remaining.toFixed(2)} to get free shipping`);
+            } else {
+                $msg.text(`You've unlocked free shipping!`);
+                $reward.find('b').text('Unlocked!');
+            }
+        }
+
         const $cards = $cartDropdown.find('.nx-cd-cards');
         const $title = $cartDropdown.find('.nx-cd-also h3');
 
@@ -186,6 +212,51 @@ export default function (secureBaseUrl, cartId) {
         }
         // We only want to prevent closing the dropdown. Links inside should still work normally.
         e.stopPropagation();
+    });
+
+    // Intercept Add to Cart links to open cart drawer instead of redirecting
+    $body.on('click', 'a[href*="action=add"]', (e) => {
+        const $target = $(e.currentTarget);
+        const url = $target.attr('href');
+
+        if (!url || url === '#' || url.startsWith('javascript:')) return;
+
+        e.preventDefault();
+
+        $cartDropdown.addClass(loadingClass).html('<div class="previewCartWrapper nx-cart-drawer"><div class="nx-cd-loading-wrap"></div></div>');
+        $cartDropdown.find('.nx-cart-drawer > div').append($cartLoading);
+        $cartLoading.show();
+        
+        $('#nx-cart-overlay').addClass('is-open');
+        $('body, html').addClass('nx-scroll-locked');
+        
+        // Use Foundation to open dropdown if it's not open
+        if (!$cartDropdown.hasClass('is-open')) {
+             Foundation.libs.dropdown.open($cartDropdown, $cart);
+        }
+
+        $.ajax({
+            url: url,
+            type: 'GET',
+            success: () => {
+                const options = {
+                    template: 'common/cart-preview',
+                    baseUrl: secureBaseUrl,
+                };
+                utils.api.cart.getContent(options, (err, response) => {
+                    $cartDropdown.removeClass(loadingClass).html(response);
+                    $cartLoading.hide();
+                    renderProducts();
+                    
+                    const newTotal = $(response).find('.nx-cd-total span:last-child').text();
+                    $body.trigger('cart-quantity-update', [null, newTotal]); 
+                    
+                    utils.api.cart.getCartQuantity({ baseUrl: secureBaseUrl, cartId: '' }, (qtyErr, qty) => {
+                         if (!qtyErr) $body.trigger('cart-quantity-update', [qty, newTotal]);
+                    });
+                });
+            }
+        });
     });
 
     // Handle asynchronous item removal from the cart drawer
