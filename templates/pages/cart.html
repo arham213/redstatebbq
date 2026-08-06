@@ -5,11 +5,10 @@ cart: true
 {{#partial "page"}}
 {{inject 'invalidEntryMessage' (lang 'cart.invalid_entry_message')}}
 {{inject 'multiCouponUIEnabled' cart.multi_coupon_ui_enabled}}
-<div class="page">
-
-    <div class="page-content" data-cart>
-        {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
-
+<div class="container">
+    <div class="page">
+        <div class="page-content" data-cart>
+        <!-- Breadcrumbs hidden per request -->
         {{> components/cart/page-title}}
 
         <div data-cart-status>
@@ -74,6 +73,7 @@ cart: true
         {{/if}}
 
     </div>
+</div>
 </div>
 {{/partial}}
 {{> layout/base}}

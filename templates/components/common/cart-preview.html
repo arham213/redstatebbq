@@ -14,7 +14,7 @@
   </header>
 
   <!-- Reward -->
-  <section class="nx-cd-section" style="border-bottom: 1px solid #E5E5E5; box-shadow: 0 4px 12px rgba(0,0,0,0.05); position: relative; z-index: 10;">
+  <div class="nx-cd-reward-wrap">
     <div class="nx-cd-reward" data-cart-subtotal="{{cart.sub_total.value}}">
       <span class="star">
         <svg viewBox="0 0 18 17.2467" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -25,7 +25,7 @@
       </span>
       <div class="nx-cd-txt"><b>Reward</b> <span class="nx-fs-msg"></span></div>
     </div>
-  </section>
+  </div>
 
   <div class="nx-cd-top">
     <!-- Cart -->
@@ -36,15 +36,19 @@
       <div class="nx-cd-item">
         <div class="nx-cd-thumb">
           {{#if type '==' 'GiftCertificate'}}
-          <img alt="GiftCertificate" title="GiftCertificate"
-            src="{{cdn ../theme_settings.default_image_gift_certificate}}">
+          <a href="{{url}}">
+            <img alt="GiftCertificate" title="GiftCertificate"
+              src="{{cdn ../theme_settings.default_image_gift_certificate}}">
+          </a>
           {{else}}
-          {{> components/common/responsive-img
-          image=image
-          fallback_size=../theme_settings.productthumb_size
-          lazyload=../theme_settings.lazyload_mode
-          default_image=../theme_settings.default_image_product
-          }}
+          <a href="{{url}}">
+            {{> components/common/responsive-img
+            image=image
+            fallback_size=../theme_settings.productthumb_size
+            lazyload=../theme_settings.lazyload_mode
+            default_image=../theme_settings.default_image_product
+            }}
+          </a>
           {{/if}}
         </div>
         <div class="nx-cd-details">
@@ -111,6 +115,9 @@
           <div class="nx-skeleton-card"></div>
           <div class="nx-skeleton-card"></div>
       </div>
+      <div class="nx-skeleton-dots">
+          <span></span><span></span><span></span><span></span>
+      </div>
     </div>
     <div class="nx-cd-arrows">
       <button class="nx-cd-arrow nx-cd-arrow-skeleton"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
@@ -127,7 +134,7 @@
     <div class="nx-cd-actions">
       <a href="{{urls.cart}}" class="nx-cd-btn nx-cd-ghost button button--secondary" id="nx-cart-continue-btn">Continue Shopping</a>
       {{#if cart.show_primary_checkout_button}}
-      <a href="{{urls.checkout.single_address}}" class="nx-btn nx-btn-primary button button--primary">Checkout</a>
+      <a href="{{urls.checkout.single_address}}" class="nx-cd-btn nx-cd-primary button button--primary">Checkout</a>
       {{/if}}
     </div>
   </footer>

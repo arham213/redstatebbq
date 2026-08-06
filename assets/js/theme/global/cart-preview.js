@@ -36,7 +36,9 @@ export default function (secureBaseUrl, cartId) {
                         breakpoint: 500,
                         settings: {
                             slidesToShow: 1,
-                            slidesToScroll: 1
+                            slidesToScroll: 1,
+                            arrows: false,
+                            dots: true
                         }
                     }
                 ]

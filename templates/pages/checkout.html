@@ -10,6 +10,26 @@
 
 {{{head.scripts}}}
 
+<style>
+    @font-face {
+        font-family: 'Moongazer';
+        src: url("{{cdn '/assets/fonts/Moongazer/Web-TT/Moongazer.woff2'}}") format('woff2'),
+        url("{{cdn '/assets/fonts/Moongazer/Web-TT/Moongazer.woff'}}") format('woff'),
+        url("{{cdn '/assets/fonts/Moongazer/Web-TT/Moongazer.ttf'}}") format('truetype');
+        font-display: swap;
+    }
+    .header-logo-text {
+        font-family: 'Moongazer', sans-serif;
+        font-size: 2rem;
+        color: #D70321;
+        letter-spacing: 1px;
+    }
+    .checkoutHeader {
+        padding: 24px 0;
+        min-height: unset;
+    }
+</style>
+
 {{/partial}}
 
 {{#partial "page"}}
